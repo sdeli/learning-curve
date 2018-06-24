@@ -1,0 +1,133 @@
+/*-------------------------MODAL-------------------------*/
+.overlay {
+position:fixed;
+top:0px;
+left:0px;
+z-index:1100;
+width:100%;
+height:100%;
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)"; /*IE8*/
+    filter: alpha(opacity=30);  /*IE5、IE5.5、IE6、IE7*/
+    opacity: .3;  /*Opera9.0+、Firefox1.5+、Safari、Chrome*/
+background:#000;
+display:none;
+}
+
+.modal_window {
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	border: 1px solid #666;
+    position:fixed;
+	background:#fff;
+	z-index:1101;
+	display: none;
+	-moz-border-radius: 5px 5px 0 0;      /* Gecko browsers */
+    -webkit-border-radius: 5px 5px 0 0;   /* Webkit browsers */
+    border-radius:5px 5px 0 0;            /* W3C syntax */
+}
+
+.modal_window>h2 {
+background:#333;
+color:#FFF;
+text-align:left;
+font-family:Arial, Helvetica, sans-serif;
+margin:0;
+padding:0;
+position:relative;
+height:30px
+}
+.modal_window>h2>p {
+	font-size:15px;
+    line-height:30px;
+	margin:0 30px 0 10px;
+	overflow:hidden;
+	color:#EDEDED;
+	word-break:keep-all;/* 不换行 */
+    white-space:nowrap;/* 不换行 */
+	overflow:hidden;
+	text-overflow :ellipsis;
+}
+.modal_window>h2>span {
+	margin:0;
+	padding:0 5px;
+	display:block;
+	position:absolute;
+	top:0;
+	right:2px;
+	cursor:pointer;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:15px;
+	color:#CCC;
+	line-height:30px;
+}
+.modal_window>h2>span:hover {
+	color:#FFF
+}
+
+.modal_window>div {
+	padding:10px;
+	display:block;
+}
+
+.modal_window>p {
+	margin:0;
+	padding:10px;
+	background:#efefef;
+	text-align:right;
+	clear:both;
+}
+
+.modal_window>p>a{
+	padding:5px 8px;
+	font-size:12px;
+	font-weight:bold;
+    border: 1px solid #999;
+	background:#ccc;
+	color:#333;
+	cursor:pointer;
+    -moz-border-radius: 5px;      /* Gecko browsers */
+    -webkit-border-radius: 5px;   /* Webkit browsers */
+    border-radius:5px;            /* W3C syntax */
+}
+.modal_window>p>a:hover{
+	background: #ddd;
+}
+
+.modal_loader {
+width:50px;
+height:50px;
+background: url(../images/ajax-loader.gif) no-repeat center;
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /*IE8*/
+    filter: alpha(opacity=50);  /*IE5、IE5.5、IE6、IE7*/
+    opacity: .5;  /*Opera9.0+、Firefox1.5+、Safari、Chrome*/
+z-index:1101;
+}
+
+.modal_window .novisible {
+display:none;
+}
+
+.modal_window.default {
+background:#fff;
+}
+
+
+.shadow{
+   -webkit-box-shadow:4px 2px 6px #333333; 
+    -moz-box-shadow:3px 2px 6px #333333;
+    box-shadow: 3px 2px 6px #333333;
+}
+
+/*skin:"blue" */
+.modal_window.blue{
+	background:#DFE8E7;
+	border-color:#468688
+}
+.modal_window.blue>div{
+	border-color:#64A0A6
+}
+.modal_window.blue h2{
+	background:#64A0A6;
+}
+/*-------------------------MODAL-------------------------*/

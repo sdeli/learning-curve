@@ -1,0 +1,450 @@
+<div><h1>OBJECTS</h1>
+
+	<div><h2>OOP AND PROTOTYPAL INHERITANCE</h2>
+
+		<blockquote>In javascript everything is an object or a prototype</blockquote>	
+
+		<p class="definition" title="PROTOTYPAL INHERITANCE DEF">On objectgets access to the properties and methods of an other one</p>
+
+		<img src="img/prototype-chain.png" alt="">
+
+		<p>when referencing props on the proptype chain it is not needed to tell on which protytpe.
+			<p>obj.propertyOnWhicheverPrototype</p>
+		</p>
+		<p>Objects can share the same proptype objects and properties</p>
+		<p>Protype chain is a way kind of key-lookup</p>
+
+		<script class="demonstration" class="__proto__">
+
+			var obj = {
+				surN : "sandor",
+				famN : "deli",
+				log : function(){
+					console.log(this.surN + " " + this.famN);
+				}
+			}
+
+			var newObj = {
+				surN : "sandor",
+				famN : "deli"		
+			}
+
+			newObj.__proto__ = obj;
+			newObj.log(); // this keyword will get the value of the current obj
+
+			var OtherNewObj = {
+				surN : "sandor",		
+			}
+
+			otherNewObj.__proto__ = obj;
+		 	otherNewObj.log(); // this keyword will get the value of the current obj and the missing property will be looked up through the prototype chain
+ 		</script>
+
+	</div>
+	<!-- END <h2>oop and prototypal inheritance</h2> ///////////////////////////// -->
+
+	<div><h2>REFLECTION</h2>
+
+		<p>If you do this "john.__proto__ = person;" and you loop through the john object the interpreter will find those properties which are belonging to person as well</p>
+
+
+		<script>
+		(function(){
+
+			var person = {
+				firstname: 'Default',
+				lastname: 'Default',
+				getFullName: function() {
+					return this.firstname + ' ' + this.lastname;  
+				}
+			}
+
+			var john = {
+				firstname: 'John',
+				lastname: 'Doe'
+			}
+
+			john.__proto__ = person;
+
+			function callFunctions(){
+
+				forLoopObj(john, checkObj.fn, checkObj.args,);
+
+			}
+
+			var checkObj = {
+
+				args : [john],
+				fn : function(key, value, obj){
+
+					console.log(arguments);
+					console.log(key + " " + value);
+
+				} // checkObj
+
+			}		
+
+			function forLoopObj( obj, fn, fnArgs){
+				for(var key in obj){
+					fn(key, obj[key], ...fnArgs)
+				} //for
+
+			} // forLoopObj 
+			// workaround
+			callFunctions();
+
+		})();	
+		</script>
+
+		<script class="demonstration" title="workaround">
+			(function(){
+
+				var person = {
+					firstname: 'Default',
+					lastname: 'Default',
+					getFullName: function() {
+						return this.firstname + ' ' + this.lastname;  
+					}
+				}
+
+				var john = {
+					firstname: 'John',
+					lastname: 'Doe'
+				}
+
+				john.__proto__ = person;
+
+				function callFunctions(){
+
+					forLoopObj(john, checkObj.fn, checkObj.args,);
+
+				}
+
+				var checkObj = {
+
+					args : [john],
+					fn : function(key, value, obj){
+
+						if( obj.hasOwnProperty(key) ){
+							console.log(arguments);
+							console.log(key + " " + value);
+						} else {
+							console.log("this property is from  proto: " + key);
+						}
+
+					} // checkObj
+
+				}		
+
+				function forLoopObj( obj, fn, fnArgs){
+					for(var key in obj){
+						fn(key, obj[key], ...fnArgs)
+					} //for
+
+				} // forLoopObj 
+				// workaround
+				callFunctions();
+
+			})();
+		</script>
+
+	</div>
+	<!-- END <h1>reflection</h1> ///////////////////////////// -->
+
+	<div><h2>CONSTRUCT OBJECTS</h2>
+			
+		<p class="definition" title="CONSTRUCT OBJECTS">Adding methods and properties and set the proto</p>
+		<p class="definition" title="FUNCTION CONSTRUCTOR">A normal functions which used to construct objects</p>
+
+		<div><h3>STEPPS OF CREATION</h3>
+
+			<ul>
+				<li>NEW operator creates a new EMPTY OBJECT</li>
+				<li>then NEW operator invokes the CONSTRUCTOR FUNCTION</li>
+				<li>Constructor function CREATES AN EXECUTION CONTEXT</li>
+				<li>new keyword MAKES "THIS" POINT TO THE NEW EMPTY OBJECT - hoisting</li>
+				<li>And so the this.sthing expressions are putting the properties and methods to the new object - execution phase</li>
+				<li>The new keyword will let point the new objects __proto__ property the constructor functions "prototype" property </li>
+				<li>If the constructor returns something the expression ends up beeing the the return value and not the object (constructor returns by default the newly created object)
+					<p>workaround is: "return {something : "you want to return", newObj : this}"</p>
+				</li>
+			</ul>
+			
+			<script class="demonstration" title="Stepps of creation based on example">
+				
+				function CreateObj(name, male){ /* 0. CONSTRUCTOR FFUNCTION
+					1. What this function originally does is putting some properties to the object where this keyword points to.*/
+
+					this.name = name,
+					this.gender = male,
+					this.logName = function(){
+						console.log(this);
+
+						/* return { greet: "hy"} : <li>If the constructor returns something the expression ends up beeing the the return value and not the object</li>*/
+
+					}
+				}
+
+				var newObj = new CreateObj("sandor deli","male") /*2. The NEW keywords is an operator:
+															A; it creates a NEW OBJECT then =>
+															B; then it invokes the CONSTRUCTOR FUNCTION
+
+											   3. Constructor function CREATES AN EXECUTION CONTEXT
+											   4. Then the new keyword MAKES "THIS" POINT TO THIS OBJECT
+											   5. The new keyword wil let point the new objects __proto__ property the constructor functions "prototype" property 
+											   6. And so the this.sthing expressions are putting the properties and methods to the new object
+											   	*/
+
+			</script>
+
+			<script>
+				/* SECTION: EXTEND METHODS OF CLASSES AND CONSTURCTORS, utilizing the prototype property*/
+				class myEmitter {
+					constructor (oldn, ooldn){
+						this.self = this;
+						this.oldname = oldn;
+						this.ooldname = ooldn;
+					}
+
+					sayHi(){
+						console.log(this.self);
+					}
+
+			    } // class myEmitter
+
+			    var emi = new myEmitter('sanyi','sanyika');
+
+			    class ListenerClass extends myEmitter{
+
+			    	constructor(name) {
+			    		super();
+			    		this.name = name;
+			    	}
+
+			    	emit(){
+			    		console.log(this);  
+			    	}
+
+			    }
+
+			    var list = new ListenerClass();
+
+			    function constr(){
+			    	this.majom = "gorille";
+			    	this.okor = "okor"
+			    }
+
+			    var myconst = new constr();
+
+			    function freeFun(){
+			    	console.log(Math.PI);
+			    }
+
+			    // extending the methods of the classes and construcotrs but not the actual obects
+			    //actual created onbjects should possess methods unique to them everithing else should be on its constructors
+			    myEmitter.prototype.freeFun = freeFun;
+			    ListenerClass.prototype.freeFun = freeFun;
+			    constr.prototype.freeFun = freeFun;	
+			</script>
+
+			<script class="demostrate" title="CONSTRUCT OBJS WITH Object.construct()">
+				
+			</script>
+			
+		</div>
+		<!-- END <h3>Stepps Of Creation</h3> ///////////////////////////// -->	
+
+		<div><h3>PROTOTYPE VS __PROTO__</h3>
+			<img src="img/prototype-chain.png" alt="really good pic about protytpe chain">	
+			<ul class="sequence">
+				<li>The PROTOTYPE is a property on a constructor function that sets what will become the __proto__ property on the constructed object.</li>
+				<li>This value will be a reference pointer to the constructor functions prototype prop</li>
+				<li>prototype” automatically creates a special property “constructor”, which is a reference to the constructor function itself.</li>
+				<li>If a prototype has a non-null reference to its prototype, and so on, this is called the PROTOTYPE CHAIN</li>
+			</ul>
+
+		</div>
+		<!-- END <h3>PROTOTYPE VS __PROTO__</h3> ///////////////////////////// -->
+												
+		
+		<div><h3>PROTOTYPEING</h3>
+			
+			<ul class="important thoughts-sequence" >
+				<li>Methods are referenced by value</li>
+				<li>So 1000.s of objects can point on one memory space and will have the same method</li>
+				<li>So by performance reasons it is better not to put the same method on all object because this take up more memory space</li>
+				<li>It is better to put them on the "prototype" prop of the constructor</li>
+				<li>So all the objects created are pointing to one memory space</li>
+			</ul>
+
+			<script class="demostrate" title="PROTOTYPEING">
+				
+				function CreateObj(name, male){ 
+
+					this.name = name,
+					this.gender = male
+					this.logGender = function(){
+						console.log(this.gender);
+					}
+				}
+
+				var john = new CreateObj("john", "male");
+				var jane = new CreateObj("jane", "female");
+				var june = new CreateObj("june", "female");
+				var jack = new CreateObj("jack", "male");
+
+				console.log(john);
+				console.log(jane);
+
+				createObj.prototype.logName = function(){
+					console.log(this.name);
+
+				}
+
+				console.log(john); //in proto you will find th newly added method
+				console.log(jane); //in proto you will find th newly added method
+
+			</script>
+
+			<script title="PROTOTYPAL INHERITANCE - create constructor function which inherits from an other object">
+				/* SECTION: Inherit from one object to an other */
+				 var person = {
+				 	gender : male,
+				 	hair : long
+				 }
+
+				 var Jane = Object.create(person, {
+				 	name : 'Jane'
+				 })
+
+				/* SECTION: Inherit from on constructor function to the other */
+				function Beverage (name, temperature) {
+					this.name = name;
+					this.temperature = temperature;
+				}
+
+				Beverage.prototype.drink = function () {
+					console.log( 'I am drinking: ' + name);
+				}
+
+				function Coffe (type, name, temperature) {
+					Beverage.call(this,name,temperature)
+					this.type = type;
+				}
+
+				// setting up the prototype chain
+				Coffe.prototype = new Beverage
+				Coffe.prototype.sip = function(){
+					console.log('sipping: ' + this.type);
+				}
+
+				var brasilian = new Coffe('Braisilian', 'Sanyi', 'hot');
+
+			</script>
+
+
+		</div>
+		<!-- END <h3>PROTOTYPEING</h3> ///////////////////////////// -->
+
+		<div><h3>BUILT IN FUNC CONSTRUCTORS</h3>
+			
+			<ul class="important thoughts-sequence" >VARIABLES CONTAINING PRIMITIVE VALUES ARE OBJECTS AS WELL
+				<li>they are created by there constructors</li>
+				<li>Via their __proto__ prop they have methods and so from their constructor</li>
+				<li>their pirmitve value is boxed into their <strong>[[PrimitiveValue]]</strong> property</li>
+				<li>Due to this feature you can extend the feature of any values in javascript
+					<script class="demostrate">
+						String.prototype.isLengthGreaterThan = function(limit) {
+							return this.length > limit;  
+						}
+
+						console.log("John".isLengthGreaterThan(3));
+					</script>
+				</li>
+			</ul>
+
+			<ul title="BUILT IN FUNC CONSTRUCTORS LIST">
+				<li>var x1 = new Object();</li>
+				<li>var x2 = new String();</li>
+				<li>var x3 = new Number();</li>
+				<li>var x4 = new Boolean();</li>
+				<li>var x5 = new Array();</li>
+				<li>var x6 = new RegExp();</li>
+				<li>var x7 = new Function();</li>
+				<li>var x8 = new Date();  </li>
+			</ul>	
+			
+		</div>
+		<!-- END <h3>BUILT IN FUNC CONSTRUCTORS</h3> ///////////////////////////// -->
+		
+		<div><h3>Object.create</h3>
+			
+			<p class="important">for CLONEing or CONSTRUCTing OBJECTS</p>	
+
+			<script class="demostrate">
+				// polyfill - more about: 7 min 30 secs - https://www.udemy.com/understand-javascript/learn/v4/t/lecture/2237580?start=0
+				if (!Object.create) { 
+					Object.create = function (o) {
+						if (arguments.length > 1) {
+							throw new Error('Object.create implementation'
+								+ ' only accepts the first parameter.');
+						}
+						function F() {}
+						F.prototype = o;
+						return new F();
+					};
+				}
+
+				var person = {
+					firstname: 'Default',
+					lastname: 'Default',
+					greet: function() {
+						return 'Hi ' + this.firstname;   
+					}
+				}
+
+				var john = Object.create(person);
+				john.firstname = 'John';
+				john.lastname = 'Doe';
+				console.log(john);
+				
+			</script>
+
+		</div>
+		<!-- END <h3>Object.create</h3> ///////////////////////////// -->
+		
+		<div><h3>METHOD CHAINING</h3>
+
+			<script class="demostrate" title="demostrate Method-Chaning" 	>
+				
+				var obj = {
+					prop : "default",
+					method1 : function(arg){
+						this.prop = arg;
+						console.log("method1 - now prop is: " + arg);
+						return this;
+					},
+					method2 : function(arg){
+						this.prop = arg;
+						console.log("method2 - nowprop is: " + arg);
+						return this;
+					}
+				}
+
+				console.log(obj.prop);
+				obj.method1("king").method2("ceasar"); // THIS IS METHOD CHAINING
+		 		console.log(obj.prop);
+			
+			</script>
+			
+		</div>
+		<!-- END <h3>METHOD CHAINING</h3> ///////////////////////////// -->
+		
+		
+
+	</div>
+	<!-- END <h2>BUILDING OBJECTS</h2> ///////////////////////////// -->
+
+
+</div>
+<!-- END <h1>OBJECTS</h1> ///////////////////////////// -->

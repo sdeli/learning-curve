@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FRAMEWORK BUILDING</title>
+	<style>
+		.practice-area {
+			margin-bottom: 20px;
+			border: 2px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+<div class="practice-area">
+	<h1>FRAMEWORK BUILDING > Practice Area</h1>
+	<h3 id="greeting"></h3>
+	<div id="logindiv">
+	    <select id="lang">
+	        <option value="en">English</option>
+	        <option value="ger">German</option>
+	    </select>
+	    <input type="text" id="cusFName">
+	    <input type="text" id="cusLName">
+	    <input type="button" value="Login" id="login">
+	</div>
+	<h1 id="greeting"></h1>
+</div>
+<div"><h1 style="display: none;">FRAMEWORK BUILDING</h1>
+	
+	<p>framework is called: GREETER
+		<p>When given a 1rstname or lastname it generates informal and formal greetings</p>
+	</p>
+
+	<div><h2>REQUIEREMENTS</h2>
+
+		<ul class="">
+			<li><p>Support English, German languages</p></li>
+			<li>Reusbale Library</li>
+			<li>easy to type structure <span>g$();</span></li>
+			<li>support jquery</li>
+		</ul>
+		
+	</div>
+	<!-- END <h2>requierements</h2> ///////////////////////////// -->
+	
+</div>
+<!-- END <h1>FRAMEWORK BUILDING</h1> ///////////////////////////// -->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script>
+
+  	(function($, win){
+
+  		// constructing new greet object, at the bottom of the code object will be assigned to window.g$, so that it can be called as $g(parameters). this function calls the function constructor that the user dont need to type the new keyword
+  		var Greeter = function(firstName, lastName, language){
+
+  			return new Greeter.init(firstName, lastName, language);
+
+  		}
+
+  		Greeter.prototype={ /*functions are going into constructors callers prototype, that methods dont pollute memory space, below will reference this the constructor functions prototype prop*/
+
+  			// return the fullname prop of the new object
+  			fullName : function(){
+
+  				return this.fname + " " + this.lname;
+
+  			},
+
+  			// check if at creation parameter for language has been passed it supported/valid or not
+  			validate : function(){
+
+  				if (supportedLangs.indexOf(this.lang) === -1){
+
+  					throw "invalid Language"
+
+  				}else{
+
+  					console.log("language is ok");
+
+  				};
+
+  				return this;
+
+  			},
+
+  			//return an iformal greeting by language
+  			greeting : function(){
+
+  				return greetings[this.lang] + " " + this.fname;
+
+  			},
+
+  			// return a formal greeting by language
+  			formalGreeting : function(){
+
+  				return formalGreetings[this.lang] + " " + this.fullName();
+
+  			},
+
+  			// Function makes decision by argument if formal or informal greeting should be returned
+  			greet : function(formal){ /*formal accepts boolean*/
+
+  				var msg;
+
+  				if (formal) {
+
+  					msg = this.formalGreeting();
+
+  				} else {
+
+  					msg = this.greeting();
+
+  				}
+
+  				if(console){
+
+  					console.log(msg);	
+  				}
+
+  				return msg;	
+  			},
+
+  			// activate the log messages method by language
+  			log : function(){
+
+  				if (console) {
+  					console.log(this.logMessages(this.language));
+  				}
+
+  				return this;
+
+  			},
+
+  			// changeing the lang property on the fly
+  			changeLang : function(lang){
+
+  				this.lang = lang;
+
+  				this.validate();
+
+  				return this;
+
+  			},
+
+  			// Method accepts a jquery selector, passes into jquery object, sets its innHTML to the return value of this.greet method
+  			select : function(selector, formal){
+
+  				if(!$){
+  					throw "jQuery is not there"	
+  				};
+
+  				if( selector === 0 || !selector ){
+  					throw "please pass a jQuery selector"
+  				}
+
+  				var item = $(selector).html(this.greet(formal))
+
+  				return this;
+
+  			}
+
+  		}
+
+  		// greet object constructor	
+		Greeter.init = function(firstName, lastName, language){
+
+			this.fname = firstName || '';
+			this.lname = lastName || '';
+			this.lang = language || '';
+
+			this.validate(); // defined in the prototype prop above
+
+		}
+
+		// function for logging out help infos how the g$ object needs to be user
+		Greeter.usageHelp = function(){
+
+  				console.log("g$(firstName, lastName, language)");
+  		}
+
+  		//referenceing Greeter-s prototype prop for the methods
+		Greeter.init.prototype = Greeter.prototype;
+
+		//this varaiable is used by the this.validate method
+		var supportedLangs = ["en", "ger"];
+
+		// built in informal greetings for the this.greeting method in Greeter.prototype
+		var greetings = {
+			en : "hy my friend",
+			ger : "Guten Tag mein Freun"
+		}
+
+		// built in formal greetings for the this.formalGreeting method in Greeter.prototype
+		var formalGreetings = {
+			en : "It is nice to see you Sir",
+			ger : "Einen schoenen guten Tag"
+		}
+
+		// messages for the this.logMessages in Greeter.prototype
+		var logMessages = {
+			en : "logged in",
+			de : "angemeldet"
+		}
+
+		// assigning final object to the window
+		win.Greeter = win.g$ = Greeter;
+
+	// calling main anonymus function with jquery and window object access	
+  	}(window.jQuery, window));
+
+  	(function(){
+
+  		$("#login").click(function(){
+  
+	  		greetCustomerOnClick({
+				loginSelectMenuValue : $("#lang")[0].value,
+				greetItem : $("#greeting"),
+				cusFName : $("#cusFName")[0].value,	  				
+				cusLName : $("#cusLName")[0].value,	  				
+	  		});
+
+  		});
+
+  		function greetCustomerOnClick(argObj){
+
+  			g$(argObj.cusFName,argObj.cusLName,argObj.loginSelectMenuValue).select(argObj.greetItem);
+
+  		}
+
+  	}(window.$, window))
+
+  </script>
+
+</body>
+</html>

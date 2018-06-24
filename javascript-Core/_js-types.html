@@ -1,0 +1,222 @@
+
+<div><h1>TYPES IN JAVASCRIPT</h1>
+	
+	<ul><h2>Types List</h2>
+		<li>PRIMITIVE / VALUE TYPES</li>
+		<li>REFERENCE TYPES</li>
+	</ul>
+
+	<div><h2>RECOMMENDED ARTICLES</h2>
+		<a href="https://medium.com/@benastontweet/lesson-1b-javascript-fundamentals-380f601ba851" class="reference"></a>
+		<a href="https://codeburst.io/explaining-value-vs-reference-in-javascript-647a975e12a0"></a>
+	</div>
+	<!-- END <h2>RECOMMENDED ARTICLES</h2> ///////////////////////////// -->
+
+
+	<div><h2>DYNAMIC TYPING</h2>
+		
+		<p class="definition">The type of a variable will be defined during runtime</p>
+
+	</div>
+	<!-- END <h2>DYNAMIC TYPING</h2> ///////////////////////////// -->
+
+	<div><h2>PRIMITIVE / VALUE TYPES</h2>
+
+		<ul class="definition"> Definition
+			<li>Name value pair which describes just on value</li>
+			<li>When they are assigned, they are assigned by value. There value is copied</li>
+		</ul>				
+		
+		<ul><strong>Primitive Types:</strong>
+
+			<li>null
+				<p>Describes non-existenz - for use of the coder</p>
+			</li>
+			<li>Undefined
+				<p>Describes non-existenz - used by computer</p>
+			</li>
+			<li>Boolean</li>
+			<li>Number</li>
+			<li>String</li>	
+			<li>Symbol</li>
+		</ul>
+
+		<div><h3>Number</h3>
+			
+			<p class="important">Always floating point number</p>
+			<p class="definition"><strong>Floating Point : </strong>Number's radix point (decimal point, or, more commonly in computers, binary point) can "float"; that is, it can be placed anywhere relative to the significant digits of the number.</p>
+			
+		</div>
+		<!-- END <h3>Floating Point</h3> ///////////////////////////// -->
+		
+	</div>
+	<!-- END <h2>PRIMITIVE TYPES</h2> ///////////////////////////// -->
+	
+	
+	<div><h2>REFERENCE TYPES</h2>
+		
+		<p class="definition">When they are assigned, their reference pointer to their value in the memory is assigned, so just their pointer is copied, their value not</p>
+
+		<ol><strong>reference types:</strong>
+			<li>Array</li>
+			<li>Object</li>
+			<li>Function</li>
+		</ol>
+		
+		
+		<script>
+			/*
+			In the first part, the initials of a name are constructed by the getInitials function. The string value passed to the function is copied. This copy is accessed and modified inside the function. These modifications have nothing to do with the original value people[0].name.
+
+			The increaseAge function accepts an object. As objects are reference types, only the reference to the passed person is copied. When members of the referenced object are changed, the changes are kept even after executing the function. These changes are accessible via each reference.
+
+			At increaseAge function when Primitive types are passed by value. Changing the copied value has no effects on the original value
+			*/
+			var people = [
+			{ name: 'John Hill', age: 22 },
+			{ name: 'Jack Chill', age: 27 }
+			];
+
+			var getInitials = function( name ) {
+			    // Reusing the name argument makes little sense in general.
+			    // We are making this assignment here for demonstrating
+			    // the difference between value types and reference types.
+			    name = name.split( ' ' ).map( function( word ) {
+			    	return word.charAt( 0 );
+			    } ).join( '' );
+
+			    console.log("getInitials:");
+			    console.log( name );
+
+			    return name;
+			}
+
+			var increaseAge = function( person ) {
+				person.age += 1;
+			}
+
+			var addPerson = function( people, name, age ) {
+				people.push( { name: name, age: age } );
+			}
+
+			// Part 1: getInitials
+			console.log( getInitials( people[0].name ) ); 
+			console.log( people[0].name );
+
+			// Part 2: increaseAge
+			increaseAge( people[1] );
+			console.log( people[1].age );
+
+			// Part 3: addPerson
+			addPerson( people, 'Jim Gordon', 32 );
+			console.table( people );
+		</script>
+
+		<script class="demostration" title="Referencing an object">
+
+			/*In this case obj will be not changed because the assignment operator creates new memory space for the new value and original object remains unmuted*/
+			var obj = {
+				prop1 : "12",
+				prop2 : {
+					prop3 : 24,
+					prop4 : "mother"
+				} 
+			}
+
+			/*Here in this case object will be muted since we changed.. I have no idea why*/
+			var newObj = obj.prop2;
+			newObj = 1;
+			console.log(obj.prop2);
+			console.log(newObj);
+			
+			var obj2 = {
+				prop1 : "12",
+				prop2 : {
+					prop3 : 24,
+					prop4 : "mother"
+				} 
+			}
+
+			newObj2 = obj2;
+			newObj2.prop2 = 1;
+			console.log(newObj2);
+			console.log(obj2); 
+
+		</script>
+
+		<p>Value of Reference type can be only in two cases:
+
+			when we deal with an identifier;
+			or with a property accessor.
+			<ul>there are two variations: 
+				<li>the dot notation</li>
+				<li>Bracket notation</li> 
+				<script>
+					foo.bar();
+					foo['bar']();
+				</script>
+			</ul>
+		</p>
+
+		<div class="concept"><h2>NAME VALUE PAIR</h2>
+
+			<p><strong>Name value Pair: </strong> A name which defines/describes a value</p>
+			<p>Value can be a next collection of name value pairs</p>
+
+		</div>
+		<!--  NAME VALUE PAIR  -->
+
+
+		<div class="concept"><h2>OBJECT</h2>
+
+			<a href="img/JavaScript. The Core. – .ds laboratory.pdf" class="reference to current topic">Javascript the core</a>
+
+			<p class="definition">An <strong>OBJECT</strong> is a Collection of NAME VALUE PAIRS as its porperties and a SINGLE PROTOTYPE OBJECT 
+				<p><strong>Internal properties: </strong> they define the behavior of code as it executes but are not accessible via code. ECMAScript defines many internal properties for objects in JavaScript. Internal properties are indicated by double-square-bracket notation. [[Scopes]] [[FunctionLocation]]</p>
+			</p>
+
+			<ul><strong>Possible Properties of Object</strong>
+				<li>Primitive Props</li>
+				<li>Object Props</li>
+				<li>Methods</li>
+			</ul>
+
+			<p class="definition"><strong>GLOBAL OBJECT</strong> is the object which is created before entering any execution context</p>
+
+			<p class="concept">prototype object is eather an object or null
+				<p class="definition">Protype Chain: Prototype objects are also just simple objects and may have their own prototypes. If a prototype has a non-null reference to its prototype, and so on, this is called the prototype chain.</p>		
+			</p>
+
+		</div>
+		<!-- OBJECT  -->
+		
+	</div>
+	<!-- END <h2>REFERENCE TYPES</h2> ///////////////////////////// -->
+
+	<div><h2>COERCION</h2>
+
+		<p class="definition">Change a value type into an other</p>
+		<p class="definition">To force one value to be the type on an other
+			<script>
+				var a = 1 + "1"; // 11
+				console.log( 3 < 2 < 1 ) // => cl( false < 1 ) => cl( 0 < 1 ) => cl( true )
+
+				function greet(name){
+
+					name = name || "bob" // || operator searches for the first parameter which to true coerces
+
+					console.log(name);
+					console.log("hallo " + name);
+
+				}
+
+				greet();	
+			</script>
+		</p>
+		
+	</div>
+	<!-- END <h2>COERCION</h2> ///////////////////////////// -->
+	
+
+</div>
+<!-- END <h1></h1> ///////////////////////////// -->

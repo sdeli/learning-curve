@@ -1,0 +1,83 @@
+
+		#modal-pop-up{
+			z-index: 1000;
+			position: relative;
+			top: -405px;
+			width: 500px;
+			margin: 0 auto;
+		}		
+		#modal-pop-up .container{
+			padding: 0;
+			border: 2px solid #E8117F;
+			border-radius: 3px;
+			background-color: white;
+			position: absolute;
+			top: 50px;
+			width: 100%;
+			box-sizing: border-box;
+			font-family: 'Quicksand', sans-serif;
+		}
+
+		#modal-header, #modal-subtitle{
+			padding: 30px 5px 10px 30px;
+			color: white;
+			background: #E8117F
+		}
+		#modal-subtitle{
+			padding-top:0;
+			color: white;
+			background: #E8117F;
+		}
+
+		#modal-header h1{
+			display: inline-block;
+		}
+		.modal-cross{
+			display:block;
+			position: absolute;
+			right: 5px;
+			top: 3px;
+			font-size: 21px;
+			padding: 3px;
+			border-radius:20px;
+			background: #E8117F;
+			color: white;
+			}
+
+		#modal-footer{
+			text-align: right;
+			padding: 10px 50px 10px 30px;
+		}
+		
+
+/*Animation styles *************************** */
+ .modal-pop-up-animation{
+ 	
+ 	animation: modal-b 0.4s ease forwards;
+ }
+.modal-push-back-animation{
+ 	
+ 	animation: modal 1s ease forwards;
+ }
+
+ @keyframes modal-b{
+ 	0%{
+ 		opacity: 1;
+ 	}
+ 	70%{
+ 		top: 100px;
+ 	}
+
+ 	100%{
+ 		top: 50px;
+ 		opacity: 1;
+ 	}
+ }
+
+ @keyframes modal{
+
+ 	100%{
+ 		top: -405px;
+ 	
+ 	}
+ }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Caesar Cipher 2</title>
+</head>
+<body>
+<script>
+
+	/* 	SECTION: Pseudo
+		function takes 2 params, string and number
+		shifts the letters in the string in the alphabet by the value of number
+		returns the new string
+
+		what if 300 passed in
+		uppercase chars should be retained
+	*/	
+
+	function caesarCipher(str, shiftAwayNum){
+
+		let alphabet ='abcdefghijklmnopqrstuvwxyz'.split('');
+		let alphlastIndex = alphabet.length;
+		shiftAwayNum = shiftAwayNum % alphlastIndex;
+		let lowerCaseStr = str.toLowerCase();
+		let newStr ="";
+
+		for( let i = 0; i < lowerCaseStr.length; i++ ){
+			
+			let currentLetter = lowerCaseStr[i];
+			let isAlphabeticChar = alphabet.indexOf(currentLetter) > -1;
+
+			if(!isAlphabeticChar) {
+				newStr += currentLetter;
+				continue;
+			}
+
+			let indexInAplhabet = alphabet.indexOf(currentLetter);
+			let nextCharIndex = indexInAplhabet + shiftAwayNum;
+
+			if (nextCharIndex < 0) {
+				nextCharIndex = nextCharIndex + alphabet.length;
+			} else if (nextCharIndex > alphlastIndex) {
+				nextCharIndex = nextCharIndex - alphabet.length;
+			}
+
+			if ( str[i] === str[i].toUpperCase() ) {
+				newStr += alphabet[nextCharIndex].toUpperCase();
+			} else {
+				newStr += alphabet[nextCharIndex];
+			}
+		}
+
+		return  newStr;
+
+	}
+</script>
+</body>
+</html>

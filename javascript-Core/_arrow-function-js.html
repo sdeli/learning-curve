@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ARROW-FUNCTION</title>
+</head>
+<body>
+	<ul class="sequence">Arrow Functions
+		<li>Unlike a regular function, an arrow function does not bind this.</li>
+        <li>This remains to be the global object</li>
+        <li>So the arguments obj remains to the arguments obj of the global execution context</li>
+	</ul>
+<script>
+	// SYNTAX
+	(parameters) => { statements }
+
+	// if you are returning an expression, you remove the brackets:
+	parameters => expression
+	// is equivalent to:
+	function (parameters){
+	  return expression;
+	} 
+
+	// return an object
+	var majom = () => ({
+		talk : "idiot"
+	});
+</script>
+
+</body>
+</html>	

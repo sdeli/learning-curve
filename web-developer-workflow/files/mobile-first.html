@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MOBILE FIRST WEBDESIGN</title>
+</head>
+<body>
+	
+	<h2 >MOBILE FIRST WEBDESIGN</h2>
+
+	<p> <strong>MOBILE FIRST - CONCEPT</strong>
+
+		Websites are built in opposite direction: Mobile View => Tablet View => Desktop View
+		-due to the higher traffic comes from mogile devices<br>
+
+		Download website elements specified to viewport - prevent to download data user wont use<br>
+
+		Load as quickly as possible on mobile<br>
+		
+	</p>
+
+	<p > <strong>MOBILE FIRST - DESIGN CONTEXT</strong>
+
+		- Designing around smaller screen<br>
+
+		- Prioritize content<br>
+
+		- Anticipate most common user actions<br>
+
+		- Experts involver: Information Arcitect, Usability Expert, Graphic Designer<br>
+
+	</p>
+
+	<p> <strong>MOBILE FIRST - DEVELOPMENT CONTEXT</strong>
+
+		- Website shouldnt involve data unnecessary on users viewport<br>
+
+		- Treat the most essential viewport as baseline and develop upwards from there<br>
+
+		- Quick load for every wievport<br>
+
+	</p>
+
+	<p> CSS CONVENTIONS
+		
+	</p>
+    <!-- ///////////////////////////////////////////////////////////////////////////////////  -->
+	<div> <h2>MUST USE TECHNOLGIES / CONCEPTS</h2>
+		
+		<ul title="Must Use Technologies Overwiev">
+			<li>GRID SYSTEM</li>
+			<li>BEM BLOCKS</li>
+			<li>RESPONSIVE IMAGE SYSTEM</li>
+			<li>ICON SPRITES / SVG</li>
+			<li>LAZY LOADING</li>
+			<li>WAYPOINTS</li>
+			<li>JAVASCRIPT MODULES</li>
+		</ul>
+
+		<p> <h4>1. GRID SYSTEM</h4>
+	 		<a href="web-developer-workflow/files/grid-system-tutorial.html">ref:web-developer-workflow/files/grid-system-tutorial.html</a>
+		</p> <!--  GRID SYSTEM  -->	
+
+		
+		<p> <h4>2. BEM BLOCKS</h4>		
+
+			<ul><strong>Page Section Blocks / For Page Section Blocks</strong>
+
+				<li> OBLIGATORY PAGE SECTIONS </li>
+				<li> GRID </li>
+				<li> PAGE SECTION WRAPPERS
+					<p>
+						top-bottom <br>
+						right-left
+					</p>
+				</li>
+				<li> SPECIFIC FULL PAGE SECTIONS
+					<p>like: testimonials, webshop carts, site-header, site footer</p>
+					<p>See the rest further down</p>
+				</li>
+
+			</ul>
+
+			<ul><strong>Text Type Blocks</strong>
+
+				<li> > PAGE SECTION HEADINGS</li>
+				<li> > PARAGRAPH TAGS
+					<li> > PARAGRAPH HEADINGS</li>
+					<li> > PARAGRAPH TEXT</li>
+					<li> > PARAGRAPH LINKS</li>
+				</li>
+
+			</ul>
+
+			<ul> <str>Design Elements</str>
+
+				<li> > GRID COLUMN CONTENT BLOCKS</li>
+				<li> > BUTTONS</li>
+				<li> > ICONS </li>
+				<li> > SPRITES</li>
+				<li> > SOCIAL ICONS</li>
+
+			</ul>
+
+			<ul> <strong>Design Animating Elements</strong>
+				 <li>Carousel</li>	
+				 <li>Modals</li>	
+				 <li>Customer rewievs</li>	
+				 <li>Customer rewievs Slider</li>	
+				 <li>Cart Slider</li>	
+			</ul>
+
+		</p> <!-- BEM BLOCKS  --> 
+
+		<p> <strong>RESPONSIVE IMAGE SYSTEM</strong>
+
+			Ways of handling images in html:
+				- Art Direction and Cropping 
+				- Image resolution and file size
+
+			Example - Control over cropping / art direction:
+
+				Example 1
+				<picture>
+					<source srcset="crop-large.jpg, crop-large-hier-resolution.jpg" media="(min-width: 1200px)">
+					<source srcset="crop-medium.jpg, crop-medium-hier-resolution.jpg" media="(min-width: 800px)>
+					<img src="crop-small.jpg" alt="">
+				</picture>
+
+				Example 2
+				<picture>
+					<img src="assets/images/our-start-portrait-hi-dpi.jpg" alt="">
+					<source sizes="404px" srcset="assets/images/our-start.jpg 404w, assets/images/our-start-hi-dpi.jpg 808w" media="(min-width: 1020px)">
+					<source sizes="320px" srcset="assets/images/our-start-portrait.jpg 382w, assets/images/our-start-portrait-hi-dpi.jpg 764" media="(min-width: 800px)">
+					<img src="assets/images/our-start-landscape.jpg 800w, assets/images/our-start-landscape-hi-dpi.jpg 1600w" alt="Our founder, Jane Doe">
+				</picture>  
+
+				Example - Size Controll	- 
+				<img srcset="crop-small.jpg 570w, crop-medium.jpg 800w, crop-large.jpg 1200w" alt="">
+			
+
+			MAIN CONSEQUENCES:
+
+					- Images need to be cropped according to the breakpoints of the grid
+					- Attributes of cropping: 
+							- Style of Cropping:
+								- mobile: landscape
+								- tablet: Portrait
+								- Desktop: normal
+
+							- Resolution of cropped image:
+								- check examples in travel-site/assets/images
+
+							- Important breakpoints: 
+									<li> < 768px XS </li>
+									<li> >= 768px SM </li>	
+									<li> >= 992px MD </li>	
+									<li> >= 1200px LG </li>
+
+					- Image resolution need to be decraised by tynier displays
+
+		</p> <!-- RESPONSIVE IMAGE SYSTEM -->
+		
+		<p> <h4>ICON SPRITES</h4>
+			<p>SVG technology with PNG fallbacks</p>
+			
+		</p>
+
+		<p><h4>REM - instead of pixels</h4>
+
+				- wanted size is pixels / 16 = 1rem;<br>
+		</p>
+		
+		<p><h4>Lazy Loading</h4>
+			-NPM lazysizes Utility (sudo npm install lazysizes --save)
+		</p>
+
+		
+	</div> <!-- MUST USE TECHNOLGIES -->
+
+	<!-- /////////////////////////////////////////////////////////////////////////////////////////  -->
+
+	<h2> <<<<<<<<<<<<<<<<<<<< WEBSITE PARTIALS >>>>>>>>>>>>>>>>>>>>>>> </h2>
+
+	<div><h4>OBLIGATORY AND SPECIFIC FULL PAGE-SECTION BEM BLOCKS</h4>
+		
+		<ul>
+			<li><strong>Site-Header Partial</strong>
+					<p>
+						-absolute/fixed <br>
+						-transparent and fade threw the bacground or fixed color
+						-on wide screen all item highlights but <br>
+						-on small just logo and hamburger <br>
+								- menu items are ember into hamburger <br>
+								- dropdown in hamburger dropdow <br>
+						- responsive dropdown
+					</p>
+			</li>
+
+			<li><strong>Jumbotron Partial</strong></li>
+
+			<li><strong>Webshop cart partial</strong>
+				  <p>
+				  	- equal height infinite column and multy row (but without .row) layout <br>
+				  	- coulmn amount and row amount decided dynamicly <br>
+				  	-clearfixed buy each new col <br> 
+				  </p>
+			</li>
+
+			<li><strong>Blog Type Partials</strong>
+				<p>For normal info sharing</p>
+				<p>Mixture of Text, img-s, Videos</p>
+			</li>
+
+			<li><strong>Site Footer</strong></li>
+		</ul>
+
+	</div>
+
+	<div><h4>COLUMN LEVEL PARTIALS</h4>
+		
+		<ol>
+			<li><strong>Paragraph Tags</strong></li>
+
+			<li><strong>Img-s</strong></li>
+
+			<li><strong>Embed Vids</strong></li>
+		</ol>
+
+	</div>
+
+	<div><h4>JAVASCRIPT WEBSITE ELEMENTS</h4>
+		<ol>
+			<li><strong>Carousel</strong></li>
+
+			<li><strong>Modal</strong></li>
+
+			<li>Navbar Animation</li>
+
+			<li> scroll to clicked links section </li>
+
+			<li> highlight active sections link in navbar </li>
+
+			<li> on scroll section item animations </li>
+
+			<li><strong>Websop Cart</strong>
+				<p>onclick open in modal</p>
+			</li>
+
+			<li>Webshop Cart Slider</li>
+
+			<li>Pikans Navbar</li>
+
+			<li>Customer rewiev</li>
+
+			<li>Customer rewiev slider</li>
+
+			<li><strong>Accordion Tiny/Fullscreen</strong>
+				<p>For artikles</p>
+				<p>For tiny texts</p>
+			</li>
+		</ol>	
+	</div>
+
+		
+	</p>
+
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Memoized Fibonacci</title>
+</head>
+<body style="background-color: black">
+<script>
+	// O()
+	memoFibo(8);
+	function memoFibo(index, cacheArr){
+
+		cacheArr = cacheArr || [];
+
+		if (cacheArr[index]){
+			return cacheArr[index];
+		}else{
+			if (index < 3) {
+				 return 1;
+			} else {
+				cacheArr[index] = memoFibo(index - 1, cacheArr) + memoFibo(index - 2, cacheArr);
+			}
+		}
+
+		return cacheArr[index];
+	}
+
+</script>
+</body>
+</html>

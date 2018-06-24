@@ -1,0 +1,182 @@
+/*
+{
+	dependencies: {
+		_wrapper.css
+		_btn.css
+		_primary-nav.css
+		_site-header.js - here you need to equal the variable:transitionLength with 
+			&__hide-menu-content transition lenght in milisecondsc;
+	};
+}
+*/
+.site-header {
+	background-color: unset;
+	padding: 10px 0;
+	position: absolute;
+	z-index: 2; 
+	width: 100%;
+	min-height: 62px;
+	text-align: center;
+	cursor: pointer;
+
+	@mixin atSmall {
+		position: fixed;
+		background-color:  rgba($mainBlue, .3);
+		text-align: unset;
+		transition: background-color .5s ease-out;
+
+	}
+
+	&--dark {
+
+		@mixin atSmall{
+			background-color: rgba(23, 51, 72, .85);
+		}
+
+	}
+	
+	
+	&--invisible {
+		opacity: 0;
+	}
+
+	&--background {
+		background-color: rgba($mainBlue, 0.55);
+	}
+
+	&__btn {
+		
+		@mixin atSmall {
+			float: right;
+		}
+
+	}
+
+	&__logo {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		background: $mainBlue;
+		padding: 9px 28px;
+
+		@mixin atXXSmall {
+			padding: 25px 32px;
+		}
+
+		@mixin atSmall{
+			left: unset;
+			transform: unset;
+			transition: transform .3s ease-out;
+			transform-origin: 50% 0;
+
+			.site-header--dark & {
+				transform: scale(.49);
+			}
+		}
+
+		&__sprite--small {
+			transform: scale(0.8);
+
+			@mixin atXXSmall {
+				transform: scale(1);
+			}
+		}
+	}
+
+	&__menu-content {
+		opacity: 0;
+		z-index: -2;
+		transform: scale(1.2);
+		padding-top: 0; 
+
+		@mixin undSmall {
+			transition: all .3s ease-out;
+		}
+
+		@mixin atSmall {
+			padding-top: 0 !important;
+			transform: scale(1);
+			opacity: 1;
+			z-index: unset !important;
+		}
+		
+		&--open {
+			padding-top: 112px;
+			opacity: 1;
+			z-index: 1;
+			transform: scale(1);
+		}
+	}
+
+	&__menu-icon {
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		z-index: 10;
+		
+		@mixin atSmall {
+			display: none;
+		}
+
+		&::before {
+			border-radius: 1px;
+			content: "";
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			background-color: #FFF;
+			width: 20px;
+			height: 3px;
+			transform-origin: 0 0;
+			transition: all .2s ease-out;
+		}
+
+		&__bar-middle {
+			border-radius: 1px;
+			position: absolute;
+			top: 8px;
+			left: 0px;
+			background-color: #FFF;
+			width: 20px;
+			height: 3px;
+			opacity: 1;
+			transition: all .7s ease-out;
+		}
+
+		&::after {
+			border-radius: 1px;
+			content: "";
+			position: absolute;
+			top: 16px;
+			left: 0px;
+			background-color: #FFF;
+			width: 20px;
+			height: 3px;
+			transform-origin: 0 100%; 
+			transition: all .2s ease-out;
+		}
+
+		&--clicked {
+
+			&::before {
+				transform: rotate(45deg) scaleX(1.25);
+			}
+
+			.menu-icon__middle-bar-clicked {
+				opacity: 0;
+				transform: rotate(720deg) scaleX(.7);
+			}
+
+			&::after {
+				transform: rotate(-45deg) scaleX(1.25);
+				top: 17px;
+			}
+		}
+		
+	}
+		
+}
+

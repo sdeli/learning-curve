@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ninjamodal</title>
+	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300|Oswald:400,700|Quicksand:500" rel="stylesheet">
+	<style type="text/css">
+		
+		#modal-pop-up{
+	
+			position: relative;
+			top: -400px;
+			width: 500px;
+			margin: 0 auto;
+			text-align: center;
+		}		
+		#modal-pop-up .container{
+			background-color: #f0e4d4;
+			padding:30px;
+			position: absolute;
+			top: 50px;
+			width: 100%;
+			box-sizing: border-box;
+			font-family: 'Quicksand', sans-serif;
+		}
+
+		#modal-pop-up input{
+			padding: 10px;
+			border: 0;
+			border-radius: 10px 0 0 10px;
+			border: 1px solid #333;
+			font-size: 18px;
+		}
+		#modal-trigger{
+			padding: 10px;
+			border-radius: 0;
+			color: #fff;
+			background: #333;
+			margin-left: -5px;
+			border-radius: 0 10px 10px 0;
+			border: 1px solid #333;
+			font-size: 18px;
+		}
+
+		#modal-push-back{
+			position: relative;
+			padding: 10px;
+			border-radius: 0;
+			color: #fff;
+			background: #333;
+			margin-left: -5px;
+			border-radius: 0 10px 10px 0;
+			border: 1px solid #333;
+			font-size: 18px;
+		}
+
+		.modal-cross{
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			background: #555;
+			color: #ddd;
+			font-weight: bold;
+			width: 22px;
+			height: 22px;
+			text-align: center;
+			border-radius: 11px;
+		}
+
+		
+
+/*Animation styles *************************** */
+ .modal-pop-up-animation{
+ 	
+ 	animation: modal-b 0.4s ease forwards;
+ }
+.modal-push-back-animation{
+ 	
+ 	animation: modal 1s ease forwards;
+ }
+
+ @keyframes modal-b{
+ 	0%{
+ 		opacity: 1;
+ 	}
+ 	70%{
+ 		top: 100px;
+ 	}
+
+ 	100%{
+ 		top: 50px;
+ 		opacity: 1;
+ 	}
+ }
+
+ @keyframes modal{
+
+ 	100%{
+ 		top: -400px;
+ 	
+ 	}
+ }
+	</style>
+</head>
+<body>
+<button id="modal-trigger">modal dropdown</button>
+<button id="modal-push-back" >modal dropdown</button>
+<div id="modal-pop-up">
+	<div class="container">
+		<h1>Kung Foo your skills</h1>
+		<p>join the mailing list to be spammed with ninja mails</p>
+		<input type="email" name="" placeholder="email">
+		<button>hii jaa</button>
+		<div class="modal-cross">x</div>
+	</div>
+</div>
+
+
+</body>
+<script type="text/javascript">
+
+(function(){
+
+
+	var ModalObject={
+
+		triggerButton: document.querySelectorAll("#modal-trigger")[0],
+
+		pushBackButton: document.querySelectorAll("#modal-push-back")[0],
+
+		modalWindow: document.querySelectorAll("#modal-pop-up")[0],
+
+		movementFunctions: {
+
+				dropDownFunction: function(){
+					ModalObject.triggerButton.addEventListener("click", function(){
+
+						if( ModalObject.modalWindow.hasAttribute("class")===false && ModalObject.movementFunctions.checkValues()<=-400 ){
+
+							ModalObject.modalWindow.setAttribute("class","modal-pop-up-animation");
+
+							setTimeout(function(){ 
+									ModalObject.modalWindow.style.top="50px"; 
+									ModalObject.modalWindow.removeAttribute("class");
+								}, 500);
+
+						}else{console.log("nyasgem")};
+
+					});
+				},
+
+				pushBackFunction: function(){
+					ModalObject.pushBackButton.addEventListener("click", function(){
+
+						var checker= ModalObject.movementFunctions.checkValues();
+
+						if(ModalObject.modalWindow.hasAttribute("class")===false && checker<=50 && checker>=50){
+
+							ModalObject.modalWindow.setAttribute("class","modal-push-back-animation");
+
+							setTimeout(function(){
+							 ModalObject.modalWindow.style.top="-400px"; 
+							 ModalObject.modalWindow.removeAttribute("class");
+							}, 1000);
+							
+						}else{console.log("nyasgem")};
+		
+					});
+				},
+
+				checkValues: function(){
+					 var theCSSprop = window.getComputedStyle(ModalObject.modalWindow, null).getPropertyValue("top");
+					 return parseInt(theCSSprop);
+				}
+		}
+
+	}
+document.addEventListener("DOMContentLoaded",ModalObject.movementFunctions.dropDownFunction() );
+document.addEventListener("DOMContentLoaded",ModalObject.movementFunctions.pushBackFunction() );
+document.addEventListener("DOMContentLoaded",function(){ console.log(ModalObject.movementFunctions.checkValues()) });
+document.addEventListener("DOMContentLoaded",function(){ console.log(typeof ModalObject.movementFunctions.checkValues()) });
+
+}())
+
+
+		
+
+	
+</script>
+</html>

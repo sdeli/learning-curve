@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Binary Search</title>
+</head>
+<body>
+<script>
+	/* DESCRIPTION:
+	* A function which takes 2 paramters:
+	* an sorted array of anything and an item to search for
+	* it searches through the array for the item on binary way  
+	*  returns matching items index
+	*/
+
+
+	/*
+		find middle item
+		if middle item is item
+		if item is bigger than middle item
+		if item is less than middle item
+		if middle item is not item and length is 0
+	*/
+	let arr = [1,2,3,4,5,6,7,8,9,11,22,33,44,55,66,88,100,111,123,234]
+	binarySearch(arr, 4);
+
+	function binarySearch(ascendArray, item){
+
+		let middleIdx = Math.round((ascendArray.length - 1) / 2);
+		let middleItem = ascendArray[middleIdx];
+
+		if (middleItem === item) {
+
+			return middleIdx;
+
+		} else if (middleItem > item) {
+
+			let firstHalfOfArr = ascendArray.splice(0,middleIdx);
+			binarySearch(firstHalfOfArr,item);
+
+		} else if (middleItem < item) {
+
+			let secondHalfOfArr = ascendArray.splice(middleIdx, ascendArray.length);
+			binarySearch(secondHalfOfArr,item);
+
+		} else {
+
+			return false;
+
+		}
+	}
+
+</script>
+</body>
+</html>

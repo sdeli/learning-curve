@@ -1,0 +1,15 @@
+<% include partials/_head.ejs %>
+<body>
+	<% include partials/_navbar.ejs %>
+	<h1>Webiste Powered By Noide.JS</h1>
+	<h1>Welcome to the Profile of <%= profile %></h1>
+	<p><strong>Job: </strong><%= data.age %></p>
+	<p><strong>Age: </strong><%= data.job %></p>
+	<h2>Hobbies</h2>
+	<ul>
+	<% data.hobbies.forEach((item, index) => { %>
+		<li><%= item %></li>	
+	<% }); %>
+	</ul>
+</body>
+</html>

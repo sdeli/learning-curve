@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <title>Shopping Cart Course Discoveryvip.com</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+  <link href="css/screen.css" rel="stylesheet">
+
+
+  <style type="text/css">
+  
+
+  	table th,td{
+  		text-align: center;
+   }  
+
+
+  </style>
+</head>
+<body>
+	<div class="container">
+		<h3>Shopping Checkout</h3>
+	</div>
+
+
+	<section class="container">
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+		
+		<table class="table cart-table table-hover">
+			<thead class="table-inverse">
+				<tr>
+					<th>Product</th>
+					<th>Quantity</th>
+					<th>Unit Price</th>
+					<th>Subtotal</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+			<tfoot></tfoot>
+		</table>
+		</form>
+
+		<a href="products" class="btn btn-success btn-block">Go back to Products</a>
+	</section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript" >
+
+
+
+
+	var cartSystem={
+
+		sessionStorage:{"ls":" "},
+
+		shoppingCart:[],
+
+		checkingChangeQty: function(){
+			
+			$(".dinqty").on("change keyup", function(){
+
+			var itemInfo=this.dataset;
+			var actualQty=$(this).val();
+
+			 $.each(cartSystem.shoppingCart, function(index, value){
+			 		
+			 		if(itemInfo.id===value.id){
+			 			value.qty=actualQty;
+			 			console.log(cartSystem.shoppingCart[index]);
+			 			sessionStorage["ls"]=JSON.stringify(cartSystem.shoppingCart);
+						cartSystem.shoppingCart=JSON.parse(sessionStorage["ls"]);
+			 			cartSystem.writeOutCartContent.modalCartConent();
+			 		}
+			 });
+
+			});
+		},
+
+		putInCart:{
+			addClickEventListener: function(){
+				$(".total-container").hide();
+
+				if(sessionStorage.length>0){
+					cartSystem.shoppingCart=JSON.parse(sessionStorage["ls"]);
+					cartSystem.fillUpPageWithdataWhenDOMLoads();
+				};
+
+				var clickedItem="";
+				var existInCart=false;
+
+				$.each($(".item a"), function(index, value){
+					this.addEventListener("click", function(e){
+					clickedItem=e.target.dataset;
+					checkCart();
+					});
+				});
+/*
+				function checkCart(){
+				 existInCart=false;
+					$.each(cartSystem.shoppingCart, function(index, value){
+
+						if(value.id===clickedItem.id){
+							value.qty=parseInt(value.qty)+1;
+							existInCart=true;
+						}
+
+
+					});
+
+					if(!existInCart){
+						cartSystem.shoppingCart.push(clickedItem);
+						
+					};
+
+
+					sessionStorage["ls"]=JSON.stringify(cartSystem.shoppingCart);
+					cartSystem.shoppingCart=JSON.parse(sessionStorage["ls"]);
+
+					cartSystem.writeOutCartContent.navBarCartConent();
+					cartSystem.writeOutCartContent.modalCartConent();
+				};*/
+				
+			}
+			
+		},
+
+		createCartContent:function(){
+
+				var subTotal=0,
+					total=0,
+					totalQty=0,
+					showQtyTotalInHeader=0,
+					showTableInModal="",
+					price=[];
+
+				$.each(cartSystem.shoppingCart, function(index, value){
+					qty=value.qty;
+					totalQty=parseInt(totalQty)+parseInt(value.qty);
+					subTotal=parseInt(value.qty)*parseInt(value.price);
+					total=total+subTotal;
+					formIndex=index+1;					
+					
+					var formProductName="<input type='text' min='0' name=item_name_"+formIndex+" "+"value="+value.product+">";
+					var formProductQty="<input type='number' min='0' data-id="+value.id+" class='dinqty' name=quantity_"+formIndex+" "+"value="+value.qty+">";
+					var formProductPrice="<input type='text' min='0'  name=amount_"+formIndex+" "+"value="+cartSystem.writeOutCartContent.moneyFormat(value.price)+">";
+					
+
+					showQtyTotalInHeader="<p>Total: "+totalQty+"(Items): "+cartSystem.writeOutCartContent.moneyFormat(total)+"</p>";
+
+					showTableInModal=showTableInModal+"<tr><td>"+formProductName+value.product+"</td><td>"+formProductQty+"</td><td>"
+					+formProductPrice+cartSystem.writeOutCartContent.moneyFormat(value.price)+"</td><td>"+cartSystem.writeOutCartContent.moneyFormat(subTotal)+"</td></tr>";
+					price.push(parseInt(value.price))	
+				});
+
+				total="<tr><td>"+" " +"</td><td>"+" "+"</td><td>"+"Full Costs: "+"</td><td>"+cartSystem.writeOutCartContent.moneyFormat(total)+"</td></tr>";
+				return {modal:showTableInModal, header:showQtyTotalInHeader, totalToModal:total, eachPrises:price};
+		},
+
+		writeOutCartContent: {
+
+			navBarCartConent: function(){
+		
+				$("#showItemTotalInNav p").html(cartSystem.createCartContent().header);
+				
+				showTheHeaderCartWhenContainItem();
+
+
+				function showTheHeaderCartWhenContainItem(){
+					if(document.querySelectorAll("#showItemTotalInNav p")[0].innerHTML===""){
+						console.log("amia");
+						}
+						else{$(".total-container").show(1000);
+					};
+				}
+			},
+
+			modalCartConent: function(){
+				
+				$(".cart-table tbody").html(cartSystem.createCartContent().modal);
+				$(".cart-table tfoot").html(cartSystem.createCartContent().totalToModal);
+				cartSystem.checkingChangeQty();
+
+			},
+
+			moneyFormat: function(n){
+			 return '$'+(n/100);
+			}
+
+		},
+
+		fillUpPageWithdataWhenDOMLoads: function(){
+
+					
+					cartSystem.writeOutCartContent.modalCartConent();
+			
+		},
+
+		updatePrisesInCards: function(){
+		
+			var subtitles= $(".item .card-subtitle");
+			var anchorTags= $(".item a");
+
+			$.each(subtitles, function(index, value){
+				console.log(anchorTags[index].dataset.price+" "+ value.innerHTML);
+				value.innerHTML=anchorTags[index].dataset.price;
+			});
+
+		}
+		
+		
+	}
+
+
+	$(document).ready(cartSystem.putInCart.addClickEventListener);
+	
+
+
+</script>
+</body>
+</html>

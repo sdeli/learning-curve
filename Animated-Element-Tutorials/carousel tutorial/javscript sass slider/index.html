@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+	.content-carousel{
+		position: relative;
+		
+		width: 550px;
+		height: 250px;
+	}
+
+	.content-carousel-inner{
+		position: absolute;
+		display: flex;
+		height: 250px;
+		transition: all 0.5s 0s;
+		
+	}
+	.inner-items{
+	}
+
+	#next::after{
+		content: ">";
+		position: absolute;
+		top: 38%;
+		right:0;
+		background-color: black;
+		color: white;
+		opacity: .3;
+		width: 1em;
+		height: 3em;
+		line-height: 3em;
+		font-weight: bold;
+		font-family: sans-serif;
+		font-size: 20px;
+		cursor: pointer;
+	}
+	.content-carousel #prev::before{
+		content: "<";
+		position: absolute;
+		top: 38%;
+		left:0;
+		line-height: 3em;
+		background-color: black;
+		color: white;
+		opacity: .3;
+		width: 1em;
+		height: 3em;
+		font-weight: bold;
+		font-family: sans-serif;
+		font-size: 20px;
+		cursor: pointer;
+	}
+
+</style>
+
+<script type="text/javascript" src="javascript-carousel2.js"></script>
+</head>
+<body>
+	<div class="content-carousel">
+		<div class="content-carousel-inner">
+			<div class="inner-items">
+				<img src="http://placehold.it/550x250/C43838">
+			</div>
+			<div class="inner-items">
+				<img src="http://placehold.it/550x250/3D38C4">
+			</div>
+			<div class="inner-items">
+				<img src="http://placehold.it/550x250/C414C7">
+			</div>
+		</div>
+	<div id="next"><p></p></div>
+	<div id="prev" ><p></p></div>
+
+	</div>
+	<button id="fuck">mamma</button>
+<div><img src="http://placehold.it/550x1000/1f00ff"></div>
+
+</body>
+
+</html>

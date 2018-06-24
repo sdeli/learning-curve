@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Max Stock Profit</title>
+</head>
+<body>
+<script>
+	
+	//console.log(maxStockProfit([18, 10, 4, 5, 9, 6, 16, 12]));
+	
+
+console.log(myMaxStockProfit([10, 18, 4, 5, 9, 6, 16, 12]));
+console.log(myMaxStockProfit([32, 46, 26, 38, 40, 48, 42]));
+
+	function myMaxStockProfit(priceArr){
+		let lowestPrice = priceArr[0];
+		let BestSellPrice = 0;
+		let maxProfit = -1;
+
+		for (let i = 1; i < priceArr.length; i ++) {
+			if (priceArr[i] < lowestPrice) {
+				lowestPrice = priceArr[i];
+			}
+
+			if ( priceArr[i + 1] - lowestPrice > maxProfit ){
+				maxProfit = priceArr[i + 1] - lowestPrice;
+				BestSellPrice = priceArr[i + 1];
+			}
+		} // for
+
+		return maxProfit;
+	}
+</script>
+</body>
+</html>

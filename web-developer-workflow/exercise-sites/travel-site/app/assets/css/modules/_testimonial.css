@@ -1,0 +1,40 @@
+.testimonial {
+	margin-top: 80px;
+	background: rgba(255, 255, 255, .8);
+	padding: 0 18px 0 18px;
+	margin-bottom: 18px;
+
+	@mixin atMedium {
+		margin-bottom: 0;
+		padding: 0 1.8125rem 1px 1.8125rem;
+	}
+	
+	&__photo {
+		display: block;
+		overflow: hidden;
+		border-radius:50%; 
+		/*giving the same width and hight as the img*/
+		width: 160px;
+		height: 160px;
+		/*END giving the same width and hight as the img*/
+		margin: 0 auto -80px auto;
+		transform: translateY(-80px);
+		border: 6px solid rgba(255, 255, 255, .8);
+	}
+
+	&__title {
+		font-size: 1.5rem;
+		font-weight: 500;
+		margin: 0;
+		text-align: center;
+		color: $mainBlue;
+	}
+
+	&__subtitle {
+		text-align: center;
+		color: $mainOrange;	
+		font-weight: 400;
+		font-size: 0.9375rem;
+		margin: .25rem 0 1rem 0;
+	}
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>productslider</title>
+	
+	<style type="text/css">
+
+			section.carousel-zone{
+				margin: 0 auto;
+				width: 3000px;
+				overflow: hidden;
+				height: height: 170px;
+			}
+
+			div.carousel-div{
+			
+				position: relative;
+				width: 1200px;
+				height: 170px;
+			}
+
+			div.carousel-div > div{
+				position: relative;
+				color: white;
+				display: inline-block;
+				overflow: hidden;
+				
+			}
+			div.carousel-div > img{			
+				display: inline-block;
+				
+				
+			}
+
+
+	</style>
+</head>
+
+<body>
+<section class="carousel-zone">
+<div class="carousel-div" id="carousel">
+	<div class="item-div-1"><img src="http://placehold.it/150x150/D65575"></div><div class="item-div-2"><img src="http://placehold.it/150x150/D655C7"></div><div class="item-div-3"><img src="http://placehold.it/150x150/9855D6"></div><div class="item-div-4"><img src="http://placehold.it/150x150/55D680"></div><div class="item-div-5"><img src="http://placehold.it/150x150/D2D655"></div>
+</div><br>
+<button class="prev">prev</button>
+<button class="next">next</button>
+
+</section>
+
+</body>
+<script type="text/javascript">
+	
+var btnNext=document.querySelectorAll(".next")[0],
+	btnPrev=document.querySelectorAll(".prev")[0],
+ 	imgArr=document.querySelectorAll(".carousel-div"),
+ 	animatedItem=null;
+
+btnNext.addEventListener("click", next);
+btnPrev.addEventListener("click", prev);
+
+
+function widthNovekszik(item){
+		var theCSSprop = window.getComputedStyle(item, null).getPropertyValue("width");
+			if(parseInt(theCSSprop,10)!==150){
+				
+				item.style.width=parseInt(theCSSprop,10)+10+"px";
+				console.log(theCSSprop);
+				setTimeout(function(){ widthNovekszik(item); }, 10);
+			}
+	};
+function widthCsokken(item){
+		var theCSSprop = window.getComputedStyle(item, null).getPropertyValue("width");
+			if(parseInt(theCSSprop,10)>0){
+				
+				item.style.width=parseInt(theCSSprop,10)-10+"px";
+				console.log(theCSSprop);
+				console.log(parseInt(theCSSprop,10));
+				setTimeout(function(){ widthCsokken(item); }, 10);
+			}else {
+				imgArr[0].appendChild(imgArr[0].children[0]);
+				imgArr[0].children[imgArr[0].children.length-1].style.width="150px";
+				document.getElementById('carousel').classList.remove('animation-in-progress');
+			}
+};
+
+
+function prev(){
+	if(true || !document.getElementById('carousel').classList.contains('animation-in-progress')) {
+		document.getElementById('carousel').classList.add('animation-in-progress');
+		setTimeout(function(){ widthCsokken(imgArr[0].children[0]); }, 0);	
+	}
+	
+}
+
+function next(){ 
+	imgArr[0].insertBefore(imgArr[0].children[imgArr[0].children.length-1], imgArr[0].children[0]);
+	imgArr[0].children[0].style.width="0px";
+	console.log(imgArr[0].children[0]);
+	setTimeout(function(){ widthNovekszik(imgArr[0].children[0]); }, 0);
+}
+
+</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Extend Data Type With An other</title>
+</head>
+<body>
+<script title="PROTOTYPAL INHERITANCE - create constructor function which inherits from an other object">
+	/* SECTION: Inherit from one object to an other */
+	 var person = {
+	 	gender : male,
+	 	hair : long
+	 }
+
+	 var Jane = Object.create(person, {
+	 	name : 'Jane'
+	 })
+
+	/* SECTION: Inherit from on constructor function to the other */
+	function Beverage (name, temperature) {
+		this.name = name;
+		this.temperature = temperature;
+	}
+
+	Beverage.prototype.drink = function () {
+		console.log( 'I am drinking: ' + name);
+	}
+
+	function Coffe (type, name, temperature) {
+		Beverage.call(this,name,temperature)
+		this.type = type;
+	}
+
+	// setting up the prototype chain
+	Coffe.prototype = new Beverage
+	Coffe.prototype.sip = function(){
+		console.log('sipping: ' + this.type);
+	}
+
+	var brasilian = new Coffe('Braisilian', 'Sanyi', 'hot');
+
+</script>	
+</body>
+</html>	

@@ -1,0 +1,168 @@
+<div><h1>NODE.JS</h1>
+
+
+	<div><h2>MODULES IN NODE</h2>
+		
+		<ul class="Modules Example">
+			<li>module</li>
+			<li>require</li>
+			<li>__filename</li>
+			<li>__dirname</li>
+		</ul>
+
+		<p>A FILE is considered to be a MODULE</p>
+
+	</div>
+	<!-- END <h1>MODULES IN NODE</h1> ///////////////////////////// -->
+
+	<div><h2>V8 - ENGINE</h2>
+		
+	</div>
+	<!-- END <h2>V8 - ENGINE</h2> ///////////////////////////// -->
+
+	<div><h2>TEMPALTING WITH NODE.JS</h2>
+		https://scotch.io/tutorials/use-ejs-to-template-your-node-application
+	</div>
+	<!-- END <h2>TEMPALTING WITH NODE.JS</h2> ///////////////////////////// -->
+	
+	
+	<div><h2>NETWORK PROTOCOLS</h2>
+		
+		<p class="definition"><strong>Protocol</strong> is an offical set of procedures/rules governing how to do smthin g</p>
+
+		<div><h3>KEY TASKS IN NETWROKING</h3>
+
+			<ul class="list"><strong>Key Tasks In Netwroking lis</strong>
+				<li>Adressing</li>
+				<li>Routing</li>
+				<li>Name Resolution</li>
+				<li>Error CHecking and Flow Control</li>
+				<li>Interoperability</li>
+			</ul>
+
+			<ul title="ADRESSING" class="sequence"> Every Device has a unique Phisical identifier, bunred into it in factory
+				<li>This is called tha MACHINE ACCESS CODE => MAC</li>
+				<li>This used for transfering the data to the right device</li>
+				<li><strong>ROUTERS</strong> are used to divide the network to subnetworks to make data flow efficenter</li>
+				<li>Routers separate the subnets traffic from entire network</li>
+				<li>For this pupose routers are useing the LOGICAL ADDRESS:
+					<li>And here comes TCP/IP, contuinue at "#IP-Adress"</li>
+				</li>
+			</ul>
+			
+			<ul class="Big-Word-Alert">
+				<li>Dynaminc Routing
+					<span>Endnodes can transfer data over multiple paths and the netwrok choses the best route for each transfer</span>
+					<span>For this navigation is used the MAC adress</span>
+				</li>
+				<li>Response Headers
+					
+				</li>
+			</ul>
+		</div>
+		<!-- END <h3>KEY TASKS IN NETWROKING</h3> ///////////////////////////// -->
+		
+
+		<div><h3>TCP/IP</h3>
+			
+			<a href="img/tcp-ip.mp4">TCP/IP video ref</a>
+
+			<p>Transmission Control Protocol/Internet Protocol</p>
+			<p>its key is the Decentrialized data transmition </p>
+
+			<ul><strong>TCP/IP determines: </strong>
+				<li>How datata TRANSMISSION SHOULD HAPPEN</li>
+				<li>li how data for transmition should be FORMATED and PACKAGED (and RECEIVED)</li>
+			</ul>
+
+			<ul><strong>KEY FEATURES</strong>
+				<li>End Node verification:
+					<span>two endpoints are ressponsible to make sure transmition was succesfule</span>
+				</li>
+				<li>Adressing</li>
+				<li>Routing</li>
+				<li>Name Resolution</li>
+				<li>Error CHecking and Flow Control</li>
+			</ul>
+			
+			<div><h4>HOW TCP/IP WORKS</h4>
+				
+				<ul title="TCP/IP Adressing" id="IP-Adress" class="sequence-follow-next">
+					<li><strong>IP-Adress def: </strong> logical adress configured in nodes tcp/ip implementation</li>
+					<li>Internet Protocol Adress</li>
+					<li>Consists of: network-id-num + subnet-id-num + host-id-num</li>
+					<li>Routers are useing the Logical Adress/ ip adress to send it to its destination</li>
+				</ul>
+				<ul title="TCP/IP Dynaminc-Routing" class="sequence-follow-next">
+					<li>TCP/IP specifies the ROUTER which route should pick</li>
+				</ul>
+				<ul title="TCP/IP Name-Resolution" class="sequence-follow-next">
+					<li>TCP/IP provides DOMAIN NAMES/(HOST NAMES) for human readability</li>
+					<li>The process for mapping DOMAIN NAME to an IP is: <strong>NAME RESOLUTION</strong></li>
+					<li title="NAME RESOLUTION">TCP/IP sets up a hierarchy of DNS servers to handle NAME RESOLUTION</li>
+				</ul>
+				<ul title="TCP/IP Error CHecking and Flow Control" class="sequence-follow-next">
+					<li>Endnodes need to check package for Corruption</li>
+					<li>Reciveing node need to acknowledge positivle recival of package</li>
+				</ul>
+				<ul title="Interoperability">
+					<a href="img/ports.png" title="ports-reference"></a>
+					<li title="PORTS Def">Logical Channels that allow multiple applications to access the network simultaniously</li>
+					<li>All ports have unique id</li>
+				</ul>
+
+			</div>
+			<!-- END <h4>HOW TCP/IP WORKS</h4> ///////////////////////////// -->
+			
+		</div>
+		<!-- END <h3>HTTP</h3> ///////////////////////////// -->
+		
+		<div><h3>HTTP - Hypertext Transer Protocol</h3>
+
+			<a href="https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/"></a>
+			<p class="definition"><strong>Hypertext</strong> is structured text that uses logical links (hyperlinks) between nodes containing text.
+				<p>Via hyperlins</p>
+			</p>
+
+			<ul class="definition sequence"><strong>HTTP</strong> 
+				<li>is an application level protocol which DEFINES THE MASSAGE STRUCTURE between WebClient and WebServer</li>
+				<li>HTTP works as a request-response protocol between a client and server.</li>
+			</ul>
+
+			<p class="big-word-alert"><strong>PACKETS</strong> are the each chunks of packed information sent via the socket</p>
+
+			<div><h2>HTTP - REQUEST</h2>
+				
+
+
+			</div>
+			<!-- END <h2>REQUEST TYPES</h2> ///////////////////////////// -->
+
+			<div><h4>ROUTING ADDRESSES TO NODE.JS</h4>
+				
+			</div>
+			<!-- END <h3>ROUTING ADDRESSES TO NODE.JS</h3> ///////////////////////////// -->
+
+		</div>
+		<!-- END <h3>HTTP - Hypertext Transer Protocol</h3> ///////////////////////////// -->
+
+		
+		
+	</div>
+	<!-- END <h2>COMMUNICATION PROTOCOLS</h2> ///////////////////////////// -->
+	
+	<div><h2>STREAMS AND BUFFERS</h2>
+		
+		<div><h3>PIPING</h3>
+			
+		</div>
+		<!-- END <h3>PIPING</h3> ///////////////////////////// -->
+		
+	</div>
+	<!-- END <h2>STREAMS AND BUFFERS</h2> ///////////////////////////// -->
+	
+</div>
+<!-- END <h1>NODE.JS</h1> ///////////////////////////// -->
+
+
+

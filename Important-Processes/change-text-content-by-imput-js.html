@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>change-text-content-by-imput-js.html</title>
+	<style>
+		.text-input {
+			max-width: 31.25rem;
+			border-radius: 3px;
+			background: skyblue;
+			box-sizing: content-box;
+		}
+		.text-input__text-area {
+			box-sizing: border-box;
+			width: 97%;
+			margin: 1.5%;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div class="text-output">
+		<h2>Output Area</h2>
+		<p class="text-output__display-text">This text should change</p>
+	</div>	
+	<div class="text-input">
+		<h2>Input area</h2>
+		<p>On Enter Update output are</p>
+		<textarea  class="text-input__text-area"></textarea>
+	</div>	
+
+	<script>
+		(function(){
+
+			let changeInnerHtmlOf = document.querySelectorAll('.text-output__display-text')[0];
+			let inputTextArea = document.querySelectorAll('.text-input__text-area')[0];
+
+			inputTextArea.addEventListener('keypress', function (event) {
+			    
+			    if (event.key === 'Enter') { // 13 is enter
+				 event.preventDefault();
+			     changeOutputText.call(this, changeInnerHtmlOf);
+			     clearInputTextArea.call(this);
+			    }
+			    
+			});
+
+			function changeOutputText(changeInnerHtmlOfElement){
+				changeInnerHtmlOfElement.innerHTML = this.value;
+			}
+
+			function clearInputTextArea(){
+				this.value = "";
+			}
+						
+		}());
+	</script>
+</body>
+</html>

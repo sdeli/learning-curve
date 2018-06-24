@@ -1,0 +1,640 @@
+/*font-family: 'Raleway', sans-serif;
+colors
+	Green: #79b044;
+	Salmon: #dd5638;
+	Blue Gray: #3e4249;
+*/
+
+/*==== General ====*/
+
+
+
+body{
+	margin-top: 50px;
+	font-family: 'Raleway', sans-serif;
+	font-size: 16px;
+	background: url("../img/tile.jpg") top left repeat;
+}
+
+/*==== Global ====*/
+
+h1,h2,h3,h4,h5,h6{
+     -webkit-font-smoothing: antialiased;
+     text-rendering: optimizeLegibility;
+     font-weight: bold;
+	
+}
+
+h1{
+	font-size: 3em;
+}
+
+h1,h2{
+	margin: 0 0 40px;
+}
+
+h3 {
+	margin: 20px 0;
+}
+
+h4 {
+	font-size: 18px;
+}
+
+a:link, a:visited{
+	color: #dd5638;
+}
+a:hover{
+	text-decoration: none;
+	color: #c9302c; 
+}
+
+p.lead{
+	font-weight:normal; 
+}
+
+p{
+	margin:0 0 15px;
+}  	
+
+.row+.row{
+	margin-top:20px;
+}
+
+.btn{
+	font-weight: bold;
+}
+.btn-danger{
+	background: #dd5638;
+	border-collapse:#d95131;
+}
+
+.btn-success{
+	background: #79b044;
+	border: none;
+	color: white !important;
+}
+.btn-success:hover{
+	background: #6a9d3b;
+	border-color: #6a9d3b;
+}
+
+section{
+	padding:80px;
+}
+
+.section-header{
+	text-align: center;
+}
+
+section h2{
+	margin: 20px 0 40px;
+}
+
+section h3{
+	margin: 30px 0 10px;
+}
+
+blockquote{
+	border: none;
+	font-style: italic;
+	text-align: left;
+	padding: 0 0 0 0;
+}
+
+blockquote:before{
+	display: none; 
+}
+
+cite{
+	display: block;
+	color:#777;
+	margin-top: 15px;
+}
+
+
+
+/*===== HERO ====*/
+
+#hero{
+	background: url("../img/hero-bg.jpg") 50% 0 repeat fixed; 
+	-webkit-font-smoothing: antialiased;
+	min-height: 500px;
+	padding: 40px 0;
+	color: white;
+	text-rendering: optimizeLegibility;
+}
+
+#hero img{
+	max-width: 100%;
+}
+
+#hero .hero-text{
+	margin-top: 30px;
+}
+
+#hero article{
+	width: 100%;
+	text-align: center;
+}
+
+#price-timeline{
+	text-align: center;
+	margin: 30px 0 60px;
+}
+
+#price-timeline .price{
+	display: inline-block;
+	margin: 0 2% 0 0;
+	width: 30%;
+	background: #3e4249;
+	padding: 10px 20px 30px;
+	vertical-align: top;
+	position: relative;
+}
+
+#price-timeline .price.active{
+	background:  #dd5638;
+}
+
+#price-timeline .price span{
+	background:  #101010;
+	display: block;
+	height: 70px;
+	width: 70px;
+	text-align: center;
+	line-height: 70px;
+	font-weight: bold;
+	font-size:24px;
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	position: absolute;
+	bottom: -45px;
+	left: 50%;
+	margin-left:-35px; 
+}
+
+/*==== Layout ====*/
+
+#optin{
+
+	background: #3e4249;
+	padding: 20px 0;
+	color:white;
+	 -webkit-font-smoothing: antialiased;
+     text-rendering: optimizeLegibility;
+    font-size: 1.2em;
+}
+
+#optin p{
+	margin: 7px 0 0 0;
+}
+
+/*==== Who Benefits ====*/
+
+#who-benfits{
+	background: white;
+}
+
+/*==== course-features ====*/
+
+#course-features{
+	background: #3e4249;
+	color: white;
+	text-align: center;
+}
+
+/*==== #project-features ====*/
+#project-features{
+	text-align: center;
+}
+
+/*==== featurette ====*/
+
+#featurette{
+	background: url("../img/stuff-bg.jpg") 50% 100% repeat fixed;
+	background-size: cover;
+	text-align: center;
+	color: white;
+}
+
+/*==== instructor ====*/
+
+ #instructor{
+ 	background: white url("../img/brad-elvis.png") 90% -10px no-repeat;
+ }
+
+ #instructor h2{
+ 	margin-top: 0px;
+ }
+
+ #instructor .num{
+ 	display: table;
+ 	line-height: 24px;
+ 	font-size: 30px;
+ 	font-weight: bold;
+ 	color: white;
+ 	height: 140px;
+ 	width: 140px;
+ 	text-align: center;
+ 	background: #dd5638;
+ 	border-radius:100%;
+ 	-webkit-border-radius:100%;
+ 	-moz-border-radius:100%;
+ 	-webkit-font-smoothing: antialiased;
+     text-rendering: optimizeLegibility;
+ }
+
+ #instructor .num .num-content{
+ 	display: table-cell;
+ 	vertical-align: middle;
+ }
+
+ #instructor .num span{
+ 	display: block;
+ 	font-size: 20px;
+ 	font-weight: normal;
+ }
+
+.badge.social{
+ 	background: #ccc;
+ 	font-size: 24px;
+ 	height: 40px;
+ 	width: 40px;
+ 	text-align: center;
+ 	line-height: 42px; 
+ 	margin: 0 5px 20px 0;
+ 	padding: 0;
+ 	-webkit-border-radius: 100%;
+ 	-moz-border-radius: 100%;
+ 	border-radius: 100%;
+ }
+
+.badge.social.twitter:hover{
+	background: #55acee;
+} 
+
+.badge.social.facebook:hover{
+	background: #3b5998;
+} 
+
+.badge.social.gplus:hover{
+	background: #db4b39;
+} 
+
+/*==== Kudos ====*/
+
+#kudos{
+	text-align: center;
+}
+
+#kudos .testimonial{
+	margin-bottom: 60px;
+}
+
+#kudos .testimonial img{
+	margin-bottom: 60px;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}
+
+/*==== Signup ====*/
+
+
+
+#signup{
+	text-align: center;
+	background: url("../img/hipster-stuff.jpg") center center repeat fixed;
+	background-size: cover;
+	color: white;
+	padding-bottom: 140px;
+}
+
+#signup h2{
+	font-weight: bold;
+}
+
+#signup h2 strong{
+	border-bottom: solid 2px #dd5638;	
+}
+
+#signup .btn{
+
+}
+
+/*====== Footer ======*/
+
+footer{
+	background: #3e4249;
+	color: white;
+	padding: 20px  0 10px;
+	font-size: 12px; 
+}	
+
+footer p{
+	margin: 0;
+}
+
+footer a:link, footer a:visited{
+	color: white;
+}
+
+footer a:hover{
+	color: #dd5638;
+}
+footer .signup-link a{
+	color: #dd5638;
+}
+
+footer .signup-link a:hover{
+	font-weight: bold;
+}
+
+
+/*==== Post ====*/
+ #primary{
+ 	padding: 40px 0;
+ }		
+ .post, .widget,#comments{
+ 	position: relative; 
+ 	background: white;
+ 	border: solid 1px #ddd;
+ 	margin: 0 0 40px; 
+ 	-webkit-border-radius:4px;
+ 	-moz-border-radius:4px;
+	border-radius:4px;
+ }
+
+.post header,		
+.post .post-exerpt,
+.post .post-body,
+#comments, .comments-wrap{
+ 	padding: 20px;
+ }
+
+ .post header h1,
+ .post header h3{
+ 	margin: 0 0 15px;
+ 	padding: 0 0 15px;
+ 	border-bottom: solid 1px #ddd;
+ };
+
+ .post header h1{
+ 	font-size: 24px;
+ }
+
+ .post-img{
+ 	height: auto;
+ }
+
+ div.post-details{
+ 	font-size: 12px;
+ 	width:90%;
+ }
+ .post-details i.fa{
+ 	padding-left: 10px;
+ }
+ .post-details i.fa:first-child{
+ 	padding: 0;
+ }
+ .post-comments-badge{
+ 	height: 70px;
+ 	width: 70px;
+ 	position: absolute;
+ 	-webkit-border-radius:100%;
+ 	-moz-border-radius:100%;
+	border-radius:100%;
+	background: #79b044;
+	border: none;
+	top: 25px;
+	right: 20px;
+	text-align: center;
+	display: table;
+ }
+
+ .post-comments-badge a{
+ 	display: table-cell;
+ 	vertical-align: middle;
+ 	color: white;
+ 	font-size: 20px;
+ 	line-height: 20px;
+ }
+
+ .post-comments-badge i.fa{
+ 	display: block;
+ 	padding: 0;
+ 	margin: 4px;
+ 	font-size: 14px;
+ }
+
+ .post-comments-badge:hover{
+ 	background: #8bc653;
+ }
+
+ .feature-image{
+ 	width: 100%;
+ 	display: table;
+ }
+ .feature-image-default{
+ 	background: url("../img/stuff-feature.jpg") no-repeat;
+ 	background-size: cover;
+
+ }
+
+ .feature-image-default-alt{
+ 	background: url("../img/hipster-stuff.jpg") no-repeat;
+ 	background-size: cover;
+ } 
+
+.feature-image h1{
+	display: table-cell;
+	vertical-align: middle;
+	-ms-text-align-last: center;
+	text-align: center;
+	color: #fff;
+}
+
+
+
+/*==== Blog ====*/
+
+.widget{
+	padding: 20px;
+}
+
+.widget h4{
+	margin: 0 0 10px;
+	padding: 0 0 10px;
+	border-bottom: 1px solid #ccc;
+}
+.widget ul{
+	margin: 0;
+	padding: 0;
+}
+.widget ul li{
+	margin: 0 0 5px;
+}
+.widget ul li:hover{
+	position: relative;
+	left: 1px;
+}
+
+/*resources/grid*/
+
+section.main-content{
+	padding: 20px 0;
+}
+
+.resource{
+	display: block;
+	width: 31.333%;
+	float: left;
+	margin: 0 3% 40px 0px;
+	min-height: 800px;
+}
+
+.resource:nth-child(3n){
+	margin-right: 0;
+}
+
+/*====Custom Icon Sprites====*/
+
+i.ci{
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	background: url("../img/icon-sprite.png") no-repeat;
+}
+
+.ci.ci-computer   { background-position:0 0;}
+.ci.ci-watch 	  { background-position:-40px 0;}
+.ci.ci-calendar   { background-position:-80px 0;}
+.ci.ci-community  { background-position:-120px 0;}
+.ci.ci-instructor { background-position:-160px 0;}
+.ci.ci-device 	  { background-position:-200px 0;}
+
+/*==== Forms ====*/
+
+label{
+	display: block;
+	font-weight: bold;
+}
+
+input[type="text"],
+input[type="url"],
+input[type="email"],
+input[type="search"],
+input[type="password"],
+textarea{
+	color: #666;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+	display: block;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 6px 12px;
+}
+
+#comments h3{
+	text-align: center;
+}
+#comments h4{
+	font-size: 1.3em;
+}
+#comments ol{
+	margin: 0;
+	padding: 0;
+}
+#comments ol li{
+	background: rgba(0,0,0,0.02);
+	padding: 10px 20px;
+	margin: 10px 0;
+	-webkit-border-radius: 4px
+	-moz-border-radius: 4px
+	border-radius: 4px
+	border: solid 1px rgb(0,0,0,0.03);
+}
+
+#comments ol ol.children{
+	padding: 0;
+	list-style: none;
+	font-size: 0.96em;
+}
+
+#leave-comment{
+	margin: 40px 0 0;
+	padding: 20px 0 0;
+	border-top: solid 1px #eee;	
+}
+
+
+/*==== myModal ====*/
+
+#myModal .modal-content{
+	background: url("../img/tile.jpg") repeat;
+}
+
+
+/*==== Media queries ====*/
+
+@media (max-width: 991px){
+
+	#instructor .container{
+		background: rgba(255,255,255, 0.5);
+		padding:20px;
+	}
+}
+
+@media (max-width: 768px){ /*Ipads*/
+
+	#hero img {
+    max-width: 50%;
+}
+	#optin p{
+		margin:0 0 10px;
+	}
+
+	#featurette iframe{
+		height: 240px 
+	}
+
+	#instructor .num{
+		height: 100px;
+		width: 100px;
+		font-size: 22px;
+	}
+
+	#instructer .num span{
+		font-size: 16px;
+	}
+
+	.resource{
+		width: 48%;
+		margin-right: 2%;
+	}
+}
+
+@media (max-width: 568px){ /*iphone 5*/
+
+	#instuctor .num{
+		background: 4px solid blue;
+		height: 100px;
+		width: 100px;
+		font-size: small;
+	}
+
+	#instuctor .num span{
+		font-size: 16px ;
+	}
+	.resource{
+		width: 100%;
+		margin-right: 0;
+		min-height: 0;
+	}
+}	

@@ -1,0 +1,46 @@
+
+/*
+/*
+
+ dependencies:
+		_generic-content-container.css
+		class chould bve given as: "class="feature-item generic-content-container;
+
+*/
+
+
+.feature-item {
+	position: relative;
+	padding-bottom: 2.5rem;
+	
+	@mixin atSmall {
+		padding-left: 94px;
+		
+	}
+
+	&__icon {
+		display: block;
+		margin: 0 auto;
+
+		@mixin atSmall {
+			left: 0;
+			position: absolute;
+		}
+		
+	}
+
+	&__title {
+		text-align: center;
+		font-size: 1.6rem;
+		font-weight: 300;
+		margin-bottom: .8rem;
+		margin-top: .7em;
+
+		@mixin atSmall {
+			text-align: left;
+			margin-top: 1em;
+			font-size: 1.875rem;
+		}
+	}
+
+}

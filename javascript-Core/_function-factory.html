@@ -1,0 +1,41 @@
+<div><h1>FUNCTION FATORIES</h1>
+	
+	<ul class="sequence">FACTORY-FUNCTIONS
+		<li>A factory function is any function which is not a class or constructor that returns a (presumably new) object.</li>
+		<li> In JavaScript, any function can return an object. When it does so without the new keyword, it’s a factory function.</li>
+		<li class="definition">Function Factories are functions which are creating other functions</li>
+	</ul>
+	
+	<script class="demonstrate">
+		
+		function makeGreeting(lang){
+
+			var greetEng = "Have a nice day";
+			var greetGer = "Guten Tag";
+
+			return function(surname, famName){
+
+				if (lang === "eng") {
+
+						console.log(greetEng + " " + surname + " " + famName);
+
+				} else if (lang === "ger") {
+					
+						console.log(greetGer + " " + surname + " " + famName);
+
+				} // elsif
+
+			} // anonymus fun
+
+		} // makeGreeting
+
+		var newGerGreet = new makeGreeting("ger");
+			newGerGreet("Sandor", "Deli");
+
+		var newEngGreet = new makeGreeting("eng");
+			newEngGreet("Sandor", "Deli");
+
+	</script>
+	
+</div>
+<!-- END <h1>FUNCTION FATORIES</h1> ///////////////////////////// -->

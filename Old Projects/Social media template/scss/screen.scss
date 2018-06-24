@@ -1,0 +1,277 @@
+@import "vendors/_bootstrap.scss";
+
+/*variables*/
+$primary-color:#3b5a76;
+$background-color:#ededed;
+$text-color:#363636;
+$font: 16px;
+
+
+body{
+	padding:0;
+	font-family: "Open Sans", Arial, Tahome;
+	color:$text-color;
+	background: $background-color;
+	font-size:$font;
+} 
+
+header{
+	background: linear-gradient(#04519b, #044687, 60%, #033769);
+	color: #fff;
+	min-height: 100px;
+	padding-top: 25px;
+}
+
+header form{
+	float: right;
+}
+
+header .logo{
+	float: left;
+}
+
+.panel-heading{
+	background: linear-gradient(#04519b, #044687, 60%, #033769);
+	color: #fff !important;
+
+}
+
+.bubble{
+	background-position: relative;
+	width: 580px;
+	min-height: 65px;	
+	padding: 15px;
+	background: #fff;
+	border-radius: 10px;
+	border: 1px solid #ccc;
+
+}
+
+.bubble:after{
+	content: '';
+	position: absolute;
+	top: 80px;
+	left: 0px;
+	border-style: solid;
+	border-width: 15px 15px 15px 0;
+	border-color: transparent #ccc;
+	display: block;
+	width: 0;
+	z-index: 1;
+	margin-top: -15px;
+	
+}
+
+
+.bubble:before{
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 15px 15px 15px 0;
+	border-color: transparent #ccc;
+	display: block;
+	width: 0;
+	z-index: 1;
+	margin-top: -15px;
+	top: 50px;
+	left:-16px;
+}
+
+.post-actions{
+	margin: 5px;
+}
+
+
+
+.comment-form{
+	.form-group{
+		width: 90%;
+	}
+
+	.form-group textarea{
+		width: 100%;
+		height: 35px;
+	}
+	.form-inline :nth-child(2){
+
+	}
+
+}
+
+.comment{
+	margin: 5px 0;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+
+
+	.row{
+		margin-right: 0;
+		margin-left: 0;
+	}
+
+	.col-xs-2{
+		padding: 5px;
+	}
+
+}
+
+	.col-xs-10{
+	padding-left: 2.5px;
+	padding-right: 0;
+}
+	 .col-xs-2{
+	padding-left: 0;
+	padding-right:  2.5px;
+}
+a.comment-avatar img{
+	display: block;
+	width: 100%;
+	margin-right: 5px; 
+}
+
+
+
+.friend li{
+	text-decoration: none;
+	padding: 0 5px;
+	float: left;
+	display: inline;
+
+}
+
+.friend img{
+	width: 55px;
+}
+
+.group-item {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 20px;
+	margin-bottom: 10px;
+	overflow: auto;
+
+	img{
+		padding-top: 5px;
+		width: 80px;
+		float: left;
+		margin-right: 15px;
+	}
+}
+
+
+
+
+div.panel-body{
+	padding-top: 0;
+}
+
+
+.Latest-Groups{
+
+
+	a.btn{
+	margin-left: 15px;
+	margin-bottom: 15px;
+}
+
+	:nth-child(5) .group-item{
+		margin-bottom: 0;
+	}
+
+}
+
+footer{
+	background-color: #ccc;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 40px;
+	margin-top: 30px;
+	border-top: 7px solid #04519b;
+	color: #04519b;
+	height: 90px;
+}
+
+
+/*Members*/
+
+.members {
+	.member-row{
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	}
+
+	img{
+		margin-bottom: 5px;
+	}
+
+
+}
+
+@media(min-width: 991px){
+	
+	.members{
+		p{
+			padding-top: 40px;
+		}
+	}
+}
+
+/*Members END*/
+
+/*Profile*/
+
+.profile{
+
+
+	ul{
+		margin-top: 30px
+	}
+	li{
+		
+		list-style-type: none;
+		line-height: 1.9em;
+	}
+}
+
+/*Profile END*/
+
+.photos{
+	margin: 0;
+	padding: 0;
+
+	li{
+		list-style: none;
+		float: left;
+		margin: 5px;
+		width: 23%;
+	}
+
+	img{
+		width: 100%;
+		display: block;
+	}
+}
+
+
+/*photos*/
+
+/*photos END*/
+
+
+/*pucolas*/
+
+.pucolas:before,
+.pucolas:after{
+	content: "";
+	display: table;
+}
+
+.pucolas:after{
+	clear: both;
+}
+
+.pucolas:after{
+	zoom: 1;
+}
+
+/*pucolas END*/

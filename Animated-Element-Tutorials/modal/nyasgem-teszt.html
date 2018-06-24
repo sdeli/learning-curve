@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		
+	.red{
+		background: red;
+		width: 200px;
+		height: 200px;
+	}
+
+	.yellow{
+		margin-top: 20px;
+		background: yellow;
+		width: 200px;
+		height: 200px;
+	}
+
+	</style>
+</head>
+<body>
+<div class="red"></div>
+<div class="yellow"></div>
+
+</body>
+<script type="text/javascript">
+	
+	document.addEventListener("DOMContentLoaded",function(){
+
+		function checkSize(){
+			var theCSSprop = window.getComputedStyle(document.querySelector(".red"), null).getPropertyValue("width");
+			var meret=parseInt(theCSSprop);
+			return meret;
+		}
+
+		document.querySelector(".red").addEventListener("click",function(){novekszik();});
+		document.querySelector(".red").addEventListener("click",function(){csokken();});
+		
+
+
+		function novekszik(){
+			if(document.querySelector(".red").hasAttribute("id")===false && checkSize()<300){
+
+				document.querySelector(".red").setAttribute("id","no");
+
+				var theCSSprop = window.getComputedStyle(document.querySelector(".red"), null).getPropertyValue("width");
+				var meret=parseInt(theCSSprop);
+				console.log(meret + typeof meret);
+				noveles();
+				function noveles(){
+
+					if(meret<300){
+
+						meret=meret+1;
+						console.log(meret)
+						document.querySelector(".red").style.width=meret+"px";
+						setTimeout(function(){noveles()}, 50);
+
+					}else{document.querySelector(".red").removeAttribute("id");}	
+				}	
+			}else{console.log("nyasgem")}
+			
+		}
+
+
+
+
+		function csokken(){
+
+			if(document.querySelector(".red").hasAttribute("id")===false && checkSize()>200){
+
+				document.querySelector(".red").setAttribute("id","csokken");
+
+				var theCSSprop = window.getComputedStyle(document.querySelector(".red"), null).getPropertyValue("width");
+				var meret=parseInt(theCSSprop);
+				console.log(meret+ typeof meret);
+				csokkenes();
+
+				function csokkenes(){
+
+
+					if(meret>200){
+
+						meret=meret-1;
+						console.log(meret)
+						document.querySelector(".red").style.width=meret+"px";
+						setTimeout(function(){csokkenes()}, 50);
+
+					}else{document.querySelector(".red").removeAttribute("id");}	
+				}
+			}else{console.log("nyasgem")}
+
+		}
+			
+
+	});
+/*var theCSSprop = window.getComputedStyle(i, null).getPropertyValue("width");
+document.querySelector(".red").hasAttribute("id");===false*/
+
+</script>
+</html>

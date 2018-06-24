@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>COMPOSITION-AND-INHERITANCE-JS</title>
+</head>
+<body style="background: black">
+	<ul class="sequence">
+		<li>Composition is when you design your objects around what they are</li>
+		<li>Composition is when you design you object what they do</li>
+	</ul>
+	<script class="demonstration" title="INHERITANCE">
+		// Inheritance means there is a parent object and the child objects are inherting its 
+		// properties and methods
+		const person = {
+		  isHuman: false,
+		  printIntroduction: function () {
+		    console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+		  }
+		};
+
+		const me = Object.create(person, {
+			German: {
+		    	value: 'high knowledge',
+		    	writable: true
+		  	}
+		});
+
+		const dori = Object.create(person, {
+			arts: {
+		    	value: 'high knowledge',
+		    	writable: true
+		  	}
+		});
+
+	</script>
+</body>
+</html>

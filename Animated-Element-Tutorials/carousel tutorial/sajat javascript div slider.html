@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+
+body{
+	height: 100%;
+}
+
+	.content-carousel-outer{
+		position: relative;
+		margin:0;
+		padding:0;
+		
+		position: relative;
+		width: 550px;
+		height: 250px;
+		
+	}
+
+	.content-carousel-inner{
+		margin:0;
+		padding:0;
+		width:1650px;
+		height: 250px;
+		position: relative;
+		left: -550px;
+		transition: all 1s 0s;
+	}
+	.inner-items{
+		margin:0;
+		padding:0;
+		display: inline;
+	}
+
+	#prev{
+		position: absolute;
+		display: inline;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size:30px;
+		color: white;
+		background: black;
+		opacity: 0.7;
+		z-index: 1000;
+	}
+
+	#next{
+		position: absolute;
+		display: inline;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size:30px;
+		color: white;
+		background: black;
+		opacity: 0.7;
+		z-index: 1000;
+	}
+
+	.outerproba{
+		background: green;
+		width: 100%;
+		height:400px;
+		position: relative;
+		
+	}
+
+	.proba{
+		background: red;
+		position: relative;
+		left:0;
+		width: 200px;
+		height: 40%;
+		transition: all 1s 0s;
+		position: relative;
+		top: 20%;
+		transform: translateY(-20%);
+	}
+
+	#div-index-1{
+		position: absolute;
+		left: 550px;
+	}
+
+</style>
+
+
+
+
+<body>
+<section class="content-carousel-outer">
+	<div class="content-carousel-inner">
+
+	</div>
+	<span id="prev"><p>Prev</p></span>
+	<span id="next"><p>Next</p></span>
+</section>
+
+<div class="hidden">
+	<div id="div-index-1" class="inner-items"><img src="http://placehold.it/550x250/00FFFF"></div>
+	<div id="div-index-2" class="inner-items"><img src="http://placehold.it/550x250/819FF7"></div>
+	<div id="div-index-3" class="inner-items"><img src="http://placehold.it/550x250/FF00BF"></div>
+	<div id="div-index-4" class="inner-items"><img src="http://placehold.it/550x250/FF0040"></div>
+	<div id="div-index-5" class="inner-items"><img src="http://placehold.it/550x250/FFFF00"></div>
+</div>
+
+<div class="outerproba"><div class="proba"></div></div>
+
+</body>
+<script type="text/javascript">
+
+var divSlider ={
+
+	i: 0,
+
+	nextOrPrev:null,
+
+	itemDivs: null,
+
+	sliderElement:0, /*hogy lehetne megkerulni*/
+
+	addEvents: function(prev, next){
+		document.getElementById(prev).addEventListener("click", divSlider.previous);
+		document.getElementById(next).addEventListener("click", divSlider.nextone);
+		divSlider.itemDivs=document.getElementsByClassName("inner-items");
+	},
+
+	nextone: function(){
+		divSlider.nextOrPrev=1;
+		divSlider.i=divSlider.i+divSlider.nextOrPrev;
+		if(divSlider.i>divSlider.itemDivs.length){
+			divSlider.i=1;
+			
+		}
+		console.log(divSlider.i);
+		divSlider.kovetkezoDiv();
+	},
+
+	previous: function(){
+		divSlider.nextOrPrev=-1;
+		divSlider.i=divSlider.i+divSlider.nextOrPrev;
+		if(divSlider.i<1){
+			divSlider.i=divSlider.itemDivs.length;
+		}
+
+		divSlider.kovetkezoDiv();
+	},
+
+	kovetkezoDiv: function(){
+		if( document.getElementById("4")){
+				var stringPlus=divSlider.i+1;
+				console.log(document.getElementById(stringPlus.toString()));	
+		}
+
+		if(document.getElementById("0")){
+			var stringMinus=divSlider.i-1;
+				console.log(document.getElementById(stringMinus.toString()));	
+		}
+		var sliderElement=document.createElement('div');
+		sliderElement.id=divSlider.i-1;
+		document.getElementsByClassName("content-carousel-inner")[0].appendChild(sliderElement);
+
+		document.getElementById(divSlider.i-1).appendChild(divSlider.itemDivs[divSlider.i-1])
+		document.getElementById(divSlider.i-1).style.position="relative";
+		document.getElementById(divSlider.i-1).style.zIndex = "10";
+		if(divSlider.nextOrPrev===1){
+			document.getElementById(divSlider.i-1).style.left = "550px";
+			
+		}else {
+			document.getElementById(divSlider.i-1).style.left = "0px";
+			  }
+
+	}
+}
+
+window.addEventListener("load",divSlider.addEvents("prev","next"));
+/*
+display none
+overflow hidden
+behuzni a kepeket egy arrraybe
+how to get elements sizes
+
+lementi az osszes elemet
+kitorli az osszes elemet
+hozzadja helyre a kov
+
+ha next akkor balrol ad es balrol huza a kovit
+ha prev akkor balrol ad es balrol huzza az elozot
+*/
+</script>
+</html>

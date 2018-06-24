@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JQUERY-TUT-JS</title>
+</head>
+<body style="background: black; color: red;">
+	<ul id="monkey">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+<script src="event-delegation/js/jquery-3.2.1.min.js"></script>
+<script title="Useful snipets">
+
+	// selects indexes in jquery obj
+	$('#monkey li').eq(1).text('gorilla');
+	$('#monkey li').eq(1).prev().text('gorilla').css({'color':'green', 'font-size': '20px'});
+	$('#monkey li').eq(1).next().text('gorilla');
+
+	// addcustom events
+	$.event.trigger({
+	  type:    "custom-event",
+	  message: "myTrigger fired.",
+	  time:    new Date()
+	});
+
+	$('arbitary-item').trigger('custom-event')
+	
+</script>
+</body>
+</html>

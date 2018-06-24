@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style_note_template.css">
+</head>
+<body>
+
+	<section class="page-title">
+		<div class="container">
+			
+			<h1>wp_theme_development</h1>
+
+		</div>
+	</section>
+
+
+	<!-- Begin of Content /////////////////////////////////////////////////////////////////////////////////-->
+	<!-- Begin of Content /////////////////////////////////////////////////////////////////////////////////-->
+	<!-- Begin of Content /////////////////////////////////////////////////////////////////////////////////-->
+	<!-- Begin of Content /////////////////////////////////////////////////////////////////////////////////-->  
+
+	<section class="container" for="main-content">
+		<div class="row">
+			
+			<!-- Main Content /////////////////////////////////////////////////////////////////////////////////////-->
+			<!-- Main Content /////////////////////////////////////////////////////////////////////////////////////-->
+			<!-- Main Content /////////////////////////////////////////////////////////////////////////////////////-->
+			<!-- Main Content /////////////////////////////////////////////////////////////////////////////////////-->  
+			<main class="col-xs-12 col-sm-8">
+
+
+				<!-- 1. Terminlogy /////////////////////////////////////////////////////////////////////////////////////-->
+				<!-- 1. Terminlogy /////////////////////////////////////////////////////////////////////////////////////-->
+				<!-- 1. Terminlogy /////////////////////////////////////////////////////////////////////////////////////-->
+				<!-- 1. Terminlogy /////////////////////////////////////////////////////////////////////////////////////-->  				
+				<div class="row" id="terminology">
+					<div class="col-xs-12">
+						
+						<h3 class="lesson-title">Lesson_1: Terminlogy</h3>
+						
+						<div class="aft-50">	
+							<ol>
+								<li>Functions</li>
+								<li>Tempalte Tags</li>
+								<li>Hooks
+									<ul>
+										<li>Action</li>
+										<li>Filter</li>
+										
+									</ul>
+								</li>
+								<li>Post Types</li>
+								<li>Wp Recognised files</li>
+								<li>Wp folder structure</li>	
+							</ol>
+						</div>
+						
+						<ul>
+						<!-- Functions ================================================================== -->
+						<!-- Functions ================================================================== -->
+						<div class="aft-50">
+							<h4>1. Functions</h4>
+					
+							<p>
+								<strong>def:</strong> Functions are specifieng how should sthing happen          
+								Functions defined by you: (they need to be defined in functions.php)     
+								Built in functions
+							</p>
+						</div>
+						<!--Functions END =============================================================== -->
+					
+					
+						<!-- Template Tags ================================================================== -->
+						<!-- Template Tags ================================================================== -->
+						<div class="aft-50">
+							<h4>2. Template Tags</h4>
+					
+							<p>
+								<li>which grabs sthing from the database Responsible for displaying dynamic content on the page</li>
+								<li>Responsible for displaying dynamic content on the page</li>
+							</p>
+						</div>
+						<!--Template Tags END =============================================================== -->
+					
+					
+						<!-- HOOKS ================================================================== -->
+						<!-- HOOKS ================================================================== -->
+						<div class="aft-50">
+							<h4>3. HOOKS (Caller of functions)</h4>
+					
+							<p><strong>def:</strong> Hooks are defining, at which happening/ocassion  should a function be called.</p>
+					
+							<p>
+								<li>which grabs sthing from the database Responsible for displaying dynamic content on the page</li>
+							</p>
+					
+							<!--Action hooks ========================================================= -->
+							<ol>
+								<li><h5><strong>Action hooks (or actions)</strong></h5><!-- 1 -->
+									<ul>
+										<li>
+											<strong>def: </strong>are triggered when something takes place, such as loading a page, a user logging in, or a custom action that
+											you define in your theme or plugin.
+										</li>
+					
+										<li>for example:
+											<p>wp_enqueue_scripts</p>
+											<p>widgets_init</p>
+											<p>loop_start</p>
+											<p>wp_enqueue_style</p>
+											<p>after_setup_theme</p>
+										</li>
+					
+										<li><!-- 2 -->
+											<p>
+												<strong>Example:</strong><br>
+							
+												class emailer { 
+													static function send($post_ID)  { 
+							
+															$friends = 'bob@example.org,susie@example.org'; 
+															mail($friends,"sally's blog updated",'I just put something on my blog: http://blog.example.com'); 
+															return $post_ID; 
+							
+													} 
+												} 
+												add_action('publish_post', array('emailer', 'send')); 
+											</p>
+										</li><!-- 2 END -->	
+
+									</ul>
+								</li><!-- 1 END -->
+					
+					
+							</ol>
+							<!--Action hooks END ========================================================= -->
+					
+							<!-- Filter Hooks ================================================================== -->
+							<ol>
+								<li><h5><strong>Filter Hooks</strong></h5>
+									<ul>
+										<p><strong>def:</strong> Filter hooks, or filters, control how something happens or change 
+							  				something that's already being output.</p>
+									</ul>
+								</li>
+							</ol>
+							<!-- Filter Hooks END ============================================================== -->
+					
+					</div><!-- aft- END -->
+					<!--HOOKS END =============================================================== -->
+					<!--HOOKS END =============================================================== -->
+				
+				
+					<!-- Post Types ================================================================== -->
+					<!-- Post Types ================================================================== -->
+					<div class="aft-50">
+						<h4>4. Post types:</h4>
+						
+						<p><strong>Def:</strong> Referrs on what kind of content type does the page have</p>
+						<p><strong>Types:</strong></p>
+						<ol>
+							<li>Page</li>
+							<li>Post</li>
+							<li>Attachment</li>
+							<li>Revision</li>
+							<li>Nav Menu</li>
+						</ol>
+					</div>
+					<!-- Post Types END================================================================== -->
+					<!-- Post Types END================================================================== -->
+
+					<!-- Wp-Folder-Structure ////////////////////////////////////////-->		
+					<div class="aft-50 ">
+					
+						<h4>5. Wp_Folder_Structur</h4>
+						
+					    <strong>New_Theme</strong>
+					        <ol>
+								<li>-other website template files -these can be applied in wp-admin</li><!-- 1 -->
+								<li>Template_parts</li><!-- 2 -->
+								<li>index.php (homepage template)</li><!-- 3 -->
+								<li>styles.php</li><!-- 4 -->
+								<li>functions.php</li><!-- 5 -->
+					        </ol>
+					
+					</div><!-- aft-50 -->
+					<!-- Wp-Folder-Structure ////////////////////////////////////////-->
+
+					</ul>
+					</div>
+				</div><!-- #Terminology END -->
+
+				<!-- Terminology END /////////////////////////////////////////////////////////////////////////////////-->
+				<!-- Terminology END /////////////////////////////////////////////////////////////////////////////////--> 
+				<!-- Terminology END /////////////////////////////////////////////////////////////////////////////////--> 
+				<!-- Terminology END /////////////////////////////////////////////////////////////////////////////////--> 
+
+
+				<!-- Built in Functionalitites ////////////////////////////////////////////////////////////////////////-->
+				<!-- Built in Functionalitites ////////////////////////////////////////////////////////////////////////--> 
+				<!-- Built in Functionalitites ////////////////////////////////////////////////////////////////////////--> 
+				<!-- Built in Functionalitites ////////////////////////////////////////////////////////////////////////--> 
+					
+				<div class="row" id="built-in-functionalities">
+					<div class="col-xs-12 col-sm-12">
+						
+						<h3 class="lesson-title">Lesson_2:Built_in_Functionionalities</h3>
+					
+						<!--ol Functions ===================================================== -->
+						<label for="bif-Functions">Functions</label>	
+						<ol id="bif-Functions">
+							
+							<li>2/1 .1  wp_enqueue_style("name", "stylesheet reference");  //functions.php</li><!-- 1 -->
+					
+							<li>2/1 .2 wp_title(); //in html</li><!-- 2 -->
+					
+							<li>2/1 .3 do_action("hook", "your function"); //function.php //triggers the function, when the hook happens</li><!-- 3 -->
+					
+							<li>2/1 .4 register_nav_menus( array(       "menu location" => "description" ) ); //registeres a menu in the wordpress database // check at: important processes/register menus //function.php //after_setup_theme //location is preregistered in html via wp_nav_menu() //more args in wp documentation</li><!-- 4 -->
+					
+							<li>2/1 .5 wp_nav_menu() //it registeres a menu location in the html code //check at: important processes/register menus //important args: 'theme_location', 'item_wrap', 'container', 'menu class' //more args in wp documentation</li><!-- 5 -->
+					
+							<li>2/1 .6 add_theme_support("feature"); //function.php // applies a feature built in wp... like display title-tag</li><!-- 6 -->
+					
+							<li>2/1 .7 wp_head(); //inserts the enqueued scripts and styles and triggers the wp head function // in html at end of <head>wp_footer(); //inserted before the ending body tag, gives an admin bar on the top of the page if logged on</li><!--7  -->
+							
+						</ol>
+						<!--ol Functions END ============================================== -->
+
+						<!-- the-loop ////////////////////////////////////////-->		
+						<div class="aft-50 bef-20" id="the-loop">
+						
+							<h4>The-Loop</h4>
+							
+							<!--ul-div-the-loop-general-descr ============= -->
+							<div class="ul-div-20" id="ul-div-the-loop-general-descr">
+							
+								<p><strong>The Loop is PHP code used by WordPress to display posts.</strong></p>
+								<p><strong>Important documenttation: <a href="https://codex.wordpress.org/The_Loop">https://codex.wordpress.org/The_Loop</a> </strong></p>
+
+								<!--ol the-loop ===================================================== -->
+								<label for="the-loop">The_Loop_Template_Tags_For_Displaying_Content</label>	
+								<ol id="the-loop">
+										
+									<li>echo the_permalink()</li>
+									<li>get_the_date()</li>
+									<li>have_posts()</li>
+									<li>the_author()</li>
+									<li>the_content()</li>
+									<li>the_post();</li>
+									<li>the_title()
+										<img src="img/the_title.bmp" alt=""><br>
+										<a href="https://codex.wordpress.org/Function_Reference/the_title">https://codex.wordpress.org/Function_Reference/the_title</a>
+									</li>
+								
+								</ol>
+								<p><strong>Important:</strong> All the tags have different parameters to customise there output</p>
+								<!--ol the-loop END ============================================== -->
+							</div><!-- .ul-div-10 the-loop-general-descr -->
+							<!-- END ul-div-the-loop-general-descr =========== -->
+
+								
+						
+						</div><!-- aft-50 -->
+						<!-- the-loop ////////////////////////////////////////-->
+						
+						<!-- hooks ////////////////////////////////////////-->		
+						<div class="aft-50 " id="hooks">
+						
+							<h4>Hooks </h4>
+						
+		 					<!--ol hooks ===================================================== -->
+		 					<ol id="hooks">
+						 					
+								<li>Filter Hooks</li>
+								<li>Action Hooks
+								    <li>add_action() 
+								    	<p>function adds the action to  WordPress that tells it to call the send method  when a post is published.</p>
+								    </li>
+									<li>wp_enqueue_scripts</li>
+									<li>widgets_init</li>
+									<li>loop_start</li>
+									<li>wp_enqueue_style</li>
+									<li>after_setup_theme
+									
+							            <p>Example:</p> 
+							            <img src="img/code8.bmp" alt="">
+							            <!-- 
+							            class emailer {
+							            	 static function send($post_ID) {
+							            	 $friends = 'bob@example.org,susie@example.org';     
+							            	 mail($friends,"sally's blog updated",'I just put something on my blog: http://blog.example.com');     
+							            	 return $post_ID;   
+							            	 } 
+							           	} 
+							           	add_action('publish_post', array('emailer', 'send'));
+							            -->
+									</li>
+								</li><!-- action hooks END -->
+						 						 					
+		 					</ol>
+		 					<!--ol hooks END ============================================== -->
+							
+						</div><!-- aft-50 -->
+						<!-- hooks ////////////////////////////////////////-->
+
+
+						<!-- shortcodes ////////////////////////////////////////-->		
+						<div class="aft-50 " id="shortcodes">
+						
+							<h4>Shortcodes</h4>
+
+							<!--ul-div-shortcodes ================= -->
+							<div class="ul-div-20" id="ul-div-shortcodes">
+								
+								<p class="bef-30"><strong>With shortcodes you can create custom functionaltites, that work in text editor of: wp-myadmin/posts/text-editor</strong></p>
+
+								<!-- vidi-shortcodes_mp4 ============= -->		
+								<div class="vidi-container aft-30 bef-30" id="shortcodes_mp4-vidi">
+									<div class="vidi">
+										<video class="video-tag" width="320" height="240" controls>
+											<source src="vids/shortcodes.mp4" type="video/mp4">
+										</video>
+									</div>
+								</div>
+								<!-- END vidi-shortcodes_mp4 ========= -->		
+
+								<!-- vidi-shortcodes2_mp4 ============= -->		
+								<div class="vidi-container aft-50 bef-30" id="shortcodes2_mp4-vidi">
+									<div class="vidi">
+										<video class="video-tag" width="320" height="240" controls>
+											<source src="vids/shortcodes2.mp4" type="video/mp4">
+										</video>
+									</div>
+								</div>
+								<!-- END vidi-shortcodes2_mp4 ========= -->	
+
+								<p><strong>Shortcodes_Summary</strong></p>
+								<!--ul-div-shortcodes-summary ================= -->
+								<div class="ul-div-20" id="ul-div-shortcodes-summary">
+									
+									<p>Valid Shortcode:
+										<img src="img/shortcode.bmp" alt="shortcode">
+									</p>
+
+									<p>Shortcode Development Documentation <a href="https://codex.wordpress.org/Shortcode_API">https://codex.wordpress.org/Shortcode_API</a> </p>
+
+									<p>Further Example
+										<img src="img/shortcode_examples.bmp" alt="">
+										<a href="file/shortcode_example.php">shortcode_example.php</a>
+									</p>
+
+								</div><!-- .ul-div-20 shortcodes-summary -->
+								<!-- END ul-div-shortcodes-summary ============ -->
+							
+							</div><!-- .ul-div-20 shortcodes -->
+							<!-- END ul-div-shortcodes =============== -->					
+						
+						</div><!-- aft-50 -->
+						<!-- shortcodes ////////////////////////////////////////-->
+					 
+					 </div><!-- col-xs-12 col-sm-12 built-in-functionalities -->
+				</div><!-- #built-in-functionalities END -->
+
+				<!-- Built in Funcionalities END //////////////////////////////////////////////////////////////////////-->
+				<!-- Built in Funcionalities END //////////////////////////////////////////////////////////////////////-->
+				<!-- Built in Funcionalities END //////////////////////////////////////////////////////////////////////-->  
+				<!-- Built in Funcionalities END //////////////////////////////////////////////////////////////////////-->    
+
+					
+				<!-- website-templates /////////////////////////////////////////////////////////////////////////////////////-->
+				<!-- website-templates /////////////////////////////////////////////////////////////////////////////////////-->
+				<!-- website-templates /////////////////////////////////////////////////////////////////////////////////////-->
+				<!-- website-templates /////////////////////////////////////////////////////////////////////////////////////--> 
+				
+				<div class="row" id="website-templates">
+					<div class="col-xs-12 col-sm-12">
+				
+						<!-- wp-website-templates ////////////////////////////////////////-->		
+						<div class="aft-50 " id="wp-website-templates">
+						
+							<h3 class="lesson-title">Wp-Webiste-Templates</h3>
+
+							<p><strong>Def:</strong>Templates are PHP source files used to generate the pages requested by visitors, and are output as HTML. Template files are made up of HTML, PHP, and <a href="https://codex.wordpress.org/Template_Tags">WordPress Template Tags</a>.</p>
+
+							<p>Modular, reusable files, used to generate the web pages on your WordPress site. Some template files (such as the header and footer template) are used on all of your site’s pages, while others are used only under specific conditions.</p>
+
+							<p>(<a href="https://developer.wordpress.org/themes/basics/template-hierarchy/">This article</a> explains how WordPress determines which template file(s) to use on individual pages)</p>
+
+							<p>Mainly you define which template should be used for which particular site when you create the page at wp-admin/pages/add_new#page_attributes</p>
+							
+							<label for="wp-website-templates-types">Wp-Website-Templates-Types</label>
+							<ol id="wp-website-templates-types">
+								<li>Website Template Files</li>
+								<li>Webiste partial Template Files</li>
+							</ol>
+
+							<!-- website-Tempalte-File ////////////////////////////////////////-->		
+							<div class="aft-50 " id="website-Tempalte-File">
+							
+								<h4 class="bef-30">1. Website-Template-Files</h4>
+							
+								<p>Material: <br>
+									<a href="https://codex.wordpress.org/Theme_Development">https://codex.wordpress.org/Theme_Development</a><br>
+								</p>
+
+								<p>Hierarchy And structure: templates, template tags, and the WordPress Loop</p>
+								<p>With templates you can provide alternative templates for specific site features, such as category pages and search result pages.</p>
+								<p>Interresting: 
+									
+									<!-- Panel for wp_theme_folder_structure_anatomy ==========-->			
+									<div class="panel-group" id="wp_theme_folder_structure_anatomy">
+									
+										<div class="panel panel-success"><!-- wp_theme_folder_structure_anatomy -->
+									
+											<div class="panel-heading" id="headingOne">
+												<h4 class="panel-title">
+													<a role="button" data-toggle="collapse" href="#accordion1" data-parent="#accordion">
+														wp_theme_anatomy_infographic
+													</a>
+												</h4>
+											</div><!-- panel-heading END -->
+									
+											<div class=" panel-collapse collapse" id="accordion1">
+												<div class="panel-body">
+									
+													<img src="img/anatomy-wordpress-yoast.png" alt="">
+													
+												</div>
+											</div><!-- accordion END -->
+									
+										</div><!-- wp_theme_folder_structure_anatomy panel panel-success END -->
+									
+									</div>
+									<!-- Panel END for wp_theme_folder_structure_anatomy ==========-->
+
+								</p>
+								<p>Each and every theme file must have a <a href="https://codex.wordpress.org/File_Header"><strong>File Header</strong></a> 
+									<ul>
+										<li>read specification: <a href="https://codex.wordpress.org/File_Header"></a>https://codex.wordpress.org/File_Header</li>
+									</ul>
+								</p>
+
+								<label for="template-files-list">Template-Files-List</label>
+								<!-- Panel for template-files-list===================-->			
+								<div class="panel-group" id="template-files-list">
+								
+									<div class="panel panel-success"><!-- template-files-list -->
+								
+										<div class="panel-heading" id="headingOne">
+											<h4 class="panel-title">
+												<a role="button" data-toggle="collapse" href="#accordion-template-files-list" data-parent="#accordion-accordion-template-files-list">
+													template-files-list
+												</a>
+											</h4>
+										</div><!-- panel-heading END -->
+								
+										<div class=" panel-collapse collapse" id="accordion-template-files-list">
+											<div class="panel-body">
+								
+												<dl id="template-files-list">
+													<dt><i>style.css</i></dt>
+													<dd> The main stylesheet. This <b>must</b> be included with your Theme, and it must contain the information header for your Theme.
+													</dd>
+													<dt><i>rtl.css</i></dt>
+													<dd> The rtl stylesheet. This will be included <b>automatically</b> if the website's text direction is right-to-left. This can be generated using <a rel="nofollow" class="external text" href="http://wordpress.org/extend/plugins/rtler/">the RTLer</a> plugin.
+													</dd>
+													<dt><i>index.php</i></dt>
+													<dd> The main template. If your Theme provides its own templates, <i>index.php</i> must be present.
+													</dd>
+													<dt><i>comments.php</i></dt>
+													<dd> The comments template.
+													</dd>
+													<dt><i>front-page.php</i></dt>
+													<dd> The front page template.
+													</dd>
+													<dt><i>home.php</i></dt>
+													<dd> The home page template, which is the front page by default. If you use a <a href="/Creating_a_Static_Front_Page" title="Creating a Static Front Page">static front page</a> this is the template for the page with the latest posts.
+													</dd>
+													<dt><i>single.php</i></dt>
+													<dd> The single post template. Used when a single post is queried. For this and all other query templates, <i>index.php</i> is used if the query template is not present.
+													</dd>
+													<dt><i>single-{post-type}.php</i></dt>
+													<dd> The single post template used when a single post from a custom post type is queried. For example, <i>single-book.php</i> would be used for displaying single posts from the custom post type named "book". <i>index.php</i> is used if the query template for the custom post type is not present.
+													</dd>
+													<dt><i>page.php</i></dt>
+													<dd> The page template. Used when an individual <a href="/Pages" title="Pages">Page</a> is queried.
+													</dd>
+													<dt><i>category.php</i></dt>
+													<dd> The <a href="/Category_Templates" title="Category Templates">category template</a>. Used when a category is queried.
+													</dd>
+													<dt><i>tag.php</i></dt>
+													<dd> The <a href="/Tag_Templates" title="Tag Templates">tag template</a>. Used when a tag is queried.
+													</dd>
+													<dt><i>taxonomy.php</i></dt>
+													<dd> The <a href="/index.php?title=Taxonomy_Templates&amp;action=edit&amp;redlink=1" class="new" title="Taxonomy Templates (page does not exist)">term template</a>. Used when a term in a custom taxonomy is queried.
+													</dd>
+													<dt><i>author.php</i></dt>
+													<dd> The <a href="/Author_Templates" title="Author Templates">author template</a>. Used when an author is queried.
+													</dd>
+													<dt><i>date.php</i></dt>
+													<dd> The date/time template. Used when a date or time is queried. Year, month, day, hour, minute, second.
+													</dd>
+													<dt><i>archive.php</i></dt>
+													<dd> The archive template. Used when a category, author, or date is queried. Note that this template will be overridden by <i>category.php</i>, <i>author.php</i>, and <i>date.php</i> for their respective query types.
+													</dd>
+													<dt><i>search.php</i></dt>
+													<dd> The search results template. Used when a search is performed.
+													</dd>
+													<dt><i>attachment.php</i></dt>
+													<dd> Attachment template. Used when viewing a single attachment.
+													</dd>
+													<dt><i>image.php</i></dt>
+													<dd> Image attachment template. Used when viewing a single image attachment. If not present, attachment.php will be used.
+													</dd>
+													<dt><i>404.php</i></dt>
+													<dd> The <b><a href="/Creating_an_Error_404_Page" title="Creating an Error 404 Page">404 Not Found</a></b> template. Used when WordPress cannot find a post or page that matches the query.
+													</dd>
+												</dl>
+												
+											</div>
+										</div><!-- accordion END -->
+								
+									</div><!-- template-files-list panel panel-success END -->
+								
+								</div>
+								<!-- Panel END for template-files-list===================-->
+									
+								<!-- Minimum requirement div=============================== -->		
+								<div class="aft-50">
+									<p><strong>Minimum requirements</strong></p>
+									<p>At the very minimum, a WordPress Theme consists of two files:
+										<ul>
+											<li>style.css</li>
+											<li>index.php</li>
+											<li>These files go into the Theme directory.</li>
+										</ul>
+									</p>
+
+									<!--ol index.php ================================= -->
+									<label for="index.php">index.php</label>	
+									<ol id="index.php">
+
+										<li>Can be divided into modular template files, each one taking on part of the workload</li>
+										<li>WordPress has a default modular template files
+											<ul>
+												<li>comments.php</li>
+												<li>comments-popup.php</li>
+												<li>footer.php</li>
+												<li>header.php</li>
+												<li>sidebar.php</li>
+												<p class="bef-10"><strong>You pull/call these files with template tags into the target html markup/index.php</strong>
+													<ul>
+														<li>To include the header, use get_header() </li>
+														<li>To include the sidebar, use get_sidebar().</li>
+														<li>To include the footer, use get_footer() </li>
+														<li>To include the search form, use get_search_form().</li>
+														<li>Example for Usage: <br>
+															<img src="img/use_template_tags.bmp" alt="">
+														</li>
+													</ul>
+												</p>
+											</ul>
+										</li>
+										
+									</ol>
+									<!--ol index.php END ============================= -->
+
+								</div>	
+								<!-- Minimum requirement div END=========================== -->	
+
+								<!-- custom-page-templates =============================== -->
+								<!-- custom-page-templates =============================== -->
+								<div class="aft-50 " id="custom-page-templates">
+
+									<h4>Custom-Page-Templates</h4>
+
+									<p>The files defining each page template are found in your Themes directory. To create a new custom page template for a page you must create a file. Let's call our first page template for our page snarfer.php. At the top of the snarfer.php file, put the following:</p>
+
+									<img src="img/create-custom-page-template.bmp" alt="">
+
+									<p>The above code defines this snarfer.php file as the "Snarfer" template. Naturally, "Snarfer" may be replaced with most any text to change the name of the page template. This template name will appear in the Theme Editor as the link to edit this file.</p>	
+								</div>
+								<!-- custom-page-templates END============================ -->
+
+								<!--  ////////////////////////////////////////-->		
+								<div class="aft-50 " id="">
+								
+									<h4>Important_Hooks</h4>
+								
+									<p>your Theme should be set up so that it can work well with any WordPress plugins users might decide to install.</p>
+
+									<p>A few Action Hooks are crusial to be present in your Theme, in order for Plugins to display information directly in your header, footer, sidebar, or in the page body.</p>
+									
+									<dl class="Important_Hooks_dl">
+										<dt>wp_enqueue_scripts</dt>
+										<dd>Used in the theme functions file. Used to load external scripts and stylesheets.</dd>
+										<dt>wp_head()</dt>
+										<dd>Goes in the head element of a theme, in header.php. Example plugin use: add JavaScript code.</dd>
+										<dt>wp_footer()</dt>
+										<dd>Goes in footer.php, just before the closing body tag tag. Example plugin use: insert PHP code that needs to run after everything else, at the bottom of the footer. Very commonly used to insert web statistics code, such as Google Analytics.</dd>
+										<dt>wp_meta()</dt>
+										<dd>Typically goes in the <li>Meta</li> section of a Theme's menu or sidebar; sidebar.php template. Example plugin use: include a rotating advertisement or a tag cloud.</dd>
+										<dt>comment_form()</dt>
+										<dd>Goes in comments.php directly before the file's closing tag . Example plugin use: display a comment preview.</dd>
+									</dl>
+
+								</div><!-- aft-50 -->
+								<!--  ////////////////////////////////////////-->	
+							
+							</div><!-- aft-50 -->
+							<!-- website-Tempalte-File ////////////////////////////////////////-->
+
+							<!-- theme-classes ////////////////////////////////////////-->		
+							<div class="aft-50" id="theme-classes">
+							
+								<h4>Theme-classes</h4>
+
+								<!--ol theme-classel-ol ================================= -->
+								<ol id="theme-classel-ol">
+								
+									<li>body_class()</li>
+									<li>post_class()</li>
+									<li>comment_class()</li>
+								
+								</ol>
+								<!--ol theme-classel-ol END ============================= -->
+							
+								<p></p>
+							
+							</div><!-- aft-50-->
+							<!-- theme-classes ////////////////////////////////////////-->
+
+							<!-- templae-files-head ////////////////////////////////////////-->		
+							<div class="aft-50 " id="templae-files-head">
+							
+								<h4>Template-Files-Head </h4>
+							
+								<ul>
+									<li>Use the proper DOCTYPE.</li>
+									<li>The opening &#60;html&#62; tag should include language_attributes().</li>
+									<li>The &#60;meta&#62; charset element should be placed before everything else, including the &#60;title&#62; element.</li>
+									<li>Use bloginfo() to set the &#60;meta&#62; charset and description elements.</li>
+									<li>Use wp_title() to set the &#60;title&#62; element. See why.</li>
+									<li>Use Automatic Feed Links to add feed links.</li>
+									<li>Add a call to wp_head() before the closing &#60;/head&#62; tag. Plugins use this action hook to add their own scripts, stylesheets, and other functionality.</li>
+									<li>Do not link the theme stylesheets in the Header template. Use the wp_enqueue_scripts action hook in a theme function instead</li>
+								</ul>
+							
+							</div><!-- aft-50 -->
+							<!-- templae-files-head ////////////////////////////////////////-->
+						
+						</div><!-- aft-50 -->
+						<!-- wp-website-templates ////////////////////////////////////////-->
+				
+					</div><!-- col-xs-12 col-sm-12 END-->
+				</div><!-- row website-templates END-->
+
+				<!--END website-templates //////////////////////////////////////////////////////////////////////////////////-->
+				<!--END website-templates //////////////////////////////////////////////////////////////////////////////////-->
+				<!--END website-templates //////////////////////////////////////////////////////////////////////////////////-->
+				<!--END website-templates //////////////////////////////////////////////////////////////////////////////////-->   
+
+
+				<!-- Built IN Website Elements /////////////////////////////////////////////////////////////////////-->
+				<!-- Built IN Website Elements /////////////////////////////////////////////////////////////////////-->
+				<!-- Built IN Website Elements /////////////////////////////////////////////////////////////////////-->
+				<!-- Built IN Website Elements /////////////////////////////////////////////////////////////////////-->
+				
+
+				<div class="row" id="built-in-website-elements">
+					<div class="col-xs-12 col-sm-12">
+				
+						<h3 class="lesson-title" >Lesson_3: Built_In_Website_Elements</h3>
+
+						<div>
+
+							<div>
+								<p>In Wp you have built in elements:</p>
+								<ul>
+									<li><p>Menus/Dropdowns</p></li>
+									<li><p>Sidebar width Widgets</p></li>
+									<li><p>Title tag</p></li>
+								</ul>
+
+								<p>And Webiste partials</p>
+								<ul>
+									<li><p>Header</p></li>
+									<li><p>Footer</p></li>
+									<li>
+										<p>page for single post: single.php</p>
+									</li>
+								</ul>
+							</div>
+
+
+							<!--ol how-Built-in-elemts-work ===================================================== -->
+							<div id="how-Built-in-elemts-work">
+								<label for="how-Built-in-elemts-work-ol">How_Built_In_Elemnts_Work</label>	
+								<ol id="how-Built-in-elemts-work-ol">
+								
+									<li>At first they need to be registered in functions.php
+											<li><a href="#register_sidebar">register_sidebar</a></li>
+											<li><a href="#add_theme_support">add_theme_support("title-tag")</a></li>
+											<li><a href="#register_nav_menus">register_nav_menus()</a></li>
+											
+									<li>Then they need to be called/a location need to be created in Html where you want to display them
+											<li>wp_nav_menu()</li>
+											<li>wp_head();</li>
+											<li>dynamic_sidebar(); </li>
+											<li>wp_head();</li>
+
+									</li>
+								
+								</ol>
+							</div>
+							<!--ol how-Built-in-elemts-work END ============================================== -->
+
+							<div id="Webiste Partials">
+
+								<p>for website partials "template_parts" called folder needs to be created in "your theme folder"</p>
+								<p>Example: <a href="files/single.php">single.php</a></p>
+								
+							</div>
+
+						</div>
+						
+				
+					</div><!-- col-xs-12 col-sm-12 END-->
+				</div><!-- row built-in-website-elements END-->
+
+				<!-- Built IN Website Elements END /////////////////////////////////////////////////////////////////-->
+				<!-- Built IN Website Elements END ////////////////////////////////////////////////////////////////--> 
+				<!-- Built IN Website Elements END ////////////////////////////////////////////////////////////////--> 
+				<!-- Built IN Website Elements END ////////////////////////////////////////////////////////////////--> 
+					
+
+
+				<!-- Important Processes ///////////////////////////////////////////////////////////////////////////-->
+				<!-- Important Processes ///////////////////////////////////////////////////////////////////////////-->
+				<!-- Important Processes ///////////////////////////////////////////////////////////////////////////-->
+				<!-- Important Processes ///////////////////////////////////////////////////////////////////////////-->
+
+				<div class="row" id="important-processes">
+					<div class="col-xs-12 col-sm-12">
+				
+						<h3 class="lesson-title">Lesson_4: Important_Process</h3>
+
+
+						<!-- 1 enque Styles/scripts ///////////////////////-->
+						<div class="aft-50">
+						
+							<h4>1. enque Styles/scripts</h4>
+						
+							<!--ol enque-styles-stepps ===================================================== -->
+							<label for="enque-styles-stepps">Stepps</label>	
+							<ol id="enque-styles-stepps">
+							
+								<li>1. create a function in function.php</li><!-- 1 -->
+								<li>In the function => enque_style("name","reference to stylesheet") jquery is preloaded in wp, just dependency is needed to show</li><!-- 2 -->
+								<li>call the function with a hook => add_aciton("when", "your fun")</li><!-- 3 -->
+								<li>In the header add 'wp_head();' function => that grabs from database, the (in step 1) enqueued scripts and sheets <br>
+									<img src="img/wp_head.bmp" alt="">
+								</li><!-- 4 -->
+								<li><!-- 5 -->
+									<strong>EXAMPLE: </strong>
+									<p><?php  //function.php <br>
+											function enqueue_customtheme_styles() { <br>
+												<br>
+												wp_enqueue_script('bootstrap-js', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', array('jquery'));
+												<br>
+												wp_enqueue_style("bootstrap", "//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css");     wp_enqueue_style("customtheme-style", get_stylesheet_uri() ); <br>    
+											} <br>
+											add_action("wp_enqueue_scripts", "enqueue_customtheme_styles"); <br>
+										?>
+									</p>
+								</li><!-- 5 END -->
+							
+							</ol>
+							<!--ol enque-styles-stepps END ============================================== -->
+						
+						</div><!-- aft-50 END -->
+						<!-- 1 enque Styles/scripts ///////////////////////-->
+
+
+						<!-- 2 Insert Title Tag //////////////////////////////////////-->
+						<div class="aft-50 " id="add_theme_support">
+						
+							<h4>2. Insert Title Tag</h4>
+						
+							<p>
+								<strong>STEP 1</strong><br>
+								<ul>
+									<img src="img/code1.png" alt="">
+									<!-- 
+									//function.php
+
+									function title_tag(){   
+										add_theme_support("title-tag");
+									}	
+									add_action("after_setup_theme", "title_tag");
+									 -->
+								</ul>
+							</p>
+
+							<p>
+								<strong>STEP 2</strong><br>
+								<ul>
+									<img src="img/code2.bmp" alt="">
+									<!--
+										//HTML header
+										<head>
+										  <?php wp_head(); ?>
+										</head> 
+									-->
+								</ul>
+							</p>
+
+							<p>
+								<strong>STEP 3</strong><br>
+									<ul>	
+									<p>pass a title over wp_admin/settings/general
+ 									into wp database</p>
+									</ul>
+							</p>
+
+								
+						</div><!-- aft-50 $1 -->
+						<!-- 2 Insert Title Tag ////////////////////////////////////////-->
+
+
+						<!-- 3 display posts ////////////////////////////////////////-->		
+						<div class="aft-50 ">
+						
+							<h4>3. Display Posts</h4>
+							
+							<!-- The Loop ======================================= -->
+							<ul>
+								<p><strong>The Loop</strong></p>
+								<li class="note-solution">have_posts()</li>
+								<li class="note-solution">the_post();</li>
+								<li class="note-solution">the_title()</li>
+								<li class="note-solution">get_the_date()</li>
+								<li class="note-solution">the_content()</li>
+								<li class="note-solution">echo the_permalink()</li>_
+								<li class="note-solution">the_author()</li>
+								<li class="note-solution">the_content()</li>
+								<li class="note-solution">echo the_permalink()</li>
+								<li class="note-solution">the_author()</li>
+							</ul>
+							<!-- The Loop ===================================== -->
+						
+						</div><!-- aft-50 -->
+						<!-- 3 display posts ////////////////////////////////////////-->
+
+
+						<!-- 4 Register Menu ////////////////////////////////////////-->		
+						<div class="aft-50 " id="register_nav_menus">
+						
+							<h4>4. Register Menu</h4>
+						
+							<ul>
+								<strong>A menu needs 3 things:</strong>
+
+								<p><!-- STEP 1 -->
+									<strong>STEP 1:</strong>Creation/Registration<br>
+									<ul>	
+									<p>//function.php <br> 
+									//Because of is DYNAMIC, it gets created at onload/after_setup_theme</p>
+									<strong>EXAMPLE:</strong>
+									<img src="img/code3.bmp" alt=""> 
+									<!-- 
+										 //function.php 
+
+										function customtheme_setup() {
+
+									        register_nav_menus( array(
+									        	"locations_name" => __( "name_in_wp_admin", "description" )  )); 
+									        } 
+									        add_action( "after_setup_theme", "customtheme_setup" );
+										}
+									 -->
+									</ul>
+								</p><!-- STEP 1 END -->
+
+								<p><!-- STEP 2 -->
+									<strong>STEP 2:</strong>Registere LOCATION<br>
+									<ul>	
+										<p>in HTML</p>
+										<strong>EXAMPLE:</strong> <br>
+										<img src="img/code4.bmp" alt="">
+		
+										<!--  
+											<?php  ?>     
+												wp_nav_menu( array( 
+												        'theme_location'=> 'locations_name',         
+												        'menu_class' => "amit csak akarsz",
+												        'container' =>false,
+												        'items_wrap' =>'%3$s' //stays for li tag     
+												) ; 
+											?> 
+										-->
+									</ul>
+								</p><!-- STEP 2 END -->
+
+								<p><!-- STEP 3 -->
+									<strong>STEP 3:</strong>Content<br>
+									<ul>	
+										<p>//wp-admin</p>
+										<strong>Content needs to be assemblied in:</strong>wp_admin/appearance/Menus <br>
+										<ul>
+											<p>3/1. in EDIT MENUS add to the MENU the Menu Items and Links;</p>
+											<p>3/2. in MANAGE LOCATIONS pair the Menu with the Location</p>
+										</ul>
+		
+									</ul>
+								</p><!-- STEP 3 END -->
+
+							</ul>
+						
+						</div><!-- aft-50 -->
+						<!-- 4 Register Menu ////////////////////////////////////////-->
+
+
+						<!-- 5 Create Page ////////////////////////////////////////-->		
+						<div class="aft-50 ">
+						
+							<h4>5. Create Page</h4>
+						
+							<p><strong>STEPS:</strong></p>
+							<ol>
+								<li>wp-admin/pages</li>
+								<li>Chose template at wp-admin/page/page attributes</li>
+								<li>Publish</li>	
+							</ol>
+						
+						</div><!-- aft-50 -->
+						<!-- 5 Create Page ////////////////////////////////////////-->
+
+
+						<!-- 6 Create Page Template ////////////////////////////////////////-->		
+						<div class="aft-50 ">
+						
+							<h4>6. Create Page Template</h4>
+						
+							<p><strong>Process:</strong></p>
+							<ol>
+								<li>Just create a ".php" file into your theme folder and give a name: page-something.php. </li>
+								<li>Then put this markup into the head: <img src="img/code6.bmp" alt="">
+										<!--
+										<?php 
+										/** 
+										 * Template Name: Slim Page 
+										 * 
+										 * 
+										 * @package CustomTheme 
+										 * @since Custom Theme 1.0 
+										 */ 
+										?> -->
+
+								</li>
+								<li>More in detail: https://developer.wordpress.org/themes/template-files-section/page-template-files/</li>
+							</ol>
+						
+						</div><!-- aft-50 -->
+						<!-- 6 Create Page Template ////////////////////////////////////////-->
+
+						<!-- 7 CSS Custimse The pages ////////////////////////////////////////-->		
+						<div class="aft-50 ">
+						
+							<h4>7. CSS_Custimse_The_pages</h4>
+						
+							<p><strong>Stepps: </strong> 1. Into the body tag of all page:  body_class(); (in php tag)' => gives the page calsses and a UNIQUE ID. =>  2. target contained elements with body tag id, in css</p>
+						
+						</div><!-- aft-50 -->
+						<!-- 7 CSS Custimse The pages ////////////////////////////////////////-->
+
+						<!-- 8 create Sidebar With widgets ////////////////////////////////////////-->		
+						<div class="aft-50 " id="register_sidebar">
+						
+							<h4>8. Create Sidebar With Widgets</h4>
+						
+							<p><strong>Stepps:</strong></p>
+							<ol> 
+								<li><p>it need to initialised in function.txt</p>
+									<img src="img/code7.bmp" alt="">
+								</li>
+								<!-- 
+									//register_sidebar() function,   
+	
+									function customtheme_widgets() { 
+	
+										register_sidebar( array(
+										         'name' => __( 'Sidebar', 'customtheme' ),
+										          'id'  => 'sidebar-1',         
+										          'description'   => __( 'Add widgets here to appear in the sidebar', 'customtheme' ),         
+										          'before_widget' => '<section id="%1$s" class="widget %2$s">',         
+										          'after_widget'  => '</section>',         
+										          'before_title'  => '<h2 class="widget-title">',         
+										          'after_title'   => '</h2>'      
+										          ) 
+										);// register_sidebar(); 
+	
+									} //customtheme_widgets()
+	
+									add_action( 'widgets_init', 'customtheme_widgets' ); 
+								-->
+								<li><p>Then it needs to be called in html:</p>
+									<img src="img/get_sidebar.bmp" alt="">
+								</li>
+
+								<li>Then in wp-admin/appearance content need to be assemlied</li>
+							</ol>
+							<p></p>
+						
+						</div><!-- aft-50 -->
+						<!-- 8 create Sidebar With widgets ////////////////////////////////////////-->
+
+
+						<!--9 pagination-concept ////////////////////////////////////////-->		
+						<div class="aft-50 " id="pagination-concept">
+						
+							<h4>9. Pagination_Concept</h4>
+						
+							<p>Pagination means, to switch to next or prev content in a particular post type</p>
+							<p>wp has different pagination for
+								<ul>
+									<li><a href="">Single Posts Inner content</a></li>
+									<li><a href="">Between Single Posts</a></li>
+									<li><a href="">Between Post lists</a></li>
+									<li><a href="">For Pages</a></li>
+								</ul>
+							</p>
+							<p>refernce: <a href="https://developer.wordpress.org/themes/functionality/turn-pages/"></a></p>
+
+								
+								<!-- Single posts Inner Pagination =================================== -->
+								<!-- Single posts Inner Pagination =================================== -->
+								
+								<div class="aft-50 " id="disable-tag-addition-to-dynamic-content">
+
+									<p><strong>9. Disable_tag_addition_to_dynamic_content</strong></p>
+
+									<p>It works with <a href="">Quicktags</a></p>
+									<p>Simple posts inner pagination quicktag: <img src="img/nextpage_in_post.bmp" alt=""> <!--nextpage--></p>
+									<p>in wp-admin at creating new post you need to add it in the html code of the text of the post</p>
+									<p>At first that quicktag needs to activated:
+										<ul>
+											<li>in single.php you need to into the loop the "wp_link_pages()" function </li>
+											<li> <a href="https://developer.wordpress.org/reference/functions/wp_link_pages/">wp_link_pages() ref</a> </li>
+											<li>example: <a href="files/content-single.php">content-single.php</a></li>
+											
+										</ul>
+									</p>
+									<p>Useful tags
+											<ul>
+												<li>&#60;--more--&#62;</li>
+												<li>&#60;--nextpage--&#62;</li>
+											</ul>
+									</p>
+									<p><strong>Further Info <a href="https://codex.wordpress.org/Write_Post_SubPanel" target="_Blank">https://codex.wordpress.org/Write_Post_SubPanel</a></strong></p>
+									<p>Enclosing Shortcodes <a href="https://developer.wordpress.org/plugins/shortcodes/enclosing-shortcodes/">https://developer.wordpress.org/plugins/shortcodes/enclosing-shortcodes/</a></p>
+
+								</div><!-- aft-50 -->
+
+								<!-- Single posts Inner Pagination END =============================== -->
+						
+						</div><!-- aft-50 -->
+						<!--9 pagination-concept ////////////////////////////////////////-->
+
+						<!-- target-single-individula-post ////////////////////////////////////////-->		
+						<div class="aft-50 " id="target-single-individula-post">
+						
+							<h4>Target-single-individula-post</h4>
+						
+							<p>insert in posts main wrapper tag: post_class()</p>
+							<p>like: <img src="img/post_class.bmp" alt=""></p>
+							<p>equippes with indicidula css classes the post, so you can style it</p>
+							<p>And the_ID() in the id="" attribute</p>
+						
+						</div><!-- aft-50 -->
+						<!-- target-single-individula-post ////////////////////////////////////////-->
+
+						<!-- comment-system ////////////////////////////////////////-->		
+						<div class="aft-50 " id="comment-system">
+						
+							<h4>Comment-System</h4>
+							<p>it needs to have:
+								<ul>
+									<li>
+										<p>comments.php in "your_theme" folder</p>
+										<a href="files/43.Blog-Comments.txt"></a>
+									</li>
+									<li>
+										<p>comment functionality need to be called in the loop</p>
+										<img src="img/comment_call_in_loop.bmp" alt="">
+									</li>
+									<li>styling of the comment field works over arguments of <strong>comment_form()</strong> function in comments.php file</li>
+								</ul>
+							</p>
+						
+							<p></p>
+						
+						</div><!-- aft-50 -->
+						<!-- comment-system ////////////////////////////////////////-->
+
+
+						<!-- create-custom-partials ////////////////////////////////////////-->		
+						<div class="aft-50 " id="create-custom-partials">
+						
+							<h4>Create-Custome-Partials</h4>
+							
+							<p>First step create "template-parts folder" (wp recognised folder)</p>
+							<p>in there we pack the template partial files</p>
+							<p>template partials syntax: conten-sthing.php</p>
+							<p>Example: <a href="files/content-single.php">content-single.php</a></p>
+							<p>in the file where you need the partial:
+								<li><img src="img/get_template_partial.bmp" alt=""></li>
+							</p>
+							<p>the you pull the partial into the target file with: &#60;?php&#62; get_template_part( 'template_parts/$slug, $name' ); ?&#60;/p&#62;
+						
+						</div><!-- aft-50 -->
+						<!-- create-custom-partials ////////////////////////////////////////-->
+
+						<!-- add_theme_support ////////////////////////////////////////-->		
+						<div class="aft-50 " id="add_theme_support">
+						
+							<h4>add_theme_support() - Function </h4>
+						
+							<p>Registers theme support for a given feature.</p>
+							<p>Must be called in the theme’s functions.php file to work. If attached to a hook, it must be ‘after_setup_theme’. The ‘init’ hook may be too late for some features.</p>
+
+							<dl>
+								<dt>$feature</dt>
+								<dd>(string) (Required) The feature being added. Likely core values include 'post-formats', 'post-thumbnails', 'html5', 'custom-logo', 'custom-header-uploads', 'custom-header', 'custom-background', 'title-tag', 'starter-content', etc.</dd>
+								<dt>$args,...</dt>
+								<dd>(mixed) (Optional) extra arguments to pass along with certain features.</dd>
+							</dl>
+
+							<p><strong>further investigation required</strong></p>
+						
+						</div><!-- aft-50 -->
+						<!-- add_theme_support ////////////////////////////////////////-->
+
+						<!-- disable-tag-addition-dynamic-content ////////////////////////////////////////-->		
+						<div class="aft-50 " id="disable-tag-addition-to-dynamic-content">
+						
+							<h4 class="">9. disable_tag_addition_to_dynamic_content</h4>
+						
+							<p></p>
+						
+						</div><!-- aft-50 -->
+						<!-- disable-tag-addition-dynamic-content ////////////////////////////////////////-->
+
+						<!-- remove-p-tag ////////////////////////////////////////-->		
+						<div class="aft-50 " id="remove-p-tag">
+						
+							<h4 class="">Remove_P_Tag</h4>
+						
+							<p>remove_filter( 'the_content', 'wpautop' );</p>
+						
+						</div><!-- aft-50 -->
+						<!-- remove-p-tag ////////////////////////////////////////-->
+									
+					</div><!-- col-xs-12 col-sm-12 END-->
+				</div><!-- row important-processes END-->
+
+
+				<!-- Important Processes END ///////////////////////////////////////////////////////////////////////-->
+				<!-- Important Processes END ///////////////////////////////////////////////////////////////////////-->  
+				<!-- Important Processes END ///////////////////////////////////////////////////////////////////////-->
+				<!-- Important Processes END ///////////////////////////////////////////////////////////////////////-->  
+
+				
+
+				<!-- Website Partial Distribution /////////////////////////////////////////////////////////////////-->
+				<!-- Website Partial Distribution /////////////////////////////////////////////////////////////////-->
+				<!-- Website Partial Distribution /////////////////////////////////////////////////////////////////-->
+				<!-- Website Partial Distribution /////////////////////////////////////////////////////////////////-->
+
+				
+				<div class="row" id="website-partial-distribution">
+					<div class="col-xs-12 col-sm-12 aft-50">
+				
+						<h3 class="lesson-title">Lesson_5: Website_Partial_Distribution</h3>
+						
+						<ul>
+							
+							<p>
+								<strong>Importance:</strong> Store every partial in different files, that later you can just lego together a new Site  How it works: You create a PHP file and a in the sites html pulls it into the window object
+							</p>
+
+							<p>
+								<strong>IMPORTANT MARKUPS</strong> Everzy template file needs a markup into the top, that wp knows what is that
+								Head Of Template Php files, example:  /**  * The template for displaying pages  *  * This is the template that displays all pages by default.  * Please note that this is the WordPress construct of pages and that  * other "pages" on your WordPress site will use a different template.  *  * @package WordPress  * @subpackage Twenty_Fifteen  * @since Twenty Fifteen 1.0  */ For the rest check the built in templates
+							</p>
+							
+							<ol>
+								<li><strong>FOOTER</strong>
+									<p> Location: your theme/footer.php<br>
+        								function: get_footer();</p>
+								</li>	
+
+								<li><strong>HEADER</strong>
+									<p> Location: your theme/header.php<br>
+									function: get_header();</p>
+								</li>
+							</ol>
+						
+						</ul>
+				
+					</div><!-- col-xs-12 col-sm-12 END-->
+				</div><!-- row website-partial-distribution END-->
+					
+				<!-- Webiste Partial Distribution END  ////////////////////////////////////////////////////////////-->
+				<!-- Webiste Partial Distribution END  ////////////////////////////////////////////////////////////--> 
+				<!-- Webiste Partial Distribution END  ////////////////////////////////////////////////////////////-->
+				<!-- Webiste Partial Distribution END  ////////////////////////////////////////////////////////////-->
+				
+				
+			</main>
+			<!-- Main Content END//////////////////////////////////////////////////////////////////////////////////-->
+			<!-- Main Content END//////////////////////////////////////////////////////////////////////////////////-->
+			<!-- Main Content END//////////////////////////////////////////////////////////////////////////////////-->
+			<!-- Main Content END//////////////////////////////////////////////////////////////////////////////////-->
+
+
+			<!-- aside tag /////////////////////////////////////////////////////////////////////////////////////-->
+			<!-- aside tag /////////////////////////////////////////////////////////////////////////////////////-->  
+			<aside class="col-xs-12 col-sm-4">
+				<div class="row">
+
+
+					<!-- table-of-contents /////////////////////////////////////////////////////// -->
+					<div class="col-xs-12 col-sm-12 aft-50" id="table-of-contents">
+						
+						<h3>Table Of Contents</h3>
+
+						<div class="row" id="table-of-contents-row">
+							<div class="col-xs-12">
+								
+								<!--ol table-of-contents ================================= -->
+								<label for="table-of-contents"></label>	
+								<ol id="table-of-contents">
+								
+									<li class="note-statement"><a href="#terminology">Terminlogy</a></li>
+									<li class="note-statement"><a href="#built-in-functionalities">Built In Functionalities</a></li>
+									<li class="note-statement"><a href="#built-in-website-elements">Built In Website elements</a></li>
+									<li class="note-statement"><a href="#website-templates">Wp-Webiste-Templates</a></li>
+									<li class="note-statement"><a href="#important-processes">Important Processes</a></li>
+									<li class="note-statement"><a href="#website-partial-distribution">Partial Distribution </a></li>
+								
+								</ol>
+								<!--ol table-of-contents END ============================= -->
+
+
+							</div><!--  END -->
+						</div><!--  END -->
+
+					</div><!-- col-xs-12 col-sm-12 table-of-contents -->
+					<!-- table-of-contents END /////////////////////////////////////////////////// -->
+					
+					<!-- Useful-Material ////////////////////////////////////////-->		
+					 <div class="aft-50 col-xs-12" id="Useful-Material">
+					 
+					 	<h3>Usefule Material</h4>
+
+					 		<!--ol Usefule Material ======================================== -->
+					 			
+					 		<ol id="Usefule-Material-ol">
+					 					 			
+						 		<li><!-- 1 -->
+						 			<p class="note-statement">Theme development In the Codex</p> 
+						 			<p class="note-sucess"> <a href="https://codex.wordpress.org/Theme_Development">Wp_Codex_Theme_Development</a> </p>
+						 		</li><!-- 1 -->
+						 		<li><!-- 2 -->
+						 			<p class="note-statement">Theme Development Handbook</p> 
+						 			<p class="note-sucess"><a href="https://developer.wordpress.org/themes/">https://developer.wordpress.org/themes/</a></p>
+						 		</li><!-- 2 -->
+						 		<li><!-- 3 -->
+						 			<p class="note-statement">Wp_Theme/Site_Design_and_Layout</p> 
+						 			<p class="note-sucess"> <a href="https://codex.wordpress.org/Site_Design_and_Layout">https://codex.wordpress.org/Site_Design_and_Layout</a> </p>
+						 		</li><!-- 3 -->
+						 		<li><!--  -->
+						 			<p class="note-statement">Documentation-For-The-Loop</p> 
+						 			<p class="note-sucess"> <a href="https://codex.wordpress.org/The_Loop"></a>https://codex.wordpress.org/The_Loop </p>
+						 		</li><!--  -->
+						 		<li><!-- 5 -->
+						 			<p class="note-statement">Where to read more about Wordpress development</p> 
+						 			<p class="note-sucess"><a href="https://codex.wordpress.org/Theme_Development/
+								">https://codex.wordpress.org/Theme_Development/</a></p>
+									<p class="note-sucess"><a href="https://developer.wordpress.org/themes/getting-started/">https://developer.wordpress.org/themes/getting-started/</a></p>	
+						 		</li><!-- 5 -->
+						 		<li><!--  --> <a href=""></a>
+						 			<p class="note-statement">Where to sell Wordpress Themes</p> 
+									<p class="note-success"><a href="http://themeforest.net/">http://themeforest.net/</a></p>
+									<p class="note-success"><a href="http://codecanyon.net/">http://codecanyon.net/</a></p>
+									<p class="note-success"><a href="http://www.mojo-themes.com/">http://www.mojo-themes.com/</a></p>
+									<p class="note-success"><a href="http://wpeden.com/">http://wpeden.com/</a></p>
+									<p class="note-success"><a href="http://www.themesnap.com/">http://www.themesnap.com/</a></p>
+									<p class="note-success"><a href="https://creativemarket.com/">https://creativemarket.com/</a></p>
+						 		</li><!--  -->
+						 		<li><!-- 7 -->
+						 			<p class="note-statement">Where to find Wordpress/programming jobs</p> 
+									<p class="note-success"><a href="https://authenticjobs.com/">https://authenticjobs.com/</a></p>
+									<p class="note-success"><a href="https://jobs.github.com">https://jobs.github.com</a></p>
+									<p class="note-success"><a href="https://weworkremotely.com/">https://weworkremotely.com/</a></p>
+									<p class="note-success"><a href="http://stackoverflow.com/jobs">http://stackoverflow.com/jobs</a></p>
+									<p class="note-success"><a href="http://www.indeed.com/">http://www.indeed.com/</a></p>
+						 		</li><!-- 7 -->
+						 		<li>
+									<p class="note-statement">Popular plugins</p>
+									<p class="note-success"><a href="https://wordpress.org/plugins/wordpress-seo/">https://wordpress.org/plugins/wordpress-seo/</a></p>
+									<p class="note-success"><a href="https://wordpress.org/plugins/contact-form-7/">https://wordpress.org/plugins/contact-form-7/</a></p>
+									<p class="note-success"><a href="https://wordpress.org/plugins/woocommerce/">https://wordpress.org/plugins/woocommerce/</a></p>
+
+						 		</li>
+					 		
+					 		</ol>
+					 		<!--ol Usefule Material END ================================= -->
+
+					 </div><!-- aft-50 -->
+					 <!-- Useful-Material ////////////////////////////////////////-->
+
+
+				</div><!-- row END --> 
+			</aside>
+			<!-- aside tag END //////////////////////////////////////////////////////////////////////////////////-->
+			<!-- aside tag END //////////////////////////////////////////////////////////////////////////////////--> 
+
+
+		</div><!-- row END -->
+	</section><!-- container main-content END -->
+
+	<!-- Begin of Content /////////////////////////////////////////////////////////////////////////////////-->
+	<!-- Begin of Content /////////////////////////////////////////////////////////////////////////////////-->
+	<!-- Begin of Content /////////////////////////////////////////////////////////////////////////////////-->
+	<!-- Begin of Content /////////////////////////////////////////////////////////////////////////////////-->
+
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</body>
+</html>

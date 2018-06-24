@@ -1,0 +1,17 @@
+.carousel-width{
+	width: 623px;
+}
+
+body div.time{
+	position: fixed;
+	z-index: 1000;
+	color: white;
+	top: 52px;
+    right: 30px;
+    background-color: rgba(0,0,0,0.7);
+    padding: 10px 20px;
+}
+
+body div.time p{
+	margin: 0;
+}

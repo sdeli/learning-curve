@@ -1,0 +1,795 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"i",
+				"img/"
+			],
+			[
+				"mysqli_",
+				"mysqli_fetch"
+			],
+			[
+				"re",
+				"require"
+			],
+			[
+				"de",
+				"delete_query"
+			],
+			[
+				"my",
+				"mysql_close"
+			],
+			[
+				"mysq",
+				"mysql_query"
+			],
+			[
+				"require",
+				"http_request_method_register"
+			],
+			[
+				"functi",
+				"function_exists"
+			],
+			[
+				"insert",
+				"insert_qry"
+			],
+			[
+				"ins",
+				"insert_qry"
+			],
+			[
+				"mysqli",
+				"mysqli_fetch"
+			],
+			[
+				"mys",
+				"mysql_query"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"p",
+				"pa\tpanel-accordion"
+			],
+			[
+				"file_",
+				"file_size"
+			],
+			[
+				"fi",
+				"file"
+			],
+			[
+				"to",
+				"top-10"
+			],
+			[
+				"margin-",
+				"margin-top"
+			],
+			[
+				"co",
+				"content"
+			],
+			[
+				"em",
+				"email"
+			],
+			[
+				"sess",
+				"session_start"
+			],
+			[
+				"tm",
+				"tmp_name"
+			],
+			[
+				"file",
+				"file_name"
+			],
+			[
+				"move",
+				"move_uploaded_file"
+			],
+			[
+				"for",
+				"foreach\tforeach …"
+			],
+			[
+				"in",
+				"include"
+			],
+			[
+				"curr",
+				"current_cycle"
+			],
+			[
+				"biggest",
+				"biggest_index"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"a",
+				"arraY"
+			],
+			[
+				"rand",
+				"rand_str"
+			],
+			[
+				"char",
+				"char"
+			],
+			[
+				"ec",
+				"echo\techo \"…\""
+			],
+			[
+				"aft",
+				"aft-30"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"dis",
+				"display_array"
+			],
+			[
+				"value",
+				"value"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"bor",
+				"border"
+			],
+			[
+				"dum",
+				"var_dump"
+			],
+			[
+				"str_",
+				"str_repeat"
+			],
+			[
+				"short",
+				"shortcodes2_mp4-vidi"
+			],
+			[
+				"padding",
+				"padding-right"
+			],
+			[
+				"bef",
+				"bef-30"
+			],
+			[
+				"end",
+				"endif"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"t",
+				"title\tAttr"
+			],
+			[
+				"con",
+				"container"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"add",
+				"add_action"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"li",
+				"lighting-color"
+			],
+			[
+				"js",
+				"json_encode"
+			],
+			[
+				"arr",
+				"array\t$… = array (…)"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"count",
+				"counter"
+			],
+			[
+				"tab",
+				"table-cell"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "proje",
+		"selected_items":
+		[
+			[
+				"proje",
+				"Project Manager: Open Project"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"set bas",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"save",
+				"File: Save All"
+			],
+			[
+				"t",
+				"Terminal: Open"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"set php",
+				"Set Syntax: PHP"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
+			],
+			[
+				"ena",
+				"Package Control: Enable Package"
+			],
+			[
+				"set",
+				"Set Syntax: HTML"
+			],
+			[
+				"dis",
+				"Package Control: Disable Package"
+			],
+			[
+				"",
+				"AutoFileName: Quick Settings"
+			],
+			[
+				"pac",
+				"Package Control: Remove Package"
+			],
+			[
+				" php",
+				"Set Syntax: PHP"
+			],
+			[
+				"cop",
+				"File: Copy Path"
+			],
+			[
+				"file co",
+				"File: Copy Name"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"set htm",
+				"Set Syntax: HTML"
+			],
+			[
+				"remove",
+				"Emmet: Remove Tag"
+			],
+			[
+				"book",
+				"Bookmarks: Toggle"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings"
+			],
+			[
+				"set syntax ht",
+				"Set Syntax: HTML"
+			],
+			[
+				"emmet",
+				"Emmet: Go to Matching Pair"
+			],
+			[
+				"emme",
+				"Emmet: Toggle Comment"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"keybin",
+				"Preferences: Key Bindings"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 497.0
+	},
+	"console":
+	{
+		"height": 557.0,
+		"history":
+		[
+			"view.run_command(\"save\")",
+			"view.run_command(\"save_All\")",
+			"sublime.log_commands(False)",
+			"save_All",
+			"sublime.log_commands(True)",
+			"command:save_All",
+			"sublime.console_commands(False)",
+			"sublime.log_commands(True)",
+			"sublime.console_commands(True)",
+			"new",
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
+			"sublime.log.(True)",
+			"sublime.log_commands(False)",
+			"sublime.log_command(False)",
+			"sublime.log_console(False)",
+			"sublime.log_commands(Flase)",
+			"sublime.log_commands(True)",
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
+			"sublime.console_commands(True)",
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
+			"sublime.log_commands(true)",
+			"sublime.log commands(true)",
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
+			"sublime.log_commands(False)",
+			"sublime.log_commands(false)",
+			"sublime.log_commands(True)",
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
+			"sublime_log(True)",
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/sandor/Desktop/amit eddig tudok"
+	],
+	"file_history":
+	[
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 98.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"tab"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 45.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.GoSublime-output":
+	{
+		"height": 96.0
+	},
+	"output.MarGo-output":
+	{
+		"height": 96.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 102.0
+	},
+	"pinned_build_system": "",
+	"project": "amit-eddig-tudok.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"skele",
+				"php_programming_note/files/db_connection_skelet.php"
+			],
+			[
+				"bl1",
+				"User/note-block-1.sublime-snippet"
+			],
+			[
+				"ins",
+				"php_programming_note/files/insert_data_into_db.php"
+			],
+			[
+				"conne",
+				"php_programming_note/files/db_connection_skelet.php"
+			],
+			[
+				"bl",
+				"User/note-block-1.sublime-snippet"
+			],
+			[
+				"file",
+				"php_programming_note/files/filetemplate.php"
+			],
+			[
+				"conn",
+				"php_programming_note/files/db_connecntion.php"
+			],
+			[
+				"inse",
+				"php_programming_note/files/insert_data_into_db.php"
+			],
+			[
+				"retr",
+				"php_programming_note/files/retrive_data_from_db.php"
+			],
+			[
+				"db",
+				"php_programming_note/files/db_connecntion.php"
+			],
+			[
+				"fet",
+				"php_programming_note/files/fetch_array.php"
+			],
+			[
+				"insert",
+				"php_programming_note/files/insert_data_into_db.php"
+			],
+			[
+				"superglob",
+				"php_programming_note/partials/php_superglobals.php"
+			],
+			[
+				"connecn",
+				"php_programming_note/files/create_connection_with_database.php"
+			],
+			[
+				"cex",
+				"User/code-example.sublime-snippet"
+			],
+			[
+				"data",
+				"php_programming_note/partials/databases.php"
+			],
+			[
+				"note",
+				"php_programming_note/php_programming_note.php"
+			],
+			[
+				"php",
+				"php_course/phpcourse.php"
+			],
+			[
+				"wrt",
+				"php_programming_note/files/write_into_file.php"
+			],
+			[
+				"writ",
+				"php_programming_note/files/write_into_file.php"
+			],
+			[
+				"fiel",
+				"php_programming_note/files/filetemplate.html"
+			],
+			[
+				"super",
+				"php_programming_note/partials/php_superglobals.php"
+			],
+			[
+				"su",
+				"php_programming_note/partials/php_superglobals.php"
+			],
+			[
+				"sni",
+				"User/snipp_note-orderedlist-label.sublime-snippet"
+			],
+			[
+				"fi",
+				"php_programming_note/files/filetemplate.html"
+			],
+			[
+				"requ",
+				"php_programming_note/files/form_handling__request.php"
+			],
+			[
+				"form",
+				"php_programming_note/files/form_handling__get.php"
+			],
+			[
+				"forn",
+				"php_programming_note/files/form_handling__get.php"
+			],
+			[
+				"acc",
+				"User/panel-accordion.sublime-snippet"
+			],
+			[
+				"",
+				"php_programming_note/files/block-visitors-ip-from-website.html"
+			],
+			[
+				"fie",
+				"php_programming_note/files/filetemplate.html"
+			],
+			[
+				"phpcou",
+				"php_course/phpcourse.php"
+			],
+			[
+				"import",
+				"php_programming_note/partials/important_processes.php"
+			],
+			[
+				"functions_",
+				"php_programming_note/partials/functions_to_keep_in_mind.php"
+			],
+			[
+				"tabe",
+				"php_programming_note/partials/table_of_contents.php"
+			],
+			[
+				"60",
+				"User/Package Control.cache/01524fae79697630d0454ba3fabd9414"
+			],
+			[
+				"single",
+				"User/single-line-comment.sublime-snippet"
+			],
+			[
+				"splice",
+				"php_programming_note/files/array_splice.php"
+			],
+			[
+				"prr",
+				"php_programming_note/files/print_r.php"
+			],
+			[
+				"chec",
+				"User/php-echo-checkpoint.sublime-snippet"
+			],
+			[
+				"fu",
+				"User/function.sublime-snippet"
+			],
+			[
+				"br",
+				"User/php-brake-tag.sublime-snippet"
+			],
+			[
+				"multi",
+				"User/multi_dimensional_array.sublime-snippet"
+			],
+			[
+				"rsm",
+				"User/row-col-$1-$2.sublime-snippet"
+			],
+			[
+				"nol",
+				"User/snipp_note-orderedlist-label.sublime-snippet"
+			],
+			[
+				"phpc",
+				"php_course/phpcourse.php"
+			],
+			[
+				"php_",
+				"php_course/php_course.php"
+			],
+			[
+				"dul",
+				"User/ul-div-.10.sublime-snippet"
+			],
+			[
+				"home",
+				"new_theme/static-page-home.php"
+			],
+			[
+				"ul",
+				"User/ul-div-.10.sublime-snippet"
+			],
+			[
+				"vidi",
+				"User/respons-video-tag.sublime-snippet"
+			],
+			[
+				"short",
+				"wp_theme_development_html/vids/shortcodes.mp4"
+			],
+			[
+				"vid",
+				"User/respons-video-tag.sublime-snippet"
+			],
+			[
+				"panel",
+				"User/panel-accordion.sublime-snippet"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Desktop/amit eddig tudok/note_template_html/amit-eddig-tudok.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 204.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

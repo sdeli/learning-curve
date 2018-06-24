@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.classs{
+			width: 200px;
+			height: 150px;
+			border: 1px solid grey;
+		}
+
+		.button{
+			width: 50px;
+			height: 30px;
+			background: black;
+
+		}
+
+
+	</style>
+</head>
+<body>
+<div class="classs"></div>
+<div class="button"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+ <script type="text/javascript">
+ 	
+ $(document).ready(function(){
+
+
+
+ 	$(".button")[0].addEventListener("click", function(){
+ 		console.log(majom());
+
+ 	})
+
+
+ 	function majom(){
+ 		var bela=12;
+ 		return bela;
+ 	}
+
+ });
+
+
+ </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<div><h2>Types Regarding Definition</h2>
+
+	<ul>
+		<li>Statement / Literals</li>
+		<li>Expressions</li>
+		<li>Expression-Statments</li>
+	</ul>
+	
+
+	<div><h3>EXPRESSIONS</h3>
+
+		<p class="definition">An expression produces a single value and can be written wherever a value is expected,
+			<p>normal braces () are creating always an expression</p>	
+			<script class="example">
+				5 + 6; // produces a primitive value
+				new Object() // results an object
+				a.monkey = "chimp" // resolves to be a proprety of an object
+				[1,2,3] // results an array
+				new Date() // it will resolve to a date
+				var x = (y >= 0 ? y : -y); // this will resolve to treu or false so produces a value
+			</script>
+		</p>
+		
+		<ul>Features
+			<li>Are not be hoisted</li>
+		</ul>
+
+	</div>
+	<!-- END <h3>EXPRESSIONS</h3> ///////////////////////////// -->
+
+	<div><h3>STAMENTS / LITERALS</h3>
+		
+		<p class="definition">Produces behaviour or produces a side-effect / Is an/set of Instruction
+			<p>Statemenet doesnt give any value back</p>
+			<p>curly braces {} are creating a statment</p>
+		</p>
+		<p class="important">Statments are spearated by semicolons</p>
+		<script>
+			x = 5; // changing value for x => it is behaviour
+			setTimeout( /*...*/ ); // starts timer in th brower
+			if(){};
+			for(){};
+
+			var myObject = { /*Due to the curly braces {} this is called an object literal / statment */
+				key1 : "1",
+				key2 : "2"
+			}		
+		</script>
+
+		<div><h3>FUNCTION STATMENTS / EXPRESSIONS</h3>
+			
+			<p class="definition">A <strong>Function Declaration ( === Stament) : </strong> defines a named function variable without requiring variable assignment
+				<p>Variable Declarations must start with “var”, Function Declarations must begin with “function”.</p>
+			</p>
+
+			<p class="definition"><strong>Function Expression : </strong> Assignign a variable a value, which describes a function
+				
+			</p>
+
+		</div>
+		<!-- END <h3>FUNCTION STATMENTS / EXPRESSIONS</h3> ///////////////////////////// -->
+		
+	</div>
+	<!-- END <h3>STAMENTS /LITERALS</h3> ///////////////////////////// -->
+	
+	<div><h3>EXPRESSION-STATMENTS</h3>
+
+		<p class="definition">Expression coupled with a side-effect</p>
+		
+	</div>
+	<!-- END <h3>EXPRESSION-STATMENTS</h3> ///////////////////////////// -->
+
+</div>
+<!-- END <h2>Types Regarding Definition</h2> ///////////////////////////// -->

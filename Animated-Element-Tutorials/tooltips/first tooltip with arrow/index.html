@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/screen.css" rel="stylesheet">
+
+    <style type="text/css">
+      a{
+        opacity: 1 !important;
+      }
+      .conti{
+        position: relative;
+        width: 500px;
+        height: 300px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        margin: 10% auto;
+      }
+
+      .tooltip{
+        position: relative;
+        z-index: 20;
+
+      }
+
+      .tooltip span{
+        /*display: none;
+        transition: display 1s 0s; */
+         display: block;
+        width: 100px;
+        padding: 5px;
+        color: white;
+        background-color: #535663;
+        font-size: 11px
+        text-decoration: none;
+        position: absolute;
+        border-radius: 5px;
+        top:0;
+      }
+
+      .tooltip:hover{
+        z-index: 21;
+      }
+      .tooltip:hover span{
+        display: block;
+        width: 100px;
+        padding: 5px;
+        color: white;
+        background-color: #535663;
+        font-size: 11px
+        text-decoration: none;
+        position: absolute;
+        border-radius: 5px;
+      }
+
+      .arrow{
+        width: 0px;
+        height: 0px;
+        background-color: #ccc;
+        position: absolute;
+        top: 119px;
+        left: -80px;
+        border: 40px solid #fff;
+        border-right: 40px solid #ccc;
+      }
+    </style>
+
+  </head>
+
+  <body>
+  <section class="container">
+  <div class="row">
+   <div class="conti">
+     <a href="#" class="tooltip">This is the link<span>displaytooltip</span></a>
+     <div class="arrow">
+       <p> </p>
+     </div>
+   </div>
+  </div>
+   </section>
+    
+
+  
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/script-tooltip.js"></script>
+  </body>
+</html>

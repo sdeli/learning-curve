@@ -1,0 +1,307 @@
+d<div><h1>FUNCTIONA</h1>
+	
+	<div><h2>RECOMENDED LITERATURE</h2>
+	
+<a href="http://dmitrysoshnikov.com/ecmascript/chapter-5-functions"></a>
+</div>
+<!-- END <h2>RECOMENDED LITERATURE</h2> ///////////////////////////// -->
+	
+
+<p class="important">
+a function must have a return statement that specifies the value to return. A function without a return statement will return a default value. 
+
+</p>
+
+<div><h2>FUNCTION TYPES</h2>
+
+	<ul>
+		<li><strong>Higher-Order Functions</strong></li>
+		<li><strong>First-class Functions</strong> </li>
+		<li><strong>Function With A Functional Value :</strong> A function which returns another function is called a  (or a function-valued function).</li>
+
+		<li></li>
+	</ul>
+
+	<div><h3>FIRST-CLASS FUNCTIONS</h3>
+
+		<p class="definition">Functions which can participate as normal data, i.e. be passed as arguments, receive functional arguments or be returned as functional values</p>
+
+		<p class="definition">You can do everithing as woith other types</p>
+
+		<script class="demostrate" title="passing function as variable">
+			function firstClass(arg){
+				arg();	
+			}
+
+			firstClass(function(){
+				console.log(12);
+			});
+		</script>
+	</div>
+	<!-- END <h3>FIRST-CLASS FUnCTIONS</h3> ///////////////////////////// -->
+	
+
+</div>
+<!-- END <h2>FUNCTION TYPES</h2> ///////////////////////////// -->
+
+<div><h2>FUNCTION TYPES BY DEFINITION</h2>
+
+<ul>
+	<li><strong>Function Declaration</strong>
+		<p class="important">Only they influence variable object</p>
+		<p>Created on entering the context stage</p>
+	</li>
+	<li><strong>Function Expression</strong>
+		<p>created at the code execution stage and is not stored in the variable object.</p>
+	</li>
+	<li>The arrow function expression (=>)</li>
+	<li>The Function constructor</li>
+</ul>
+
+</div>
+<!-- END <h2>FUNCTION TYPES BY DEFINITION</h2> ///////////////////////////// -->
+
+<div><h3>FUNCTION STATMENTS / EXPRESSIONS</h3>
+
+<p class="definition">A <strong>Function Declaration ( === Stament) : </strong> defines a named function variable without requiring variable assignment
+	<p>Variable Declarations must start with “var”, Function Declarations must begin with “function”.</p>
+</p>
+
+<p class="definition"><strong>Function Expression : </strong> NO resonable definiton found
+
+</p>
+
+</div>
+<!-- END <h3>FUNCTION STATMENTS / EXPRESSIONS</h3> ///////////////////////////// -->
+
+
+	<div><h2>PROPERTIES OF A FUNCTION from FunctionConstructor</h2>
+		
+		<p class="important">FUNCTIONS ARE OBJECTS
+			<script class="demostrate">
+				function greet(){
+				
+				}
+				greet.first = function (){
+					console.log(12);
+				}
+				console.log(greet);				
+			</script>
+		</p>
+
+		<ul><strong>List Of Key : Value Types</strong> (variables, objects, functions)
+			<li>Properties
+				<ul>
+					<li>arguments</li>
+					<li>constructor</li>
+					<li>length</li>
+					<li>__proto__
+						<p>this serves to be the prototype of the function itself</p>
+					</li>
+					<li>prototype
+						<p>this servers to be used when the function used as a function constructor
+							<a href=""></a>
+						</p>
+					</li>
+				</ul>
+			</li>
+			<li>Function Object Methods
+				<li>call()
+					<a href="_call-bind-apply.html"></a>
+				</li>
+				<li>bind()
+					<a href="_call-bind-apply.html"></a>
+				</li>
+				<li>apply
+					<a href="_call-bind-apply.html"></a>
+				</li>
+				<li>toSource()</li>
+				<li>toString()</li>
+				<li>valueOf()</li>
+			</li>
+			<li>Not exposed by browser
+				<li>name</li>
+				<li>code</li>
+			</li>
+		</ul>	
+
+		<div><h3>ARGUMENTS-OBJECT</h3>
+			
+			<p class="definiton">An array-like object containing the arguments passed to the currently executing function.
+				<p>does not have any Array properties except length</p>
+			</p>
+
+			<ul><strong>Properties</strong>
+				<li><strong>arguments.callee :</strong> The currently executing function.</li>
+				<li><strong>arguments.caller : </strong> The function that invoked the currently executing function.</li>
+				<li><strong>arguments.length :</strong> The number of arguments passed to the function.</li>
+			</ul>
+
+		</div>
+		<!-- END <h3>Arguments-Object</h3> ///////////////////////////// -->
+
+		<div><h3>CONSTRUCTOR</h3>
+			<p class="definiton">The constructor property specifies the function that creates an object.</p>
+		</div>
+		<!-- END <h3>CONSTRUCTOR</h3> ///////////////////////////// -->
+
+		<div><h3>LENGTH PROPERTY</h3>
+			<p class="definiton">The length property specifies the number of arguments defined by the function.</p>
+			<script>
+				function majom(arg1, arg2, arg3){
+
+					return false;
+
+				}
+				console.log(majom.length);
+			</script>
+			
+		</div>
+		<!-- END <h3>LENGTH PROPERTY</h3> ///////////////////////////// -->
+
+		<div><h3>PROTOTYPE</h3>
+			<p class="definiton">Prototype is used to add new properties and methods to an object.
+				<p>myobj.prototype.name = value</p>
+			</p>
+			
+		</div>
+		<!-- END <h3>PROTOTYPE</h3> ///////////////////////////// -->
+
+		<div><h3>toString / valueOf</h3>
+			
+			<p class="definiton">They are returning a string which represents the source code for the function.</p>
+			<script>
+				function majom(arg1, arg2, arg3){
+
+				function majom(){
+					var geza = 12;
+				}
+
+				return false;
+
+			}
+			
+			console.log( majom.toString() );
+			console.log( majom.valueOf() );
+			</script>
+				
+		</div>
+		<!-- END <h3>toString / valueOf</h3> ///////////////////////////// -->
+
+	</div>
+	<!-- END <h2>PROPERTIES OF A FUNCTION from FunctionConstructor</h2> ///////////////////////////// -->
+	
+	<div><h2>IMMEDIATELY INVOKED FUNCTION EXPRESSIONS</h2>
+		
+		<script class="demostrate">
+
+			//Modular pattern
+			var greet = function(){
+
+				function sandor(){
+					console.log( greeting + " Sandor");
+				}
+
+				function andreas(){
+					console.log( greeting + " Andreas");
+				}
+
+				return {
+					sandor : function(greeting){ sandor(); },
+					andreas : function(greeting){ andreas(); }
+				}
+		
+			}();
+
+			//IIFE
+			var greet = function(greeting){
+
+				sandor();
+
+				function sandor(){
+					console.log( greeting + " Sandor");
+				}
+					
+			}("csao");
+
+			// IIFE
+			(function(name){
+				console.log("hallo " + name);
+			})("Sandorini")
+	
+
+
+		</script>
+
+	</div>
+	<!-- END <h2>IMMEDIATELY INVOKED FUNCTION EXPRESSIONS</h2> ///////////////////////////// -->
+	
+	<div><h2>FUNCTION BORROWING</h2>
+		
+		<script class="demostrate" title="FUNCTION BORROWING">
+		
+			(function(){
+
+				var myObjekt = {
+					surname: "sandor",
+					famName : "Deli",
+					logFullName : function(lang, thisName){
+
+						console.log(this.surname + " " + this.famName);
+						console.log(lang + " " + thisName);
+
+					}
+				};
+
+				var newObjekt ={
+					surname: "Andreas",
+					famName : "Kurz",
+					logFullName	: myObjekt.logFullName.bind(newObjekt)			
+				};
+				newObjekt.logFullName("ger", "newObjekt");
+				
+			})()
+			
+		</script>	
+
+	</div>
+	<!-- END <h2>FUNCTION BORROWING</h2> ///////////////////////////// -->
+	
+	<div><h2>CURRYING</h2>
+		
+		<script class="demonstrate" title="bind() and CURRYING">
+		
+		/*where you have passed the object to be the "this" there you can not pass an argument which always stay the same => currying*/
+		(function(){
+
+			var myObjekt = {
+				surname: "sandor",
+				famName : "Deli",
+			};
+
+			var logName = function(message, lang){
+				console.log(this.surname + " " + this.famName);
+				console.log(message + " " + lang + " bind()");
+			}.bind(myObjekt, "the language is:");
+
+			logName("china");
+
+			var logNameB = function(message, lang){
+				console.log(this.surname + " " + this.famName);
+				console.log(message + " " + lang + " bind()");
+			};
+
+			var logNameC = logNameB.bind(myObjekt, "the language is:");
+			logNameC("eng");
+			logNameB("ger", "the language is:"); //here it will throw an error but you can still call the original function without beeing bound to an other object
+
+		})()
+
+		</script>
+				
+	</div>
+	<!-- END <h2>CURRYING</h2> ///////////////////////////// -->
+							
+
+</div>
+<!-- END <h1>FUNCTIONA</h1> ///////////////////////////// -->

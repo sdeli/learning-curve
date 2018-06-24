@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>asdasd</title>
+	<style type="text/css">
+		div{
+			width: 0px;
+			height: 100px;
+		}
+		.kocka{
+			width: 300px;
+			height: 300px;
+			background: red;
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+
+<div class="kocka"></div>
+<button class="majom">majom</button>
+<div class="varju"></div>
+</body>
+<script type="text/javascript">
+
+	var kockaClass=document.querySelector(".kocka");
+	var varjuClass=document.querySelector(".varju");
+
+	document.querySelector(".majom").addEventListener("click", function(){give()});
+
+
+		function novi(uj){
+		var theCSSprop = window.getComputedStyle(uj, null).getPropertyValue("width");
+			if(parseInt(theCSSprop,10)!==400){
+				
+				uj.style.width=parseInt(theCSSprop,10)+10+"px";
+				setTimeout(function(){ novi(uj); }, 500);
+			}
+		}
+
+		function give(){
+			var uj=document.createElement("div");
+			uj.className="kocka1";
+			varjuClass.appendChild(uj);
+			var akocka1=document.querySelector(".kocka1");
+			var valamely=window.getComputedStyle(akocka1, null).getPropertyValue("width");
+			console.log(valamely);
+			akocka1.style.background="red";
+			
+			setTimeout(function(){ novi(akocka1); }, 5000);
+		};
+
+
+</script>
+</html>

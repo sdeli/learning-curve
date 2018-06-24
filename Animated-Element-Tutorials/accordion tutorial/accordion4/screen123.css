@@ -1,0 +1,5 @@
+
+/*2nd child of its parent ember*/
+li:nth-child(1) {
+    background: red;
+}

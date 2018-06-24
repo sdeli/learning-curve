@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<div><h1>Harmless Ransom Note</h1>
+		
+		<ul class="sequence pseudo">Harmless Ransom Note
+			<li>A function , takes 2 paramters:
+				<li>sentence - str</li>
+				<li>text - str</li>
+			</li>
+			<li>Function returns false if there are enough words in the text to build up the sentence, from the text</li>
+			<li>returns true if there are neough words in the text for the sentence</li>
+		</ul>
+
+		<ul class="sequence defintion">Big O Notation
+			<li>Used to classify how scalable an algorith is and how long it takes (TIME COMPLEXITY) to complete based on its input size</li>
+			<li>If runtie is always the same => CONSTANT RUNTIME '0 (1)'</li>
+			<li>If runtim incrases proportionally => LINER RUNTIME '0 (n)'</li>
+			<li>EXPONENTIAL RUNTIME '0 (n^2)'</li>
+			<li>LOGARITMIC RUNTIME '0 (log n)'</li>
+		</ul>
+	</div>
+	<!-- END <h1>Harmless Ransom Note</h1> ///////////////////////////// -->
+	
+</head>
+<body>
+	
+</body>
+<script>
+	/* SECTION: Hamrless Rasnome Note - Linear Timecomplexity */
+	// Linear Timecomplexity: loops are not nested in each other 
+	function harmlessRansomeNote(noteText, magazinText){
+
+		let noteArr = noteText.split(' ');
+		let magazineArr = magazinText.split(' ');
+		let magazineObj = {};
+
+		magazineArr.forEach(word => {
+			if(!magazineObj[word]) magazineObj[word] = 0;
+			magazineObj[word]++;
+		});
+
+		console.log(magazineObj);
+		noteIsPossible = true;
+		noteArr.forEach((word) => {
+			if(magazineObj[word] && magazineObj[word] > 0 ) {
+				magazineObj[word]--
+			} else {
+				noteIsPossible = false
+			}
+		});
+
+		console.log(magazineObj);
+		return noteIsPossible;
+
+	}
+	harmlessRansomeNote('note','note arr fuck you bitch')
+</script>
+</html>

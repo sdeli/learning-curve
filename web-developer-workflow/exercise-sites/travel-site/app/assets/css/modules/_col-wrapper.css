@@ -1,0 +1,7 @@
+.col-wrapper {
+
+	&--right {
+		padding-right: 65px;
+	}
+
+}

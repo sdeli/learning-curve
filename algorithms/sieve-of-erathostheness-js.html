@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sieve Of Eartheness</title>
+</head>
+<body style="background-color: black">
+<script>
+/* DESCRITPION:  
+* function expects a number as param
+* returns all the prime numbers until that number
+*/
+//console.log(returnPrimeNums(50));
+
+function returnPrimeNums(prime){
+
+	let arePrimesArr = [];
+
+	//create array with primes from 0 to prime
+	// false 0 and 1 and all even numbers apart 2
+	for(let i = 0; i <= prime; i++){
+
+		if (i === 0 || i=== 1 || ( i % 2 === 0 && i !== 2 )) arePrimesArr.push(false);
+		else arePrimesArr.push(true);
+	}
+
+	checkIndexIfPrime(arePrimesArr, prime);
+
+	let primesArr = [];
+
+    arePrimesArr.forEach( (number,index) => {
+		if (number) primesArr.push(index);
+	});
+
+	return primesArr;
+
+	function checkIndexIfPrime(arr, until,i){
+		i = i || 2;
+		
+		untilSqrt = Math.floor(Math.sqrt(until));
+
+		if (i > untilSqrt) {
+			return arr;
+		} else {
+			for(let j = i + 1; j <= until; j++){
+				if (arr[j] === false) continue;
+				if(j % i === 0) {
+					arr[j] = false;
+				}
+			} // for
+
+			i++;
+			checkIndexIfPrime(arr, until, i);
+
+		} // else
+
+	} // checkIndexIfPrime()
+
+} // returnPrimeNums
+
+console.log(sieveOfErathosteness(20));
+
+function sieveOfErathosteness(n){
+
+	let arePrimesArr = [];
+	
+	for(let i = 0; i <= n; i++){
+		if (i === 0 || i=== 1) arePrimesArr.push(false);
+		else arePrimesArr.push(true);
+	}
+
+	let until = Math.floor(Math.sqrt(n));
+	console.log(n);
+	console.log(until);
+	/*mark as false al multipples of current index and all the rest indexes*/
+	/*we need to check just until the sqrt of n since al the rest numbers are already a combinations of the numbers before the sqrt*/
+	for(let i = 2; i <= until; i++){
+		for(j = 2; j * i <= n; j++){
+			console.log('j:'+j+' i:'+i);
+			arePrimesArr[j * i] = false;
+			console.log(arePrimesArr);
+			console.log('--------------');
+		}
+	}
+
+	let primesArr = [];
+
+    arePrimesArr.forEach( (number,index) => {
+		if (number) primesArr.push(index);
+	});
+
+	return primesArr
+
+}
+</script>
+</body>
+</html>

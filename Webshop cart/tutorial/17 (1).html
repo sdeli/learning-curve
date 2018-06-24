@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Shopping Cart Course Discoveryvip.com</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    <style>
+        .item {
+            border: 1px solid black;
+            padding: 20px;
+            width: 200px;
+            float: left;
+            height: 300px;
+        }
+        
+        #output {
+            clear: both;
+            border: 1px solid black;
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="item">
+        <h3>iPhone</h3><img src="http://placehold.it/350x150" class="img-fluid">
+        <div>Product information description why its the best product ever blah blah <a href="#" class="productItem" data-name="iPhone" data-s="black" data-price="50000" data-id="1">Add to Cart</a> </div>
+    </div>
+    <div class="item">
+        <h3>iPad</h3><img src="http://placehold.it/350x150" class="img-fluid">
+        <div>Product information description why its the best product ever blah blah <a href="#" class="productItem" data-name="iPad" data-s="white" data-price="30000" data-id="2">Add to Cart</a> </div>
+    </div>
+    <div class="item">
+        <h3>Cable 3</h3><img src="http://placehold.it/350x150" class="img-fluid">
+        <div>Product information description why its the best product ever blah blah <a href="#" class="productItem" data-name="Cable" data-s="3" data-price="1200" data-id="3">Add to Cart</a> </div>
+    </div>
+    <div class="item">
+        <h3>SD Card 32GB</h3><img src="http://placehold.it/350x150" class="img-fluid">
+        <div>Product information description why its the best product ever blah blah <a href="#" class="productItem" data-name="SD Card" data-s="32GB" data-price="3000" data-id="4">Add to Cart</a> </div>
+    </div>
+    <div class="item">
+        <h3>SD Card 16GB</h3><img src="http://placehold.it/350x150" class="img-fluid">
+        <div>Product information description why its the best product ever blah blah <a href="#" class="productItem" data-name="SD Card" data-s="16GB" data-price="2000" data-id="5">Add to Cart</a> </div>
+    </div>
+    <div class="item">
+        <h3>SD Card 4GB</h3><img src="http://placehold.it/350x150" class="img-fluid">
+        <div>Product information description why its the best product ever blah blah <a href="#" class="productItem" data-name="SD Card" data-s="4GB" data-price="1000" data-id="6">Add to Cart</a> </div>
+    </div>
+    <div id="output"> </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+    <script>
+        var shopcart = [];
+        $(document).ready(function () {
+            outputCart();
+            $(".productItem").click(function (e) {
+                e.preventDefault();
+                var iteminfo = $(this.dataset)[0];
+                iteminfo.qty = 1;
+                var itemincart = false;
+                $.each(shopcart, function (index, value) {
+                    //console.log(index + '  ' + value.id);
+                    if (value.id == iteminfo.id) {
+                        value.qty = parseInt(value.qty) + parseInt(iteminfo.qty);
+                        itemincart = true;
+                    }
+                })
+                if (!itemincart) {
+                    shopcart.push(iteminfo);
+                }
+                sessionStorage["sca"] = JSON.stringify(shopcart);
+                outputCart();
+                ///
+            })
+
+            function outputCart() {
+                if (sessionStorage["sca"] != null) {
+                    shopcart = JSON.parse(sessionStorage["sca"].toString());
+                    console.log(sessionStorage["sca"]);
+                }
+                var holderHTML = '';
+                var total = 0;
+                $.each(shopcart, function (index, value) {
+                    console.log(value);
+                    var stotal = value.qty * value.price;
+                    total += stotal;
+                    holderHTML += '<div>Item ' + value.name + '(' + value.s + ') Qty ' + value.qty + ' Price ' + formatMoney(value.price) + ' ID(' + value.id + ') subtotal = ' + formatMoney(stotal) + '</div>';
+                })
+                holderHTML += '<div>' + formatMoney(total) + '</div>';
+                $('#output').html(holderHTML);
+            }
+
+            function formatMoney(n) {
+                return '$' + (n / 100).toFixed(2);
+            }
+        })
+    </script>
+</body>
+
+</html>

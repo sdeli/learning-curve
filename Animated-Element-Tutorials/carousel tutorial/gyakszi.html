@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+	#images-container {
+		width:300px;
+		overflow: hidden;
+		height: 150px;
+	}
+		#images {
+			margin-left: -150px;
+			padding-right: 150px;
+			width: 3000px;
+		}
+		#images img {
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+<div id="images-container">
+	
+	<div id="images">
+
+<img id="img2" src="http://placehold.it/150x150/006" style="width:150px">
+<img id="img3" src="http://placehold.it/150x150/123" style="width:150px">
+<img id="img4" src="http://placehold.it/150x150/933" style="width:150px">
+<img id="img5" src="http://placehold.it/150x150/295" style="width:150px">
+<img id="img1" src="http://placehold.it/150x150/666" style="width:150px">
+</div>
+</div>
+
+<button id="prev">
+	<<
+</button>
+<button id="next">
+	>>
+</button>
+
+<script type="text/javascript">
+	function csokkent(item) {
+		
+		var width = parseInt(item.style.width);
+
+		if(width > 0) {
+			item.style.width  = (width-10) + "px";
+			window.setTimeout(function(){
+				csokkent(item);
+			},100);
+		}
+		else {
+			var images = document.getElementById("images"); 
+			images.appendChild(item);
+			item.style.width = "150px";
+		}
+	}
+
+	document.getElementById("next").addEventListener("click", function(){
+		csokkent(images.children[0]);
+	})
+	document.getElementById("prev").addEventListener("click", function(){
+		var images = document.getElementById("images"); 
+		images.insertBefore(images.children[images.children.length-1],images.children[0]);
+	})
+</script>
+
+</body>
+</html>

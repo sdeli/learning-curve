@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700' rel='stylesheet' type='text/css'>
+  <title>Clear View Escapes</title>
+  <meta name="keywords" content="Travel planning, travel bundles, travel escapes">
+  <meta name="description" content="Your clarity. One trip away. We create soul restoring journeys that inspire you to be you.">
+  <!-- build:css /assets/styles/tmp/styles.css -->
+  <link rel="stylesheet" href="assets/tmp/css/style.css">
+  <!-- endbuild -->
+
+  <!-- build:js /assets/js/vendor.bundle.js -->
+  <script src="assets/tmp/js/vendor.bundle.js" ></script>
+  <!-- endbuild -->
+
+
+  <script >
+    (function(window, factory) {
+  var lazySizes = factory(window, window.document);
+  window.lazySizes = lazySizes;
+  if(typeof module == 'object' && module.exports){
+    module.exports = lazySizes;
+    
+  }
+}(window, function l(window, document) {
+  'use strict';
+  /*jshint eqnull:true */
+  if(!document.getElementsByClassName){return;}
+
+  var lazysizes, lazySizesConfig;
+
+  var docElem = document.documentElement;
+
+  var Date = window.Date;
+
+  var supportPicture = window.HTMLPictureElement;
+
+  var _addEventListener = 'addEventListener';
+
+  var _getAttribute = 'getAttribute';
+
+  var addEventListener = window[_addEventListener];
+
+  var setTimeout = window.setTimeout;
+
+  var requestAnimationFrame = window.requestAnimationFrame || setTimeout;
+
+  var requestIdleCallback = window.requestIdleCallback;
+
+  var regPicture = /^picture$/i;
+
+  var loadEvents = ['load', 'error', 'lazyincluded', '_lazyloaded'];
+
+  var regClassCache = {};
+
+  var forEach = Array.prototype.forEach;
+
+  var hasClass = function(ele, cls) {
+    if(!regClassCache[cls]){
+      regClassCache[cls] = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+    }
+    return regClassCache[cls].test(ele[_getAttribute]('class') || '') && regClassCache[cls];
+  };
+
+  var addClass = function(ele, cls) {
+    if (!hasClass(ele, cls)){
+      ele.setAttribute('class', (ele[_getAttribute]('class') || '').trim() + ' ' + cls);
+    }
+  };
+
+  var removeClass = function(ele, cls) {
+    var reg;
+    if ((reg = hasClass(ele,cls))) {
+      ele.setAttribute('class', (ele[_getAttribute]('class') || '').replace(reg, ' '));
+    }
+  };
+
+  var addRemoveLoadEvents = function(dom, fn, add){
+    var action = add ? _addEventListener : 'removeEventListener';
+    if(add){
+      addRemoveLoadEvents(dom, fn);
+    }
+    loadEvents.forEach(function(evt){
+      dom[action](evt, fn);
+    });
+  };
+
+  var triggerEvent = function(elem, name, detail, noBubbles, noCancelable){
+    var event = document.createEvent('CustomEvent');
+
+    if(!detail){
+      detail = {};
+    }
+
+    detail.instance = lazysizes;
+
+    event.initCustomEvent(name, !noBubbles, !noCancelable, detail);
+
+    elem.dispatchEvent(event);
+    return event;
+  };
+
+  var updatePolyfill = function (el, full){
+    var polyfill;
+    if( !supportPicture && ( polyfill = (window.picturefill || lazySizesConfig.pf) ) ){
+      polyfill({reevaluate: true, elements: [el]});
+    } else if(full && full.src){
+      el.src = full.src;
+    }
+  };
+
+  var getCSS = function (elem, style){
+    return (getComputedStyle(elem, null) || {})[style];
+  };
+
+  var getWidth = function(elem, parent, width){
+    width = width || elem.offsetWidth;
+
+    while(width < lazySizesConfig.minSize && parent && !elem._lazysizesWidth){
+      width =  parent.offsetWidth;
+      parent = parent.parentNode;
+    }
+
+    return width;
+  };
+
+  var rAF = (function(){
+    var running, waiting;
+    var firstFns = [];
+    var secondFns = [];
+    var fns = firstFns;
+
+    var run = function(){
+      var runFns = fns;
+
+      fns = firstFns.length ? secondFns : firstFns;
+
+      running = true;
+      waiting = false;
+
+      while(runFns.length){
+        runFns.shift()();
+      }
+
+      running = false;
+    };
+
+    var rafBatch = function(fn, queue){
+      if(running && !queue){
+        fn.apply(this, arguments);
+      } else {
+        fns.push(fn);
+
+        if(!waiting){
+          waiting = true;
+          (document.hidden ? setTimeout : requestAnimationFrame)(run);
+        }
+      }
+    };
+
+    rafBatch._lsFlush = run;
+
+    return rafBatch;
+  })();
+
+  var rAFIt = function(fn, simple){
+    return simple ?
+      function() {
+        rAF(fn);
+      } :
+      function(){
+        var that = this;
+        var args = arguments;
+        rAF(function(){
+          fn.apply(that, args);
+        });
+      }
+    ;
+  };
+
+  var throttle = function(fn){
+    var running;
+    var lastTime = 0;
+    var gDelay = lazySizesConfig.throttleDelay;
+    var rICTimeout = lazySizesConfig.ricTimeout;
+    var run = function(){
+      running = false;
+      lastTime = Date.now();
+      fn();
+    };
+    var idleCallback = requestIdleCallback && rICTimeout > 49 ?
+      function(){
+        requestIdleCallback(run, {timeout: rICTimeout});
+
+        if(rICTimeout !== lazySizesConfig.ricTimeout){
+          rICTimeout = lazySizesConfig.ricTimeout;
+        }
+      } :
+      rAFIt(function(){
+        setTimeout(run);
+      }, true)
+    ;
+
+    return function(isPriority){
+      var delay;
+
+      if((isPriority = isPriority === true)){
+        rICTimeout = 33;
+      }
+
+      if(running){
+        return;
+      }
+
+      running =  true;
+
+      delay = gDelay - (Date.now() - lastTime);
+
+      if(delay < 0){
+        delay = 0;
+      }
+
+      if(isPriority || delay < 9){
+        idleCallback();
+      } else {
+        setTimeout(idleCallback, delay);
+      }
+    };
+  };
+
+  //based on http://modernjavascript.blogspot.de/2013/08/building-better-debounce.html
+  var debounce = function(func) {
+    var timeout, timestamp;
+    var wait = 99;
+    var run = function(){
+      timeout = null;
+      func();
+    };
+    var later = function() {
+      var last = Date.now() - timestamp;
+
+      if (last < wait) {
+        setTimeout(later, wait - last);
+      } else {
+        (requestIdleCallback || run)(run);
+      }
+    };
+
+    return function() {
+      timestamp = Date.now();
+
+      if (!timeout) {
+        timeout = setTimeout(later, wait);
+      }
+    };
+  };
+
+  (function(){
+    var prop;
+
+    var lazySizesDefaults = {
+      lazyClass: 'lazyload',
+      loadedClass: 'lazyloaded',
+      loadingClass: 'lazyloading',
+      preloadClass: 'lazypreload',
+      errorClass: 'lazyerror',
+      //strictClass: 'lazystrict',
+      autosizesClass: 'lazyautosizes',
+      srcAttr: 'data-src',
+      srcsetAttr: 'data-srcset',
+      sizesAttr: 'data-sizes',
+      //preloadAfterLoad: false,
+      minSize: 40,
+      customMedia: {},
+      init: true,
+      expFactor: 1.5,
+      hFac: 0.8,
+      loadMode: 2,
+      loadHidden: true,
+      ricTimeout: 0,
+      throttleDelay: 125,
+    };
+
+    lazySizesConfig = window.lazySizesConfig || window.lazysizesConfig || {};
+
+    for(prop in lazySizesDefaults){
+      if(!(prop in lazySizesConfig)){
+        lazySizesConfig[prop] = lazySizesDefaults[prop];
+      }
+    }
+
+    window.lazySizesConfig = lazySizesConfig;
+
+    setTimeout(function(){
+      if(lazySizesConfig.init){
+        init();
+      }
+    });
+  })();
+
+  var loader = (function(){
+    var preloadElems, isCompleted, resetPreloadingTimer, loadMode, started;
+
+    var eLvW, elvH, eLtop, eLleft, eLright, eLbottom;
+
+    var defaultExpand, preloadExpand, hFac;
+
+    var regImg = /^img$/i;
+    var regIframe = /^iframe$/i;
+
+    var supportScroll = ('onscroll' in window) && !(/glebot/.test(navigator.userAgent));
+
+    var shrinkExpand = 0;
+    var currentExpand = 0;
+
+    var isLoading = 0;
+    var lowRuns = -1;
+
+    var resetPreloading = function(e){
+      isLoading--;
+      if(e && e.target){
+        addRemoveLoadEvents(e.target, resetPreloading);
+      }
+
+      if(!e || isLoading < 0 || !e.target){
+        isLoading = 0;
+      }
+    };
+
+    var isNestedVisible = function(elem, elemExpand){
+      var outerRect;
+      var parent = elem;
+      var visible = getCSS(document.body, 'visibility') == 'hidden' || getCSS(elem, 'visibility') != 'hidden';
+
+      eLtop -= elemExpand;
+      eLbottom += elemExpand;
+      eLleft -= elemExpand;
+      eLright += elemExpand;
+
+      while(visible && (parent = parent.offsetParent) && parent != document.body && parent != docElem){
+        visible = ((getCSS(parent, 'opacity') || 1) > 0);
+
+        if(visible && getCSS(parent, 'overflow') != 'visible'){
+          outerRect = parent.getBoundingClientRect();
+          visible = eLright > outerRect.left &&
+            eLleft < outerRect.right &&
+            eLbottom > outerRect.top - 1 &&
+            eLtop < outerRect.bottom + 1
+          ;
+        }
+      }
+
+      return visible;
+    };
+
+    var checkElements = function() {
+      var eLlen, i, rect, autoLoadElem, loadedSomething, elemExpand, elemNegativeExpand, elemExpandVal, beforeExpandVal;
+
+      var lazyloadElems = lazysizes.elements;
+
+      if((loadMode = lazySizesConfig.loadMode) && isLoading < 8 && (eLlen = lazyloadElems.length)){
+
+        i = 0;
+
+        lowRuns++;
+
+        if(preloadExpand == null){
+          if(!('expand' in lazySizesConfig)){
+            lazySizesConfig.expand = docElem.clientHeight > 500 && docElem.clientWidth > 500 ? 500 : 370;
+          }
+
+          defaultExpand = lazySizesConfig.expand;
+          preloadExpand = defaultExpand * lazySizesConfig.expFactor;
+        }
+
+        if(currentExpand < preloadExpand && isLoading < 1 && lowRuns > 2 && loadMode > 2 && !document.hidden){
+          currentExpand = preloadExpand;
+          lowRuns = 0;
+        } else if(loadMode > 1 && lowRuns > 1 && isLoading < 6){
+          currentExpand = defaultExpand;
+        } else {
+          currentExpand = shrinkExpand;
+        }
+
+        for(; i < eLlen; i++){
+
+          if(!lazyloadElems[i] || lazyloadElems[i]._lazyRace){continue;}
+
+          if(!supportScroll){unveilElement(lazyloadElems[i]);continue;}
+
+          if(!(elemExpandVal = lazyloadElems[i][_getAttribute]('data-expand')) || !(elemExpand = elemExpandVal * 1)){
+            elemExpand = currentExpand;
+          }
+
+          if(beforeExpandVal !== elemExpand){
+            eLvW = innerWidth + (elemExpand * hFac);
+            elvH = innerHeight + elemExpand;
+            elemNegativeExpand = elemExpand * -1;
+            beforeExpandVal = elemExpand;
+          }
+
+          rect = lazyloadElems[i].getBoundingClientRect();
+
+          if ((eLbottom = rect.bottom) >= elemNegativeExpand &&
+            (eLtop = rect.top) <= elvH &&
+            (eLright = rect.right) >= elemNegativeExpand * hFac &&
+            (eLleft = rect.left) <= eLvW &&
+            (eLbottom || eLright || eLleft || eLtop) &&
+            (lazySizesConfig.loadHidden || getCSS(lazyloadElems[i], 'visibility') != 'hidden') &&
+            ((isCompleted && isLoading < 3 && !elemExpandVal && (loadMode < 3 || lowRuns < 4)) || isNestedVisible(lazyloadElems[i], elemExpand))){
+            unveilElement(lazyloadElems[i]);
+            loadedSomething = true;
+            if(isLoading > 9){break;}
+          } else if(!loadedSomething && isCompleted && !autoLoadElem &&
+            isLoading < 4 && lowRuns < 4 && loadMode > 2 &&
+            (preloadElems[0] || lazySizesConfig.preloadAfterLoad) &&
+            (preloadElems[0] || (!elemExpandVal && ((eLbottom || eLright || eLleft || eLtop) || lazyloadElems[i][_getAttribute](lazySizesConfig.sizesAttr) != 'auto')))){
+            autoLoadElem = preloadElems[0] || lazyloadElems[i];
+          }
+        }
+
+        if(autoLoadElem && !loadedSomething){
+          unveilElement(autoLoadElem);
+        }
+      }
+    };
+
+    var throttledCheckElements = throttle(checkElements);
+
+    var switchLoadingClass = function(e){
+      addClass(e.target, lazySizesConfig.loadedClass);
+      removeClass(e.target, lazySizesConfig.loadingClass);
+      addRemoveLoadEvents(e.target, rafSwitchLoadingClass);
+      triggerEvent(e.target, 'lazyloaded');
+    };
+    var rafedSwitchLoadingClass = rAFIt(switchLoadingClass);
+    var rafSwitchLoadingClass = function(e){
+      rafedSwitchLoadingClass({target: e.target});
+    };
+
+    var changeIframeSrc = function(elem, src){
+      try {
+        elem.contentWindow.location.replace(src);
+      } catch(e){
+        elem.src = src;
+      }
+    };
+
+    var handleSources = function(source){
+      var customMedia;
+
+      var sourceSrcset = source[_getAttribute](lazySizesConfig.srcsetAttr);
+
+      if( (customMedia = lazySizesConfig.customMedia[source[_getAttribute]('data-media') || source[_getAttribute]('media')]) ){
+        source.setAttribute('media', customMedia);
+      }
+
+      if(sourceSrcset){
+        source.setAttribute('srcset', sourceSrcset);
+      }
+    };
+
+    var lazyUnveil = rAFIt(function (elem, detail, isAuto, sizes, isImg){
+      var src, srcset, parent, isPicture, event, firesLoad;
+
+      if(!(event = triggerEvent(elem, 'lazybeforeunveil', detail)).defaultPrevented){
+
+        if(sizes){
+          if(isAuto){
+            addClass(elem, lazySizesConfig.autosizesClass);
+          } else {
+            elem.setAttribute('sizes', sizes);
+          }
+        }
+
+        srcset = elem[_getAttribute](lazySizesConfig.srcsetAttr);
+        src = elem[_getAttribute](lazySizesConfig.srcAttr);
+
+        if(isImg) {
+          parent = elem.parentNode;
+          isPicture = parent && regPicture.test(parent.nodeName || '');
+        }
+
+        firesLoad = detail.firesLoad || (('src' in elem) && (srcset || src || isPicture));
+
+        event = {target: elem};
+
+        if(firesLoad){
+          addRemoveLoadEvents(elem, resetPreloading, true);
+          clearTimeout(resetPreloadingTimer);
+          resetPreloadingTimer = setTimeout(resetPreloading, 2500);
+
+          addClass(elem, lazySizesConfig.loadingClass);
+          addRemoveLoadEvents(elem, rafSwitchLoadingClass, true);
+        }
+
+        if(isPicture){
+          forEach.call(parent.getElementsByTagName('source'), handleSources);
+        }
+
+        if(srcset){
+          elem.setAttribute('srcset', srcset);
+        } else if(src && !isPicture){
+          if(regIframe.test(elem.nodeName)){
+            changeIframeSrc(elem, src);
+          } else {
+            elem.src = src;
+          }
+        }
+
+        if(isImg && (srcset || isPicture)){
+          updatePolyfill(elem, {src: src});
+        }
+      }
+
+      if(elem._lazyRace){
+        delete elem._lazyRace;
+      }
+      removeClass(elem, lazySizesConfig.lazyClass);
+
+      rAF(function(){
+        if( !firesLoad || (elem.complete && elem.naturalWidth > 1)){
+          if(firesLoad){
+            resetPreloading(event);
+          } else {
+            isLoading--;
+          }
+          switchLoadingClass(event);
+        }
+      }, true);
+    });
+
+    var unveilElement = function (elem){
+      var detail;
+
+      var isImg = regImg.test(elem.nodeName);
+
+      //allow using sizes="auto", but don't use. it's invalid. Use data-sizes="auto" or a valid value for sizes instead (i.e.: sizes="80vw")
+      var sizes = isImg && (elem[_getAttribute](lazySizesConfig.sizesAttr) || elem[_getAttribute]('sizes'));
+      var isAuto = sizes == 'auto';
+
+      if( (isAuto || !isCompleted) && isImg && (elem[_getAttribute]('src') || elem.srcset) && !elem.complete && !hasClass(elem, lazySizesConfig.errorClass) && hasClass(elem, lazySizesConfig.lazyClass)){return;}
+
+      detail = triggerEvent(elem, 'lazyunveilread').detail;
+
+      if(isAuto){
+         autoSizer.updateElem(elem, true, elem.offsetWidth);
+      }
+
+      elem._lazyRace = true;
+      isLoading++;
+
+      lazyUnveil(elem, detail, isAuto, sizes, isImg);
+    };
+
+    var onload = function(){
+      if(isCompleted){return;}
+      if(Date.now() - started < 999){
+        setTimeout(onload, 999);
+        return;
+      }
+      var afterScroll = debounce(function(){
+        lazySizesConfig.loadMode = 3;
+        throttledCheckElements();
+      });
+
+      isCompleted = true;
+
+      lazySizesConfig.loadMode = 3;
+
+      throttledCheckElements();
+
+      addEventListener('scroll', function(){
+        if(lazySizesConfig.loadMode == 3){
+          lazySizesConfig.loadMode = 2;
+        }
+        afterScroll();
+      }, true);
+    };
+
+    return {
+      _: function(){
+        started = Date.now();
+
+        lazysizes.elements = document.getElementsByClassName(lazySizesConfig.lazyClass);
+        preloadElems = document.getElementsByClassName(lazySizesConfig.lazyClass + ' ' + lazySizesConfig.preloadClass);
+        hFac = lazySizesConfig.hFac;
+
+        addEventListener('scroll', throttledCheckElements, true);
+
+        addEventListener('resize', throttledCheckElements, true);
+
+        if(window.MutationObserver){
+          new MutationObserver( throttledCheckElements ).observe( docElem, {childList: true, subtree: true, attributes: true} );
+        } else {
+          docElem[_addEventListener]('DOMNodeInserted', throttledCheckElements, true);
+          docElem[_addEventListener]('DOMAttrModified', throttledCheckElements, true);
+          setInterval(throttledCheckElements, 999);
+        }
+
+        addEventListener('hashchange', throttledCheckElements, true);
+
+        //, 'fullscreenchange'
+        ['focus', 'mouseover', 'click', 'load', 'transitionend', 'animationend', 'webkitAnimationEnd'].forEach(function(name){
+          document[_addEventListener](name, throttledCheckElements, true);
+        });
+
+        if((/d$|^c/.test(document.readyState))){
+          onload();
+        } else {
+          addEventListener('load', onload);
+          document[_addEventListener]('DOMContentLoaded', throttledCheckElements);
+          setTimeout(onload, 20000);
+        }
+
+        if(lazysizes.elements.length){
+          checkElements();
+          rAF._lsFlush();
+        } else {
+          throttledCheckElements();
+        }
+      },
+      checkElems: throttledCheckElements,
+      unveil: unveilElement
+    };
+  })();
+
+
+  var autoSizer = (function(){
+    var autosizesElems;
+
+    var sizeElement = rAFIt(function(elem, parent, event, width){
+      var sources, i, len;
+      elem._lazysizesWidth = width;
+      width += 'px';
+
+      elem.setAttribute('sizes', width);
+
+      if(regPicture.test(parent.nodeName || '')){
+        sources = parent.getElementsByTagName('source');
+        for(i = 0, len = sources.length; i < len; i++){
+          sources[i].setAttribute('sizes', width);
+        }
+      }
+
+      if(!event.detail.dataAttr){
+        updatePolyfill(elem, event.detail);
+      }
+    });
+    var getSizeElement = function (elem, dataAttr, width){
+      var event;
+      var parent = elem.parentNode;
+
+      if(parent){
+        width = getWidth(elem, parent, width);
+        event = triggerEvent(elem, 'lazybeforesizes', {width: width, dataAttr: !!dataAttr});
+
+        if(!event.defaultPrevented){
+          width = event.detail.width;
+
+          if(width && width !== elem._lazysizesWidth){
+            sizeElement(elem, parent, event, width);
+          }
+        }
+      }
+    };
+
+    var updateElementsSizes = function(){
+      var i;
+      var len = autosizesElems.length;
+      if(len){
+        i = 0;
+
+        for(; i < len; i++){
+          getSizeElement(autosizesElems[i]);
+        }
+      }
+    };
+
+    var debouncedUpdateElementsSizes = debounce(updateElementsSizes);
+
+    return {
+      _: function(){
+        autosizesElems = document.getElementsByClassName(lazySizesConfig.autosizesClass);
+        addEventListener('resize', debouncedUpdateElementsSizes);
+      },
+      checkElems: debouncedUpdateElementsSizes,
+      updateElem: getSizeElement
+    };
+  })();
+
+  var init = function(){
+    if(!init.i){
+      init.i = true;
+      autoSizer._();
+      loader._();
+    }
+  };
+
+  lazysizes = {
+    cfg: lazySizesConfig,
+    autoSizer: autoSizer,
+    loader: loader,
+    init: init,
+    uP: updatePolyfill,
+    aC: addClass,
+    rC: removeClass,
+    hC: hasClass,
+    fire: triggerEvent,
+    gW: getWidth,
+    rAF: rAF,
+  };
+  return lazysizes;
+}
+));
+
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrapper">
+
+      <div class="site-header__logo">
+        <div class="icon icon--clear-view-escapes site-header__logo__sprite--small"><p class="icon--text site-header--invisible" >site-header-logo</p></div>
+      </div>
+
+      <div class="site-header__menu-icon">
+        <div class="site-header__menu-icon__bar-middle"></div>  
+      </div>
+
+      <div class="site-header__menu-content">
+        <a href="#" class="btn site-header__btn open-modal">Get in Touch</a>
+        
+        <nav class="primary-nav primary-nav--pull-right">
+          <ul>
+            <li><a href="#our-beginning" id="our-beginning-link" >Our Beginning</a></li>
+            <li><a href="#features" id="features-link" >Features</a></li>
+            <li><a href="#testimonials" id="testimonials-link" >Testimonials</a></li>
+          </ul>
+        </nav>
+      </div>
+
+    </div>
+  </header>
+
+  <div class="large-hero">
+    
+    <picture>
+      <source srcset="assets/images/hero--large.jpg 1920w, assets/images/hero--large-hi-dpi.jpg 3840w" media="(min-width: 1380px)" >
+      <source srcset="assets/images/hero--medium.jpg 1380w, assets/images/hero--medium-hi-dpi.jpg 2760w" media="(min-width: 990px)" >
+      <source srcset="assets/images/hero--small.jpg 990w, assets/images/hero--small-hi-dpi.jpg 1980w" media="(min-width: 640px)" >
+      <img class="large-hero__img" srcset="assets/images/hero--smaller.jpg 640w, assets/images/hero--smaller-hi-dpi.jpg 1080w">
+    </picture>
+
+    <div class="large-hero__text-content" data-matching-link="#no-link">
+      <div class="wrapper">
+        <h1 class="large-hero__title">Your clarity.</h1>
+        <h2 class="large-hero__subtitle">One trip away.</h2>
+        <p class="large-hero__description">We create soul restoring journeys that inspire you to be you.</p>
+        <p><a href="" class="btn btn--orange btn--large open-modal">Get Started Today</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="our-beginning" class="page-section" data-matching-link="#our-beginning-link">
+    <div class="wrapper">
+      <h2 class="headline headline--centered headline--light headline--b-margin-small">The first trip we planned <strong>was our own.</strong></h2>
+      <h3 class="headline headline--centered headline--orange headline--small headline--narrow headline--light headline--b-margin-large">Ever since, we&rsquo;ve been working to make travel <strong>better for everyone.</strong></h3>
+      <div class="wrapper wrapper--medium wrapper--b-margin">
+        <img class="lazyload" sizes="(min-width:970px) 976px, 100vw" data-srcset="assets/images/first-trip-low-res.jpg 965w, assets/images/first-trip.jpg 967w, assets/images/first-trip-hi-dpi.jpg 1952w" alt="Couple walking down a street.">
+      </div>
+      <div class="row row--gutter-md" >
+
+        <div class="row__medium-5 row__b-margin-until-medium">
+          <picture>
+            <source sizes="404px" data-srcset="assets/images/our-start.jpg 404w, assets/images/our-start-hi-dpi.jpg 808w" media="(min-width: 1020px)">
+            <source sizes="320px" data-srcset="assets/images/our-start-portrait.jpg 382w, assets/images/our-start-portrait-hi-dpi.jpg 764" media="(min-width: 800px)">
+            <img class="lazyload" data-srcset="assets/images/our-start-landscape.jpg 800w, assets/images/our-start-landscape-hi-dpi.jpg 1600w" alt="Our founder, Jane Doe">
+          </picture></div>
+
+       <div class="row__medium-7">
+          <div class="generic-content-container"> 
+             <h2 class="headline headline--no-t-margin">Here&rsquo;s how we got started&hellip;</h2>
+             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <a href="#">quis nostrud exercitation</a> ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+             <p>Duis aute irure dolor in <strong>reprehenderit in</strong> voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+             <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum velit esse cillum <strong>dolore eu fugiat.</strong></p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div id="features" class="page-section page-section--blue" data-matching-link="#features-link">
+    <div class="wrapper">
+      <h2 class="section-title section-title--center"> <span class="icon icon--star section-title__icon"></span>Our <strong>Features</strong></h2>
+        
+        <div class="row">
+
+            <div class="row__medium-4 row__medium--offset-1">
+                
+                <div class="feature-item generic-content-container">
+                  <span class="icon icon--rain feature-item__icon"></span>
+                  <h3 class="feature-item__title">We&rsquo;ll Watch the Weather</h3>
+                  <p>Download our app and we&rsquo;ll send you a notice if it&rsquo;s about to rain in the next 20 minutes around your current location. A good rain can be refreshing, but sometimes you just want to stay dry.</p>
+                </div>
+                  
+                  <div class="feature-item generic-content-container">
+                    <span class="icon icon--globe feature-item__icon"></span>
+                    <h3 class="feature-item__title">Global Guides</h3>
+                    <p>We&rsquo;ve scoured the entire planet for the best retreats and beautiful vistas. If there&rsquo;s a corner of the world you want to escape to we know the most scenic and inspiring locations.</p>
+                  </div>
+
+            </div>
+            
+            <div class="row__medium-4 row__medium--offset-2">
+              
+                <div class="feature-item generic-content-container">
+                  <span class="icon icon--wifi feature-item__icon"></span>
+                  <h3 class="feature-item__title">Wi-Fi Waypoints</h3>
+                  <p>We only send you on trips to places we can personally vouch for as being amazing. Which means we&rsquo;ve mapped out where local wi-fi spots are and marked them in our app&rsquo;s map view.</p>
+                </div>
+                  
+                <div class="feature-item generic-content-container">
+                  <span class="icon icon--fire feature-item__icon"></span>
+                  <h3 class="feature-item__title">Survival Kit</h3>
+                  <p>Everytime you book an escape with us we send you a survival kit with the finest materials. The kit will allow you to setup a tent, start a fire, scratch your own back and lower your taxes.</p>
+                </div>
+                
+            </div>
+          
+        </div>
+
+      
+    </div>
+  </div>
+
+  <div id="testimonials" class="page-section page-section--backgroundmg page-section--no-b-padding-until-md" data-matching-link="#testimonials-link">
+    <div class="wrapper wrapper--no-padding-until-md">
+      <h2 class="section-title section-title--center section-title--blue"><span class="icon icon--comment section-title__icon"></span>Real <strong>Testimonials</strong></h2>
+      
+      <div class="row row--gutter-md-small row--equal-hight-at-medium generic-content-container">
+        
+        <div class="row__medium-4">
+          <div class="testimonial">
+            <div class="testimonial__photo">
+              <img class="lazyload" data-src="assets/images/testimonial-jane.jpg ">
+            </div>
+            <h3 class="testimonial__title">Jane Doe</h3>
+            <h3 class="testimonial__subtitle">9 Time Escaper</h3>
+            <p>&ldquo;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&rdquo;</p>
+          </div>
+        </div>
+        
+        <div class="row__medium-4">
+          <div class="testimonial">
+            <div class="testimonial__photo">
+              <img class="lazyload" data-src="assets/images/testimonial-john.jpg">
+            </div>
+            <h3 class="testimonial__title">John Smith</h3>
+            <h3 class="testimonial__subtitle">4 Time Escaper</h3>
+            <p>&ldquo;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur.&rdquo;</p>
+          </div>
+        </div>
+        
+        <div class="row__medium-4">
+          <div class="testimonial">
+            <div class="testimonial__photo">
+              <img class="lazyload" data-src="assets/images/testimonial-cat.jpg">
+            </div>
+            <h3 class="testimonial__title">Cat McKitty</h3>
+            <h3 class="testimonial__subtitle">6 Time Escaper</h3>
+            <p>&ldquo;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.&rdquo;</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer majom">
+    <div class="wrapper majomadta">
+      <p><span class="site-footer__text" >Copyright &copy; 2016 Clear View Escapes. All rights reserved.</span> <a href="#" class="btn btn--orange open-modal">Get in Touch</a></p>
+    </div>
+  </footer>
+
+
+  <div class="modal majom2">
+    
+    <div class="modal__inner">
+          <h2 class="section-title section-title--center section-title--blue section-title--less-margin"><span class="icon icon--mail section-title__icon"></span>Git In<strong>Touch</strong></h2>
+          <div class="wrapper social-icon majom__fasz">
+            <p class="modal__description generic-content-container wrapper--narrow">We will have an online order system soon. Until then, connect with us on any of the platforms below. See you lator aligator</p>
+          </div>
+      
+          <div class="social-icon idiot">
+            <a href="" class="social-icon__icon idiot"><span class="icon icon--facebook" ></span></a>
+            <a href="" class="social-icon__icon"><span class="icon icon--twitter" ></span></a>
+            <a href="" class="social-icon__icon"><span class="icon icon--instagram" ></span></a>
+            <a href="" class="social-icon__icon"><span class="icon icon--youtube" ></span></a>
+          </div>
+          </div>
+    <div class="modal__close">X</div>
+
+  </div>
+  
+  <!--  build:js /assets/js/app.bundle.js -->
+  <script src="assets/tmp/js/app.bundle.js" ></script>
+  <!-- endbuild -->
+
+</body>
+</html>

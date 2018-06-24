@@ -1,0 +1,116 @@
+<script class="important" title="The REASON due to MODULAR PATTERN doest replace constructors">
+	function buildFunctions(){
+		var arr = [];
+		
+		for(var i = 0; i<3; i++){
+			arr.push(
+				function(){
+					console.log(i);
+				}
+				);
+		}
+		
+		return arr;
+		
+	}
+
+
+	var fs = buildFunctions();
+
+	fs[0]();
+	fs[1]();
+	fs[2]();
+
+// WORK AROUND
+
+function buildFunctions2(){
+	var arr = [];
+	
+	for(var i = 0; i<3; i++){
+		arr.push(
+			(function(j){
+				return function(){
+					console.log(j);
+				}
+			}(i))
+			);
+	}
+	
+	return arr;
+	
+}
+
+
+var fs2 = buildFunctions2();
+</script>
+
+<script>
+	class myClass{
+
+		constructor(message, baseNumber, until){
+			console.log(message, baseNumber, until);
+			this.message = message;
+			this.baseNumber = baseNumber;
+			this.until = until;
+			this.myArray = [];
+			this.buildUpArray();
+			this.log();
+		}
+
+		buildUpArray(){
+
+			for(let i = 0; i < this.until; i++){
+				this.myArray.push( this.message + " " + (this.baseNumber + i) );
+				console.log(i);
+			}
+		}
+
+		log(){
+			console.log(this.myArray);
+		}
+
+
+	}
+	var myNewClass = new myClass("sziamia",10, 20);
+
+
+	class Rectangle {
+		constructor(height, width) {
+			this.height = height;
+			this.width = width;
+			this.log(height, width);
+		}
+
+		log(height, width){
+			console.log(height, width);
+		}
+	}
+		//var square = new Rectangle(12,100);
+
+
+		function myFunction(message, baseNumber, until){
+
+			this.myArray = [];
+
+			this.buildUpArray = function(){
+				
+				for(let i = 0; i < until; i++){
+
+					this.myArray.push( message + " " + (baseNumber + i) );
+					console.log(i);
+
+				}
+
+			}
+
+			this.logOut = function(param1){
+				console.log(param1);
+				console.log(this.myArray);
+			}
+
+			this.buildUpArray();
+
+		} 
+
+		//var myNewFunc = new myFunction("hyhy",1, 20);
+	</script>

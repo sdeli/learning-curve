@@ -1,0 +1,14 @@
+<% include partials/_head.ejs %>
+<body>
+	<% include partials/_navbar.ejs %>
+	<h1>This is the Shop Powered by node.js</h1>
+	<ul>
+		<% for (var key in qs) {
+    		if (qs.hasOwnProperty(key)) { %>
+
+    			<li><%= qs[key] %></li>
+        				
+    		<%}
+		}%>
+	</ul>
+</body>
