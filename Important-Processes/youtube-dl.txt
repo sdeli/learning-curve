@@ -1,3 +1,5 @@
 youtube-dl -o "%(playlist_index)s-%(title)s.%(ext)s" -u bgfkszmsdeli@gmail.com -p dalias19 https://www.udemy.com/ux-web-design-master-course-strategy-design-development/
 
 youtube-dl -o "%(playlist_index)s-%(title)s.%(ext)s" -u bgfkszmsdeli@gmail.com -p dalias19 https://www.udemy.com/the-nodejs-master-class/
+
+youtube-dl -o "%(playlist_index)s-%(title)s.%(ext)s" -u bgfkszmsdeli@gmail.com -p dalias19 https://www.linkedin.com/learning/node-js-essential-training/

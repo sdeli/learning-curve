@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		var requestBody = {key : 'watch videos'};
+		let todoTasks = [
+			{key : 'get milk'},
+			{key : 'kick some php ass'},
+			{key : 'do 100 pushups'},
+			{key : 'watch videos'}
+		];
+
+		todoTasks = compareObjects(todoTasks, requestBody);
+
+		function compareObjects(todoTasks, requestBody){
+
+			var updatedArray = todoTasks.filter(function(a){
+				console.log(a);
+				console.log(requestBody);
+				console.log(JSON.stringify(a) !== JSON.stringify(requestBody));
+				return JSON.stringify(a) !== JSON.stringify(requestBody);
+			});
+
+			return updatedArray;
+		}
+	</script>
+</body>
+</html>

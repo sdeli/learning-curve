@@ -1,0 +1,3 @@
+https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCl4B1hB08--612VWipzGgzL6q_kE4KHfs&address=1163%20fehersas%20street%20budapest
+682ac7a419a45bc97cf6eb70047cf1cf
+https://api.darksky.net/forecast/682ac7a419a45bc97cf6eb70047cf1cf/37.8267,-122.4233

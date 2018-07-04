@@ -41,14 +41,16 @@ git clone https://github.com/LearnWebCode/welcome-to-git
 # CASE 8 Check Origine of Repo ======================================>
 git remote -v
 
-# CASE 8 Change origine ======================================>
-	
-
 # CASE Set Origin where to push/pull ================================>
 git remote add origin https://github.com/sdeli/web-scraping.git
-git remote add origin https://github.com/sdeli/learning-curve
+git remote add origin https://github.com/sdeli/learning-curve.git
+git remote add origin https://github.com/sdeli/node-dev-tut
+git remote add origin https://github.com/sdeli/heroku-tut
 # CASE Push =============== ======================================>
 git push -u origin master
+
+# CASE force pull files from github ================================>
+git reset --hard origin/master
 
 # CASE: Remove Git from Project ==================================>
 rm -rf .git
@@ -68,5 +70,10 @@ git checkout -b our-features
 # CASE: Merge branch into master with dedicated commit ==================================>
 git merge our-features --no-ff
 
-# CASE:  ==================================>
-#git checkout head ~ 1/-1
+# CASE: ignore node modules ====================================================
+sudo touch .gitignore 
+sudo chmod 777 .gitignore
+echo "node_modules/" >> .gitignore
+
+# CASE: delte dir from git repo ====================================================
+git rm -r --cached node_modules # path is realtive to the folder you are with terminal

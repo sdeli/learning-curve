@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body style="background:black;">
+<script>
+var notes = [
+    {title : 'jani', body : 'peti'},
+    {title : 'jani1', body : 'peti1'},
+    {title : 'jani2', body : 'peti2'},
+    {title : 'jani3', body : 'peti3'}
+]
+
+let findNote = (notes, title) => {
+    return notes.filter(note => note.title === title);
+}
+
+let remove = (title) => {
+    //let notes = fetchNotes();
+    let matchingNotes = findNote(notes, title);
+    let filteredNotes = notes.filter(note => {
+        return matchingNotes.every(matchingNote => matchingNote !== note)
+    })
+    console.log(filteredNotes);
+}
+
+remove('jani2')
+
+</script>
+</body>
+</html>

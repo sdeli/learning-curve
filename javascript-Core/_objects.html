@@ -333,12 +333,46 @@
 				}
 
 				// setting up the prototype chain
-				Coffe.prototype = new Beverage
+				Coffe.prototype = Object.assign(Coffe.prototype, Beverage.prototype);
 				Coffe.prototype.sip = function(){
 					console.log('sipping: ' + this.type);
 				}
 
 				var brasilian = new Coffe('Braisilian', 'Sanyi', 'hot');
+
+                /* SECTION: Inherit from on more constructor */
+
+                function Beverage (name, temperature) {
+                    this.name = name;
+                    this.temperature = temperature;
+                }
+
+                Beverage.prototype.drink = function () {
+                    console.log( 'I am drinking: ' + name);
+                }
+
+                function Milk (isfaty, hasLactose) {
+                    this.isfaty = isfaty;
+                    this.hasLactose = hasLactose;
+                }
+
+                Milk.prototype.goSour = function () {
+                    console.log( 'my milk has gone sour');
+                }
+
+                function Coffe (type, name, temperature) {
+                    Beverage.call(this,name,temperature);
+                    Milk.call(this, true, false);
+                    this.type = type;
+                }
+
+                // setting up the prototype chain
+                Coffe.prototype = Object.assign(Coffe.prototype, Beverage.prototype, Milk.prototype);
+                Coffe.prototype.sip = function(){
+                    console.log('sipping: ' + this.type);
+                }
+
+                var brasilian = new Coffe('Braisilian', 'Sanyi', 'hot');
 
 			</script>
 
