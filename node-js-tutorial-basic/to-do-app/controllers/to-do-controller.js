@@ -1,5 +1,4 @@
 module.exports = function(app){
-
 	const mongoose = require("mongoose");
 	const bodyParser = require("body-parser");
 	// setting up body parser for POST methods fetching json	

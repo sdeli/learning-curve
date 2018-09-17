@@ -6,7 +6,8 @@
 
 	submitForm.addEventListener('click', function(){
 		let JsonForPost = createJsonForPost(inputField.value);
-		if(JsonForPost != false){
+
+		if(JsonForPost !== false){
 			appendNewTask(appendToNode, JsonForPost);
 		} else {
 			return false;
@@ -35,9 +36,7 @@
 	} // END appendNewTask
 
 	function createJsonForPost(inputFieldVal){
-
 		if(inputFieldVal != ""){
-
 			let idNumber = Math.floor(Math.random() * 1000) + 1;
 
 			let inputFieldValueObj = {
@@ -47,14 +46,10 @@
 
 			let jsonInputValue = JSON.stringify(inputFieldValueObj);
 			return jsonInputValue;
-
 		} else {
-
 			alert('enter a task')
 			return false;
-
 		} // else
-
 	}
 
 }());

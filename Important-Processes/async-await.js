@@ -23,3 +23,16 @@
     await logOut();
     console.log('oda');
 })();
+
+(function IdontKnowButInteresting() {
+    async function promised() {
+        return await new Promise((resolve, reject) => {
+            setTimeout(() => resolve("done!"), 1000)
+        });
+    }
+
+    promised()
+    .then(e => {
+        console.log('majom');
+    })
+});

@@ -46,6 +46,10 @@ git remote add origin https://github.com/sdeli/web-scraping.git
 git remote add origin https://github.com/sdeli/learning-curve.git
 git remote add origin https://github.com/sdeli/node-dev-tut
 git remote add origin https://github.com/sdeli/heroku-tut
+git remote add origin https://github.com/sdeli/artworks
+git remote add origin https://github.com/sdeli/stock-data-tracker.git
+git remote add origin https://github.com/sdeli/stock-ticker-extractor
+git remote add origin https://github.com/sdeli/social-network
 # CASE Push =============== ======================================>
 git push -u origin master
 
@@ -77,3 +81,11 @@ echo "node_modules/" >> .gitignore
 
 # CASE: delte dir from git repo ====================================================
 git rm -r --cached node_modules # path is realtive to the folder you are with terminal
+git rm -r --cached node-master/exercise-files # path is realtive to the folder you are with terminal
+# IMPORTNAT !=> than you need to commit this changes to get it work
+
+# CASE: clone repo  ======================================>
+git clone https://github.com/sdeli/to-do-app
+
+#CASE: check tracked files by git ======================>
+c

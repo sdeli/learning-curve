@@ -19,7 +19,6 @@ app.use(express.static(`${__dirname}/public-static-assets`));
 
 // create middleware
 app.use((req, res, next) => {
-    app.re
     next()
 });
 

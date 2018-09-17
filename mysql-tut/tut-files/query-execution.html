@@ -1,0 +1,64 @@
+<div><h1>EXECUTION OF A QUERY</h1>
+    
+    <ul title="EXECUTION OF A QUERY">
+        <li>the SQL DATABASE constist of 2 major parts
+            <li>STORAGE ENGINE</li>
+            <li>QUERY PROCESSOR</li>
+        </li>
+        <li>STORAGE ENGINE is responsible for reading data from disk into the memory/buffer pool</li>
+        <li>QUERY PROCESSORs job is to:
+            <li>accept all queries submitted to sql server</li>
+            <li>devise a plan to carry out query => QUERY OPTIMIZER => translate the WHAT to HOW</li>
+            <li>execute the plan => EXECUTION ENGINE</li>
+            <li>QUERY PROCESSOR consists of QUERY OPTIMIZER and EXECUTION ENGINE. query optiomizer finds out and passes the plan to the execution engine</li>
+            <li>EXECUTION ENGINE gets the plan, executes and delivers back the results</li>
+            <li>query optimizes has  DATABASE CATALOG which has metadata about the db like column names</li>
+            <li>QUERY OPTIMIZER created plan is a program, this program is built up by code generator or from precompiled modules</li>
+        </li>
+    </ul>
+
+    <ul title="ORDER OF EXECUTION">
+        <li>FROM
+            <li>it pulls all the tables into the memory</li>
+            <li>joins are happening here - joins are bound to the from statment</li>
+            <li>SQL ROW SOURCE GENERATION</li>
+        </li>
+        <li>
+            WHERE
+            <li>where fiters the rows based on its statement</li>
+        </li>
+        <li>
+            GROUP BY
+            <li>
+                groups the data remained after the where clause and creates a group for them. the groups are represented by a row. to each group there is a list assigned which includes the members of the groups. this list is only accessible for aggregate functions
+            </li>
+        </li>
+        <li>AGGREGATE FUNCITONS
+            <li class="definition">an aggregate function performs a calculation on a set of values and returns a single value (they are ignoring null values)</li>
+            <li>aggregate functions can access the data created by GROUP BY</li>
+            <li>executed here no matter where they are syntactically</li>
+        </li>
+        <li>
+            HAVING
+            <li>in having you can access already aggregation functions</li>
+        </li>
+        <li>
+            SELECT
+            <li>select makes the resulted data accessible</li>
+        </li>
+        <li>
+            DISTINCT
+        </li>
+        <li>
+            ORDER BY
+        </li>
+        <li>
+            LIMIT
+        </li>
+    </ul>
+
+    <ul title="ORDER EXECUTION EXAMPLE">
+        select last_name, count(*) from actors group by last_name;
+    </ul>
+</div>  
+

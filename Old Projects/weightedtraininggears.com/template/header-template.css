@@ -1,0 +1,59 @@
+h1,h2{
+  font-family: 'Oswald', sans-serif;
+}
+
+#article-section p{
+  font-family: 'Quicksand', sans-serif;
+  font-size: larger;
+  font-weight: bolder;
+  position: relative;
+}
+
+
+/*Carousel section----------------------------------------------------------------------------------------------*/
+#carousel-section{
+  position: relative;
+  min-width: 
+}
+
+#carousel-section .sav{
+    background-color: #141414;
+    position: relative;
+    width: 100%;
+}
+
+#carousel-section #carousel{
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+#hero-img-container{
+}
+
+#hero-img-container{
+  position: relative;
+  
+}
+
+#hero-img-container img{
+  position: absolute;
+    top:-36px;
+    left: 5vh;
+}
+
+/*Carousel section End----------------------------------------------------------------------------------------------*/
+
+/* brands---------------------------------------------------------------------------------*/
+
+#brands{
+  padding: 3px 0px;
+}
+
+#brands li{
+  display: inline-block;
+  height: 30px;
+}
+
+#brands li img{
+  height: 100%
+}

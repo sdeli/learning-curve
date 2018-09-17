@@ -17,8 +17,6 @@
  		console.log(jsonItem);
  		xhttp = new XMLHttpRequest();
 
- 		xhttp = new XMLHttpRequest();
-
 		xhttp.open('POST', '/remove-task', true);
 
 		xhttp.setRequestHeader("Content-Type", "application/json");

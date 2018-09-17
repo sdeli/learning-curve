@@ -1,0 +1,158 @@
+@font-face {
+  font-family:"armalite-rifle";
+  src: url('../font/armalite-rifle/armalite.ttf') format("truetype");
+  }
+@font-face {
+  font-family:"sniper";
+  src: url('../font/sniper/sniper/SNIPER__.ttf') format("truetype");
+  }
+
+/*---Google fontos---------------------
+<link href="https://fonts.googleapis.com/css?family=Anton|Bitter|Cuprum|Noto+Sans|Orbitron|Oswald|PT+Sans+Narrow|Passion+One|Yanone+Kaffeesatz" rel="stylesheet">
+font-family: 'Oswald', sans-serif;
+font-family: 'Noto Sans', sans-serif;
+font-family: 'PT Sans Narrow', sans-serif;
+font-family: 'Bitter', serif;
+font-family: 'Anton', sans-serif;
+font-family: 'Yanone Kaffeesatz', sans-serif;
+font-family: 'Cuprum', sans-serif;
+font-family: 'Orbitron', sans-serif;
+font-family: 'Passion One', cursive;
+
+-------------------------------------*/
+
+h1,h2, h4{
+  font-family: 'Oswald', sans-serif;
+}
+a{
+  text-decoration: none;
+  color: inherit;
+}
+body p,{
+  font-family: sans-serif;
+}
+#bookmarks h3,
+#recomended-vids h3{
+  font-weight: bold;
+}
+.product-slider-outer p{
+  font-family: 'Oswald', sans-serif;
+}
+
+#homepage-title{
+  text-align: center;
+} 
+#homepage-title h3{
+  font-size: 55px;
+  font-family:"sniper";
+  padding: 6px 0px 0px;
+  font-weight: unset;
+}
+
+
+h1,h2,h3,h4,h5,h6{  
+  padding: 0;
+  margin: 0;
+}
+
+
+/*Carousel section----------------------------------------------------------------------------------------------*/
+.carousel-inner{
+  max-height: 380px;
+}
+
+.carousel-inner img{
+  width: 100%;
+}
+#carousel-section{
+  position: relative;
+  border-top: 5px solid #a94442;
+ 
+}
+
+#carousel-section .sav{
+    background-color: #141414;
+    position: relative;
+    width: 100%;
+}
+
+#carousel-section #carousel{
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+#hero-img-container{
+}
+
+#hero-img-container{
+  position: relative;
+  
+}
+
+#hero-img-container img{
+  position: absolute;
+    top:-36px;
+    left: 5vh;
+}
+
+/*Carousel section End----------------------------------------------------------------------------------------------*/
+article h4{
+  margin-bottom: 5px;
+}
+
+/* brands---------------------------------------------------------------------------------*/
+
+#brands{
+  padding: 3px 0px;
+}
+
+#brands li{
+  display: inline-block;
+  height: 30px;
+}
+
+#brands li img{
+  height: 100%
+}
+
+/*Responsive videos-----------------------*/
+
+    .vidi-container{
+      
+    }
+    .vidi{
+      position: relative;
+      padding-bottom: 56.25%;
+
+    }
+
+    .vidi iframe{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      
+    }
+
+    .vidi video{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      
+    }
+
+    .vidi img{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      
+    }
+
+
+/*Responsive videos END-----------------------*/
+
+
+@media only screen and (max-width: 768px) {
+    .carousel-border {
+        margin: 0 1px;
+    }
+}

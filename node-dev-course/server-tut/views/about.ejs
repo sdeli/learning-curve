@@ -13,16 +13,16 @@
     </head>
     <body>
         <img src="partials/hide.jpeg" alt="">
-        <% include ./partials/header.ejs %>
+        <% include ./partials/header.ejs , {pageTitle}%>
 
         <section id="main">
             <div class="inner">
-                <% include ./partials/main-message.ejs %>
+               <% include ./partials/main-message.ejs %>
                 <% include ./partials/photo-galery.ejs %>
                 <% include ./partials/photos-with-descr.ejs %>
             </div>
         </section>
 
-       <% include ./partials/footer.ejs %>
+        <% include ./partials/footer.ejs %>
     </body>
 </html>

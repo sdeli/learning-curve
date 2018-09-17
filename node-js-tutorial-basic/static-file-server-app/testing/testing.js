@@ -1,11 +1,6 @@
-var http = require('http');
-var fs = require('fs');
-var path = require('path');
+var argv = require('yargs').argv;
 
-//console.log(path.extname('index.coffee.md'));
-
-
-
-console.log(path.extname('majom/idi'));
+console.log('(%d,%d)', argv.x, argv.y);
+console.log(argv.x);
 
 
