@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Merge-Sort</title>
+</head>
+<body style="background: black">
+<script>
+var wholeArr = [1,2,3,4,3,2,3,4,56,77754,3,2,123,5,67,88]	
+mergeSort(wholeArr);
+
+function mergeSort(arr){
+	divideArr(arr);
+	function divideArr(arr){
+
+		if (arr.length < 2) {
+			return arr;
+		} else {
+			let halfOfIndex = Math.floor(arr.length / 2);
+
+			let firstHalfArr = arr.splice(0, halfOfIndex);
+			let secondHalfArr = arr.splice(0, arr.length);
+			return mergeArr(divideArr(firstHalfArr), divideArr(secondHalfArr));
+		}
+
+	} // mergeSort()
+
+	function mergeArr(firstArr, secondArr){
+
+		let resultArr = [];
+
+		while (firstArr.length && secondArr.length) {
+
+			if (firstArr[0] < secondArr[0] || firstArr[0] === secondArr[0]) {
+				resultArr.push(firstArr.shift());
+			} else if (firstArr[0] > secondArr[0]) {
+				resultArr.push(secondArr.shift());
+			} 
+
+			if (firstArr.length === 0) {
+				resultArr = resultArr.concat(secondArr);
+			} else if (secondArr.length === 0) {
+				resultArr = resultArr.concat(firstArr);
+			}
+		}
+
+		return resultArr;
+
+	}
+
+}	
+</script>
+</body>
+</html>

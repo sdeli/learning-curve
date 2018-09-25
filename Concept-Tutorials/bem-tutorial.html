@@ -1,0 +1,89 @@
+ 
+<p style="display: none;">
+1. BEM ======================
+	
+	Blocks, Elements and Modifiers
+	
+	Block: Independent, self contained reusable Unit of the design
+		- can stand on its own
+		- can be reused
+		- they are not dependent on any parent element => Single responsibility blocks
+	
+	Element: A unit dependent on its Block-Unit
+	
+	Concepts:
+	
+	- Css Selector should target elements directly with classes / BEM NOTATION
+			- no type selectors
+			- no descendent selectors
+			- eliminate cascade
+	
+	- CLASS NAMING CONVENTIONS / BEM NOTATION : 
+			identify Blocks: class="Blockname"
+			identify Elements: class="blockname__elementname"
+			identify Modifiers: class="blockname--modifiername"
+	
+	
+	- Without the cascade we can move blocks freely
+	
+	- Blocks can be nested in other blocks => Single responsibility blocks
+	
+	- SINGLE RESPONSIBILITY BLOCKS: Blocks are responsible just for themselfs, thatswhy they dont modify other blocks nested in themselfs.
+
+	- DRY / DESIGN PATTERNS
+			- Design rules which you follow/apply again and again at blocks and elements
+	 		- All Websate parts have features which are the same threwout the webiste likse:
+
+	 						padding/margin bottom
+	 						padding/margin top
+	 						wrappings
+	 						....
+	 		- Create css classes for these which are reusable for each design pattern throughout the page
+</p>
+
+<p> CORE THINGS:
+
+	- BEM
+	- DESIGN PATTERNS / DRY
+			- hedline
+			- wrapper
+			- page section
+	- 		
+</p>
+
+<p> BEM BLOCKS
+	
+	<ul><strong>Page Section Type Blocks</strong>
+
+		<li> > PAGE SECTIONS / GRID</li>
+
+	</ul>
+	
+	<ul><strong>Text Type Blocks</strong>
+
+		<li> > PAGE SECTION HEADINGS</li>
+		<li> > PARAGRAPH TAGS</li>
+		<li> > PARAGRAPH HEADINGS</li>
+
+	</ul>
+
+	<ul> <str>Design Elements</str>
+		
+		<li> > GRID COLUMN CONTENT BLOCKS</li>
+		<li> > BUTTONS</li>
+		<li> > WRAPPERS imgs and ...</li>
+
+	</ul>
+
+</p>
+
+
+<p style="display: none;">
+2. CSS - Rules & Conventions
+	
+	- SIZEs given in REM
+			-pl: font-size: 2.9rem;
+			-def: - rem multiplies the html elements defaultsize.
+						- def font-size is 16px
+			- Reason: To scale accordingly to users font siz e pref
+</p>		

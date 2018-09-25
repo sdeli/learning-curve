@@ -1,0 +1,32 @@
+/*
+{
+	"dependencies":{
+		"variables.css" : "none";
+	};
+}
+*/
+.btn {
+	background-color: $mainBlue;
+	color: #FFF;
+	display: inline-block;
+	padding: .75rem 1.2rem;
+	text-decoration: none;
+
+	&--orange {
+		background-color: $mainOrange;
+	}
+
+	&--large {
+		padding: 1.1rem 1.9rem;
+
+		@mixin atSmall{
+			font-size: 1.25rem;
+		}
+	}
+
+	&--right {
+		float: right;
+	}
+
+
+}

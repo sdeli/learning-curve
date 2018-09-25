@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="execute">I dont know a button</button>
+<script>
+
+// var newObj = Object.Assign(oldObj) => assigns the properties of oldobj to newobj	
+const object1 = {
+a: 1,
+b: 2,
+c: 3
+};
+
+const object2 = Object.assign({c: 4, d: 5}, object1);
+
+var ex = document.getElementById('execute');
+// ix will be a new instance of ex
+var ix = Object.assign(ex);
+
+// you can instantiate an object from more objects
+brian = Object.assign(Animal("brian"), canKill, canFly, canDance)
+</script>	
+</body>
+</html>		

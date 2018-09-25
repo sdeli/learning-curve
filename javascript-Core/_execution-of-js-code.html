@@ -1,0 +1,369 @@
+<div><h1>CODE EXECUTION IN JAVASCIPT</h1>
+	
+	<div><h2>RECOMENDED REFERNCES</h2>
+
+		<a href="http://dmitrysoshnikov.com/ecmascript/javascript-the-core/"></a>
+		<a href="http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/"></a>
+		<a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-3-2-lexical-environments-ecmascript-implementation/"></a>
+		<a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-3-1-lexical-environments-common-theory/#environment-frames-model"></a>
+	</div>
+	<!-- END <h1>RECOMENDED REFERNCES</h1> ///////////////////////////// -->
+
+	
+
+	<div class="concept"><h2>SYNTAX PARSER</h2>
+
+		<p><strong>Programm deinen cod unsersucht, hearausfindet was er mach und check ob es valide ist</strong>
+			<p>Check if code is valid then =></p>
+			<p>then it compiles or interprets the code for the computer</p>
+		</p>
+
+
+			
+	</div>
+	<!--  SYNTAX PARSER -->
+	
+
+	<div class="concept"><h2>EXECUTION CONTEXT / EXECUTION CONTEXT OBJECT</h2>
+
+			
+		<img src="img/execution-context.jpg" alt="reference">
+
+		<p class="definition">EXECUTION CONTEXT OBJECT === new FunctionConstructorObject</p>
+
+		<p class="definition"> The ExecutionContextObject provides an environment which makes it possible that the code-body can run</p>
+		
+		<div><h3>INCLUDES</h3> in the ExecutionContextObject/FunctionConstructorObject
+
+			<img src="img/executioncontextobject.png" alt="execution context object in the creation">
+			<img src="img/executioncontextobjectExecution.png" alt="execution context object in the execution">
+						
+			<script title="executinContextObject in the creation pahse">
+				executionContextObj = {
+					'scopeChain': { /*current variableObject + all lexical-parent functions variableObject */ },
+					/*scopeChain is createdby or is the [[Scopes]] property*/
+					'variableObject': { /* function arguments / parameters, inner variable and function declarations */
+						arguments : { /* about arguments object more at _functions.html*/
+							0: 22,
+							length : 1 /*argumentobject for foo(22) */
+						},
+						i: 22, /* function foo(i){ ... } */
+						c: pointer to function c,
+						a: undefined,
+						b: undefined
+					},
+					'this': {}
+				}
+			</script><!-- executinContextObject in the creation pahse END  -->
+
+			<script class="important" title="during hoisting variables with same name of a function are overriding the function">
+				/*Function declarations are hoisted to the top of their scope. The function definition are moved above by the compiler. And then the variable is overwriting to string.*/
+				var foo="bar";
+				function foo(){
+					return "bar";
+				}
+				console.log(foo); // resolves to: "foo is not a function"
+
+				// So above code will be equivalent to:
+				function foo() {
+					return "bar";
+				}
+				// Overwriting the value
+				var foo = "bar"
+			</script>
+
+		</div>
+		<!-- END <h3></h3> ///////////////////////////// -->
+
+		<ul>Types of Execution Context
+			<li>Global Execution Context GEC</li>
+			<li>Function Execution Context FEC</li>
+			<li>Eval Execution Contex </li>
+		</ul>
+		
+		<div><h3>executinContextObjects CREATION</h3>
+
+		</div>
+			<!-- END <h3>executinContextObjects CREATION</h3> ///////////////////////////// -->
+
+		<div class="concept" ><h3>LEXICAL ENVIRONMENT</h3>
+	
+			<p class="definition">Lexical environment === Scope-Chain</p>
+			<p class="definition">Scope-Chain === chain of Variable Objects of the lexical parent</p>
+			<p class="definition">So the lexical environment defines, a function to which free variables and functions - in the full surrounding code - has access</p>
+
+			<div><h4>SCOPE CHAIN</h4>
+				
+				<a href="img/sope-chain:environment-framse.pdf"></a>
+				<a href="img/scope-chain.pdf"></a>
+				<p class="definition">scope chain is a list of all the parent variable objects, plus (in the front of scope chain) the function’s own variable/activation object.</p>
+				<p>this is contains the whole LEXICAL ENVIRONMENT / OUTER ENVIRONMNET</p>
+
+				<p> ALL FUNCTIONS SAVE SCOPE CHAIN IN THE [[SCOPE]] PROPERTY AT CREATION MOMENT.
+					 <a class="reference" href="img/functionssavescopechaininthe[[Scope]].pdf"></a>
+				</p>
+
+				<ul><strong>SCOPE TYPES</strong>
+					<li>function Scope</li>
+					<li>Global Scope</li>
+					<li>Block Scope / LET
+						<p>Block scope is create by defining a variable with "let" in a block</p>
+						<p>Let variables are not hoisted, can be used just after the the execution has reached that variable</p>
+					</li>
+				</ul>
+			</div>
+			<!-- END <h4>SCOPE CHAIN</h4> ///////////////////////////// -->
+
+			<ol>Lexical environment Consists Of:
+				<li>Environment record:
+					<p>records the identifier bindings that are created within the scope of its associated Lexical Environment.</p>
+				</li>
+				<li>Outer Environment</li>
+			</ol>
+
+			<div><h4>[[Scopes]] - PROPERTY / SCOPE-CHAIN / CLOSURE</h4>
+
+				<a href="reference" href="img/JavaScript-Closures.pdf"></a>
+				<a href="http://dmitrysoshnikov.com/ecmascript/chapter-6-closures/#ecmascript-closures-implementation"> or => </a> <a href="img/functionssavescopechaininthe[[Scope]].pdf"></a>
+				<p>
+					In JavaScript, a closure is a function to which the variables of the surrounding context are bound by reference./A closure is a pair consisting of the function code and the environment in which the function is created. <br>
+					<br>
+					When a given execution context encounters a function definition in the code, a new function object is created with an internal property named [[scope]] (as in lexical scope) which references the current VariableEnvironment. (ES 5 13.0-2). <br>
+					<br> 
+					(functions nested in the hoisted function are referenced in the variable object of the hoisted function and dont get any variable object and [[Scopes]] property, they have a reference pointer from the variable object to their code in the memory) <br>
+					<br>
+					Every function gets a [[scope]] property - on creation -, and when the function is invoked the value of the scope property is assigned to the outer lexical environment reference (or outerLex) property of its VariableEnvironment - variable object of lexical parent function -. <br><br> 
+					(ES 5 10.4.3.5-7) In this way, each VariableEnvironment inherits from the VariableEnvironment of its lexical parent. This scope chaining runs the length of the lexical hierarchy starting from the global object.
+					<br>
+					<strong>	
+						IMPORTANT:regardless — whether a function will be activated later or not — the parent scope is already captured in it at creation time
+					</strong>
+				</p>
+				
+			</div>
+
+			<p>
+				OBJECT OF BINDINGS ===  FRAME <br>
+				LIST OF FRAMES === ENVIRONMENT <br>
+				CHAINED ENVIRONMENT FRAMES === SCOPE-CHAIN
+			</p>
+
+			<div><h4>STATIC / DYNAMIC SCOPE</h4>
+				
+			</div>
+			<!-- END <h4>STATIC / DYNAMIC SCOPE</h4> ///////////////////////////// -->
+			
+
+			</div>
+			<!-- END <h3>STATIC /DYNAMIC SCOPE</h3> ///////////////////////////// -->
+
+		</div>
+		<!--  LEXICAL ENVIRONMENT  -->
+
+		<div><h4>VARIABLE / ACTIVATION OBJECT</h4>
+
+			<p class="definition">In the Creation Stage the interpreter creates the executionContextObj by scanning the function for parameters or arguments passed in, local function declarations and local variable declarations. The result of this scan becomes the variableObject in the executionContextObj.</p>
+
+			<div><h5>difference between AKTIVATION and VARIABLE OBJECT</h5>
+
+				<p>function’s variable object is the same simple variable object, but besides variables and function declarations, it also stores formal parameters and arguments object and called the activation object.</p>
+
+				<ul><strong>Includos of ACTIVATION OBJECT</strong>
+					<li>Arguments Object</li>
+					<li><strong>Function</strong> name and pointer to memory when function is stored as value</li>
+					<li><strong>Variables</strong> as undefined in creation and with their values when activated</li>
+				</ul>
+
+				<p>Function expression are not hoisted in the activation object</p>
+
+			</div>
+			<!-- END <h5>difference between AKTIVATION and VARIABLE OBJECT ///////////////////////////// -->
+
+			</div>
+			<!-- END <h4>VARIABLE / ACTIVATION OBJECT</h4> ///////////////////////////// -->
+
+			<div><h4>THIS</h4>
+				
+				
+				<a class="reference" title="if you dont read this you wont understand the next paragraph tag" href="img/this-keyowrd.pdf"></a>	
+
+				<p>
+					- If on the left hand side from the call parentheses ( ... ) - of the function-, there is a value of Reference type then this value is set to the base object of this value of Reference type. <br>
+					- In all other cases (i.e. with any other value type which is distinct from the Reference type), this value is always set to null. But since there is no any sense in null for this value, it is implicitly converted to global object.
+
+					<i class="data all this shit above means: ">THIS Is Always the object on the base key of the reference type value on the left side from the Call paranthases <!-- if caller doesnt have any this value than this set to null which then gets set to global object  -->
+
+						<i><strong>IF FUNCTIONS CALLS AN OTHER FUNCTION:</strong> Inner functions and formal parameters are stored in the activation object and The activation object always returns as this value — null and  this value is set to null and, as consequence, to global.</i>
+
+						<script class="reference type values reference object">
+							var fooReference = {
+								base: global,
+								propertyName: 'foo'
+							};
+						</script>
+
+						<script title="cases for the left hand side from the call parentheses ( ... )">
+							function foo(){
+								console.log(this);
+							}
+
+							var myObj = {
+								bull : foo,
+								pig : {
+									piggieOne : function (){console.log(this);},
+									piggieTwo : this
+								}
+							}
+
+							var majom = foo;
+
+							function highest(){
+								middle();
+								function middle(){
+									deep();
+									function deep(){
+										foo();
+										myObj.bull();
+									}
+								}
+							}/* In the functions reference*/
+
+						foo(); // this equals to global obj
+						myObj.bull();
+						myObj.pig.piggieOne();
+						majom();
+						highest(); 
+					</script>
+
+				</i>
+
+			</p>
+
+		</div>
+		<!-- END <h4>THIS</h4> ///////////////////////////// -->
+		
+		<div><h3>CREATION PHASE Of Execution Context</h3>
+			
+			
+			<img src="img/executedfunction.png" alt="this function results the below executioncontextobject">
+			<img src="img/executioncontextobject.png" alt="reference" title="how an execution context object looks">
+			<ol><strong>STEPPS</strong>
+				<li>Definition Of Global Obejct 
+					<p>in case of creation of global execution context Global Object will be created</p>
+				</li>
+				<li>Definition of This</li>
+				<li>pointing on Outer Environment</li>
+				<li>HOISTING</li>
+			</ol>
+
+			<div class="concept"><strong>HOISTING</strong>
+				
+				<img src="img/hoisting.png" alt="reference">
+				<img src="http://adripofjavascript.com/blog/drips/variable-and-function-hoisting.html" alt="reference">
+				<p class="definition">Variable and Function setunp and reserving memorispace for them</p>
+				<p class="definition">Moves all declarations to the top of the current scope </p>
+				
+				<p><strong>Variables:</strong> Just the declaration/definition will be hosted so itt <strong>will be set on undefined</strong>, initialization not</p>
+				<p><strong>Functions Declarations</strong> definition are hoisted </p>
+				<p><strong>Function Expressions</strong> are not</p>
+
+				<p>This is useful because it allows you to express your high-level logic at the beginning of your source code rather than the end, communicating your intentions more clearly.</p>
+
+			</div> 
+			<!--  HOISTING -->
+
+		</div>
+		<!-- END  CREATION PHASE Of Execution Context -->
+
+
+		<div><h2>EXECUTION PHASE In Execution Context</h2>
+			<img src="img/executioncontextobjectExecution.png" alt="an execution context object which is activated by the execution stage">
+			<p class="definition">Assign values, references to functions and interpret / execute code.</p>
+			<p>It has:
+				<li>Global Object</li>
+				<li>this</li>
+				<li>executes you CODE</li>
+			</p>
+			
+		</div>
+		<!-- END <h2>EXECUTION PHASE</h2> ///////////////////////////// -->
+
+		<div><h2>EXECUTION STACK</h2>
+
+			<a class="reference" href="https://www.udemy.com/javascript-verstehe-die-seltsamen-teile/learn/v4/t/lecture/4025088?start=0">Execution stack on Udemy</a>
+			<a href="img/Execution-Context-David-Shariff.pdf" class="reference"></a>
+
+			<p class="definition">The one Global Execution context and any number of (function) execution contexts contexts, queued with other events in order
+				<p>The Order is: SEQUENCE FLOW </p>
+			</p>
+			<p class="definition">Execution context stack is a stack data structure to store and track all the execution stacks created while executing the JS code</p>
+			
+		</div>
+		<!-- END <h2>EXECUTION STACK</h2> ///////////////////////////// -->
+		
+		<div><h2>SINGLE THREADED SYNCRONOUS EXECUTION</h2>
+
+				<p><strong>Single threaded: </strong> One command at once and in order
+					<p>But the Browser can optimize and allow to execute more threads at once</p>
+				</p>
+				
+		</div>
+		<!-- END <h2>SINGLE THREADED SYNCRONOUS EXECUTION</h2> ///////////////////////////// -->
+
+		<div><h2>ASYNC JAVASCRIPT</h2>
+
+			<p class="concept">Javascript is SINGLE THREADED but can look ASYNC because beside Javascipt there are more engines are running side by side in the browser
+
+				<ul><strong>Async Running Engines</strong> in the brower
+					<li>Javascript - Javascript Execution Stack</li>
+					<li>Eventque</li>
+					<li>Rendering Engine</li>
+				</ul>
+			</p>
+
+			<div><h3>MESSAGE QUEUE AND EVENT LOOP</h3>
+				
+				<div><h4>MESSAGEQUE / EVENTQUE</h4>
+
+					<a href="img/eventque.pdf"></a>
+					<img src="img/event-loop.png" alt="" class="reference">
+					<p class="definition" title="MESSAGEQUE for EXTERNAL EVENTS">JavaScript runtimes contain a MESSAGE QUEUE which stores a list of messages from EXTERNAL EVENTS to be processed and their associated callback functions.</p> 
+
+					<p class="definition" title="Qued with their CALLBACKFUNCTIONS">These messages are queued in response to external events (such as a mouse being clicked or receiving the response to an HTTP request) given a callback function has been provided.</p> 
+
+					<p class="definition" title="NO CALLBACK than No MESSAGE ENQUED">If, for example a user were to click a button and no callback function was provided – no message would have been enqueued.</p>
+				</div>
+
+				<div><h4>EVENT LOOP</h4>
+					
+					<p class="definition">EVENT LOOP constantly checks whether the call stack is empty, and whenever it’s empty, it checks if the event queue has any functions waiting to be invoked. If it does, then the first function in the queue gets invoked and moved over into the call stack</p>
+
+				</div>
+				<!-- END <h4>EVENTLOOP</h4> ///////////////////////////// -->
+
+				<div><h4>EVENT-TABLE</h4>
+					<p>palce where the events are stageing</p>
+				</div>
+				<!-- END <h4>EVENT-TABLE</h4> ///////////////////////////// -->
+				
+				
+
+			</div>
+			<!-- END <h3>EVENTQUE</h3> ///////////////////////////// -->
+			
+		</div>
+		<!-- END <h2>ASYNC JAVASCRIPT</h2> ///////////////////////////// -->
+		
+		
+		<div><h2>CONTEXT VS SCOPE</h2>
+
+		</div>
+		<!-- END <h2></h2> ///////////////////////////// -->
+		
+
+	</div>
+	<!--  EXECUTION CONTEXT  -->
+
+</div>
+<!-- END <h1>CODE EXECUTION IN JAVASCIPT</h1> ///////////////////////////// -->
+

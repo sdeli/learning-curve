@@ -1,0 +1,15 @@
+/*Auto generated file by gulp do not edit it*/
+{{#shapes}}
+{{#first}}
+.icon {
+	background-image: url('../../images/sprites/css/{{{sprite}}}');
+}
+{{/first}}
+
+.icon--{{base}} {
+	width: {{width.outer}}px;
+	height: {{height.outer}}px;
+	background-position: {{position.relative.xy}};
+}
+{{/shapes}}
+

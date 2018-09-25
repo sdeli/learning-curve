@@ -1,0 +1,68 @@
+@define-mixin atXXSmall{
+	
+
+	@media (min-width: 400px) {
+		@mixin-content
+	}
+
+}
+
+
+@define-mixin atXSmall{
+	
+
+	@media (min-width: 576px) {
+		@mixin-content
+	}
+
+}
+
+@define-mixin atSmall{
+	
+	@media (min-width: 768px) {
+		@mixin-content
+	}
+
+}
+
+@define-mixin atMedium{
+	
+	@media (min-width: 992px) {
+		@mixin-content
+	}
+
+}
+
+@define-mixin atLarge{
+	
+	@media (min-width: 1200px) {
+		@mixin-content
+	}
+
+}
+
+@define-mixin atXLarge{
+	
+	@media (max-width: 1201px) {
+		@mixin-content
+	}
+
+}
+
+@define-mixin clearfix{	
+
+	&::after {
+			content: "";
+			clear: both;
+			display: table;
+		}
+
+}
+
+@define-mixin undSmall{
+	
+	@media (max-width: 768px) {
+		@mixin-content
+	}
+
+}

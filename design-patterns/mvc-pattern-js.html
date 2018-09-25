@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MVC Pattern</title>
+</head>
+<body>
+	<div><h2>MODEL / Wiev / CONTROLLER</h2>
+
+		<ul class="sequence">MODEL
+			<li>Models represent knowledge. A model could be a single object (rather uninteresting), or it could be some structure of objects.</li>
+			<li>Responsible for GETTING and MANIPULATING DATA</li>
+			<li>Interacts with database</li>
+			<li>Communcates wtih controller
+				<li>controller can request data from the model</li>
+			</li>
+			<li>can be where the data lives</li>
+		</ul>
+
+		<ul class="sequence">WIEV
+			<li>A view is a (visual) representation of its model</li>
+			<li>the interface of the application</li>
+			<li>communicates with the controller</li>
+			<li>Template Engine</li>
+		</ul>
+
+		<ul class="sequence">CONTROLLER
+			<li>A controller is the link between a user and the system.</li>
+			<li>takes in USER INPUT from wiev</li>
+			<li>like process requests: GET, POST, PUT, DELETE</li>
+			<li>mediates between model and wiev</li>
+		</ul>
+
+	</div>
+	<!-- END <h2>MODEL</h2> ///////////////////////////// -->
+
+	<div><h2>MVC FOLDER STRUCTURE</h2>
+		<project-name>
+			<application>
+				<assets>
+					<css></css>
+					<fonts></fonts>
+					<js></js>
+					<img><img>
+				</assets>
+				<controller>
+					controller.js || app.js (these are refferencing the model)
+				</controller>
+				<views></views>
+			</application>
+			<gulp>
+				<tasks>
+					watch.js
+					styles.js
+					scripts.js
+				</tasks>
+			</gulp>
+			<node_modules>
+			</node_modules>
+			gulpfile.js
+			package.json
+		</project-name>
+	</div>
+	<!-- END <h2>MVC FOLDER STRUCTURE</h2> ///////////////////////////// -->
+	
+	
+</body>
+</html>

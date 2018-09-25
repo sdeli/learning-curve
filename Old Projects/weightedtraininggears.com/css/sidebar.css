@@ -1,0 +1,285 @@
+@font-face {
+	font-family:"sniper";
+	src: url('../font/sniper/sniper/SNIPER__.ttf') format("truetype");
+	}
+
+#navbar-main-container{
+	position: absolute;
+	top: 72px;
+  	right:1px;
+  	pointer-events: none;
+}
+
+
+#left-side-absolute{
+	position: relative;
+  	overflow: hidden;
+  	pointer-events: none;
+  	
+  
+}
+#flyinout{
+	z-index: 3000;
+	pointer-events: all;
+}
+
+
+#left-side-absolute  div{
+	position: relative;
+
+}
+
+.subtitle{
+	opacity: 1;
+	z-index: 20;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	transition: all 1s 0s;	
+	}
+.subtitle:hover{
+		opacity: 0;
+
+	}
+
+#sidebar-controller{
+pointer-events: all;
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	left: -50px;
+	transition: all 0.5s 0s;
+	    z-index: 4000;
+}
+
+#sidebar-controller img{
+	width: 100%;
+	
+}
+
+#sidebar-container{
+	display: inline-block;
+	vertical-align: text-top;
+}
+
+/*katee-life-----------------------------------------------------------------------------*/*
+
+#allarticles{
+	width: 273px;
+	height: 131px;
+    overflow: hidden;
+    transition: all 1s 0s;
+    border: 9px solid black;
+	}
+
+#allarticles .subtitle{
+		opacity: 1;
+		top: -60px;
+	}
+
+#allarticles .subtitle:hover{
+		opacity: 0.7;
+		top: 0;
+
+	}
+
+#allarticles:hover{
+		height: 200px;
+	}
+
+#allarticles-menu-img{
+	position: relative;
+	top: -30px;
+	left: 0px;
+	width: 273px;
+	transition: all 1s 0s;
+
+}
+
+#allarticles .subtitle{
+
+	width: 273px;
+}
+
+
+
+/*Torrente-----------------------------------------------------------------------------*/
+
+#allgears-menu-item{
+	width: 273px;
+	height: 126px;
+    overflow: hidden;
+    transition: all 1s 0s;
+    border: 9px solid black;
+	}
+
+#allgears-menu-item:hover{
+		height: 200px;
+	}
+
+#allgears-menu-item-img{
+	position: relative;
+	top: -20px;
+	left: -1px;
+	width: 273px;
+	transition: all 1s 0s;
+
+}
+
+#allgears-menu-item .subtitle{
+	width: 273px;
+	opacity: 1;
+	top: 0px;
+}
+
+#allgears-menu-item .subtitle:hover{
+		opacity: 0.7;
+		top: 0;
+
+	}
+/*Pumped kocsog Gabo-----------------------------------------------------------------------------*/
+
+#weightedvest-menu-item{
+	width: 273px;
+	height: 155px;
+    overflow: hidden;
+    transition: all 1s 0s;
+    border: 9px solid black;
+	}
+
+#weightedvest-menu-item:hover{
+		height: 243px;
+	}
+
+#weightedvest-menu-item-img{
+	position: relative;
+	top: -51px;
+	left: 0px;
+	width: 273px;
+	transition: all 1s 0s;
+
+}
+
+#weightedvest-menu-item .subtitle{
+	width: 273px;
+	top: -51px;
+	
+}
+
+#weightedvest-menu-item .subtitle:hover{
+		opacity: 0.3;
+		top: 15px;
+
+	}
+
+/*Puncusok -----------------------------------------------------------------------------*/
+
+#gloves-menu-item{
+	width: 273px;
+	height: 155px;
+    overflow: hidden;
+    transition: all 1s 0s;
+    border: 8px solid black;
+	}
+
+#gloves-menu-item:hover{
+		height: 219px;
+	}
+
+#gloves-menu-item-img{
+	position: relative;
+	top: -20px;
+	left: 0px;
+	width: 273px;
+	transition: all 1s 0s;
+
+}
+
+#gloves-menu-item .subtitle{
+	width: 273px;
+	top: -15px;
+}
+
+#gloves-menu-item .subtitle:hover{
+		top: 0px;
+		opacity: 0.2;
+	}
+
+/*monika -----------------------------------------------------------------------------*/
+
+#armblaster-menu-item{
+	width: 273px;
+	height: 181px;
+    overflow: hidden;
+    transition: all 1s 0s;
+    border: 8px solid black;
+	}
+
+#armblaster-menu-item:hover{
+		height: 263px;
+	}
+
+#armblaster-menu-item-img{
+	position: relative;
+	top: -29px;
+	left: 0px;
+	width: 273px;
+	transition: all 1s 0s;
+
+}
+
+#armblaster-menu-item .subtitle{
+	top: -32px;
+	width: 273px;
+}
+
+#armblaster-menu-item .subtitle:hover{
+		top: 5px;
+		opacity: 0.2;
+	}
+
+
+/*Selyemhernyok-----------------------------------------------------------------------------*/
+
+#ankleandwrist-menu-item{
+	width: 273px;
+	height: 175px;
+    overflow: hidden;
+    transition: all 1s 0s;
+    border: 8px solid black;
+	}
+
+#ankleandwrist-menu-item-img{
+	position: relative;
+	top: -16px;
+	left: 0px;
+	width: 273px;
+	transition: all 1s 0s;
+
+}
+
+#ankleandwrist-menu-item .subtitle{
+	width: 273px;
+	top: -5px;
+}
+
+#ankleandwrist-menu-item .subtitle:hover{
+	top: 10px;
+	opacity:0.2;
+}
+
+
+/*media queries-----------------------------------------------------------------------------*/
+
+/*------------------------------*/
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+} 
+.group:after {
+  clear: both;
+}
+.group {
+  zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}

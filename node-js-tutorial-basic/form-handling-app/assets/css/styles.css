@@ -1,0 +1,58 @@
+body{
+	background-color: skyblue;
+	font-family: verdana;
+	color: #fff;
+	padding: 1.875rem;
+}
+.container{
+	overflow: hidden;
+	display: block;
+	padding-left: 18px;
+	padding-right: 18px;
+	max-width: 1236px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.container--slim{
+	max-width: 805px;
+}
+
+h1{
+	font-size: 2.375rem;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	text-align: center;
+}
+p{
+	font-size: 1.5rem;
+	text-align: center;
+}
+
+.my-form{
+	font-size: 1.5rem;
+	margin-bottom: 2rem;
+}
+
+.my-form__input-text{
+	width:100%;
+	display: block;
+	height: 1.4rem;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+  
+}
+
+.my-form__label{
+	display: block;
+    padding: 0.3rem 0;
+    text-transform: uppercase;
+}
+
+.my-form__submit{
+	margin-top: 0.4rem;
+	font-size: 1.5rem;
+	display: block;
+    padding: 0.3rem 1rem;
+    text-transform: uppercase;
+}

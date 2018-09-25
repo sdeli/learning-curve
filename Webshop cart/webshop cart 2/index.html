@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cart Website</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/screen.css" rel="stylesheet">
+    <link href="css/ninjamodal.css" rel="stylesheet">
+
+
+
+  </head>
+
+  <body>
+<!--NinjaModal //////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<div id="modal-pop-up">
+  <div class="container">
+
+    <div id="modal-header"><h1>Your Cart</h1><div class="modal-cross">x</div></div>
+    <div id="modal-subtitle"><h4>join the mailing list to be spammed with ninja mails</h4></div>
+
+    <div id="modal-body" class="cart-table">
+      <table class="table cart-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody class="table-hover"></tbody>
+        <tfoot></tfoot>
+      </table>
+    </div>
+
+    <div id="modal-footer"><span id="close-modal" class="btn btn-danger">hii jaa</span></div>
+
+  </div>
+</div>
+
+<!-- Checkout//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+     <section class="container-fluid checkout"><!--- Checkout-->
+      <div class="row">
+        <div class="container total-parent">
+
+          <div class="col-xs-12 col-md-8 total-container">
+            <div id="showItemTotalInNav"><p></p></div>
+            <a href="#" id="proceesToCheckout" class="btn btn-warning">proceesToCheckout</a>
+            <a href="#" id="OpenShoppingCart" class="btn btn-success" >OpenShoppingCart</a>
+          </div>
+
+        </div><!--Container-->
+      </div><!--ROW-->
+    </section>
+<!-- Checkout END//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+<!-- Navbar//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+<section id="nav-header">
+  <nav class="row">
+    <div class="container">
+      
+    <div class="col-xs-12">
+      <button class="navbar-toggler light float-xs-right hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-toggle"></button>
+      <ul id="navbar-toggle">
+        <li class="active">HOME</li>
+        <li>ABOUT</li>
+        <li>PRODUCTS</li>
+      </ul>
+    </div>
+    </div>
+    
+  </nav>
+
+</section>
+
+<!-- Navbar ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<!-- Cart Section //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    <section class="container-fluid" id="cart-sec">
+    <div class="row">
+        <div class="container">
+
+        <div class="col-xs-12 col-md-3">
+          <div class="card" >
+            <div class="card-block">
+             <h3 class="card-title">Pixel-Phone</h3><h4 class="card-sudtitle text-muted">price</h4> 
+            <img class="img-fluid" src="http://placehold.it/350x250/E8117F">
+            </div>
+            <div class="card-block">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary" data-product="Pixel-Phone" data-price="30000" data-qty="1" data-id="1">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+          
+        <div class="col-xs-12 col-md-3">
+          <div class="card" >
+            <div class="card-block">
+             <h3 class="card-title">Pixel-Phone</h3><h4 class="card-sudtitle text-muted">price</h4> 
+            <img class="img-fluid" src="http://placehold.it/350x250/E8117F" alt="Card image cap">
+            </div>
+            <div class="card-block">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary" data-product="Pixel-Phone" data-price="30000" data-qty="1" data-id="2">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-3">
+          <div class="card" >
+            <div class="card-block">
+             <h3 class="card-title">Pixel-SDCard32GB</h3><h4 class="card-sudtitle text-muted">price</h4> 
+            <img class="img-fluid" src="http://placehold.it/350x250/E8117F" alt="Card image cap">
+            </div>
+            <div class="card-block">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary" data-product="Pixel-SDCard32GB" data-price="30000" data-qty="1" data-id="3">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-3">
+          <div class="card" >
+            <div class="card-block">
+             <h3 class="card-title">Pixel-Pad</h3><h4 class="card-sudtitle text-muted">price</h4> 
+            <img class="img-fluid" src="http://placehold.it/350x250/E8117F" alt="Card image cap">
+            </div>
+            <div class="card-block">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary" data-product="Pixel-Pad" data-price="30000" data-qty="1" data-id="4">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-3">
+          <div class="card" >
+            <div class="card-block">
+             <h3 class="card-title">Pixel-Phone</h3><h4 class="card-sudtitle text-muted">price</h4> 
+            <img class="img-fluid" src="http://placehold.it/350x250/E8117F">
+            </div>
+            <div class="card-block">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary" data-product="Pixel-Phone" data-price="30000" data-qty="1" data-id="5">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+          
+        <div class="col-xs-12 col-md-3">
+          <div class="card" >
+            <div class="card-block">
+             <h3 class="card-title">Pixel-Phone</h3><h4 class="card-sudtitle text-muted">price</h4> 
+            <img class="img-fluid" src="http://placehold.it/350x250/E8117F" alt="Card image cap">
+            </div>
+            <div class="card-block">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary" data-product="Pixel-Phone" data-price="30000" data-qty="1" data-id="6">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-3">
+          <div class="card" >
+            <div class="card-block">
+             <h3 class="card-title">Pixel-SDCard32GB</h3><h4 class="card-sudtitle text-muted">price</h4> 
+            <img class="img-fluid" src="http://placehold.it/350x250/E8117F" alt="Card image cap">
+            </div>
+            <div class="card-block">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary" data-product="Pixel-SDCard32GB" data-price="30000" data-qty="1" data-id="7">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-3">
+          <div class="card" >
+            <div class="card-block">
+             <h3 class="card-title">Pixel-Pad</h3><h4 class="card-sudtitle text-muted">price</h4> 
+            <img class="img-fluid" src="http://placehold.it/350x250/E8117F" alt="Card image cap">
+            </div>
+            <div class="card-block">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary" data-product="Pixel-Pad" data-price="30000" data-qty="1" data-id="8">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+        </div><!--ROW-->
+      </div>
+      
+    </section>
+
+    <!-- Card END//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+ <section class="container-fluid checkout"><!--- Checkout-->
+      <div class="row">
+        <div class="container total-parent">
+
+          <div class="col-md-6">
+            <table class="table cart-table">
+              <thead class="thead-inverse">
+                <tr>
+                  <th>Product</th>
+                  <th>Quantity</th>
+                  <th>Price of Unit</th>
+                  <th>Subtotal</th>
+                </tr>
+              </thead>
+              <tbody class="table-hover">
+                
+              </tbody>
+              <tfoot>
+      
+                
+              </tfoot>
+              
+            </table>
+           </div>
+
+        </div><!--ROW-->
+      </div>
+    </section>
+
+
+
+<!-- Modal //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    
+
+        
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+ 
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/script.js"></script>
+    <script src="js/ninjamodal.js"></script>
+  </body>
+</html>

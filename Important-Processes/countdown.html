@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	
+</head>
+<body>
+
+<div id="one">
+
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script type="text/javascript">
+
+(function(){
+"use strict";
+	var contDiv=$("#one")[0];
+
+	function addElements(){
+
+		var formElement=document.createElement("form");
+		formElement.id="form";
+		contDiv.appendChild(formElement);
+
+		var inputElement=document.createElement("input");
+		inputElement.type="number";
+		inputElement.id="minute";
+		formElement.appendChild(inputElement);
+
+		var submitBtn=document.createElement("input");
+		submitBtn.type="button";
+		submitBtn.id="btn";
+		submitBtn.value="Click me";
+		formElement.appendChild(submitBtn);
+
+	}
+
+	function defineStyles(){
+		
+		var styleElement=document.createElement("style");
+		styleElement.id="style";
+		$("head")[0].appendChild(styleElement);
+
+		styleElement.innerHTML=" .classRealtive{position:relative; left:50px;top:50px; color: red} .font{font-size: 25px;letter-spacing: 1px;font-family: \"Segoe UI\",Arial,sans-serif; line-height: 1.5;}"
+	}
+
+	function getMinute(){
+		$("input#btn")[0].addEventListener("click",function(){
+			var sieblings=this.parentElement.children;
+			window.minutes="";
+			for(var i=0; i<=sieblings.length-1; i++){
+				if(sieblings[i].type==="number"){
+					minutes=sieblings[i].value;
+				}
+			}
+			countDown();
+		});
+	}
+
+	function ticktack(sec, id ){
+
+		var minutesFloor=Math.floor(parseInt(sec)/60);
+		id="#"+id+" "+"p";
+		var	timeToWriteOut=minutesFloor+ " : "+sec%60
+  		console.log(minutesFloor+ " "+sec%60);
+  		$("#count p")[0].innerHTML=timeToWriteOut;
+	}
+
+
+	function countDown(){
+		var countDownDiv=document.createElement("div");
+		countDownDiv.id="count";
+		contDiv.appendChild(countDownDiv);
+		countDownDiv.className="classRealtive";
+
+		var countDownDivP=document.createElement("p");
+		countDownDiv.appendChild(countDownDivP);
+		$("#count p")[0].className="font";
+
+		var seconds=minutes*60;
+
+
+		var intervalhandle=setInterval(function(){
+			console.log("megy")
+			if(seconds>=0){
+			ticktack(seconds, countDownDiv.id, intervalhandle);
+			seconds=seconds-1
+			}else{ clearInterval(intervalhandle);}
+		}, 1000);
+		
+	}
+
+	addElements();	
+	defineStyles();
+	getMinute();
+
+
+//-------------------------------------------------------------------------------------------------
+})();
+
+/*
+add form
+add input
+add submit
+display inline
+
+get the input
+
+check if nana return
+
+else:
+tick:
+min= value
+sec= min*60
+
+add countdown div
+position relative
+left: 300px
+top: 300px
+
+
+*/
+
+</script>
+</html>

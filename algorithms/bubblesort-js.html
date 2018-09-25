@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>bubble sort</title>
+</head>
+<body style="background: black">
+<script>
+
+	myBubbleSort([8,7,167,6,-11,5,4,-3,9,4,2,4,3])
+
+	function myBubbleSort(arr){
+
+	/* from arr length we need to substract 1.. 1 for we dont need to iterate for the last item
+	(which is the first in the array) */
+	let maxIterations = arr.length - 1;		
+
+	for(let passes = maxIterations; passes >= 1; passes--){
+
+	 	for( let switches = 0; switches <= passes; switches++){
+	 		if (arr[switches] > arr[switches + 1]) {
+	 			let tempContainer = arr[switches + 1];
+	 			arr[switches + 1] =  arr[switches];
+	 			arr[switches] = tempContainer;
+	 		}
+	 	}
+	}
+
+	console.log(arr);
+	return arr;
+
+	}
+</script>
+</body>
+</html>

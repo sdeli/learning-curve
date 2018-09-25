@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cryptocurency Tracker</title>
+</head>
+<body>
+	<div>
+		<input id="currencytags" type="text">
+		<button id="requestRate">mybutton</button>
+	</div>
+	<div>
+		<select id="selectCurr">
+			<option value="USD">USD</option>
+		</select>
+		<button id="allRates">See All</button>
+		<ul id="output"></ul>
+	</div>
+	<script src="assets/js/getRates.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  	<script>
+  		
+  		(function(){
+
+  			const url = 'https://api.coinmarketcap.com/v1/ticker/';
+
+  			// add capitalize method to string values
+  			String.prototype.capitalize = function () {
+  			    return this.charAt(0).toUpperCase() + this.slice(1);
+  			}
+
+            $.get( url, function(data){
+            	console.log(data);
+            	let currnames = getCurrNames(data);
+
+                $('#currencytags').autocomplete({
+                    source: currnames
+                })
+            })
+
+            function getCurrNames(dataArr){
+            	console.log(dataArr);
+            	let nameHolder = [];
+
+            	dataArr.forEach(function(item, i){
+            		
+            		for (key in item) {
+            			if (key === "name") {
+            				nameHolder.push(item[key].capitalize());
+            			}
+            		}
+
+            	});
+            	console.log(nameHolder);
+            	return nameHolder;
+
+            }
+
+  		}());
+       
+  	</script>
+</body>
+</html>

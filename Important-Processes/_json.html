@@ -1,0 +1,41 @@
+
+
+<script title="Json Methods">
+
+	myObject = { 
+		prop1 : "12",
+		prop2 : true
+	}
+
+	var myJsonObj = JSON.stringify(myObject);
+	console.log(myJsonObj);
+
+	var myJavascriptObjekt = JSON.parse(myJsonObj);
+	console.log(myJavascriptObjekt);
+
+	var myJavascriptObjekt2 = JSON.parse('{ "prop1" : "12", "prop2" : true}');
+	console.log(myJavascriptObjekt2);
+
+	var queryString ='who=majom&department=majom&email=majom';
+
+	var queryString ='who=majom&department=majom&email=majom';
+
+	function queryStringToJSON(queryString) {            
+	    
+	    /*if the string is a url with query use this line at first and not the queryString variable*/
+	    // var pairs = location.search.slice(1).split('&');
+	    
+	    let pairs = queryString.split('&');
+
+	    let result = {};
+	    pairs.forEach(function(pair) {
+	        pair = pair.split('=');
+	        result[pair[0]] = decodeURIComponent(pair[1] || '');
+	    });
+
+	    return JSON.parse(JSON.stringify(result));
+	}
+
+	var query_string = queryStringToJSON(queryString);
+	
+</script>

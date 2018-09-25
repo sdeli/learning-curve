@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>method-chaining-js</title>
+</head>
+<body>
+	
+	<script>
+		var obj = {
+			prop : "default",
+			method1 : function(arg){
+				this.prop = arg;
+				console.log("method1 - now prop is: " + arg);
+				return this;
+			},
+			method2 : function(arg){
+				this.prop = arg;
+				console.log("method2 - nowprop is: " + arg);
+				return this;
+			}
+		}
+
+		console.log(obj.prop);
+		obj.method1("king").method2("ceasar"); // THIS IS METHOD CHAINING
+ 		console.log(obj.prop);
+	</script>
+
+</body>
+</html>

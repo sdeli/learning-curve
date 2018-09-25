@@ -1,0 +1,82 @@
+<div><h1>GETTERS and SETTERS</h1>
+	
+	<ul class="explanation" title="GETTERS and SETTERS">
+		<li>getters and setters are defining one property not 2 different methods as it looks like</li>
+		<li>SET DEFINES what should happen if prop is MODIFIED: "person.fullName = 'Some Name'"
+			<p>this the PROPERTIES VALUE</p>
+		</li>
+		<li>GET DEFINES the return value ACCESSED: 'person.fullName = 'Jack Franklin';'
+			<p>so it should have a return value</p>
+			<p>this is the PROPERTIES ACCESSOR</p>
+		</li>
+	</ul>
+
+	<script class="demostration">
+
+		var person = {
+			firstName: 'Jimmy',
+			lastName: 'Smith',
+			get fullName() {
+				/* when referring on a prop in get/set in a class you need to use underline before to avoid exceeded call stack: return this._firstName + ' ' + this._lastName; */
+				return this.firstName + ' ' + this.lastName;
+			},
+			set fullName (name) {
+				var words = name.toString().split(' ');
+				this.firstName = words[0] || '';
+				this.lastName = words[1] || '';
+			}
+		}
+
+		var jacksFullName = person.fullName;
+		console.log(jacksFullName);
+
+		person.fullName = 'Jack Franklin';
+		console.log(person.firstName); // Jack
+		console.log(person.lastName) // Franklin
+
+		//CREATING THE SAME RESULT WITHOUT GETTER AND SETTER
+
+		var obj = {
+			foo:    'this is the value of foo',
+			getFoo: function() {
+				return this.foo;
+			},
+			setFoo: function(val) {
+				this.foo = val;
+			}
+		}
+
+		console.log(obj.getFoo());
+		// "this is the value of foo"
+
+		obj.setFoo('hello');
+
+		console.log(obj.getFoo());
+		// "hello"
+
+		//  SSAME RESULT WITH Object.defineProperties but you can set to writable or const, or enumerable
+		var obj = {
+			foo: 'this is the value of foo'
+		};
+
+		Object.defineProperties(obj, {
+			'getFoo': {
+				value: function () {
+					return this.foo;
+				},
+				writable: false
+			},
+			'setFoo': {
+				value: function (val) {
+					this.foo = val;
+				}
+			}
+		});
+
+
+
+
+</script>
+	
+</div>
+<!-- END <h1>GETTERS and SETTERS</h1> ///////////////////////////// -->

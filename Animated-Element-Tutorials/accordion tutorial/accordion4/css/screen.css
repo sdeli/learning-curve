@@ -1,0 +1,45 @@
+
+li{
+list-style-type: none;
+}
+
+a{
+	text-decoration: none;
+}
+
+
+ul{
+	padding: 0;
+}
+
+section nav li a{
+	width: 190px;
+}
+
+
+
+section .parent-menu>li {
+	position:relative;
+	float: left;
+	padding: 3px 0;
+	margin: 0 3px;
+
+}
+
+section .sub-menu{
+	position: absolute;
+	z-index:-3;
+	left:0px;
+	top:3px;
+}
+
+section .sub-menu>li{
+	position: absolute;
+	left:0px;
+	top:0px;
+	transition: 1s;
+}
+
+
+
+

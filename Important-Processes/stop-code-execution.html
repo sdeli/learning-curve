@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+<script>
+
+	var stopExecutionFor = (function (){
+
+      var returnValue;
+
+      function start (timeFrame){
+
+        var firstSecond = Date.now() + timeFrame;
+
+        while ( Date.now() <= firstSecond && stopHandler === true ) {
+          
+        } //while
+
+        return returnValue = stopHandler;
+
+      } // END Start    
+
+      return {
+
+        start  : function(timeFrame){ start( timeFrame ); },
+        returnValue : returnValue
+      }
+
+  })(); // stopExecutionFor(timeFrame)
+
+</script>
+</body>
+</html>

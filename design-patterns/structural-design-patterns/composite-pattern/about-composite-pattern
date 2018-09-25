@@ -1,0 +1,8 @@
+The composite pattern describes a group of objects that is treated the same way as a single instance of the same type of object. The intent of a composite is to "compose" objects into tree structures to represent part-whole hierarchies.
+
+composite-object: An objuct which features more subordinated object
+leafe-object: An object which doesnt have any other object in the tree underneath
+
+Functions executed on the composite are passed down to each of the children to be executed. =>
+=> Each of the objects in the hierarchy needs to implement a certain interface. =>
+=> Most commonly : Add, Remove, Getchild, getElement(vives the html element of node)

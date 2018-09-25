@@ -1,0 +1,242 @@
+section.container-fluid{
+	padding:0;
+	margin:0;
+}
+
+section.container-fluid img{
+	width: 100%;
+}
+
+.container{
+	/*width: 1200px;*/
+}
+
+p{
+	margin:0;
+	padding:0;
+}
+
+
+/* Menu 1-------------------------------------------------------------------------------------------------------------------------*/
+
+.menu-1{
+	background-color: #444444;
+	color: #ddd;
+}
+.menu-1 .container{
+	text-align: right;
+	padding: 7px 
+}
+.menu-1 li{
+	list-style-type: none;
+	display: inline-block;
+	border-right: 1px solid #ddd;
+	padding: 0 10px;
+}
+
+.menu-1 a{
+	text-decoration: none;
+	color: inherit;
+}
+
+/* Menu 1 END-------------------------------------------------------------------------------------------------------------------------*/
+
+/*MENUSAV-2 B logo////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.menu-2-b{
+	height: 105px;
+	margin-bottom: 2px solid #2e2e2e;
+}
+
+.menu-2-b .container,
+.menu-2-b .row{
+	height: 100%;
+	background: #2e2e2e;
+}
+
+.menu-2-b .container{
+	display: flex;
+	align-items: center;
+
+}
+#searchfield{
+
+}
+
+.menu-2-b .col-md-4{
+	display: flex;
+}
+
+/* Menu 2 B END-------------------------------------------------------------------------------------------------------------------------*/
+
+/*MENUSAV-2 logo////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+.menu-2{
+	display: flex;
+	background: black;
+	height: 200px;
+	align-items: center;
+}
+.menu-2 .container{
+	height: 70%;
+	background: lightblue;
+}
+.menu-2 .row{
+	background: blue;
+	display: flex;
+	height: 100%;
+	align-items: center;
+}
+.menu-2 .row >div{
+	background: yellow;
+	display: flex;
+	height: 70%;
+	align-items: center;
+
+}
+
+.menu-2 .row div div{
+	background: grey;
+	height: 50px;
+}
+
+.menu-2 .row div p{
+	background: red;
+	display: block;
+}
+
+.menu-2 .row div div #p{
+	height: 20px;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+/*MENUSAV-3 NAV////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+.menu-3{
+	background:#005a8f;
+}
+.menu-3 ul{
+	padding:0;
+	margin: 0;
+}
+
+.menu-3 li{
+	
+	display: inline-block;
+	list-style: none;
+}
+
+.menu-3 li{
+	text-decoration: none;
+	color: white;
+}
+
+.menu-3 li a{
+	display: flex;
+	height: 50px;
+	align-items: center;
+	padding: 5px 15px;
+
+	
+}
+
+a span {
+	color: white;
+	font-family: "open sans", Helvetica, sans-serif;
+	font-weight: bold;
+	font-style: normal;
+	cursor: pointer;
+  
+}
+
+.allcategories-ul-div{
+	display: none;
+	opacity: 1;
+	transition: all 1s 0s;
+}
+/* MENUSAV-3 NAV Hover effect menus-------------------------------------------------------------------------------------------------------------------------*/
+.menu-3 .allcategories-ul-div li{
+	display: block;
+}
+
+
+
+/* MENUSAV-3 NAV END Hover effect menus-------------------------------------------------------------------------------------------------------------------------*/
+
+/* Social sav////////////////////////////////////////////////////////////////////////////////////////*/
+
+.Social .row{
+	height: 200px;
+	background: white;
+
+}
+
+/* Social sav End////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+section.article{
+	border-top: 1px solid grey;
+}
+section.article .container-wide{
+	width: 90%;
+	margin: 0 auto;
+}
+
+section.article .article{
+	position: relative;
+	padding-right:;
+	font-size: 17px;
+	line-height: 1.7em;
+	font-family: 'Droid Sans', Helvetica, Arial, Lucida, sans-serif;
+	background: transparent;
+
+}
+.article h1{
+	display: block;
+	margin: 50px 10px;
+	font-family: 'Oswald', sans-serif;
+	font-weight:  700;
+}
+.article p{
+	display: block;
+	margin: 30px 0;
+	z-index: 1;
+	width: 60%;
+	 line-height: 2;
+	padding: 0 5% 0 3%;
+	font-family: 'Alegreya Sans SC', sans-serif;
+	font-weight: 600;
+	font-size: 22px;
+}
+
+.article img{
+	position: absolute;
+    right: -2%;
+    top: 4%;
+    z-index: -1;
+    width: 50%;
+}
+
+.article a{
+	text-decoration: none;
+	color: #AF0909;
+	font-family: 'Oswald', sans-serif;
+	font-weight:  700;
+	font-size: 20px;
+    margin: 0 5px;
+}
+
+section.Social{
+	background: #ddd;
+}
+section.Social .row{
+	background: #ddd;
+}
+/*section.Social img{
+	width: 200px;
+	position: absolute;
+	top: 400px;
+}*/

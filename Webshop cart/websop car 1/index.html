@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cart</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/screen.css" rel="stylesheet">
+
+    <style type="text/css">
+
+      .item{
+        border: 1px solid grey;
+        width: 200px;
+        padding: 20px;
+        font-size: 11px;
+        display: inline-block;
+        height: 300px;
+      }
+
+      .item img{
+        width: 100%;
+        display: block;
+      }
+      
+    </style>
+
+  </head>
+
+  <body>
+    <div class="item">
+      <h3>ipad asasdas 32GB</h3>
+      <img src="http://placehold.it/250x150/E8117F">
+      <p>Buy me please Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. </p>
+        <a href="#" class="producItem" data-name="iphone" data-price="50000"  data-s="32GB" data-id="vazze">add to cart</a>
+      </div>
+
+      <div class="item">
+      <h3>ipad asasdas 32GB</h3>
+        <img src="http://placehold.it/250x150/E8117F">
+        <p>Buy me please Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. </p>
+          <a href="#" class="producItem" data-name="ipad" data-price="30000" data-s="32GB"  data-id="2">add to cart</a>
+        </div>
+
+        <div class="item">
+          <h3>cabel</h3>
+          <img src="http://placehold.it/250x150/E8117F">
+          <p>Buy me please Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. </p>
+            <a href="#" class="producItem" data-name="cabel" data-price="1200" data-s="3" data-id="3">add to cart</a>
+          </div>
+
+          <div class="item">
+            <h3>SD-CARD 32GB</h3>
+            <img src="http://placehold.it/250x150/E8117F">
+            <p>Buy me please Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. </p>
+              <a href="#" class="producItem" data-name="sd-card" data-price="3000" data-s="32GB" data-id="4">add to cart</a>
+            </div>
+
+            <div class="item">
+              <h3>SD-CARD 16GB</h3>
+              <img src="http://placehold.it/250x150/E8117F">
+              <p>Buy me please Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. </p>
+                <a href="#" class="producItem" data-name="sd-card" data-price="1500" data-s="16GB" data-id="5">add to cart</a>
+              </div>
+
+              <div class="item">
+                <h3>SD-CARD 64GB</h3>
+                <img src="http://placehold.it/250x150/E8117F">
+                <p>Buy me please Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. </p>
+                  <a href="#" class="producItem" data-name="sd-card" data-price="5000" data-s="64GB"  data-id="6">add to cart</a>
+                </div>
+
+                <div  id="outbound"></div>
+
+  
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+
+     <script type="text/javascript">
+
+      var shopcart=[];
+
+      $(document).ready(function(){ 
+        
+        outPutCart();
+
+        $(".producItem").click(function(e){
+console.log(e.target.dataset,$(e.target.dataset));
+          e.preventDefault();
+          var itemInfo= $(e.target.dataset)[0];
+          itemInfo.qty=1;
+          var itemInCart= false;
+          
+
+          $.each(shopcart, function(index, value){
+            console.log(index+" "+value);
+            if(value.id===itemInfo.id){
+              itemInCart= true;
+              value.qty=parseInt(value.qty)+parseInt(itemInfo.qty);
+              
+              
+              
+            }
+          });
+
+          if(!itemInCart){
+
+            shopcart.push(itemInfo);
+          }
+
+          sessionStorage["sc"]=JSON.stringify(shopcart);
+          outPutCart();
+
+        });
+        function outPutCart(){
+
+             if (sessionStorage["sc"]) {
+            shopcart=JSON.parse(sessionStorage["sc"]);
+        }
+        
+        $.each(shopcart, function(index, value){
+           var holderHTML=holderHTML+value.name+value.qty;
+          
+              
+        });
+        console.log(shopcart);
+         $("#outbound").replaceWith(shopcart);
+      };
+
+      });
+
+  </script>
+  </body>
+</html>

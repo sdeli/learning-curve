@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Reverse Words</title>
+</head>
+<body>
+<script>
+	/* SECTION: Pseudo 
+		function which takes one parameter: string
+		reverses every words in the string but words order remains the same
+		not possible to use reverse method
+	*/
+	let text = 'function which takes one parameter: string reverses every words in the string but ords order remains the same not possible to use reverse method';
+
+	reverseWords(text);
+
+	function reverseWords(text){
+		
+		let wordsArr = text.split(' ');
+		let newArr = [];
+
+		wordsArr.forEach( (word,i) => {
+			var reversedWord = reverseWord(word,i);
+			newArr.push(reversedWord);
+		});
+
+		return newArr;
+
+		function reverseWord(word,i){
+
+			reversedWord = "";
+
+			for (let i = word.length - 1; i >= 0; i-- ) {
+				reversedWord += word[i]; 
+			}
+
+			return reversedWord;
+		}		
+	
+	} // END reverseWords
+</script>	
+</body>
+</html>

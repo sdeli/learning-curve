@@ -1,0 +1,164 @@
+
+<p>Here Is A Pseudo-overview Of How The Interpreter Evaluates The Code:
+	<ol>		
+		<li>Code Execution Stage encounters a function definiton</li>
+
+		<li>Enter the <strong>CREATION STAGE</strong> of the ExecutionContextObject
+			<p>With Other Words: create function by FunctionConstructorObject</p>
+
+			<ol>
+				<li>Initialize the <strong>SCOPE CHAIN</strong> - (with other words: chained environment frames).
+					<p>Scope chain is initialized by the [[scope]] property of the function
+						<p>Identifier Resolution optimization</p>
+					</p>
+				</li>
+				<li>Create the VARIABLE OBJECT:
+					<li>Create the <strong>ARGUMENTS OBJECT</strong>, check the context for parameters, initialize the name and value and create a reference copy.</li>
+				</li>
+				<li>Scan The Context For <strong>Function Declarations</strong>:
+					<li>For each function found, create a property in the  variable object that is the exact function name, which has a reference pointer to the function in memory.
+						<p>If the function name exists already, the reference pointer value will be overwritten.</p>
+					</li>
+				</li>
+				<li>Scan The Context For Variable Declarations:
+					<li>For each variable declaration found, create a property in the variable object that is the variable name, and initialize the value as undefined.</li>
+					<li>If the variable name already exists in the variable object, do nothing and continue scanning.</li>
+				</li>
+				<li>Determine The Value Of "this" Inside The Context.</li>
+			</ol>
+
+		</li> <!-- CREATION STAGE  -->
+
+		<li>Activation / Code Execution Stage:
+			<li>Run / interpret the function code in the context and assign variable values as the code is executed line by line.</li>
+		</li> <!-- CODE EXECUTION STAGE -->
+
+	</ol>
+</p>
+
+<p><strong>IMPORTANT NOTE</strong>
+	
+	<script class="" title="Conside this code">
+
+		/*
+			If you call majom in the console it dirs out the hoisted rezso functions [[Scopes]] porperty 
+
+			In the scope property you will se just 2 free variables of th 4. 
+
+			If idiot2 would reference not even that 2 free variables, the [[Scopes]] property would reference just the global object.
+
+			This means during the hoisting somehow the syntax parser goes threw the whole code nested in a function and checks which variable needs to be passed into its [[scope]] property that it can pass it further to the next function nested in itself.
+
+			This is because:  ES engines may easily optimize the ECMAScript implementation and save only needed variables. 
+			this is called the IDENTIFIER RESOLUTION OPTIMIZATION
+
+		*/
+
+		function majom(){
+
+			var geza = 10;
+			var feri = 20;
+			var alebert = 20;
+			var bob = 20;
+
+			function rezso(){
+
+				function idiot(){
+
+					function idiot2(){
+						console.log(geza);
+						console.log(feri);
+					}
+
+				}
+				dir(idiot);
+
+			}
+			dir(rezso);
+
+		}
+		majom();
+
+	</script>
+
+</p>
+
+<p> Interesting code to play with
+	<script>
+		var majom = {
+​
+    inda : function(){
+            function majom(){
+                var geza = 10;
+                
+                dir(rezso);
+                function rezso(){
+                    console.log(geza);
+                }
+            
+            }
+            majom();
+    }
+​
+}
+
+function majom(){
+	var geza = 10;
+	var feri = 20;
+	function rezso(){
+		function idiot(){
+			console.log(geza);
+		}
+		dir(idiot);
+	}
+	dir(rezso);
+}
+majom();
+
+function majom(){
+	var geza = 10;
+	var feri = 20;
+	function rezso(){
+		function idiot(){
+			console.log(geza);
+		}
+		dir(idiot);
+	}
+	dir(rezso);
+	rezso();
+}
+majom();
+
+function majom(){
+	var geza = 10;
+	var idiot;
+	barom();
+	function gizi(){}
+	function rezso(){
+		console.log(geza);
+	}
+	dir(rezso);
+}
+
+function barom(){}
+majom();
+
+var majom = {
+
+		inda : function(){
+			
+			function majom(){
+
+				function gorill(){
+					var x = 12;
+			}
+		}
+		dir(majom);
+		console.log(this);	
+		var a = 12;
+	}
+
+}
+majom.inda()
+	</script>
+</p>

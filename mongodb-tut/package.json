@@ -1,0 +1,17 @@
+{
+  "name": "mongodb-tut",
+  "version": "1.0.0",
+  "description": "it is a tutorial for mongodb",
+  "main": "undefined",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sandor Deli",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.9",
+    "express": "^4.16.3",
+    "mongodb": "^3.1.1",
+    "mongoose": "^5.2.1"
+  }
+}

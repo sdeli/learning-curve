@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/screen.css" rel="stylesheet">
+
+    <style type="text/css">
+    /* -----------------------------------------HAMBURGER---------------------------*/
+
+    * {
+        margin: 0;
+        padding: 0; 
+      }
+
+      #nav-icon1 {
+  width: 60px;
+  height: 45px;
+  position: relative;
+  margin: 50px auto;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+#nav-icon1 span{
+  display: block;
+  position: absolute;
+  height: 9px;
+  width: 100%;
+  background: #d3531a;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+
+#nav-icon1 span:nth-child(1) {
+  top: 0px;
+}
+
+#nav-icon1 span:nth-child(2) {
+  top: 18px;
+}
+
+#nav-icon1 span:nth-child(3) {
+  top: 36px;
+}
+
+#nav-icon1.open span:nth-child(1) {
+  top: 18px;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+#nav-icon1.open span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+#nav-icon1.open span:nth-child(3) {
+  top: 18px;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+
+
+       /* -----------------------------------------HAMBURGER---------------------------*/
+
+      #hamburger-toggle-navbar{
+        font-size: 18px;  
+        position: relative;
+      }
+
+      #hamburger-toggle-navbar ul{
+        padding-top: 0;
+        margin: 0;
+      }
+
+      #hamburger-toggle-navbar ul li{
+        list-style: none;
+        display: inline-block;
+        width: auto;
+        color: white;
+        background: black;
+        opacity: 0.7;
+        margin-right: 20px;
+      }
+
+       #hamburger-toggle-navbar ul li a{
+        height: 60px;
+        text-align: center;
+        display: block;
+      }
+
+      
+
+
+
+    </style>
+
+  </head>
+
+  <body>
+
+  <section>
+    
+
+        <ul data-toggle="disappear-div">
+          <li data-slide="list-items" ><a href="#">Valami</a></li>
+          <li data-slide="list-items"><a href="#">Valami</a></li>
+          <li data-slide="list-items"><a href="#">Valami</a></li>
+          <li data-slide="list-items"><a href="#">Valami</a></li>
+          <li data-slide="list-items"><a href="#">Valami</a></li>
+
+          
+        </ul>
+     
+
+
+  </section>
+  
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+ 
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script type="text/javascript">
+
+    /*-----------------------------------------------------------------------*/
+
+      $(document).ready(function(){
+  $('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function(){
+    $(this).toggleClass('open');
+  });
+});
+
+    /*---------------------------------------------------------------------------*/
+
+      
+      hamburgerToggleNavbar={
+
+          divToDisappear:$("[data-toggle='disappear-div']")[0],
+
+          windowWidthToObserve: 400,
+
+          actionsAtObservedWidth:{
+
+
+                  collapse: function(){ 
+              
+                    var theCSSpropdisplay=window.getComputedStyle(hamburgerToggleNavbar.divToDisappear, null).getPropertyValue("display"),
+
+                          theCSSpropPosition=window.getComputedStyle(hamburgerToggleNavbar.divToDisappear, null).getPropertyValue("position")
+
+                          listItemsToSlide= $("[data-slide='list-items']");
+                
+
+                        window.getComputedStyle(hamburgerToggleNavbar.divToDisappear, null).getPropertyValue("display");
+                      window.addEventListener('resize',observationAndCollapse);
+
+                      function observationAndCollapse(){
+
+                          if(window.innerWidth<500){
+                            console.log(theCSSpropdisplay);
+                            hamburgerToggleNavbar.divToDisappear.style.height="0";
+                            hamburgerToggleNavbar.divToDisappear.style.position="absolute";
+                            hamburgerToggleNavbar.divToDisappear.style.transition="all 2s 0s";
+
+                           /* hamburgerToggleNavbar.divToDisappear.style.opacity=0;*/
+                            $.each(listItemsToSlide, function(index, value){
+
+                              value.style.overflow="hidden";
+                              value.style.transition="all 2s 0s";
+                              value.style.height="0";
+                            });
+
+                            $.each(listItemsToSlide, function(index, value){
+                              hamburgerToggleNavbar.divToDisappear.style.width=window.innerWidth+"px";
+                              hamburgerToggleNavbar.divToDisappear.style.top="0px";
+                              hamburgerToggleNavbar.divToDisappear.style.top="0px";
+                              value.style.display="block";
+                              value.style.width=window.innerWidth+"px";
+                              value.style.height=window.innerHeight +"px";
+                            });
+
+
+
+                          }
+                      }    
+                   },
+
+                  setBack:function(){}
+                        
+                  } 
+
+
+         }
+
+      $(document).ready( hamburgerToggleNavbar.actionsAtObservedWidth.collapse());
+      /*
+        feladatok: figyelni kepernyo szelesseget
+        kepernyo szelessegre display block positiont kitolni
+        kitol funkcio keyframe
+        betol funkcio keyframe
+        window.addEventListener('resize',function(){
+
+if(window.innerWidth<=400)
+})
+      */
+
+    </script>
+
+    </body>
+</html>

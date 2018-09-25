@@ -1,0 +1,38 @@
+section{
+	margin: 10px 0;
+}
+
+
+
+.total-container p{
+	display: inline;
+
+}
+
+.total-container div{
+	display: inline-block;
+}
+
+#cart-sec .row .container > div{
+	margin-top: 20px;
+}
+
+#nav-header .container >div{
+	font-family: 'Montserrat', sans-serif;
+
+}
+#nav-header ul{
+	background: black;
+	opacity: 0.9;
+	text-align: right;
+	padding: 0;
+	margin: 0;
+}
+#nav-header ul li{
+	
+	color: white;
+	display: inline-block;
+	font-family: inherit;
+	padding: 15px 30px;
+
+}

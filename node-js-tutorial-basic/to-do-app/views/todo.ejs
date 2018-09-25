@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>To Do List</title>
+	<link rel="stylesheet" href="/assets/css/to-do-styles.css">
+</head>
+<body>
+	<div id="todo-table">
+		<form id="todo-form" >
+			<input name="item" placeholder="Add new item" type="text" required>
+			<button type="button">Add Item</button>
+		</form>
+		<ul>
+			<% todoitems.forEach(function(item, index){%>
+
+					<li data-id="<%= item["id"] %>" ><%= item["todoitem"] %></li>
+
+			<% }); %>
+		</ul>
+	</div>
+	<script src="/assets/js/appendNewTask.js"></script>
+	<script src="/assets/js/deleteTask.js"></script>
+</body>
+</html>
+<!-- method="POST" action="/" -->

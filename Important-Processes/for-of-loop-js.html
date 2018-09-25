@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For of</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <script>
+
+    function forOfQuerySel() {
+        var divs = document.querySelectorAll('div');
+
+        for (let [i,div] of divs.entries()) {
+            console.log(i);
+            console.log(div);
+        }    
+        
+    }
+    </script>
+</body>
+</html>

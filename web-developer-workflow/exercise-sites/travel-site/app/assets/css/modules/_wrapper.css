@@ -1,0 +1,42 @@
+.wrapper {
+	overflow: hidden;
+	display: block;
+	padding-left: 18px;
+	padding-right: 18px;
+	max-width: 1236px;
+	margin-left: auto;
+	margin-right: auto;
+	
+	.wrapper {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	&--medium {
+		max-width: 976px;
+	}
+
+	&--narrow {
+		max-width: 470px;
+	}
+	
+	&--b-margin {
+		margin-bottom: 1rem;
+
+	@mixin atSmall {
+			margin-bottom: 3.875rem;
+		}
+	}
+
+	&--no-padding-until-md {
+		padding-left: 0;
+		padding-right: 0;
+
+		@mixin atXSmall {
+			padding-left: 18px;
+			padding-right: 18px;
+		
+		}
+	}
+ 
+ }

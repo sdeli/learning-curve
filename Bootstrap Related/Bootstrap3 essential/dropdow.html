@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Bootstrap</title>
+<style type="text/css">
+	li{
+		display: block
+	}
+	.dropdown .btn{
+		width: 100px;
+	}
+	.dropdown li {
+		width: 100px;
+	}
+	.visibility{
+		/*visibility:hidden;*/
+		overflow: hidden;
+		
+	}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+	<div class="container">
+		<div class="navbar-header">
+			<div class="navbar-brand">Brand</div>
+			<button type="button" class="navbar-toggle collapsed" data-target="#nav-menu" data-toggle="collapse">
+				<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="navbar-collapse collapse" id="nav-menu">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a class="active" >Home</a></li>
+				<li data-dropdown="button"><a>About<span class="caret"></span></a>
+					<ul class="list-group visibility" data-dropdown="menu">
+						<li class="list-group-item">janika</li>
+						<li class="list-group-item">janika</li>
+						<li class="list-group-item">janika</li>
+						<li class="list-group-item">janika</li>
+						<li class="list-group-item">janika</li>
+						<li class="list-group-item">janika</li>
+					</ul>
+				</li>
+				<li><a>Want It</a></li>
+				<li><a>Contact</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+1. opacity: 0; / height: 0;
+2. display: block;
+3. opacity: 1; / height: auto;
+
+<section class="jumbotron">
+ <div class="container">
+ 	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+
+Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
+
+Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+
+Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,<span class="label label-warning">cursus </span></p>
+ </div>
+	
+</section>
+
+
+
+
+					<div class="container">
+					<ul class="breadcrumb" >
+					<li><a>Home</a></li>
+					<li><a>Home</a></li>
+					<li><a>Home</a></li>
+					<li><a>Home</a></li>
+						
+					</ul>
+					</div>
+
+					<div>
+					<ul class="pagination pagination-lg" >
+					<li><a>&raquo;</a></li>
+					<li><a>1</a></li>
+					<li><a>2</a></li>
+					<li><a>3</a></li>
+					<li><a>4</a></li>
+					<li><a>&raquo;</a></li>
+						
+					</ul>
+					</div>
+
+
+
+<!--<ul class="list-group visibility" data-dropdown="menu">
+		<li class="list-group-item">janika</li>
+		<li class="list-group-item">janika</li>
+		<li class="list-group-item">janika</li>
+		<li class="list-group-item">janika</li>
+		<li class="list-group-item">janika</li>
+		<li class="list-group-item">janika</li>
+	</ul>-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+<script type="text/javascript">
+	
+	
+var dropDown={
+
+		dropDownMenu:$("[data-dropdown='menu']")[0],
+
+		dropDownBtn:$("[data-dropdown='button']")[0],
+
+		dropDownHeight:" ",
+
+		getMenuHeight:function(){
+			
+			dropDown.dropDownHeight= window.getComputedStyle(dropDown.dropDownMenu, null).getPropertyValue("height");
+
+			console.log(dropDown.dropDownHeight);
+
+			if(parseInt(dropDown.dropDownHeight)>0){
+				dropDown.dropDownMenu.style.height="0px";
+				dropDown.dropDownMenu.style.padding="0px";
+				dropDown.dropDownMenu.style.margin="0px";
+				
+			}
+
+			dropDown.dropDownAction();	
+
+		},
+
+		dropDownAction: function(){
+
+			dropDown.dropDownBtn.addEventListener("click", function(){
+
+				height= parseInt(window.getComputedStyle(dropDown.dropDownMenu, null).getPropertyValue("height"));
+
+				if(height<=0 && dropDown.dropDownMenu.hasAttribute("data-animation")===false){
+
+					dropDown.dropDownMenu.setAttribute("data-animation", "in");
+					dropDown.dropDownMenu.style.transition = "all .5s";
+					dropDown.dropDownMenu.style.height =dropDown.dropDownHeight;
+
+					setTimeout(function(){ 
+						dropDown.dropDownMenu.removeAttribute("data-animation");
+						dropDown.dropBackAction();
+								}, 500);
+				}
+
+		
+			});	
+
+		},
+
+		dropBackAction: function(){
+
+			dropDown.dropDownBtn.addEventListener("click", function(){
+
+				height= parseInt(window.getComputedStyle(dropDown.dropDownMenu, null).getPropertyValue("height"));
+				console.log(height);
+				console.log(dropDown.dropDownHeight);
+
+				if(height===parseInt(dropDown.dropDownHeight) && dropDown.dropDownMenu.hasAttribute("data-animation")===false){
+
+					dropDown.dropDownMenu.setAttribute("data-animation", "in");
+					dropDown.dropDownMenu.style.transition = "all .5s";
+					dropDown.dropDownMenu.style.height ="0px";
+
+					setTimeout(function(){ 
+						dropDown.dropDownMenu.removeAttribute("data-animation");
+								}, 500);
+
+					console.log("jeee");
+
+				}else{console.log("no");}
+
+		
+			});	
+
+		}
+
+	}
+
+
+
+
+
+$(document).ready(dropDown.getMenuHeight());
+
+
+
+
+/* 
+	ul visibility:none
+	ul heightjet huzzuk be=cssprop
+	ul hegiht: 0
+
+	addeventlistener buttonre if ul height=0 & hasAttribute data-animation false
+	 add data-animation= in animation
+	 remove .visibility
+	 transition: all
+	 height = x
+	 remove class in animation
+*/
+
+
+/*
+
+
+var dropDown={
+
+		getHeightOfDropdownBtn: function(){
+			
+			var dropdownMenu=$("[data-dropdown='menu']")[0];
+			var dropDownBtn=$("[data-dropdown='button']")[0];
+			theCSSprop = window.getComputedStyle(dropdownMenu, null).getPropertyValue("height");
+			
+			sessionStorage["ls"]=JSON.stringify(theCSSprop);
+			function zeroHeight(){
+				if(theCSSprop.length>0) {
+					dropdownMenu.style.height="0px";
+					dropdownMenu.style.overflow="hidden";
+				}
+			}
+			zeroHeight();
+			console.log(sessionStorage["ls"]);
+			console.log(theCSSprop);
+			return{ btn:dropDownBtn, menuHeight:theCSSprop, menuDrop:dropdownMenu};
+			
+		},
+
+		addEventlistener:function(){
+			
+			$("[data-dropdown='button']")[0].addEventListener("click", function(){
+				var menHeight=JSON.parse(dropDown.getHeightOfDropdownBtn().menuHeight);	
+					menHeight=parseInt(menHeight);
+					console.log(menHeight);
+				if(dropDown.getHeightOfDropdownBtn().menuHeight<=0 && dropDown.getHeightOfDropdownBtn().menuDrop.hasAttribute("data-animation")===false ){
+
+					menU.style.transition = "all 2s";
+					menU.style.height=menU+"px";
+
+					console.log("yeah");
+				}else{console.log("elindul");}
+			});
+		}
+
+	}	
+
+	$(document).ready(dropDown.getHeightOfDropdownBtn);
+	$(document).ready(dropDown.addEventlistener);*/
+
+
+
+</script>
+</body>
+</html>

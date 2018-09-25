@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Caesar Cipher</title>
+</head>
+<body>
+<script>
+	/* 	SECTION: Pseudo
+		function takes 2 params, string and number
+		shifts the letters in the string in the alphabet by the value of number
+		returns the new string
+
+		what if 300 passed in
+		uppercase chars should be retained
+	*/	
+	
+	function caesarCipher(str, shiftAwayNum){
+		
+		let strArr = str.toLowerCase().split('');
+		let alphabet ='abcdefghijklmnopqrstuvwxyz'.split('');
+					 //abcdefghijklmnopqrstuvwxyz
+		let alphLastIndex = alphabet.length - 1;
+		let shiftedStrArr = [];
+
+		strArr.forEach( (letter,i) => {
+
+			let isUpperCase = ( str[i] === strArr[i].toUpperCase() );
+			let isAlphabeticChar = ( alphabet.indexOf(strArr[i]) >= 0 );
+
+			if (isAlphabeticChar) {
+				let shiftToIndex = setUpIndexNumber(shiftAwayNum, strArr[i]);
+				shiftedStrArr[i] = alphabet[shiftToIndex];
+
+			} else {
+				shiftedStrArr[i] = strArr[i];
+			} // if
+
+			if(isUpperCase) {
+				shiftedStrArr[i] = shiftedStrArr[i].toUpperCase();
+			} // if
+
+		}); 
+		console.log(shiftedStrArr.join());
+		return shiftedStrArr.join(); 
+		
+		function setUpIndexNumber(shiftAwayNum, currentletter){
+			
+			let shiftToIndex = shiftAwayNum + alphabet.indexOf(currentletter);
+			isNegativeNum = shiftToIndex < 0;
+
+			// case: caesarCipher('a', 25 to infinite)
+			if (shiftToIndex > alphLastIndex) {
+
+				shiftToIndex = shiftToIndex % alphabet.length;
+
+			//case	caesarCipher('a', -25); 
+			} else if(isNegativeNum && shiftToIndex * -1 <= alphabet.length ){
+
+				shiftToIndex = alphabet.length + shiftToIndex
+
+			/*case caesarCipher('a', '-900') -900 results 0 if alphabets length is 0
+			it means it shouldnt be pushed anywhere*/	
+			} else if( shiftToIndex % alphabet.length < 0){
+
+				shiftToIndex = alphabet.length + (shiftToIndex % alphabet.length); /* modulous operation 
+				cnresults a ngative number*/
+
+			/*case caesarCipher('a', '-910') -900 results 0 if alphabets length is 0 so in this case
+			it should be shifted to 15*/
+			} else if( shiftToIndex % alphabet.length === 0 ){
+
+				shiftToIndex = 0; /* modulous operation 
+				cnresults a ngative number*/
+			}
+
+			return shiftToIndex;
+		}
+	}
+
+</script>
+</body>
+</html>

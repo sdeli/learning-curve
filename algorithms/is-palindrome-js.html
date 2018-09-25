@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Is Palindrome (race car)</title>
+</head>
+<body>
+	<script>
+		/* DESCRIPTION:
+		*  function takes a string as param
+		*  returns true if str is palindrome */
+
+		 function isPalendrome(str){
+		 	let palendromeArr = str.split('');
+		
+		 	let validCharsArr = ('qwertyuiopasdfghjklzxcvbnm').split('');
+		 	let lettersArr = [];
+
+			palendromeArr.forEach( letter => {
+				validCharsArr.indexOf(letter) > -1 ? lettersArr.push(letter);
+			});
+
+			if ( lettersArr.join() === lettersArr.reverse().join() ) return true;
+			else return false;
+	
+		 }
+
+	</script>
+</body>
+</html>

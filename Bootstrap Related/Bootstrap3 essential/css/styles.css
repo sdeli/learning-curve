@@ -1,0 +1,6 @@
+.bgimage{
+	background-image: url("http://placehold.it/350x150");
+	background-position: center;
+	background-size: cover;
+	height: 200px; 
+}

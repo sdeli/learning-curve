@@ -1,0 +1,123 @@
+<div><h1>BINDING ARBIATRY OBJECT TO "this" keyword of a FUNCTION</h1>
+	
+	<ul><strong>For what is this used:</strong>
+		<li>FUNCTION BOROWING</li>
+		<li>CURRYING</li>
+	</ul>
+
+	<script class="demonstrate" title="bind() and CURRYING">
+		/* DEF: Currying refers to the process of transforming a function with multiple arity into the same function with less arity. */
+		
+		/*where you have passed the object to be the "this" there you can not pass an argument which always stay the same => currying*/
+		(function(){
+
+			var myObjekt = {
+				surname: "sandor",
+				famName : "Deli",
+			};
+
+			var logName = function(message, lang){
+				console.log(this.surname + " " + this.famName);
+				console.log(message + " " + lang + " bind()");
+			}.bind(myObjekt, "the language is:");
+
+			logName("china");
+
+			var logNameB = function(message, lang){
+				console.log(this.surname + " " + this.famName);
+				console.log(message + " " + lang + " bind()");
+			};
+
+			var logNameC = logNameB.bind(myObjekt, "the language is:");
+			logNameC("eng");
+			logNameB("ger", "the language is:"); //here it will throw an error but you can still call the original function without beeing bound to an other object
+
+		})()
+
+	</script>
+
+	<script class="demostrate" title="call()">
+		
+		/*
+		call calls the function directly
+		you can passed other parmeters where you have passed to object bound tho this
+		*/
+
+		(function(){
+			
+			var myObjekt = {
+				surname: "sandor",
+				famName : "Deli",
+			};
+
+			var logNameB = function(lang){
+				console.log(this.surname + " " + this.famName);
+				console.log(lang + " call()");
+			};
+
+			logNameB.call(myObjekt, "eng");
+			
+		})()
+		
+
+	</script>
+
+	<script class="demostrate" title="apply()" >	
+		/*
+		apply calls the function directly
+		you can passed other parmeters where you have passed to object bound tho this in array notation
+		*/
+		(function(){
+			
+			var myObjekt = {
+				surname: "sandor",
+				famName : "Deli",
+			};
+
+			var logNameB = function(lang){
+
+				console.log(this.surname + " " + this.famName);
+				console.log(lang[0] + " " + lang[1] + " apply()");
+
+			};
+
+			logNameB.call(myObjekt, ["eng", "ger"]);
+			
+		})()
+		
+	</script>
+
+	<script class="demostrate" title="FUNCTION BORROWING">
+		
+		(function(){
+
+			var myObjekt = {
+				surname: "sandor",
+				famName : "Deli",
+				logFullName : function(lang, thisName){
+
+					console.log(this.surname + " " + this.famName);
+					console.log(lang + " " + thisName);
+
+				}
+			};
+
+			var newObjekt ={
+				surname: "Andreas",
+				famName : "Kurz",
+				logFullName	: myObjekt.logFullName.bind(newObjekt)			
+			};
+			newObjekt.logFullName("ger", "newObjekt");
+			
+		})()
+		
+	</script>
+
+	<script class="demostrate" title="FUNCTION CURRYING">
+		
+	</script>	
+
+</div>
+<!-- END <h1>BINDING ARBIATRY OBJECT TO "this" FUNCTION</h1> ////////////////// keyword of a/////////// -->
+
+

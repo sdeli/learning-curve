@@ -1,0 +1,130 @@
+<div><h1>CLASSES</h1>
+	
+	<p class="important definition"> CLASS IS JUST A SPECIAL FORM OF A FUNCTION-WITH-PROTOTYPE DEFINITION</p>
+
+	<p>A class definition sets enumerable flag to false for all methods in the "prototype". That’s good, because if we for..in over an object, we usually don’t want its class methods.</p>
+	
+	<p>All code inside the class construct is automatically in strict mode.</p>
+	<p>class declarations are not hoisted. You first need to declare your class and then access it</p>
+
+	<script class="demostration">
+
+		(function(){
+			// STEPPS OF CLASS CREATION
+			class User { /*"class User {...}" Declares a variable User that references the function named "constructor" */
+				
+				/* constructor keyword is a constructor function.. puts the props onto the object in construction*/
+				constructor(name) { 
+					this.name = name;
+				}
+				
+				/* methods are taken on to prototype prop of the constructor */
+				sayThis() {
+					console.log(this);
+				}
+	
+				get name() {
+					/* when referring on a prop in get/set in a class you need to use underline before to avoid exceeded call stack */
+					return this._name;
+				}
+	
+				set name(value) {
+					if (value.length < 4) {
+						alert("Name is too short.");
+						return;
+					}
+					this._name = value;
+				}
+
+				/* Static method calls are made directly on the class and are not callable on instances of the class. */
+				static staticMethod() {
+					console.log("this is:");
+					console.log(this);
+				}
+
+			}
+	
+			window.jane = new User("John");
+			//user.sayHi();
+
+			User.staticMethod();
+	
+		}());
+
+		// CLASS EXPRESSION
+		(function(){ 
+			let UserExpr = class MyClass {
+				constructor(name){
+					this.name = name;
+				}
+				sayHi() {
+		    		console.log(`hy ${this.name}` );; // MyClass is visible only inside the class
+				}
+
+				get name(){
+					return this._name;
+				}
+				set name(name){
+					this._name = `o az ${name}`; 
+				}
+			};
+
+			window.john = new UserExpr().sayHi(); // works, shows MyClass definition
+
+		})
+
+	</script>
+	
+	<div><h2>EXTENDS</h2>
+
+		<p>The EXTENDS keyword is used in class declarations or class expressions to create a class as a child of another class.
+			<p>it means the child class will inherit all the props args and methods of the parent class</p>
+		</p>
+
+		<script title="Basic class syntax">
+			(function(){
+
+				class MyClass {
+					constructor(...) {
+					    // ...
+					}
+					method1(...) {}
+					method2(...) {}
+					get something(...) {}
+					set something(...) {}
+					static staticMethod(..) {}
+					  // ...
+				};
+
+			})
+		</script>
+
+		<script class="demostration" title="SUB CLASSING WITH EXTENDS">
+			(function(){
+				/* Parent constructor */
+				class Cat { 
+					constructor(name) {
+						this.name = name;
+					}
+
+					speak() {
+						console.log(this.name + ' makes a noise.');
+					}
+				}
+
+				/* child constructor */
+				class Lion extends Cat {
+				
+				}
+				window.myCat = new Cat("jani");
+				window.leo = new Lion('Fuzzy');
+				leo.speak(); 
+			}());
+		</script>
+
+	</div>
+	<!-- END <h2>EXTENDS</h2> ///////////////////////////// -->
+	
+</div>
+<!-- END <h1>CLASSES</h1> ///////////////////////////// -->
+	

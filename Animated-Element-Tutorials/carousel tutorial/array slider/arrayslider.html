@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>arrayslider</title>
+
+<style type="text/css">
+
+span{
+opacity: 1;
+}
+	
+</style>
+</head>
+<body>
+
+<div><p>Valamit valamiert<span></span></p></div>
+
+
+</body>
+<script type="text/javascript">
+window.addEventListener("load",function(){
+	var elem=document.getElementsByTagName("span"),
+		array=["kutya", "macska", "rezso"],
+		i=0;
+	
+	function next(){
+
+		i++;
+		elem.style.opacity=0;
+		if(i>=array.length-1){
+			i=0;
+		}
+		SetTimeOut("slide()",2000);
+
+	}
+	function slide(){
+
+		elem.innerHTML=array[i];
+		elem.style.opacity=1;
+		SetTimeOut("next()",2000);
+
+	}
+
+
+
+})
+
+
+
+</script>
+</html>

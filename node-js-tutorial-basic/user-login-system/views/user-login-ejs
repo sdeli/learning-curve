@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Login</title>
+</head>
+<body>
+    <h3>Basiv User Login System</h3>
+    <label for="#username">Username</label>
+    <input style="display: block;" id="username" type="text" placeholder="type here your username">
+    
+    <label for="#email">Email</label>
+    <input type="email" style="display: block;" id="email" placeholder="type here your email">
+    
+    <label for="#password"></label>
+    <input type="text" id="password" style="display: block;" placeholder="dont tell anyone your pass">
+
+    <button id="submit">Submit</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script>
+        let username = document.querySelector('#username');
+        let email = document.querySelector('#email');
+        let password = document.querySelector('#password');
+
+        let submitBtn = document.querySelector('#submit')
+    </script>
+</body>
+</html>

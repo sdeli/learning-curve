@@ -1,0 +1,29 @@
+.page-section{
+	padding: 4.5rem 0;
+	
+	@mixin atMedium {
+		padding: 1.2rem 0;
+	}
+
+	&--blue {
+		background: $mainBlue;
+		color: #FFF;
+	}
+
+	&--background-img {
+		background: $bckgdLightBlue; 	
+
+		@mixin atMedium {
+		background: url('../../assets/images/testimonials-bg.jpg'); 	
+		background-size: cover;
+		}
+	}
+
+	&--no-b-padding-until-md {
+		padding: 4.5rem 0 0 0;	
+
+		@mixin atMedium{
+			padding: 4.5rem 0;		
+		}
+	}
+}

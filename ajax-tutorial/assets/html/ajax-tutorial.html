@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax-Tutorial</title>
+	<a title="reference" href="https://www.w3schools.com/js/js_ajax_intro.asp"></a>
+</head>
+<body>
+	<div id="fetch-data"><h1>FETCH DATA</h1>
+
+		<div class="get-text-file">
+			<button class="get-text-file__btn">Get Text File</button>
+			<div class="get-text-file__div"></div>
+		</div>
+
+		<div class="fetch-json">
+			<button class="fetch-json__btn">Get Text File</button>
+			<div class="fetch-json__div"></div>
+		</div>
+
+		<script>
+
+			let getTextFileBtn = document.getElementsByClassName('get-text-file__btn')
+			getTextFileBtn[0].addEventListener('click', loadText);
+
+			let fetchJsonBtn =  document.getElementsByClassName('fetch-json__btn') 
+			fetchJsonBtn[0].addEventListener('click', loadUsersJson); 
+
+
+			/* SECTION: SEND A REQUEST TO A SERVER */
+			// new XMLHttpRequest()
+			// onreadystatechange = () => {} 
+			// this.readyState
+			// this.status
+			// this.responseText
+			// open(), sned()
+			function loadText(){
+			
+				let xhttp = new XMLHttpRequest();
+			
+				xhttp.onreadystatechange = function(){
+					
+			    	if (this.readyState == 4 && this.status == 200) {
+			      		document.getElementsByClassName('get-text-file__div')[0].innerHTML = 
+			      		this.responseText;
+			    	}
+
+				};
+
+				xhttp.onerror = function(){
+					document.getElementsByTagName('body')[0].innerHTML = '<h1>Ooops Something went wrong</h1>'
+				};
+
+			  	xhttp.open("POST", "/assets/html/some-document.html", true);
+			  	xhttp.send();
+
+			} // END loadText
+
+			function loadUsersJson(){
+
+				let xhttp = new XMLHttpRequest();
+				
+				xhttp.open('GET','/assets/json/users.json', true)
+
+				xhttp.onload = function(){
+
+					// json file is an array of 4 objects
+					var usersArray = JSON.parse(this.responseText);
+
+					createUsersHtml(usersArray);
+
+					function createUsersHtml(usersArray){
+						
+						let usersHtml;
+
+						usersArray.forEach(function(item,index){
+
+							for(key in item){
+								usersHtml += `<li>${item[key]}</li>`;
+							} //for
+
+						}); // foreach
+
+						appendUsersHtml(usersHtml)
+
+					} // createUsersHtml				
+
+					function appendUsersHtml(usersHtml){
+						document.getElementsByClassName('fetch-json__div')[0].innerHTML = usersHtml; 
+					} // appendUsersHtml
+
+				} // xhttp.onload
+
+				xhttp.send();
+			
+			} // END loadUsersJson
+
+		</script>
+	
+	</div>
+	<!-- END <h1>Get Text File</h1> ///////////////////////////// -->
+
+	<div><h1>FETCH JSON</h1>
+		
+	</div>
+	<!-- END <h1>FETCH JSON</h1> ///////////////////////////// -->
+		
+	
+	<div style="display: none;"><h1>Notes</h1>
+		
+		<div style="display: none;"><h2>XMLHttpRequest Object Methods</h2>
+
+			<ul><strong>Methods list</strong>
+				<li>new XMLHttpRequest()</li>
+				<li>abort()</li>
+				<li>getAllResponseHeaders()</li>
+				<li>getResponseHeader()</li>
+				<li>open(method, url, async, user, psw)</li>
+				<li>send()</li>
+				<li>send(string)</li>
+				<li>setRequestHeader()</li>
+			</ul>
+			
+			<ul><strong>open(method, url, async, user, psw) - props</strong>
+				<li>method: the request type GET or POST</li>
+				<li>url: the file location</li>
+				<li>async: true (asynchronous) or false (synchronous)</li>
+				<li>user: optional user name</li>
+				<li>psw: optional password</li>
+			</ul>
+
+		</div>
+		<!-- END <h2></h2> ///////////////////////////// -->
+
+		<div><h2>XMLHttpRequest Object Props</h2>
+
+			<ul>
+				<li>onreadystatechange</li>
+				<li>readyState</li>
+				<li>responseText</li>
+				<li>responseXML</li>
+				<li>status</li>
+				<li>statusText</li>			
+			</ul>
+
+		</div>
+		<!-- END <h2></h2> ///////////////////////////// -->
+		
+		
+	</div>
+	<!-- END <h1>Notes</h1> ///////////////////////////// -->
+	
+</body>
+</html>

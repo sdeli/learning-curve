@@ -1,0 +1,110 @@
+/* Responsive Vidi */
+
+.vidi-container{
+	max-width: 400px;
+}
+
+.vidi{
+	position: relative;
+	padding-bottom: 56.25%;
+}
+
+.vidi iframe{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+.video-tag{
+	position: absolute;
+	height: 100%;
+	width: 100%;	
+}
+
+/*
+	<div class="vidi-container">
+		<div class="vidi">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/qdIdPBIF6MU" frameborder="0" allowfullscreen></iframe>
+		</div>
+	</div>
+
+	<br>
+
+	<div class="vidi-container">
+		
+		<div class="vidi">
+
+			<video class="video-tag" width="320" height="240" controls>
+			  <source src="vids/emmet.mp4" type="video/mp4">
+			</video>
+
+		</div>
+
+	</div>
+*/
+
+/*END Responsive Vidi */
+
+.note-statement{
+    font-weight: bold;
+	font-size: 16px;
+}
+
+.note-solution{
+	font-size: 16px;
+}
+
+.aft-10{
+	margin-bottom: 10px;
+}
+
+.aft-20{
+	margin-bottom: 20px;
+}
+
+.aft-30{
+	margin-bottom: 30px;
+}
+
+.aft-40{
+	margin-bottom: 40px;
+}
+
+.aft-50{
+	margin-bottom: 50px;
+}
+
+
+/* Center the page title */
+
+.page-title{
+
+	background: #ccc;
+
+}
+
+.page-title div {
+
+	height: 100px;
+	text-align: center;
+}
+
+.page-title div:before {
+
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+
+}
+
+.page-title h1{
+	
+	display: inline-block;
+	margin-top: 10px;
+	text-align: center;
+  	vertical-align: middle;
+}
+
+/* END Center the page title */
+

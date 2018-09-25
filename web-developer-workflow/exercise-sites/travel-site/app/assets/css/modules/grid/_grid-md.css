@@ -1,0 +1,134 @@
+@mixin atMedium {
+			
+			/* col-md-n */
+
+			&__medium-1, &__medium-2, &__medium-3, &__medium-4, &__medium-5, &__medium-6, &__medium-7, &__medium-8, &__medium-9, &__medium-10, &__medium-11, &__medium-12 {
+				float: left;
+			}
+			&__medium-12 {
+				width: 100%;
+			}
+			&__medium-11 {
+				width: 91.66666667%;
+			}
+			&__medium-10 {
+				width: 83.33333333%;
+			}
+			&__medium-9 {
+				width: 75%;
+			}
+			&__medium-8 {
+				width: 66.66666667%;
+			}
+			&__medium-7 {
+				width: 58.33333333%;
+			}
+			&__medium-6 {
+				width: 50%;
+			}
+			&__medium-5 {
+				width: 41.66666667%;
+			}
+			&__medium-4 {
+				width: 33.33333333%;
+			}
+			&__medium-3 {
+				width: 25%;
+			}
+			&__medium-2 {
+				width: 16.66666667%;
+			}
+			&__medium-1 {
+				width: 8.33333333%;
+			}
+
+			&__b-margin-until-medium {
+					margin-bottom: 0;
+			}
+
+			/* END col-md-n*/
+			
+			/*$__medium--offset-n */
+
+			&__medium--offset-12 {
+				margin-left: 100%;
+			}
+			&__medium--offset-11 {
+				margin-left: 91.66666667%;
+			}
+			&__medium--offset-10 {
+				margin-left: 83.33333333%;
+			}
+			&__medium--offset-9 {
+				margin-left: 75%;
+			}
+			&__medium--offset-8 {
+				margin-left: 66.66666667%;
+			}
+			&__medium--offset-7 {
+				margin-left: 58.33333333%;
+			}
+			&__medium--offset-6 {
+				margin-left: 50%;
+			}
+			&__medium--offset-5 {
+				margin-left: 41.66666667%;
+			}
+			&__medium--offset-4 {
+				margin-left: 33.33333333%;
+			}
+			&__medium--offset-3 {
+				margin-left: 25%;
+			}
+			&__medium--offset-2 {
+				margin-left: 16.66666667%;
+			}
+			&__medium--offset-1 {
+				margin-left: 8.33333333%;
+			}
+			&__medium--offset-0 {
+				margin-left: 0;
+			}
+
+			/* END &__medium--offset-n */
+
+			/*  */
+			
+			&--gutter-md {
+				margin-right: -65px;
+			}
+
+			&--gutter-md > div {
+				padding-right: 65px;
+			}
+
+			&--gutter-md-small {
+				margin-right: -45px;
+			}
+		
+			&--gutter-md-small > div {
+				padding-right: 45px;
+			}
+
+		} /* END @mixin atMedium*/
+
+		/* Equal hight rules*/
+
+		&--equal-hight-at-medium {
+
+			@mixin atMedium {
+				display: flex;
+			}
+
+			& > div {
+				float: none;
+				display: flex;
+			}
+
+		}
+
+		/*  END Equal hight rules*/
+
+		&__b-margin-until-medium {
+				margin-bottom: 1rem;
+		}

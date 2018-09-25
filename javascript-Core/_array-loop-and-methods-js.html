@@ -1,0 +1,276 @@
+<script title="ARRAY LOOPS">
+(function(){
+	var myArray = [1,2,3,4];
+
+	mapForEach(myArray, function(item){
+
+		item++;
+		console.log(item);
+
+	});
+
+	function mapForEach(arr, fn){
+
+		for( var i = 0; i < arr.length; i++){
+
+			fn(arr[i]);
+
+		} // for
+
+		console.log("finished");
+
+	}
+
+});
+
+(function(){
+
+	function myLoop(i, cond,fnParams,fn){
+		console.log("runs");
+		console.log(i);
+		console.log(cond);
+		loop();
+		function loop(){
+
+			fn(fnParams);
+
+			if( eval(cond) ) {
+				i++;
+				loop();
+			}else {
+				return i;
+			}
+
+		}
+
+		} // constructor loop()
+
+		var myArray = [1,2,3,4];
+		var newLoop = myLoop( 0, "i < 10",[0,myArray,"Sanyi Rajott"]);
+
+	});
+
+</script>
+
+<script title="`ARRAY METHODS">
+
+function ARRAYMETHODS(){
+	Array.entries();
+	Array.fill();
+	Array.filter();
+	Array.forEach();
+	Array.map();
+	Array.reduce();
+	Array.indexOf();
+
+	Array.concat();
+	Array.join();
+
+	Array.pop();
+	Array.push();
+	Array.shift();
+	Array.unshift();
+	Array.splice();
+	Array.slice();
+
+	Array.toString();
+}
+
+
+	// FILTER
+	// choses elements from array based on callback which returns true or false
+	// retruns new array with chosen items
+	(function(){
+		var arr = ['A','B','C','D'];
+		var newArr = arr
+			.filter(letter => {return letter !== 'B'});
+		console.log(arr);
+		console.log(newArr);
+	});
+
+	// MAP
+	// executed a provided fucntion on each array item
+	// returns a new array with the altered items
+	// original array doesnt change
+
+	(function(){
+	 	var arr = [1,2,3,4,5];
+		var mappedArr = arr
+			.map((num,i) => {
+				num += arr[i++];
+				num *= 2;
+				return num;
+			});
+
+		console.log(arr);
+		console.log(mappedArr);
+	 }); 
+
+	(function(){
+		const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		let abbreviatedDays = daysOfWeek
+			.map(day => {
+				return returnFirst3Letters(day);
+			});
+
+		console.log(abbreviatedDays);
+
+		function returnFirst3Letters(word){
+			let first3lettersOfWord = "";
+
+			for (let i = 0; i < 3; i++) {
+				first3lettersOfWord += word[i];
+			}
+			return first3lettersOfWord;
+		}
+	}());
+
+	// REDUCE
+	// The reduce() method applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value.
+	// accumulator: basket of array items until now
+	// currentVlaue: array[i]
+	(function(){
+		var sum = [0, 1, 2, 3]
+			.reduce(function (accumulator, currentValue) {
+		  		return accumulator + currentValue;
+			}, 0);
+	});
+
+	// flattenarray
+	(function(){
+		var flattened = [[0, 1], [2, 3], [4, 5]]
+		.reduce(
+		  function(accumulator, currentValue) {
+		    return accumulator.concat(currentValue);
+		  },
+		  []
+		);
+	});
+
+
+	// EXERCISES:
+
+	// convert array items to string and stylethem than give back them as new array
+	(function(){
+		const years = [1989, 2015, 2000, 1999, 2013, 1973, 2012];
+		let displayYears = years
+			.filter(year => {return year > 2000})
+			.map(year => {
+				return toStringAndstyleYear(year)
+			});
+
+		function toStringAndstyleYear(year) {
+			year = year.toString();
+			year = `${year} A.D.`;
+			console.log(year);
+			return year;
+		}
+	});
+
+	// REORGANIZE OBJECTS
+	// fullAuthorNames should be: ["Beatrix Potter", "Ann Martin", "Beverly Cleary", "Roald Dahl", "Lewis Carroll"]
+	const authors = [
+	  { firstName: "Beatrix", lastName: "Potter" },
+	  { firstName: "Ann", lastName: "Martin" },
+	  { firstName: "Beverly", lastName: "Cleary" },
+	  { firstName: "Roald", lastName: "Dahl" },
+	  { firstName: "Lewis", lastName: "Carroll" }
+	];
+
+	let fullAuthorNames = authors
+		.map(author => {
+			return `${author['firstName']} ${author['lastName']}`;
+		});
+
+	// REORGANIZE OBJECTS 2
+	// from todos obj unfinishedTasks should be: ["Buy apples", "Write web app", "Call mom"]	
+	(function(){
+		const purchaseItems = [
+		{
+			name: 'apples',
+			dept: 'groceries',
+			price: 2.49
+		},
+		{
+			name: 'bread',
+			dept: 'groceries',
+			price: 2.99
+		},
+		{
+			name: 'batteries',
+			dept: 'electronics',
+			price: 5.80
+		},
+		{
+			name: 'eggs',
+			dept: 'groceries',
+			price: 3.99
+		},
+		{
+			name: 't-shirts',
+			dept: 'apparel',
+			price: 9.99
+		}
+		];
+		let groceryTotal = purchaseItems
+		.filter(singlePurchaseItem => {
+			return singlePurchaseItem.dept === 'groceries';
+		})
+		.reduce(function(accumulator, singlePurchaseItem){
+			accumulator += singlePurchaseItem.price;
+			return accumulator;
+		},0);
+	});
+
+	// EXERCISE
+	// flattenedCustomerNames should be: ["John", "Sandy", "Tyrone", "Elizabeth", "Penny", "Barry", "Wanda", "Jamal", "Hayden", "Portia", "Pam", "Philip"]
+	(function(){
+		const customerNames = [
+		    [ "John", "Sandy", "Tyrone", "Elizabeth", "Penny" ],
+		    [ "Barry", "Wanda", "Jamal", "Hayden" ],
+		    [ "Portia", "Pam", "Philip" ]
+		];
+		let flattenedCustomerNames = customerNames
+			.reduce(function(accumulator, currentArrOfNames){
+				console.log(accumulator);
+				return [...accumulator, ...currentArrOfNames]
+			},[]);
+		console.log(flattenedCustomerNames);
+	});
+
+
+	// EXERCISE
+	// flattenedCustomerNames should be: ["John", "Sandy", "Tyrone", "Elizabeth", "Penny", "Barry", "Wanda", "Jamal", "Hayden", "Portia", "Pam", "Philip"]
+	(function(){
+		const customers = [
+		  {
+		    name: "Tyrone",
+		    personal: {
+		      age: 33,
+		      hobbies: ["Bicycling", "Camping"]
+		    }
+		  },
+		  {
+		    name: "Elizabeth",
+		    personal: {
+		      age: 25,
+		      hobbies: ["Guitar", "Reading", "Gardening"]
+		    }
+		  },
+		  {
+		    name: "Penny",
+		    personal: {
+		      age: 36,
+		      hobbies: ["Comics", "Chess", "Legos"]
+		    }
+		  }
+		];
+		let hobbies = customers
+			.map(customer => customer.personal.hobbies)
+			.reduce((accumulator, hobbiesArr) => { 
+				console.log(accumulator);
+				return [...accumulator,...hobbiesArr];
+			},[]);
+	});
+
+</script>

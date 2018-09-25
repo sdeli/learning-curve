@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fibonacci</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+/* DESCRIPTION: 
+* a function which accepts a number as paramter
+* the function counts out on the index represented by the parameter in the fibonacci
+* sequence which number can be found
+* it returns the resulted number
+*/
+//myFibonacci(3);
+function myFibonacci(position){
+
+	let fibonacciStartArr = [1,1];
+	let i = 2;
+
+	while ( fibonacciStartArr.length - 1 < position ) {
+
+		let sumOfLastTwo = fibonacciStartArr[i - 1] + fibonacciStartArr[i - 2];
+		fibonacciStartArr.push(sumOfLastTwo); 
+		i++;
+	}
+
+	return fibonacciStartArr[position];
+
+}
+
+// O(n^2)	
+let faktorial = fibonacci(6);
+console.log(faktorial);
+function fibonacci(position){
+	if (position < 3) {
+		return 1;
+	} else {
+		return fibonacci(position - 1) + fibonacci(position - 2);
+	}
+}
+
+</script>

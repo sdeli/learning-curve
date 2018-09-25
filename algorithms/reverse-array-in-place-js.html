@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Reverse Array In Place</title>
+</head>
+<body>
+<script>
+
+	/* SECTION: Pseud 
+		function takes an array.
+		reverses the array without using an other array or reverse() method
+	*/
+
+	/*
+		for loop
+	*/
+	let arr = 'reverses the array without using an other array'.split(' ');
+	 
+	//myReverseArrInPlace(arr);
+	reverseArrInPlace(arr);
+
+	function myReverseArrInPlace(reverseArr){
+
+		let i = reverseArr.length - 1;
+		let whereToSplice = 0;
+		loop(i,whereToSplice);
+
+		function loop(i, whereToSplice){
+
+			// copy first item the the beginning
+			reverseArr.splice( whereToSplice,0, reverseArr[reverseArr.length - 1] );
+
+			// delete last item
+			let deleted = reverseArr.splice(reverseArr.length - 1, 1);
+
+			i--;
+			whereToSplice++;
+
+			if( i >= 0 ){
+				loop(i, whereToSplice);
+			} else {
+				return reverseArr;
+			}
+		}
+
+	}
+
+	function reverseArrInPlace(reverseArr){
+
+		for(let i = 0; i < reverseArr.length / 2 ; i++){
+
+			let tempCont = reverseArr[reverseArr.length - 1 - i];
+			reverseArr[reverseArr.length - 1 - i] = reverseArr[i];
+			reverseArr[i] = tempCont
+
+		}
+
+		return reverseArr;
+	}
+</script>
+</body>
+</html>

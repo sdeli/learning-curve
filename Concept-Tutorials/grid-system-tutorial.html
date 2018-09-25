@@ -1,0 +1,175 @@
+<h1>GRID SYSTEM TUTORIAL</h1>
+
+<p><h2>STRUCTURE OF A GRID SYSTEM</h2>
+	<ol>
+		<li data-level="1">Container / Main-Section Side-wrapper </li>
+
+		<li data-level="2">Page Section Separators: separate page sections/blocks on top and bottom</li>
+
+			<li data-level="2">Row</li>
+			<li data-level="2">Row Gutters
+				<p>Gutters between the columns</p>
+			</li>
+			
+				<li data-level="3">Columns</li>		
+				<li data-level="3">Offset-Columns</li>		
+				<!-- table-col-structure =============================== -->		
+				<table id="table-col-structure" data-explanation-for-level="3" >
+					<tr>
+						<th>viewport-size:</th>
+						<th>xs</th>
+						<th>s</th>
+						<th>m</th>
+						<th>l</th>
+						<th>xl</th>
+					</tr>
+					<tr>
+						<td>col: </td>
+					</tr>
+					<tr><td>1</td></tr>
+					<tr><td>2</td></tr>
+					<tr><td>3</td></tr>
+					<tr><td>4</td></tr>
+					<tr><td>5</td></tr>
+					<tr><td>6</td></tr>
+					<tr><td>7</td></tr>
+					<tr><td>8</td></tr>
+					<tr><td>9</td></tr>
+					<tr><td>10</td></tr>
+					<tr><td>11</td></tr>
+					<tr><td>12</td></tr>
+				</table>
+				<!-- END table-col-structure =========================== -->
+					
+					<li data-level="4" >ROW-Inside Cols</li>
+					<li data-level="4">In Column Blocks / In Col Wrappers
+						<li>Paragraphs</li>
+						<li>img</li>
+						<li>video</li>
+					</li>
+	</ol>
+
+			 	
+</p> <!-- STRUCTURE OF A GRID SYSTEM  -->
+
+<p><h2>GRID BREAKPOINTS => CSS mixin / Col</h2>
+		
+		<strong>>MEANINGS</strong>
+		<p>min-width: 530px => from less than 530px up until 530px </p>
+		<p>max-width: 530px => from more than 530px down until 530px</p>
+		
+		<p> <= min-width </p>
+
+		<ul><strong>BOOSTRAP 3 BREAKPONTS</strong>
+			
+			<li> < 768px XS </li>
+			<li> >= 768px SM </li>	
+			<li> >= 992px MD </li>	
+			<li> >= 1200px LG </li>
+
+		</ul>
+
+		<ul><strong>MY CURRENT BREAKPONTS</strong>
+
+            <li> <= 419px btm </li>
+            <li> >= 419px xs </li>
+			<li> >= 576px sm </li>
+			<li> >= 768px md </li>	
+			<li> >= 992px lg </li>	
+			<li> >= 1200px xl </li>
+
+		</ul>
+
+		<ul><strong>MY FUTURE BREAKPONTS</strong>
+			
+			<li> Iphone 5/6 category 320/376px - baseline </li>
+			<li> <= Iphone 6 Plus 414 px - baseline / xs </li>
+			<li> <= Ipad 768px sm - sm</li>	
+			<li> <= Ipad Pro kind of 992px - md </li>	
+			<li> <= Laptop 1200px - lg </li>
+			<li>  > 1200px - xl </li>
+
+		</ul>
+
+	<style>
+		/* From web developer workflow tutorial */
+			@define-mixin atSmall{
+
+				@media (min-width: 530px) {
+					@mixin-content
+				}
+
+			}
+
+			@define-mixin atMedium{
+
+				@media (min-width: 800px) {
+					@mixin-content
+				}
+
+			}
+
+			@define-mixin atLarge{
+
+				@media (min-width: 1200px) {
+					@mixin-content
+				}
+
+			}
+		/* END From web developer workflow tutorial */
+			
+		/* Bootstrap Breakponts */
+		
+			/* XS is baseline !!!!! */
+
+			/* SM */
+			@media (min-width: 768px) {
+
+			}
+
+			/* MD */
+			@media (min-width: 992px) {
+
+			}
+			
+			/* LG */
+			@media (min-width: 1200px) {
+
+			}
+
+		/* END Bootstrap Breakponts */
+
+	</style>
+	
+</p> <!-- GRID BREAKPOINTS  -->
+
+<p><h2>GRID MULTICOLUMN LAYOUT IMPLEMENTATION <small>threw full set of breakpoints</small></h2>
+		
+	<p><strong>3 Column Layout</strong>
+		
+		<ol>
+			<li> < 768px XS 
+				<p>Sigle Column layout</p>
+				<p>Capillary/0 margin/padding bewtween wievport edge and Col</p>
+				<p>Col has 18px padding until col-content</p>
+			</li>
+
+			<li> >= 768px SM 
+				<p>Sigle Column layout</p>
+				<p>Capillary/0 margin/padding bewtween wievport edge and Col</p>
+				<p>Col has 18px padding until col-content</p>
+			</li>		
+			<li> >= 992px MD </li>
+				<p>Multicolumn Layout, small gutter</p>	
+				
+			</li>		
+			<li> >= 992px LG
+				
+			 </li>	
+			<li> >= 1200px LG </li>
+		</ol>
+
+	</p>
+
+
+</p>

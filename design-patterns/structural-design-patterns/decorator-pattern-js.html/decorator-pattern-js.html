@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DECORATOR-PATTERN</title>
+</head>
+<style>
+	.cube {
+		margin-bottom: 20px;
+		width: 200px;
+		height: 200px;
+		background: red;
+	} 
+</style>
+<body style="background: black">
+	<div class="cube object-1"></div>
+	<div class="cube object-2"></div>
+	<div class="cube object-3"></div>
+	<div class="cube object-4"></div>
+<script>
+
+	// A decorator is kind of like composition at object. 
+	// It is a function which accepts an object and appends to that obejct a method,
+	// specific to that decorator
+	// It is useful because so for one method needed on one object you dont 
+	// need to place a method on a constructor
+	// And so your other object where that method is not needed wont be spammed by unnecessary methods
+
+	// These are all object with tonns of methods and props
+	let obj_1 = document.getElementsByClassName('object-1')[0];
+	let obj_2 = document.getElementsByClassName('object-1')[0];
+	let obj_3 = document.getElementsByClassName('object-1')[0];
+	let obj_4 = document.getElementsByClassName('object-1')[0];
+
+	function sayHyDecorator(obj){
+		obj.sayHy = function(){
+			console.log('the object of:');
+			console.log(obj);
+			console.log('says you hy');
+		}
+	}
+
+	sayHyDecorator(obj_1);
+
+	// FLYWEIGHT PATTERN
+	// The flyweight patterns is used when we have 10000 of objects and need to
+	// enhance performance.
+	// So we dont want to have every object a kind of method/prop it doesnt need at the moment
+
+	// sayHyFlyweightPAttern function calls say hy on every cube there has been clicked on
+	function sayHyFlyweightPAttern(obj){
+		if (obj.classList.contains('cube') && !obj.sayHy) {
+			obj.sayHy = function(){
+				console.log('the object of:');
+				console.log(obj);
+				console.log('says you hy');
+			}
+			obj.sayHy();
+		}	
+	}
+
+	window.addEventListener('click', function(event){
+		sayHyFlyweightPAttern(event.target);
+	})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>myMeanMedianMode</title>
+</head>
+<body>
+    
+<script>
+    /*DESCITPITON: Pseuro
+    * function takes an array of numbers as parameter
+    * return an object with 3 props
+    * mean of numbers
+    * median of numbers
+    * mode of numbers
+     */
+
+    let numbersArr = [10,10,1,2,3,4,5,4,6,1];
+    let numbersArrB = [9,10,23,10,23,9];
+
+    let myMeanMedianMode = (function(){
+
+        function callAll(numsArray){
+
+            var meanMedianMode = {}
+            meanMedianMode.mean = getMean(numsArray);
+            meanMedianMode.median = getMedian(numsArray);
+            meanMedianMode.mode = getMode(numsArray);
+            return meanMedianMode;
+    
+        }
+
+        function getMean(numsArray){
+
+            let sumOfNums = 0;
+
+            numsArray.forEach( (number) => {
+                sumOfNums += number;
+            });
+
+            let mean = sumOfNums / numsArray.length;
+            return mean;
+
+        }   
+
+        function getMedian(numsArray){
+
+            numsArray.sort(function(a, b){return a-b});
+            
+            let isArrLengthEvenNumber = numsArray.length % 2 === 0;
+            let medianNum;
+
+            if(isArrLengthEvenNumber){
+                //If arr length is even than we have two numbers in the middle
+                // So we need to count their avarage
+                let indexOfMedianFirst = Math.floor( (numsArray.length -1) / 2 );
+                medianNum = (numsArray[indexOfMedianFirst] + numsArray[indexOfMedianFirst + 1]) / 2; 
+            } else {
+                let indexOfMedian = Math.round(numsArray.length / 2);
+                medianNum = numsArray[indexOfMedian];
+            }
+
+            return medianNum;
+        }
+        /* function returns an array with number/numbers of the highest occurence
+            in param array. Just the highest occurencies*/
+        function getMode(numsArray){
+
+            let modesObj = {};
+
+            // create hastableObj to show each numbers frequency
+            numsArray.forEach( (number) => {
+                if (!modesObj[number]) modesObj[number] = 1;
+                else modesObj[number]++;
+            });
+
+            //create arr containing nums with highest frequency
+            let maxFrequencyNum = 0;
+            let modesArr = [];
+            for (key in modesObj) {
+                if(modesObj.hasOwnProperty(key)){
+                    if (modesObj[key] === maxFrequencyNum) {
+                        modesArr.push(key);
+                    } else if(modesObj[key] > maxFrequencyNum){
+                        maxFrequencyNum = modesObj[key];
+                        modesArr.splice(0,modesArr.length);
+                        modesArr.push(key);
+                    }
+                }
+            }
+
+            if(modesArr.length === Object.keys(modesObj).length){
+                modesArr.splice(0,modesArr.length); 
+            } 
+            
+            return modesArr;
+        }
+
+        return {
+            callAll : function(numsArray){ return callAll(numsArray); },
+            getMean : function(numsArray){ return getMean(numsArray); },
+            getMedian : function(numsArray){ return getMedian(numsArray); },
+            getMode : function(numsArray){ return getMode(numsArray); }
+        }
+
+    }());
+
+    var newObj = myMeanMedianMode.callAll(numbersArr);
+    var newObjB = myMeanMedianMode.callAll(numbersArrB);
+
+</script>
+</body>
+</html>

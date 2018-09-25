@@ -1,0 +1,145 @@
+@font-face {
+  font-family:"armalite-rifle";
+  src: url('../font/armalite-rifle/armalite.ttf') format("truetype");
+  }
+@font-face {
+  font-family:"sniper";
+  src: url('../font/sniper/sniper/SNIPER__.ttf') format("truetype");
+  }
+/*---Google fontos---------------------
+<link href="https://fonts.googleapis.com/css?family=Anton|Bitter|Cuprum|Noto+Sans|Orbitron|Oswald|PT+Sans+Narrow|Passion+One|Yanone+Kaffeesatz" rel="stylesheet">
+font-family: 'Oswald', sans-serif;
+font-family: 'Noto Sans', sans-serif;
+font-family: 'PT Sans Narrow', sans-serif;
+font-family: 'Bitter', serif;*
+font-family: 'Anton', sans-serif;
+font-family: 'Yanone Kaffeesatz', sans-serif;
+font-family: 'Cuprum', sans-serif;*
+font-family: 'Orbitron', sans-serif;
+font-family: 'Passion One', cursive;*
+
+-------------------------------------*/
+
+li{
+	list-style: none;
+	font-size: 20px;
+}
+
+a{
+	text-decoration: none;
+	color: unset;
+}
+
+a:hover{
+	color: unset;
+	text-decoration: none;
+}
+
+#shop-all-products h1,
+#shop-all-products h2,
+#shop-all-products h3,
+#shop-all-products h4{
+	font-family: fantasy;
+}
+
+
+#shop-all-products{
+	margin-top: 50px;
+}
+
+.top-ten-section{
+	margin-bottom: 50px;
+}
+
+.top-ten-section h2{
+	margin-bottom: 20px;
+}
+/* Cards ******************************************************************************/
+.card{
+	margin-bottom: 15px;
+}
+
+.card img{
+	width: 100%;
+
+}
+
+.card .shadow{
+	box-shadow: 1px 1px 6px #888888;
+}
+
+.card .left .shadow{
+	margin-right: 9px;
+	z-index: 2800;
+}
+
+.card .right .shadow{
+	margin-left: 9px;
+}
+
+.card .right .h3{
+	margin-left: 9px;
+}
+
+.description-div{
+	position: relative;
+	cursor: pointer;
+	z-index: 2800;
+}
+
+.description-btn{
+	display: block;
+	height: 50px;
+	background: black;
+	text-decoration: none;
+	opacity:0.9;
+	transition: all 0.5s 0s; 
+
+}
+
+.description-btn:hover{
+	opacity: 0.1;
+}
+
+.description-div h3{
+	color: rgba(158, 158, 158, 0.36);
+
+}
+
+
+/*pucolas***********************/
+
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+} 
+.group:after {
+  clear: both;
+}
+.group {
+  zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+@media only screen and (max-width: 768px) {
+   .card .shadow img{
+	width: unset;
+	max-height: 40vh !important;
+	margin: 0 !important;
+
+	}
+
+	.card .shadow{
+		margin: 0 !important;
+	}
+
+
+	.card .row{
+		padding: 0px 9px !important;
+	}
+
+	.img-container{
+		text-align: center;
+	}
+
+}

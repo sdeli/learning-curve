@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WEBPACK TUTORIAL</title>
+</head>
+<body>
+
+	<p><h1>STEPPS TO SET-UP</h1>
+
+		<ol>
+			<li>cli: sudo npm i webpack webpack-cli --save-dev</li>
+			<li>webpack init
+				<p>Here it reads date in and creates the config file <br>
+					you need to define the starter js file, bundle.js file, their path and if want babel and sass support 
+				</p>
+			</li>
+			<li>In the config file add the key: mode: 'development',</li>
+			<li>No need to install globally</li>
+		</ol>
+		
+	</p>
+	<p><h1>USAGE</h1>
+		<li>U can use it from cli: webpack <br>
+			from cli it alwazs needs to be called from config file folder
+		</li>
+	</p>
+
+	<p><h1>COMBINE WEBPACK WITH GULP FOR WATCHING FUNCITION</h1>
+		<script id="gulp/tasks/_scripts.js">
+			
+			var gulp = require("gulp");
+			var webpack = require("webpack");
+
+			gulp.task('scripts', function(callback){
+
+				webpack(require('../../webpack.config.js'), function(){
+
+					console.log('webpack works');
+					callback();
+
+				})
+
+			});
+		</script>
+	</p>
+	
+</body>
+<script id="STARTER CONFIG FILE">
+	/*webpack.config.js*/
+
+const webpack = require('webpack');
+const path = require('path');
+
+/*
+ * We've enabled UglifyJSPlugin for you! This minifies your app
+ * in order to load faster and run less javascript.
+ *
+ * https://github.com/webpack-contrib/uglifyjs-webpack-plugin
+ *
+ */
+
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
+module.exports = {
+	mode: 'development',
+	entry: './exercise-sites/travel-site/app/assets/js/app.js',
+
+	output: {
+		filename: '[name].bundle.js',
+		path: path.resolve(
+			__dirname,
+			'exercise-sites/travel-site/app/assets/tmp/js'
+		)
+	},
+
+	module: {
+		rules: [
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				loader: 'babel-loader',
+
+				options: {
+					presets: ['env']
+				}
+			}
+		]
+	},
+
+	plugins: [new UglifyJSPlugin()]
+};
+
+	
+</script>	
+</html>

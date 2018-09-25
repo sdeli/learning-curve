@@ -1,0 +1,107 @@
+<div><h1>REFLECTION</h1>
+	
+	<p>If you do this "john.__proto__ = person;" and you loop through the john object the interpreter will find those properties which are belonging to person as well</p>
+	
+
+	<script>
+		(function(){
+
+			var person = {
+				firstname: 'Default',
+				lastname: 'Default',
+				getFullName: function() {
+					return this.firstname + ' ' + this.lastname;  
+				}
+			}
+
+			var john = {
+				firstname: 'John',
+				lastname: 'Doe'
+			}
+
+			john.__proto__ = person;
+
+			function callFunctions(){
+
+				forLoopObj(john, checkObj.fn, checkObj.args,);
+
+			}
+
+			var checkObj = {
+
+				args : [john],
+				fn : function(key, value, obj){
+
+					console.log(arguments);
+					console.log(key + " " + value);
+
+				} // checkObj
+		
+			}		
+
+			function forLoopObj( obj, fn, fnArgs){
+				for(var key in obj){
+					fn(key, obj[key], ...fnArgs)
+				} //for
+
+			} // forLoopObj 
+			// workaround
+			callFunctions();
+
+		})();	
+	</script>
+
+	<script class="demonstration" title="workaround">
+		(function(){
+
+			var person = {
+				firstname: 'Default',
+				lastname: 'Default',
+				getFullName: function() {
+					return this.firstname + ' ' + this.lastname;  
+				}
+			}
+
+			var john = {
+				firstname: 'John',
+				lastname: 'Doe'
+			}
+
+			john.__proto__ = person;
+
+			function callFunctions(){
+
+				forLoopObj(john, checkObj.fn, checkObj.args,);
+
+			}
+
+			var checkObj = {
+
+				args : [john],
+				fn : function(key, value, obj){
+
+					if( obj.hasOwnProperty(key) ){
+						console.log(arguments);
+						console.log(key + " " + value);
+					} else {
+						console.log("this property is from  proto: " + key);
+					}
+
+				} // checkObj
+	 
+			}		
+
+			function forLoopObj( obj, fn, fnArgs){
+				for(var key in obj){
+					fn(key, obj[key], ...fnArgs)
+				} //for
+
+			} // forLoopObj 
+			// workaround
+			callFunctions();
+
+		})();
+	</script>
+
+</div>
+<!-- END <h1>reflection</h1> ///////////////////////////// -->

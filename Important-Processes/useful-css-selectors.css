@@ -1,0 +1,78 @@
+/* relational selectors*/
+
+/*select a tags but only if they contained an img tag*/
+a < img { border: none; } 
+
+/* SUDO CLASSES */
+
+img[title^="product-"] {
+	border: lightblue;
+}
+
+a[href$=".html"] {
+	text-decoration: none;
+}
+
+img[src*="preview"] {
+	width: 100%;
+}
+
+li:empty {
+	background: red;
+}
+
+button:disabled {
+	background: #ddd;
+}
+
+input[type="checkbox"]:checked + label {
+	font-weight: bold;
+}
+
+li:nth-child(even){}
+li:nth-child(odd){}
+/*target the 3rd list item and every 2nd after it*/
+li:nth-child(2n+3){} 
+/*Target the first 3 list items
+Useful if those are featured items*/
+li:nth-child(-n+3){}
+
+/*Target just the li-s from the parent elemenst children*/
+li:nth-of-type(2){}
+
+/*targets the element which is targeted based on its id by the browser*/
+#arbitaryId:target {};
+
+/*All divs which dont have a certain attribute*/
+div:not(#arbitaryId) {}
+div:not([type='submit']) {}
+div:not(first-child) {}
+
+
+/* SUDO ELEMNTS - they use double colons*/
+
+/*Select the first line of paragraph*/
+p::first-line {
+	font-weight: bold;
+	font-size: 1.4rem
+}
+
+p::first-letter{
+	float: left;
+	padding: 40px 10px;
+	color: white;
+	background: black;
+	margin: 10px 10px 0 0;
+	border-radius: 5px;
+	line-height: 1;
+}
+
+/*after and before are after and before of the content of the targeted element*/
+/*create an element after the contaent with the value of the title attrivute*/
+.downloads::after {
+	content: attr(title);
+	display: inline-block;
+	color:initial;
+	font-size: .65em;
+	margin-left: 5px;
+}
