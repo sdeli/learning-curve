@@ -9,3 +9,7 @@ sudo apt purge mysql-server mysql-server-5.7
 sudo apt-get --purge removez
 # if program hasnt been removed succefully
 sudo aptitude remove
+
+# APACHE STUFF ========================
+# CASE Enable Site config file =========
+sudo a2ensite filename.conf

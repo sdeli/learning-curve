@@ -1,4 +1,45 @@
-<div><h1>MYSQL VOCABULARY</h1>
+<div><h1>MYSQL LANGUAGE STRUCTURE</h1>
+    
+    <ol title="LANGUAGE STRUCTURE">
+        <li title="BASIC PROCESSES">
+            <li>inserts</li>
+            <li>updates</li>
+            <li>deletes</li>
+            <li>creates</li>
+            <li>alters</li>
+            <li>operators</li>
+        </li>
+
+        <li>LOOPS</li>
+        <li>TRANSACTIONS</li> 
+        <li>EXIT HANDLERS</li>
+        <li>TRIGGERS</li>
+        <li>PREPARED STATEMENTS</li>
+       
+        <li title="STORED STUFF - not all commands">
+          <li>PROCEDURES</li>
+          <li>FUNCTIONS</li>
+          <li>SQL SECURITY
+              <li>DEFINER</li>
+              <li>INVOKER</li>
+          </li>
+        </li>
+
+        <li title="INNER BLOCKS">
+          <li>variable scope in innerblock</li>
+          <li>leave block</li>
+          <li>label innerblock</li>
+        </li>
+
+        <li title="BUILT IN FUNCTIONS">
+          <li>aggregate</li>
+          <li>time related</li>
+          <li>string related</li>
+        </li>
+    </ol>
+</div>
+
+<div><h1>MYSQL COMMANDS</h1>
 
     <ul title="MOST IMPORTANT STATEMENTS">
         <ul title="QUERY RELATED STATMENTS">
@@ -26,6 +67,7 @@
                 <li>ALTER TABLE people_name CHANGE name full_name varchar(100);</li>
             </li>
             <li>DROP TABLE</li>
+            <li>REPLACE</li>
         </ul>
     </ul>
 
@@ -56,6 +98,9 @@
     
 </div>
 
+<div title="RARE KEYWORDS">
+    <li>IGNORE</li>
+</div>
 INSERT INTO people (first_name , last_name)
 VALUES ('Steven','Spielberg')
     ,('Shawn','Levy') 

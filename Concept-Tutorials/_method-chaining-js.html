@@ -7,7 +7,7 @@
 <body>
 	
 	<script>
-		var obj = {
+var obj = {
 			prop : "default",
 			method1 : function(arg){
 				this.prop = arg;
@@ -19,8 +19,9 @@
 				console.log("method2 - nowprop is: " + arg);
 				return this;
 			}
-		}
+		}\
 
+		123-345-123
 		console.log(obj.prop);
 		obj.method1("king").method2("ceasar"); // THIS IS METHOD CHAINING
  		console.log(obj.prop);

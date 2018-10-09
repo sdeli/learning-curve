@@ -1,0 +1,107 @@
+METACHARS:
+
+i => case sen
+\d => matches every digit char
+\w => matches every word char
+\b => matches every boundayr => \bt => every word beginning/boundary with t; \b1 every utf-8 constellation beginning with 1
+\R => line break
+\ => escape char
+^\\ => every constellation beginning with \
+. => every charachter as letter, number, space, but doestn match for linebreak
+\s => space char
+
+QUANTIFIERS : matches more characters at one time (repetition operator)
+	* => 0 ro more
+	+ => 1 or more
+	? => 0 or one
+	{3} => Exact number
+	{3, 4} => range of numbers
+
+
+EXAMPLES:
+
+^.{2}$ => Match any str containing any two chars 
+Mr => mathces this
+Mrs => but not this
+
+\d\d\d.\d\d\d.\d\d\d
+123-345*123
+
+
+\d\d\d[.-]\d\d\d[.-]\d\d\d
+123-345.123 => mathces this
+123-345*123 => but not this
+[.-] =>  createing charset
+
+
+[9][2]3[.-]\d\d\d[.-]\d\d\d
+923-345.123 => mathces this
+123-345.123 => but not this
+the '-' character at the beginning of the charset acts as a normal dash
+but [1-9] this is match range of chars: [5-7][2]3[.-]\d\d\d[.-]\d\d\d
+723-345.123 => mathces this
+523-345.123 => mathces this
+
+[a-zA-Z] => match upper and lowercases in range as well 
+[^a-zA-Z] => in charset  ^ means 'is not'
+[a-z ] => a-z and spaces
+
+[^s]anyi
+banyi => matches this
+sanyi => but not this
+
+\d{3}[.-]\d{4}[.-]\d{3}
+123-3456.123 => mathces this
+123-345.123 => but not this
+
+\d*[.-]\d{4}[.-]\d{3}
+-3456.123 => mathces this
+123-3456.123 => and this as well
+
+Mr\.? => matches both: Mr with 0 pr 1 '.'
+Mr.
+Mr
+
+Mr\.?\s[A-Z]\w* =>  doesnt recognise linebreaks
+Mr. Smith 
+Mr Jacob
+Mr. 
+Mr
+
+as as as
+GROUPING
+
+M(r|s|rs)\.?\s[A-Z]\w*
+Mr. Smith => Matches this
+Ms. Smith => Matches this
+Mrs. Smith => Matches this
+Mk. Smith => but not this
+
+
+FIND EMAILS
+
+[a-zA-Z1-9$=_.-]+@[a-zA-Z1-9$=_.-]+\.(com|de) => email matching
+bgfkSzms_deli@gmail.com => matches this
+sandordel-i@freemail.de => matches this
+sandor=deli@freemail.de => matches this
+sandor$deli12@1freemail.de => matches thisz
+
+sandordeli12@1freemailde => but not this
+@freemail.de => but not this
+kilimanjaro@mittommail.jpg => but not this
+
+<title>(\w*|\s)*</title>
+<title>Example html forregex</title>
+
+
+FIND DOMAIN NAMES
+
+https?://(www\.)?(\w+\.)+\w+
+http://www.stackoverflow.com
+https://forum.sublimetext.com
+http://docs.sublimetext.info
+
+
+BACK REFERENCE - EXTRACT PART OF THE RESULT - group replace 
+(check for it)
+$1-n should identify the groups in the regular expression an those shoulc be possible to replace or omit from return value

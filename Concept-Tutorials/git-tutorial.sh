@@ -50,7 +50,11 @@ git remote add origin https://github.com/sdeli/artworks
 git remote add origin https://github.com/sdeli/stock-data-tracker.git
 git remote add origin https://github.com/sdeli/stock-ticker-extractor
 git remote add origin https://github.com/sdeli/social-network
+git remote add origin https://github.com/sdeli/learning-curve
+<<<<<<< HEAD
 git remote add origin https://github.com/sdeli/learning-curve/
+=======
+>>>>>>> 0027b162b95a334519d1bff0cca323cb83156393
 # CASE Push =============== ======================================>
 git push -u origin master
 
@@ -89,7 +93,11 @@ git rm -r --cached node-master/exercise-files # path is realtive to the folder y
 git clone https://github.com/sdeli/to-do-app
 
 #CASE: check tracked files by git ======================>
+<<<<<<< HEAD
 mysql-client-5.7                                install
 mysql-client-core-5.7                           install
 mysql-common                                    install
 mysql-server-core-5.7
+=======
+c
+>>>>>>> 0027b162b95a334519d1bff0cca323cb83156393

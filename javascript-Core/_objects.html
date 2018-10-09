@@ -324,7 +324,7 @@
 				}
 
 				Beverage.prototype.drink = function () {
-					console.log( 'I am drinking: ' + name);
+					console.log( 'I am drinking: ' + this.name);
 				}
 
 				function Coffe (type, name, temperature) {
@@ -340,7 +340,7 @@
 
 				var brasilian = new Coffe('Braisilian', 'Sanyi', 'hot');
 
-                /* SECTION: Inherit from on more constructor */
+                /* SECTION: MIXIN Inherit from on more constructor MIXIN pattern*/
 
                 function Beverage (name, temperature) {
                     this.name = name;
@@ -373,7 +373,6 @@
                 }
 
                 var brasilian = new Coffe('Braisilian', 'Sanyi', 'hot');
-
 			</script>
 
 
