@@ -1,0 +1,33 @@
+use courses3;
+drop procedure if exists selectGender;
+DELIMITER $$
+CREATE PROCEDURE selectGender()
+BEGIN
+select if(lecturer_gender='female',70000,50000)as wages,
+lecturer_name
+from lecturer;
+
+END $$
+DELIMITER ;
+
+call selectGender();
+
+/*==================*/
+
+use courses3;
+drop procedure if exists myNameIs;
+DELIMITER $$
+CREATE PROCEDURE myNameIs(
+	in myName varchar(30),
+    out ifTrue bool)
+BEGIN
+	if myName = 'sandor' then
+		set ifTrue = true;
+	else 
+		set ifTrue = false;
+	end if;
+END $$
+DELIMITER ;
+
+call myNameIs('sador', @majom);
+select @majom;

@@ -1,0 +1,9 @@
+/*
+Innodb
+    better for code insertion
+    if one row fails all will fail in case of multipal insertion
+
+mysam
+    better for data retrival
+    if one row fail all preceeding rows will stay in place inserted
+*/
