@@ -1,0 +1,1 @@
+2019/07/16 20:51:07 [error] 6870#6870: *1 directory index of "/home/sandor/projects/learning-curve/nginx-tut/static-files/" is forbidden, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "127.0.0.1"

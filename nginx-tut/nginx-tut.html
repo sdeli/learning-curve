@@ -1,0 +1,62 @@
+<div><h1>NGINX TUT</h1>
+    <div><h2>CONTEXT</h2>
+        <li>Sections within the configuration</li>
+        <li>A directive can be a set for a given context</li>
+        <li>context === scope</li>
+        <li>Can be nested</li>
+        <li>There is a main context where we can define global directives</li>
+        
+        <ul title="CONTEXT TYPES">
+            <li>Global => file itself</li>
+            <li>http</li>
+            <li>server</li>
+            <li>location => for matching uri locations</li>
+        </ul>
+        
+        <ul title="CONTEXT HIERARCHY">
+            <li>Global
+                <li>http
+                    <li>server
+                        <li>location</li>
+                    </li>
+                </li>
+            </li>
+        </ul>
+    </div> <!-- h2 context -->
+
+    <div><h2>DIRECTIVES</h2>
+        <li>Specific configuration options, which get set in the config file</li>
+        <li>name value pairlike: server_name mydomain.com</li>
+        <li>A directive can be a set for a given context</li>
+        <li>Global directives can be declared in the global context</li>
+        
+        <ul title="DIRECTIVE TYPES">
+            <li>Standard Directives</li>
+            <li>Array Directives</li>
+            <li>Action Directives</li>
+            
+            <ul title="Array Directives">
+                <li>can be declared multiple times without overriding previous</li>
+                <li>gets inherited straight down</li>
+                <li>child context can  override inheritance by re-declaring directive</li>
+            </ul>
+        </ul>
+        
+        <ul title="LISTEN">
+            <li>listen
+                <p>The listen directive typically defines which IP address and port that the server block will respond to.</p>
+                
+                <p>A block with no listen directive uses the value 0.0.0.0:80.</p>
+                <p>A block set to an IP address 111.111.111.111 with no port becomes 111.111.111.111:80</p>
+                <p>A block set to port 8888 with no IP address becomes 0.0.0.0:8888</p>
+                <p>Nginx checks for the longest matching location blocks</p>
+                <p>The first regular expression location that matches the request URI is
+                    immediately selected to serve the request.</p>
+            </li>
+        </ul>
+    </div>
+    
+    <div><h2>URL MATCHING PATTERNS</h2>
+    </div>
+    
+</div>

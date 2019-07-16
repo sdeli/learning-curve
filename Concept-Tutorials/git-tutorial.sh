@@ -51,10 +51,8 @@ git remote add origin https://github.com/sdeli/stock-data-tracker.git
 git remote add origin https://github.com/sdeli/stock-ticker-extractor
 git remote add origin https://github.com/sdeli/social-network
 git remote add origin https://github.com/sdeli/learning-curve
-<<<<<<< HEAD
-git remote add origin https://github.com/sdeli/learning-curve/
-=======
->>>>>>> 0027b162b95a334519d1bff0cca323cb83156393
+git remote add origin https://github.com/sdeli/usr-local-bin.git
+
 # CASE Push =============== ======================================>
 git push -u origin master
 
