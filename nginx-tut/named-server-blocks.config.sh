@@ -11,6 +11,7 @@ http {
 
         root /home/sandor/projects/learning-curve/nginx-tut/static-files;
         # in try files last param causes a url rewrite
+        # =404 directs nginx to go back to default nginx 404 page
         try_files $uri $uri/ =404;
   }
 
