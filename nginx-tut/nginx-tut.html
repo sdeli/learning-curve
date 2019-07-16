@@ -39,10 +39,24 @@
                 <li>can be declared multiple times without overriding previous</li>
                 <li>gets inherited straight down</li>
                 <li>child context can  override inheritance by re-declaring directive</li>
+                <li>access_log</li>
+            </ul>
+            
+            <ul title="Standard Directives">
+                <li>overrides previous declaration</li>
+                <li>gets inherited straight down</li>
+                <li>child context can  override inheritance by re-declaring directive</li>
+                <li>root</li>
+            </ul>
+            
+            <ul title="Standard Directives">
+                <li>Invokes an action</li>
+                <li>Stops or re-evaluates requests</li>
+                <li>return, rewrite, try_files</li>
             </ul>
         </ul>
         
-        <ul title="LISTEN">
+        <ul title="Directives">
             <li>listen
                 <p>The listen directive typically defines which IP address and port that the server block will respond to.</p>
                 
@@ -52,6 +66,19 @@
                 <p>Nginx checks for the longest matching location blocks</p>
                 <p>The first regular expression location that matches the request URI is
                     immediately selected to serve the request.</p>
+            </li>
+            
+            <li>index
+                <li>tells to nginx which file to load if a request points to a directory</li>
+            </li>
+            
+            <li>worker_process
+                <p>worker_process aut => sets as much worker processes as many cpus-s the computer has</p>
+                <p>worker_process 3 => sets up 3 worker processes</p>
+            </li>
+            
+            <li>worker_connections
+                <p>Sets the maximum number of simultaneous connections that can be opened by a worker process.</p>
             </li>
         </ul>
     </div>
