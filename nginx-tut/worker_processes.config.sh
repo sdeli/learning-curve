@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 user www-data;
 
+# worker_processes defines how many worker processes should be operated by nginx. With the auto option it opens
+# the same amount as many processor cores the system has.
 worker_processes auto;
 
 events {
-  worker_connections 1024;
+    # worker_connections directive defines howhow many open connections will be allowed per process
+    worker_connections 1024;
 }
 
 http {
+  include myme.types
+
   server {
 
     listen 80;
