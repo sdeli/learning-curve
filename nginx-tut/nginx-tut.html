@@ -1,4 +1,29 @@
 <div><h1>NGINX TUT</h1>
+    <dl title="What To Set Up In Nginx Config">
+        <li>logging</li>
+        <li>http2</li>
+        <li>ssl => tls</li>
+        <li>http redirection to https</li>
+        <li>static file serving</li>
+        <li>gzip => nginx-tut/response-headers-gzip.config.sh</li>
+        <li>response heaeders in nginx-tut/response-headers-gzip.config.sh</li>
+        <li>worker processes</li>
+        <li>rate limiting</li>
+        <li>harden nginx
+            <li>server_tokens off => dismisses header which show nginx version number</li>
+            <li>add_header xframe-options "sameorigin" => doesnt allow ti embed destination site</li>
+            <li>prohibit cross site scripting</li>
+            <li>--without-http_autoindex_module</li>
+        </li>
+        <li>Load balancing
+            <li>round robin</li>
+            <li>sticky sessions</li>
+            <li>least connection</li>
+        </li>
+        <li>geoip lookup</li>
+        <li>video streaming</li>
+    </dl>
+    
     <div><h2>CONTEXT</h2>
         <li>Sections within the configuration</li>
         <li>A directive can be a set for a given context</li>

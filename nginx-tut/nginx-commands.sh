@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 sudo pkill -f nginx
 
+ps -aux | grep nginx
+
 nginx -h
 
 sudo nginx -s stop

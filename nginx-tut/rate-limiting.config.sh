@@ -12,6 +12,8 @@ events {
 
 http {
   include myme.types;
+#  the current request uri is restricted to one 1 call a second, and the above 5 comming calls gets delayed the rest are responded with 503
+  limit_req_zone $request_uri zone=MYZONE:10m rate=1r/s burst=5;
 
   server {
 
