@@ -6,8 +6,9 @@
 
 docker --help
 
-docker image ls
+docker image ls | docker images
 sudo docker rmi -f $(sudo docker images -a -q)
+docker tag bb38976d03cf yourhubusername/verse_gapminder:firsttry
 
 sudo docker container ls --all
 
@@ -32,11 +33,14 @@ sudo docker stop foo5
 docker system prune
 docker container rm -f CONTAINER_ID
 docker container ls -aq | xargs docker container rm
+sudo docker inspect a4c61b8c1e47 | grep IPAddress # get IP Address
 
 # create and start container at once
 docker run -p 4000:80
 sudo docker run -it -d --name foo1 ubuntu /bin/bash
 sudo docker run --name nginx-template-base -p 8080:80 -e TERM=xterm -d nginx
+sudo docker run -itd --name=mysql-5.7.27 --network=mysql-db mysql:5.7.27
+sudo docker run --name=mysql3 -e MYSQL_ROOT_PASSWORD=majom2 -e MYSQL_USER=sdeli -e MYSQL_PASSWORD=dalias19 --network=mysql-db mysql
 
 # to exit terminal press ctrl-p + q
 docker attach CONTAINER_NAME
@@ -52,8 +56,26 @@ sudo docker exec -d foo1 mkdir majom
 # commit the changes ,made on docker container to an image
 docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
 
-docker swarm init
-docker stack deploy -c docker-compose.yml getstartedlab
+docker login
+docker push yourhubusername/verse_gapminder
+
+sudo docker exec -it sandor_db_1 sh -c 'exec mysql -uroot --password=majom2 -h localhost < /src/all_databases.sql'
+
+# Docker Networking
+#    default networks:
+#        Bridge - default network for all containers.
+#        Host - shares the network with the host machine.
+#        none - containers without an ip.
+#    Bridge network
+#        - all containers on this network get a unique ip
+#        - Has an own DNS server.
+#    User-Defined bridge networks
+#        - has an own DNS server, which translates container names to its ip - automatic service discovery
+
+docker network create --driver bridge my-network
+docker network rm my-network
+docker network ls
+docker network inspect bridge
 
 # Docker Storages
 #    Volume mounts:
@@ -72,14 +94,14 @@ docker stack deploy -c docker-compose.yml getstartedlab
 # Docker-Compose
 docker-compose up -d  q
 docker-compose up --scale appName=5
+docker-compose down
+sudo docker-compose -f ./empire-compose.yml down
+sudo docker-compose -f ./empire-compose.yml up -d --scale ausztriaiallas=5
+sudo docker-compose -f /home/sandor/austria-recruitment.yml up -d --scale ausztriaiallas=5
 
-# Docker Networking
-    default networks:
-        Bridge - default network for all containers.
-        Host - shares the network with the host machine.
-        none - containers without an ip.
-    Bridge network
-        - all containers on this network get a unique ip
-        - Has an own DNS server.
-    User-Defined bridge networks
-        - has an own DNS server, which translates container names to its ip - automatic service discovery
+# Attach to container created by DOCKER-COMPOSE
+sudo docker exec -it sandor_db_1 /bin/bash
+
+# Docker Swarm
+docker swarm init
+docker stack deploy -c docker-compose.yml getstartedlab

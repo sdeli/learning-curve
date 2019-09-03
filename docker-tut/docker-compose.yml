@@ -6,6 +6,8 @@
 #     Instruct web’s containers to share port 80 via a load-balanced network called webnet. (Internally, the containers themselves publish to web’s port 80 at an ephemeral port.)
 #     Define the webnet network with the default settings (which is a load-balanced overlay network).
 
+#A docker compose file sets up a private network automatically with embedded dns server
+Caches the services
 
 version: "3"
 services:
