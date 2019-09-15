@@ -1,0 +1,38 @@
+<ol><h1>CLEAN CODE</h1>
+    <li>Collective agreements on things, how we do something for code consistency</li>
+    
+    <group>VARIABLES</group>
+    <li>No magic values</li>
+    <li>Descriptive variable names - should consist of 2 to 4 words and 8 to 20 characters</li>
+    <li>Booleans should be stored in variables, with a descriptive name
+        <script>let boolValKeywordsArr = ['should','is','has','can'];</script>
+    </li>
+    <li>Use Typescript to show that which variable is what</li>
+    
+    <group>FUNCTIONS</group>
+    <li>DOT - Single Responsibility functions
+        <span>Easier to give a descriptive name</span>
+        <span>Easier to write tests for</span>
+    </li>
+    <li>Pure functions
+        <span>Deterministic</span>
+        <span>easier to write test</span>
+    </li>
+    <li>Few params as possible | params passed as keys of an object</li>
+    <li>More tiny functions are better then few large
+        <span>better for nodes performance optimization</span>
+    </li>
+    
+    <group>CONTROL FLOW</group>
+    <li>if conditons should be stored in variable with descriptive name</li>
+    <li>if statements should have more lines then 3 | content of stament should be outsources into functions with a descriptive name</li>
+    <li>loops should be wrapped into functions with descriptive names</li>
+    
+    <group>COMMENTS</group>
+    <li>Comments are always the sign that you couldn`t express yourself in code</li>
+    <li>You shouldnt describe a code in comment which is likely to change</li>
+    
+    <group>ARCHITECTURE</group>
+    <li>mvc pattern</li>
+    <li>Favor declarative programming over imperative programming => Top Down Analysis</li>
+</ol>

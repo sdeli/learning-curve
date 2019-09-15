@@ -21,6 +21,10 @@ services:
           - ausztriarecruitment
        stdin_open: true
        tty: true
+       ports:
+         - 4000:4000
+       volumes:
+         - /home/sandor/startup-scripts/austria-recruitment-app/:/austria-recruitment/app
 networks:
     ausztriarecruitment:
         driver: bridge
