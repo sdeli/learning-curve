@@ -15,7 +15,7 @@
     <li>Use Typescript to show that which variable is what</li>
     
     <group>FUNCTIONS</group>
-    <li>DOT - Single Responsibility functions
+    <li>DOT/Single Responsibility functions
         <span>Easier to give a descriptive name</span>
         <span>Easier to write tests for</span>
     </li>
@@ -23,7 +23,7 @@
         <span>Deterministic</span>
         <span>easier to write test</span>
     </li>
-    <li>Few params as possible | params passed as keys of an object</li>
+    <li>Few params as possible, maximum 3 | params passed as keys of an object</li>
     <li>More tiny functions are better then few large
         <span>better for nodes performance optimization</span>
     </li>
@@ -36,6 +36,14 @@
     <group>COMMENTS</group>
     <li>Comments are always the sign that you couldn`t express yourself in code</li>
     <li>You shouldnt describe a code in comment which is likely to change</li>
+    
+    <group>ORGANIZATION OF LOGIC</group>
+    <li>1 file 1 set of logic
+        <span>if there are more sets of logic (a class called car, which can accelarate, stop, turn on music ....) 
+            these should be delegated into separate files and then attached in the main file on the main entity
+        </span>
+    </li>
+    <li>Logic should be readable from top to the bottom => function definitons should be composed in top-down narrative</li>
     
     <group>ARCHITECTURE</group>
     <li>mvc pattern</li>
