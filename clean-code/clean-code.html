@@ -27,6 +27,7 @@
     <li>More tiny functions are better then few large
         <span>better for nodes performance optimization</span>
     </li>
+    <li>No nested functions => makes logic more difficult to understand</li>
     
     <group>CONTROL FLOW</group>
     <li>if conditons should be stored in variable with descriptive name</li>
@@ -44,6 +45,9 @@
         </span>
     </li>
     <li>Logic should be readable from top to the bottom => function definitons should be composed in top-down narrative</li>
+    <li>No nested logic => No nested functions
+         <span>if there is a logic which needs nesting, then that one should be delegated into separate file as a library or submodule</span>
+    </li>
     
     <group>ARCHITECTURE</group>
     <li>mvc pattern</li>
