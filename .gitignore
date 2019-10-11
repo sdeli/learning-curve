@@ -1,3 +1,4 @@
 node_modules/
 node-js-tutorial-basic/node-master/exercise-files
 *.vscode
+*.idea
