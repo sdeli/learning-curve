@@ -40,7 +40,21 @@ docker run -p 4000:80
 sudo docker run -it -d --name foo1 ubuntu /bin/bash
 sudo docker run --name nginx-template-base -p 8080:80 -e TERM=xterm -d nginx
 sudo docker run -itd --name=mysql-5.7.27 --network=mysql-db mysql:5.7.27
-sudo docker run --name=mysql3 -e MYSQL_ROOT_PASSWORD=majom2 -e MYSQL_USER=sdeli -e MYSQL_PASSWORD=dalias19 --network=mysql-db mysql
+sudo docker run \
+--name=mysql \
+-e MYSQL_ROOT_PASSWORD=majom2 -e MYSQL_USER=sdeli -e MYSQL_PASSWORD=dalias19 \
+--network=mysql-db \
+-v /home/sandor/startup-scripts/mysql:/src \
+-d \
+mysql
+
+# run node.js container with debug config
+sudo docker run \
+--name=test.austriaiallas.com \
+--network=mysql-db \
+-p 4000:40000 -p 5858:5858 \
+-v /home/sandor/austria-recruitment/:/austria-recruitment \
+test.austriaiallas.com
 
 # to exit terminal press ctrl-p + q
 docker attach CONTAINER_NAME

@@ -1,0 +1,47 @@
+<div><h1>SOFTWARE DESIGN PRINCIPLES</h1>
+    
+    <div><h2>SOLID PRINCIPLES</h2>
+        <ul><h3>Single Responsibility Principle</h3>
+            <li>One entity should do one thing =></li>
+            <li>if it needs to do something related then that should be outsourced into a separate entity and the separate entity
+            should be referenced in the main entity</li>
+        </ul>
+        
+        <ul><h3>Open Close principles</h3>
+            <li>An entity should be cloesed for modification but open for extension</li>
+            <li>So its code shouldnt be needed to be extended =></li>
+            <li>Rather if we need some additional functionality then a separate entity should do that by useing the original one and
+            via the new entities code shoud be extended the functionalty of the original one =></li>
+            <li> example if you have a class and to extend the functionalty you extend a new class with the original one.</li>
+        </ul>
+        
+        <ul><h3>liscove Subsituntion Principle</h3>
+            <li>In a certain cituation, a class should be possible to be used the same way as the class, which has extended it.</li>
+            <li>So if on the parent class if there was a method called sendMessage, then the sendMessage method should be possible to be
+            used the same way on the new class as on the original one.</li>
+        </ul>
+        
+        <ul><h3>Interface segregation</h3>
+            <li>When you are implementing a class or interface, you shouldnt get such properties/methods which you dont need.</li>
+            <li>So if you are creating a penguin class you shouldnt be forced to import the bird class and sou your penguin can fly. =></li>
+            <li>Rather you should separate the bird class/interface to hasBeak, hasWings, canSing, canFly and implement the ones you need</li>
+        </ul>
+        
+        <ul><h3>Dependency Inversion Principle</h3>
+            <li>Our modules or Classes should depend on interfaces rather then actual implementations</li>
+            <li>So when we receive a dependency as a parameter, then we should receive as an interface/type rather then an implementation</li>
+            <a title="Dependency Inversion Principle Demonstration" href=""></a>
+        </ul>
+    </div>
+    
+    <div><h2>Single Responsibility Principle</h2></div>
+    <div><h2>Separation of concerns</h2></div>
+    
+    <div><h1>loose Coupling</h1>
+        <p><strong>Communicating/Collaborating software parts have little to no knowledge of others implementation</strong></p>
+        <p><strong>Until the interfaces - via they are communicating/collaborating - are matching, they
+            dont need to know each others implementation => </strong></p>
+        <p>So Implementations can be swapped</p>
+        <p>Conventions are established by the interface contracts</p>
+    </div>
+</div>
