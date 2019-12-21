@@ -1,62 +1,343 @@
-<sources>
-    <a href="https://drive.google.com/file/d/1dQ3EsZ8CWq5pFY2zbrr3asZm-Z8zpQOS/view">PROGRAMMING JAVASCRIPT APPLICATIONS - ERIC ELLIOT</a>
+<sources class="read-if-you-have-a-lot-of-time-before-reading-through">
+    <a href="https://drive.google.com/file/d/1dQ3EsZ8CWq5pFY2zbrr3asZm-Z8zpQOS/view">PROGRAMMING JAVASCRIPT APPLICATIONS
+        - ERIC ELLIOT => with emphasis on section 4 'MODULES' and 'principles of modularization'</a>
     <a href="https://drive.google.com/open?id=11Nop-qNqAvIclgI6e_mX3YHYJvR59c_B">CLEAN CODE</a>
 </sources>
 
-<ol><h1>CLEAN CODE</h1>
-    <li>Collective agreements on things, how we do something for code consistency</li>
+<sources class="read-through-before-reading-through">
+    <a href="https://www.cs.cornell.edu/courses/cs3110/2012sp/lectures/lec07-modules/lec07.html">MODULAR PROGRAMMING &
+        INTERFACE FOR MODULES</a>
+    <a href="https://www.i-programmer.info/professional-programmer/i-programmer/3864-in-praise-of-top-down-.html">TOP
+        DOWN ANALYSIS & CLEAN INTERFACE</a>
+    <a href="https://www.youtube.com/watch?v=PRcTIFzk-4k&t=462s">TOP DOW ANALYSES</a>
+    <a href="https://www.youtube.com/watch?v=TmtyFcLWXwo&t=241s">STEPS OF TOP DOWN ANALYSIS & MODULAR PROGRAMMING</a>
+</sources>
+
+<div><h1>CLEAN CODE</h1>
+    <ol><h2>COLLECTIVE AGREEMENTS ON THINGS, HOW WE DO SOMETHING</h2></ol>
     
-    <group>VARIABLES</group>
-    <li>No magic values</li>
-    <li>Descriptive variable names - should consist of 2 to 4 words and 8 to 20 characters</li>
-    <li>Booleans should be stored in variables, with a descriptive name
-        <script>let boolValKeywordsArr = ['should','is','has','can'];</script>
-    </li>
-    <li>Use Typescript to show that which variable is what</li>
+    <ol><h2>VARIABLES</h2>
+        <li><strong>No magic values</strong>
+            <p>
+                Dont use primitive values in an expression/process/parameter without a name because that makes the
+                expression/process/parameter unclear, why is that thing done with that particular value, what is
+                actually happening
+            </p>
+            <script class="example">
+                // SO WE DONT DO THINGS LIKE THIS
+                const windowHeight = 200 * 5 + 2;
+                const randomWidth = getRandomWidth(100, 3);
+                // 200, 5 and 2 are here a magic values beacause we dont know what they represent
+                // we have no idea why they are added and multiplied and why they give use even the value windowHeight height
+                // and it is totally unclear why is 100 and 3 given into getRandomWidth. We may find out the paramters name from
+                // getRandomWidth-s signature but it remains still a secret why 100 and 3 represents those names.
+
+                // INSTEAD WE DO THINGS LIKE THIS
+                const sectionsHeightInWindow = 200;
+                const sectionsCountInWindow = 5;
+                const paddingTop = 2;
+                const columnWidth = 100;
+                const columnCount = 3;
+
+                const windowHeight = sectionsHeightInWindow * sectionsCountInWindow + paddingTop;
+                const randomWidth = getRandomWidth(columnWidth, columnCount);
+                // This way we have a better grasp about, what and why is going on, why is windowHeight counted that way.
+
+                // THERE CASES OF COURSE WHEN THAT IS UNNECESSARY
+                const homeworks = ['1 +1', '2 + 2', '3 + 1', '4 + 11'];
+                const shouldDoHomework = homeworks.length !== 0;
+                // it is clear hear that 0 represents a value when there is no homework left
+                // but it is different from the cases above, because here you dont need to remember on your logic
+                // to understand the meaning of the value 0.
+            </script>
+        </li>
+        
+        <li><strong>Descriptive variable names</strong>
+            <p>A descriptive variable name should consist of 2 to 5 words and 8 to 25 characters</p>
+        </li>
+        
+        <li><strong>Conditional statements boolean expressions should be stored in a variable with a descriptive
+            name</strong>
+            <p class="definition">
+                Conditional statements boolean expression => if (conditionalStatementsBooleanExpression) ... </p>
+            <p>
+                Additionally boolean variables should use following prefixes ['should','is','has','can', 'was', 'were'
+                ...]
+                to express their intent.
+            </p>
+            <!-- PLEASE CHECK OUT THE BELOW EXAMPLE -->
+            <script class="example" src="code-examples/boolean-variables.js"></script>
+        </li>
+        
+        <li><strong>Use Typescript to show that which variable is of what type</strong></li>
+    </ol>
     
-    <group>FUNCTIONS</group>
-    <li>DOT/Single Responsibility functions
-        <span>Easier to give a descriptive name</span>
-        <span>Easier to write tests for</span>
-    </li>
-    <li>Pure functions
-        <span>Deterministic</span>
-        <span>easier to write test</span>
-    </li>
-    <li>Few params as possible, maximum 3 | params passed as keys of an object</li>
-    <li>More tiny functions are better then few large
-        <span>better for nodes performance optimization</span>
-    </li>
-    <li>No nested functions => makes logic more difficult to understand</li>
+    <ol><h2>FUNCTIONS</h2>
+        <li><strong>DOT/Single Responsibility functions</strong><!-- DOT => Do One Thing -->
+            <p class="definition">A DOT function does one - with a function name good describable - task and does it
+                well.</p>
+            <p>If a function needs to perform one task, then it is EASIER TO GIVE A DESCRIPTIVE NAME</p>
+            <p>By its DOT-name easier to get an understanding of what it does</p>
+            <p>Easier to write tests for it</p>
+        </li>
+        
+        <li><strong>A function should do what its name says - nothing else/additional</strong>
+            <p>There should be no carried out task, what doesnt turn out clearly of its name</p>
+        </li>
+        
+        <li><strong>Pure functions</strong>
+            <p class="definition">A pure function returns for certain value of parameters always the same thing</p>
+            <p>
+                It doesnt reference anything from the outer scope, so there is nothing what would influence the return
+                value
+            </p>
+            <p>
+                So that there is nothing, what doesnt depends on itself (because it doesnt reference anything from the
+                outer scope),
+                then you dont need to be afraid of, that if in that outer scope something breaks, the function will
+                break as well.
+            </p>
+            <p>
+                So that the function doesnt reference anything from the outer world,
+                then to give a proper return value, the function doesnt depend on other ones to work well, which would
+                modify that value
+                which our not pure function uses.
+            </p>
+            <p>easier to write test for</p>
+            <p>
+                In my opinion there it is fine to reference imported values and constants since they dont change and are
+                not changed by
+                other functions
+            </p>
+        </li>
+        
+        <li><strong>As Few arguments as possible => maximum 3</strong>
+            <p>If the number of arguments go over 3, then arguments passed on keys of an object</p>
+        </li>
+        
+        <li><strong>tinier functions are better then few large</strong>
+            <p>better for node.js performance optimization</p>
+            <p>
+                As somebody who doesnt know your code, it is easier to find the peace of code which he/she needs to
+                refactor/debug/get a gasp of, because by the function names he/she can determine which peace of code
+                will he/she need
+            </p>
+            <p>
+                functions between 10 and 20 are preferable, but where it makes sense to make even tinier one, there its
+                fine
+            </p>
+        </li>
+        
+        <li><strong>No nested functions</strong>
+        <li>makes logic more difficult to understand</li>
+        </li>
+    </ol>
     
-    <group>CONTROL FLOW</group>
-    <li>if conditons should be stored in variable with descriptive name</li>
-    <li>if statements should have more lines then 3 | content of stament should be outsources into functions with a descriptive name</li>
-    <li>loops should be wrapped into functions with descriptive names</li>
+    <ol><h2>CONTROL FLOW</h2>
+        <li><strong>if conditons should be stored in variable with descriptive name</strong></li>
+        
+        <li><strong>if statements, which have more lines then 3, then content of statement should be outsources into
+            functions with
+            a descriptive name</strong>
+            <script class="example" src="code-examples/outsorce-if-staments-content.js"></script>
+        </li>
+        
+        <li><strong>loops should be wrapped into functions with descriptive names</strong></li>
+        
+        <li><strong>if the commands in a loop are going over 3 - 4 lines they should be wrapped into a function with a
+            descriptive
+            name, if possible</strong>
+        </li>
+    </ol>
     
-    <group>COMMENTS</group>
-    <li>Comments are always the sign that you couldn`t express yourself in code</li>
-    <li>You shouldnt describe a code in comment which is likely to change</li>
+    <ol><h3>COMMENTS</h3>
+        <p>Comments are always the sign that you couldn`t express yourself in code</p>
+        <p>
+            But think always when you write code with the head of somebody who never have seen the current code and has
+            no
+            idea what it does. And where you feel that for that person some line(s) wouldnt be understandable, there
+            leave as many
+            comments as needed to make that part understandable.
+        </p>
+    </ol>
     
-    <group>ORGANIZATION OF LOGIC</group>
-    <li>1 file 1 set of logic
-        <span>if there are more sets of logic (a class called car, which can accelarate, stop, turn on music ....) 
-            these should be delegated into separate files and then attached in the main file on the main entity
-        </span>
-    </li>
-    <li>Logic should be readable from top to the bottom => function definitons should be composed in top-down narrative</li>
-    <li>No nested logic => No nested functions
-         <span>if there is a logic which needs nesting, then that one should be delegated into separate file as a library or submodule</span>
-    </li>
+    <ol><h3>ORGANIZATION OF LOGIC</h3>
+        <li><strong>1 file 1 set of logic</strong>
+            <!-- Logic => One function which has other one(s) to carry out a task -->
+            <p>
+                if there are more sets of logic (a class called Car, which can accelarate, stop, turn on music ....)
+                then functions calles are getting really mixed up as the file grows and it will be difficult for a
+                person who didnt see (or forget)
+                the logic of that file to find that part of code which he needs.
+            </p>
+            <p>
+                So if there are more sets of logic (a class called Car, which can accelarate, stop, turn on music ....)
+                then the code for: [accelarate, stop, turn on music] should be delegated into separate files
+                and then attached in the main Car classes file to the Car class. Same applies for not class but node
+                module based architectures
+            </p>
+            <p>
+                This way if you look into the Car class, it will be clear for the first glance, what features the car
+                class has and will be easier to follow the logic of the subordinated features since they are not mixed
+                up with each
+                others methods/functions
+            </p>
+            <p>
+                If a feature doesnt exceed 1 - 2 methods/function then it may be not needed to outsource into separate
+                files, because that amount of code is not so destructive for the other features logic
+            </p>
+        </li>
+        
+        <li><strong>Top Down Narrative of functions and Methods</strong>
+            <p title="Top Down Narrative" class="defintion">
+                Logic should be readable from top to the bottom => Function definitons should be located from top to
+                bottom
+            </p>
+            </p>
+            <ol>Making a file readable from top to bottom has 2 pillars:
+                <!-- more info see #top-down-analysis-and-module-design -->
+                <li>
+                    The code in the file should have a controller/main function,
+                    which manages the whole files logic through calling the other sub functions
+                </li>
+                <li>
+                    The sub functions of the main/controller function should be located from under the main/controller
+                    function
+                    in CALL ORDER.
+                </li>
+            </ol>
+            <script title="TOP TO BOTTOM" class="example" src="code-examples/create-article.js">
+                // In this code you will see that there is a main/controller function called 'createArticle'
+                // 'createArticle' is the function which manages the calling of other sub functions and the logic behind.
+                // The other sub functions are in their call order, therefore the code can be read from top to bottom
+                // and you will always know, where is the current functions calls function definition located and so
+                // it is easier to get an understanding of the whole file.
+            </script>
+        </li>
+        
+        <li><strong>No nested logic => No nested functions</strong>
+            <p>
+                if there is a logic which needs nesting, then that one should be delegated into separate file as a
+                library/submodule/subclass
+            </p>
+        </li>
+    </ol>
     
-    <group>ARCHITECTURE</group>
-    <li>mvc pattern</li>
-    <li>Favor declarative programming over imperative programming => Top Down Analysis</li>
-    <li>Modules and Classes should have a clean interface
-        <span>interface:Should be documented, what do they need to work properly:
-            <li>dependencies, parameters</li>
-            <li>how they need to be used in code</li>
-            <li>other conditions: they need to have internet connection</li>
-        </span>
-    </li>
-</ol>
+    <!--
+        ARCHITECTURE for the first glance doesnt belong to the topic OF clean code but still it is a really improtant part of if it because:
+        When you want to understand code, then most of the times you need to understand/find-and-understand a set of files
+        or even you may need to get an understanding how a whole application works, when you get on a new project
+        and so understandable architecture and folder structure gets to be a key of being able to understand the whole codebase.
+     -->
+    <ol><h2>ARCHITECTURE</h2>
+        <li><strong>mvc pattern</strong></li>
+        <li><strong>When coding out a controllers actions use:</strong>
+            <!-- see #top-down-analysis-and-module-design -->
+            <p>top down analysis</p>
+            <!-- see #top-down-analysis-and-module-design -->
+            <p>modular design</p>
+        </li>
+        <li><strong>favor object composition over inheritance</strong></li>
+        <!-- see #top-down-analysis-and-module-design [title=what-is-a-module] -->
+        <li><strong>Modules and Classes should have a clean interface</strong>
+            <p title="clean interface definition">
+                It should be documented (or self documented by code), what does the Module/Class need to work properly:
+                    - dependencies, parameters
+                    - What-comes-out/whats-the-result for the parameters
+                    - how the Module/Class needs to be used
+                    - Other conditions that it needs (like: need to have internet connection, need to have db or whichever env
+            variables)
+                </p>
+            </p>
+            <p>A module/class should have a standard way to find out what local and npm dependencies it has</p>
+        </li>
+    </ol>
+    
+    <div><h2>TOP DOWN ANALYSIS & MODULE DESIGN</h2>
+        <p>PLEASE CHECK THE BELOW MATERIALS OUT BEFORE READING FORWARD</p>
+        <a href="https://www.i-programmer.info/professional-programmer/i-programmer/3864-in-praise-of-top-down-.html">MODULAR
+            PROGRAMMING & INTERFACE FOR MODULES</a>
+        <a href="https://www.youtube.com/watch?v=PRcTIFzk-4k&t=462s">TOP DOW ANALYSES & CLEAN INTERFACE</a>
+        <a href="https://www.youtube.com/watch?v=TmtyFcLWXwo&t=241s">STEPS OF TOP DOWN ANALYSIS & MODULAR
+            PROGRAMMING</a>
+        <a href="https://drive.google.com/file/d/1dQ3EsZ8CWq5pFY2zbrr3asZm-Z8zpQOS/view">read section 4 'MODULES'</a>
+        
+        <p>Top down analysis should be done until you have just atomic functions</p>
+        <p title="atomic functions" class="definition">
+        <p>Atomic functions has a set of commands which are doing a well identifiable task</p>
+        <p>
+            An atomic function doesnt manage calls to other function
+            but executes only commands which are given by the current programming language
+        </p>
+        <script class="example">
+            const pageOnGoogle = getPageOnGoogleDotCom();
+            // ... further commands with pageOnGoogle variable
+
+            // 'getPageOnGoogleDotCom' is an atomic function
+            async function getPageOnGoogleDotCom() {
+                const browser = await pupeteer.launch({
+                    headless: true,
+                    args: ['--poxy-server=123.345.3234:1234']
+                });
+
+                await page = browser.newPage();
+                return page.goto('www.google.com');
+            }
+        </script>
+        </p>
+        <!-- see example at #module-controller-atomic -->
+        <p title="atomic functions">
+            Atomic functions are called/managed by controller/main functions
+        </p>
+        <!-- see example at #module-controller-atomic -->
+        <p title="controller functions" class="definition">
+            A controller function is a main function of a module. It manages the logic of the current task, by calling
+            other subordinated controller or atomic functions.
+        </p>
+        <!-- see example at #module-controller-atomic -->
+        <div title="what-is-a-module"><strong>MODULE</strong>
+            <p class="definition">
+                - A module is a set of code which is encolsed from the outer scope into a function or class (or whatever
+                    way).
+                - It has a clean interface so it is clear:
+                    <!-- What goes in and what comes out in nutshell-->
+                - What features does it provide
+                - What dependecies it has
+                - What paramters it takes
+                - What comes out for the paramters
+                - What other things does it need to work
+                - Apart of paramters it encapsulates everything, what it needs to work
+            </p>
+            
+            <p title="Modules Structure">
+                - A module has controller/main function/method which manages the sub functions,
+                which can be other controller/main or atomic functions.
+                - The controller/main function is the entry point of the module (like the method called 'main' in java)
+                - When a sub function starts to grow that can be turned into a module as well and gets to be the submodule
+                of the main module
+            </p>
+        </div>
+        <script id="module-controller-atomic" class="example"
+                title="module design, atomic functions, controller functions"
+                src="code-examples/create-article.js">
+            // YOU WILL SEE IN THE FILE THE FOLLOWING:
+            // The file is an express backend controller and follows module design so:
+            // - it has controller/main function as its entry point, the 'createArticle' function
+            // - 'createArticle' controller/main function manages the whole logic of the file.
+            // - The file includes/encapsulates everything what it needs to run, apart of the paramters which 'createArticle' takes
+            // - It is clear what dependecies it has since dependencies are in the top of the file above the controller/main function
+            // which is by - my unexisting teams- team agreement standard place for the dependencies in this particular project,
+            // so dependencies in such files are clear for everybody working on this project.
+            // - 'createArticle' has subfunctions:
+            //      'validateArticleFormData'
+            //      'denyPublishArticle'
+            //      'notifAboutPublishedArticle'
+            // -'validateArticleFormData' has grown out so that has gotten to be a submodule of 'createArticle'
+            //   and has been outsourced into a different file with the same structre (follows module design)
+            // - 'notifAboutPublishedArticle' and 'deleteUploadedProfImages' are atomic functions since they are executing
+            // just built in javascript commands and are not managing any other function they are just purely executing tasks
+            // and they have a DOT/clearly-defined-singular-task
+            // 'denyPublishArticle' has gotten to be a controller function because that manages already an other atomic function..
+        </script>
+    </div>
+</div>
