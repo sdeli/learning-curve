@@ -4,3 +4,4 @@ node-js-tutorial-basic/node-master/exercise-files
 *.idea
 .idea
 .vscode
+.history/
