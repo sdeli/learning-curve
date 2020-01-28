@@ -19,7 +19,7 @@ sudo docker ps -a
 sudo docker container ls -a
 
 # build an image from Dockerfile
-# The dot means the path of the file
+# The dot means the path of the fileq
 docker build --tag=friendlyhello .
 
 # create container but doesnt start it

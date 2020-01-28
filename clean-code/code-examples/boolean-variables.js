@@ -14,8 +14,7 @@ if (carouselHasMobileViewWidth) {
     column.style.width = '100%';
 }
 
-// FURTHER EXAMPLES
-const maxConcurrentRequestsCount = 5;
+// FURTHER EXAMPLESconst maxConcurrentRequestsCount = 5;
 const canStartNewRequest = ongoingRequestsArr.length < maxConcurrentRequestsCount;
 if (canStartNewRequest) ...
 

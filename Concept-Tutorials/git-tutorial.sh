@@ -52,6 +52,8 @@ git remote add origin https://github.com/sdeli/stock-ticker-extractor
 git remote add origin https://github.com/sdeli/social-network
 git remote add origin https://github.com/sdeli/learning-curve
 git remote add origin https://github.com/sdeli/usr-local-bin.git
+git remote add origin https://github.com/sdeli/activity-game-no-angular.git
+git remote add origin https://github.com/sdeli/npr
 
 # CASE Push =============== ======================================>
 git push -u origin master
@@ -78,7 +80,7 @@ git checkout -b our-features
 git merge our-features --no-ff
 
 # CASE: ignore node modules ====================================================
-sudo touch .gitignore 
+sudo touch .gitignore
 sudo chmod 777 .gitignore
 echo "node_modules/" >> .gitignore
 
