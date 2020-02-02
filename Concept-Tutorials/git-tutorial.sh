@@ -19,6 +19,13 @@
 git config --global user.email "bgfkszmsdeli@gmail.com"
 git config --global user.name "sdeli"
 
+git config user.email "bgfkszmsdeli@gmail.com"
+git config user.name "sdeli"
+
+# CASE 1/1 push different config repo ======================================>
+git config --local credential.helper ""
+git push origin master
+
 # CASE 2 Initialize Git repository ============================>
 git init
 
@@ -54,6 +61,7 @@ git remote add origin https://github.com/sdeli/learning-curve
 git remote add origin https://github.com/sdeli/usr-local-bin.git
 git remote add origin https://github.com/sdeli/activity-game-no-angular.git
 git remote add origin https://github.com/sdeli/npr
+git remote add origin https://github.com/cloudstorm/holiday-calendar-sync.git
 
 # CASE Push =============== ======================================>
 git push -u origin master
@@ -93,11 +101,7 @@ git rm -r --cached node-master/exercise-files # path is realtive to the folder y
 git clone https://github.com/sdeli/to-do-app
 
 #CASE: check tracked files by git ======================>
-<<<<<<< HEAD
 mysql-client-5.7                                install
 mysql-client-core-5.7                           install
 mysql-common                                    install
 mysql-server-core-5.7
-=======
-c
->>>>>>> 0027b162b95a334519d1bff0cca323cb83156393

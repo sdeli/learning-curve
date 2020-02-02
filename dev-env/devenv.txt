@@ -1,0 +1,42 @@
+1. https://cloudstorm.atlassian.net/wiki/spaces/DEV/pages/16974117/Development+environments
+
+2. https://github.com/cloudstorm/devenv-etc
+
+3. should be installed 
+  fzf
+  homebrew
+    installer script: https://github.com/cloudstorm/devenv-etc/blob/master/homebrew/Brewfile
+    brew bundle --file=breqfile => checks if installed if not updates
+
+4. commit signing
+
+5. #!/usr/local/bin bash
+
+6. look after:
+  hub
+  antigen
+  brew info coreutils
+  mkcert
+  hijack => https://github.com/cloudstorm/devenv-etc/tree/master/domain-hijack
+  p10k configure
+  antigen npx
+  antigen zdharma shell syntax highlighting
+  antigen zsh autosuggestions
+  aws cucok to set up
+  coreutils => update mac native core commands to lin ux ones
+  direnv
+  aws vault
+
+
+  https://github.com/cloudstorm/devenv-etc
+  https://github.com/cloudstorm/devenv-etc/tree/master/homebrew
+  https://github.com/cloudstorm/devenv-etc/blob/master/iterm.md
+  https://github.com/cloudstorm/devenv-etc/tree/master/aws
+    set up mfa
+
+
+  multi letter
+  completition
+  git kiiras
+
+  secrets are going to .secrets => zshrc
