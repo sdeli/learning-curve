@@ -105,3 +105,7 @@ mysql-client-5.7                                install
 mysql-client-core-5.7                           install
 mysql-common                                    install
 mysql-server-core-5.7
+
+# push with prompted for credentials
+ git config --local credential.helper "
+ git push origin ....
