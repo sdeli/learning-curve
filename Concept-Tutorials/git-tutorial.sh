@@ -107,5 +107,13 @@ mysql-common                                    install
 mysql-server-core-5.7
 
 # push with prompted for credentials
- git config --local credential.helper "
+ git config --local credential.helper
  git push origin ....
+ git push https://sdeli@github.com/sdeli/hammerspoon.git
+
+
+# show changes you made to the code
+ git diff Concept-Tutorials/git-tutorial.sh
+ 
+ # checkout remote branch
+ git checkout -b feat/sw-update origin/feat/sw-update

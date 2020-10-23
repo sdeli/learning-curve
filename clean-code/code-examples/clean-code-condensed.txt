@@ -1,0 +1,231 @@
+Clean Code Principles
+Created by Sándor Deli
+Last updated Apr 23, 20204 min readAnalyticsAnalytics
+Readability Of File Organisation => Software Architecture
+
+You know from this, which part of the software does what.
+
+You will know where to find a certain type of code.
+
+In File Code Organisation
+
+If there is an agreed way how the team organises/structures the code in the file, then it is easier to find the code part you need.
+
+Function and Command level readability
+
+!Clean Code in a file depends on, if you can read what happens from names or you need to read and understand complicated logic!
+Example 1:
+
+  function processSnow() {
+    var snows = [
+      { color: 'white', cleanness: 3, month: 'january', ball: true, human: true, damage: 1 },
+      { color: 'grey', cleanness: 1, month: 'february', ball: false, human: true, damage: 2 },
+      { color: 'veryLightBlue', cleanness: 3, month: 'january', ball: true, human: true, damage: 3 },
+      { color: 'transparent', cleanness: 3, month: 'december', ball: false, Human: false, damage: 4 },
+      { color: 'white', cleanness: 4, month: 'january', ball: true, human: true, damage: 5 },
+    ];
+
+    var x = snows
+      .reduce((accumulator: any, snow: any) => {
+        if (snow.ball === false) {
+          return [...accumulator, snow];
+        } else {
+          return accumulator;
+        }
+      }, [])
+      .filter(snow => snow.cleanness === 3)
+      .map(({ damage }) => {
+        return damage * 2 > 6;
+      });
+
+    return x.indexOf(true) > -1;
+  }
+}
+Problems of this file:
+
+I can not skip this function because I don't understand it by function name and return value.
+
+I need to read snow object because it is not clear by name and properties what the hack it is.
+
+I need to dig into reduce, filter, map because it is not explained what the hack is happening to them.
+
+Variable names are not well explaining their values.
+
+Magic if statements.
+
+Magic values.
+
+Chunks of logics are unexplained => chaining, unexplained logic in return statement
+
+Take away: EXPLAINE EVERY LOGIC BY NAME AND RETURN VALUE
+
+Solution:
+
+function hasMonthWhereSnowDoesntHurtAdults() {
+  const adultsTougherThanKidsBy = 2;
+  const maxDamageAdultsStand = 6;
+
+  var snowsQuealityByMonth = [
+    { color: 'white', cleanness: 3, monthOfSnowing: 'january', canMakeballOf: true, canMakeSnowManOf: true, levelOfDamageOnKid: 1 },
+    { color: 'grey', cleanness: 1, monthOfSnowing: 'february', canMakeballOf: false, canMakeSnowManOf: true, levelOfDamageOnKid: 2 },
+    { color: 'veryLightBlue', cleanness: 3, monthOfSnowing: 'january', canMakeballOf: true, canMakeSnowManOf: true, levelOfDamageOnKid: 3 },
+    { color: 'transparent', cleanness: 3, monthOfSnowing: 'december', canMakeballOf: false, canMakeSnowManOf: false, levelOfDamageOnKid: 4 },
+    { color: 'white', cleanness: 4, monthOfSnowing: 'january', canMakeballOf: true, canMakeSnowManOf: true, levelOfDamageOnKid: 5 },
+  ];
+
+  var snowCanFormBallOfByMonth = snowsQuealityByMonth.reduce((accumulator: any, snow: any) => {
+      if (snow.canMakeballOf === false) {
+        return [...accumulator, snow];
+      } else {
+        return accumulator;
+      }
+    }, [])
+
+  var unToxicSnowByMonth = snowCanFormBallOfByMonth.filter(snow => snow.cleanness === 3);
+
+  var notDamagingSnowWhenPlaySnowBallByMonth = .map(({ levelOfDamageOnKid }) => {
+      return levelOfDamageOnKid * adultsTougherThanKidsBy > maxDamageAdultsStand;
+    });
+
+  var hasSnowFulfillingAllConditions = notDamagingSnowWhenPlaySnowBallByMonth.indexOf(true) > -1;
+  return hasSnowFulfillingAllConditions;
+  }
+}
+Now this code can be understood without reading the contents of reduce, filter, map
+
+Example 2:
+
+@Injectable()
+export class IdeaScoreService {
+  private readonly scores: Record<string, number>[] = IdeaScores;
+
+  constructor(private readonly questionService: QuestionService) {}
+
+  async getQuestionScore(answer: DialogQuestion, question?: Question) {
+    if (!question) {
+      question = await this.questionService.repo.findOneOrFail(answer.questionId);
+    }
+    switch (question.index) {
+      case 0:
+      case 2:
+        return answer.answerText.split(' ').length;
+      case 3:
+        return answer.answerText
+          .split(',')
+          .reduce((sum, subAnswer) => sum + this.scores[question!.index]?.[subAnswer], 0);
+      case 21:
+        return answer.answerText.split(',').length;
+    }
+    return this.scores[question.index]?.[answer.answerText] || 0;
+  }
+Problems of this file:
+
+Function is explaining what happens inside, but what is a score? this?: this.scores[question.index]?.[answer.answerText] || 0. <= what is this?
+
+Magic if statements.
+
+!question => in which case is there no question and why?
+
+Variable names are not well explaining their values.
+
+switch (question.index) => what is the index? is that the primary key in the db? and why do we route based on the index
+
+if index is 3 why do we do this:
+
+  answer.answerText
+    .split(',')
+    .reduce((sum, subAnswer) => sum + this.scores[question!.index]?.[subAnswer], 0);
+Chunks of logics are unexplained => chaining
+
+what does this do? what is its result?:
+
+answer.answerText.split(' ').length;
+what does this do? what is its result?:
+
+answer.answerText
+      .split(',')
+      .reduce((sum, subAnswer) => sum + this.scores[question!.index]?.[subAnswer], 0);
+what does this do? what is its result?:
+
+answer.answerText.split(',').length;
+what is the return value.. is see it but it is hard to understand:
+
+this.scores[question.index]?.[answer.answerText] || 0; // => magic if stament again
+Core Take Away:
+
+
+CODE SHOULD BE UNDERSTANDABLE BY NAMES, NOT BY READING LOGIC!
+
+Summary:
+Always see your code with head of somebody who has no clue at all what is going on.
+
+Always explain logic by names:
+
+variable names
+
+function names
+
+clear return values/results of logic
+
+controller service pattern (even in sub functions) / top down analysis
+
+No Magic Values.
+
+No Magic Conditional statements.
+
+for booleans use condition words: is/are/has/have/do/does.
+
+Variable names should well explain their value.
+
+Additionally to functions:
+
+Functions should have clean signature:
+
+what does it do
+
+what goes in
+
+what goes out
+
+DOT/Single Responsibility functions.
+
+A function should do what its name says - nothing else/additional.
+
+Pure functions.
+
+Tinier functions are better then few large.
+
+No nested functions.
+
+
+Counter Example
+  createAnsweredQuestion(question: Question): DialogQuestion {
+      let answerText: string;
+
+      if (question.answerType === AnswerType.LongText) {
+        answerText = faker.lorem.sentence();
+      }
+
+      if (question.answerType === AnswerType.SelectMany) {
+        answerText = `${question.possibleAnswers![0].value} ${question.possibleAnswers![1].value}`;
+      }
+
+      if (question.answerType === AnswerType.SelectOne) {
+        answerText = question.possibleAnswers![1].value;
+      }
+
+      if (question.answerType === AnswerType.YesNo) {
+        answerText = 'yes';
+      } else {
+        answerText = faker.lorem.sentence();
+      }
+
+      return new DialogQuestion({
+        questionId: question.id,
+        questionText: question.text,
+        answeredAt: new Date(),
+        answerText,
+      });
+    }
+Although the conditional statements are not outsourced into a variable with a descriptive name,
+it is still understandable because of the readable names.
