@@ -62,6 +62,7 @@ git remote add origin https://github.com/sdeli/usr-local-bin.git
 git remote add origin https://github.com/sdeli/activity-game-no-angular.git
 git remote add origin https://github.com/sdeli/npr
 git remote add origin https://github.com/cloudstorm/holiday-calendar-sync.git
+git remote add origin https://github.com/sdeli/jackpot-game.git
 
 # CASE Push =============== ======================================>
 git push -u origin master
