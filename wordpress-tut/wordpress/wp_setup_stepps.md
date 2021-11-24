@@ -1,1 +1,0 @@
-1. settings => permalinks => post

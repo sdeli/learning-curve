@@ -14,7 +14,7 @@ z# WooCommerce Shop Setup Stepps
     1. Returns And Refund
 1. **Add Logo**
 1. **Menus**
-    1. Find Out what links/meus you need
+    1. Find Out what links/menus you need
     1. Settle Menu Bars
     1. Create Drop Downs In Menu Bars
     1. *Primary menu*

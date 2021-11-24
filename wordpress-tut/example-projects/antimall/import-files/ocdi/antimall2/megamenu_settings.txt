@@ -1,0 +1,1 @@
+a:8:{s:6:"prefix";s:8:"disabled";s:12:"descriptions";s:7:"enabled";s:7:"primary";a:5:{s:7:"enabled";s:1:"1";s:5:"event";s:5:"hover";s:6:"effect";s:7:"fade_up";s:12:"effect_speed";s:3:"200";s:5:"theme";s:7:"default";}s:12:"second_click";s:2:"go";s:16:"mobile_behaviour";s:8:"standard";s:3:"css";s:2:"fs";s:6:"unbind";s:7:"enabled";s:9:"instances";a:1:{s:7:"primary";s:1:"0";}}
