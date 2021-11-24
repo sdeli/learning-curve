@@ -18,6 +18,7 @@
 # CASE 1 Personalize Git ======================================>
 git config --global user.email "bgfkszmsdeli@gmail.com"
 git config --global user.name "sdeli"
+git config --global user.name "sandordeli"
 
 git config user.email "bgfkszmsdeli@gmail.com"
 git config user.name "sdeli"
@@ -63,6 +64,7 @@ git remote add origin https://github.com/sdeli/activity-game-no-angular.git
 git remote add origin https://github.com/sdeli/npr
 git remote add origin https://github.com/cloudstorm/holiday-calendar-sync.git
 git remote add origin https://github.com/sdeli/jackpot-game.git
+git remote add origin https://github.com/sdeli/wp-local-env.git
 
 # CASE Push =============== ======================================>
 git push -u origin master

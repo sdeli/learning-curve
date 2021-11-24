@@ -1,0 +1,84 @@
+#tinymce .dropcap-borders:first-letter,
+#tinymce .dropcap-border-right:first-letter,
+#tinymce .dropcap-bg-dark:first-letter,
+#tinymce .dropcap-bg-light:first-letter {
+  padding: 5px 15px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ccc;
+}
+
+#tinymce .dropcap:first-letter {
+  margin-right: 10px;
+  font-size: 36px;
+}
+
+#tinymce .dropcap-border-right:first-letter {
+  border-color: transparent;
+  border-right-color: #ccc;
+  padding: 0 10px;
+}
+
+#tinymce .dropcap-bg-dark:first-letter {
+  background-color: black;
+  color: white;
+}
+
+#tinymce .dropcap-bg-light:first-letter {
+  background-color: #ccc;
+  color: black;
+}
+
+#tinymce .highlight {
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+}
+
+#tinymce .headline.headline-left:before,
+#tinymce .headline.headline-center:before,
+#tinymce .headline.headline-right:before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  height: 1px;
+  width: 150px;
+  bottom: -10px;
+  border-top: 1px solid #cccccc;
+}
+
+#tinymce .headline {
+  display: block;
+  position: relative;
+}
+
+#tinymce .headline.headline-left {
+  text-align: left;
+}
+
+#tinymce .headline.headline-left:before {
+  right: auto;
+  left: 0;
+  margin: 0;
+}
+
+#tinymce .headline.headline-center {
+  text-align: center;
+}
+
+#tinymce .headline.headline-center:before {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+#tinymce .headline.headline-right {
+  text-align: right;
+}
+
+#tinymce .headline.headline-right:before {
+  right: 0;
+  left: auto;
+  margin: 0;
+}
