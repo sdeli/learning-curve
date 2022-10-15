@@ -11,6 +11,7 @@ Template Hierarchy: [https://developer.wordpress.org/themes/basics/template-hier
 The Loop: [https://developer.wordpress.org/themes/basics/the-loop/](https://developer.wordpress.org/themes/basics/the-loop/)
 Theme Dev Guidelines: [https://codex.wordpress.org/Theme_Development](https://codex.wordpress.org/Theme_Development)
 Customizer API: [https://developer.wordpress.org/themes/customize-api/](https://developer.wordpress.org/themes/customize-api/)
+
 ## How Wordpress works
 - Wordpress has a tendency to register assets for later use like:
   - scripts
@@ -40,6 +41,7 @@ Customizer API: [https://developer.wordpress.org/themes/customize-api/](https://
     
 ### Template Files: 
 [https://codex.wordpress.org/Theme_Development#Template_Files](https://codex.wordpress.org/Theme_Development#Template_Files)\
+[https://developer.wordpress.org/themes/basics/template-files/#common-wordpress-template-files](https://developer.wordpress.org/themes/basics/template-files/#common-wordpress-template-files)\
 __style.css__: The main stylesheet. This must be included with your Theme, and it must contain the information header for your Theme.\
 
 __index.php__
@@ -54,7 +56,7 @@ __single-{post-type}.php__
 
 __comments.php__
 
-__page.php__
+__page.php__: Theme’s default page template.
 
 __search.php__
 
@@ -76,17 +78,28 @@ __attachment.php__
 
 __image.php__: Image attachment template. Used when viewing a single image attachment. If not present, attachment.php will be used.
 
-
 __rtl.css__
 
-## Routing (Template Hierarchy)
+#### Woocommerce
+__archive-product.php__: product loop page
+__single-product.php__
+
+## Head Level Settings
+ - language_attributes();
+ - bloginfo()
+ - body_class() => body_class action hook calls it
+
+## Routing (Template Hierarchy) / Load sequence
 ref: [https://developer.wordpress.org/themes/basics/template-hierarchy/](https://developer.wordpress.org/themes/basics/template-hierarchy/)
 
 ## Hooks
   ***Listening to events and map actions to them***
 
-  __Action Hooks__: An action interrupts the code flow to do something, and then returns back to the normal flow without modifying anything.
+  __Action Hooks__: 
+  def: An action interrupts the code flow to do something, and then returns back to the normal flow without modifying anything. You can attach functions to the certain action_hook and then you can trigger the action_hook
   - ref: [https://developer.wordpress.org/plugins/hooks/actions/](https://developer.wordpress.org/plugins/hooks/actions/)
+  def: Actions allow you to add extra functionality at a specific point in the processing of the page
+  - ref: [https://docs.presscustomizr.com/article/26-wordpress-actions-filters-and-hooks-a-guide-for-non-developers](https://docs.presscustomizr.com/article/26-wordpress-actions-filters-and-hooks-a-guide-for-non-developers)
   - important action hooks
     - init
     - wp_enqueue_scripts
@@ -95,8 +108,14 @@ ref: [https://developer.wordpress.org/themes/basics/template-hierarchy/](https:/
     - register_sidebar
     - pre_get_posts: Modifies the default WP_Query object to change default THE LOOP results.
     - customize_register
-
-  __Filter Hooks__: A filter is used to modify something in a specific way so that the modification is then used by code later on.
+  
+  __Filter Hooks__: 
+    def: A filter is used to modify something in a specific way so that the modification is then used by code later on.
+    def: Filters allow you to intercept and modify data as it is processed
+     - ref: [https://docs.presscustomizr.com/article/26-wordpress-actions-filters-and-hooks-a-guide-for-non-developers](https://docs.presscustomizr.com/article/26-wordpress-actions-filters-and-hooks-a-guide-for-non-developers)
+  __Woocommerce Hooks__ 
+[https://woocommerce.github.io/code-reference/hooks/hooks.html](https://woocommerce.github.io/code-reference/hooks/hooks.html)
+[http://hookr.io/plugins/woocommerce/3.0.6/actions/#index=r](http://hookr.io/plugins/woocommerce/3.0.6/actions/#index=r)
 
 ## Functions
  [https://codex.wordpress.org/Function_Reference](https://codex.wordpress.org/Function_Reference)
@@ -240,7 +259,6 @@ After this you can call in the template:
 
 
 ## Important Processes
-
 ### Register Nav Menus
   __1. Registers navigation menu location__:
   - This should be done at the code where we add support to theme features.
@@ -268,9 +286,11 @@ After this you can call in the template:
   ```
 
 
-  ### Create Walkers
-
-  ### Create Sidebars / Widget Areas
+### Create Walkers
+ __wp-bootstrap-navwalker__ 
+  [github](https://github.com/wp-bootstrap/wp-bootstrap-navwalker)
+  [udemy tut](https://www.udemy.com/course/woocommerce-wordpress-theme-development/learn/lecture/14742850#overview)
+### Create Sidebars / Widget Areas
 
   __1. Register Sidebars / Widget Areas__
   - register_sidebar function registers a widget area, makes available in the admin area, where it can be filled with widgets.
@@ -305,8 +325,8 @@ After this you can call in the template:
       dynamic_sidebar('au_main_desktop_sidebar');
     }
   ```
-
-  ### Create Search Form Template: [https://codex.wordpress.org/Creating_a_Search_Page](https://codex.wordpress.org/Creating_a_Search_Page)
+### Create Widgets
+### Create Search Form Template: [https://codex.wordpress.org/Creating_a_Search_Page](https://codex.wordpress.org/Creating_a_Search_Page)
   __1. Create searchform.php__
   ```html
     <form id="searchform" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
@@ -324,12 +344,12 @@ After this you can call in the template:
 
   __2. Output Sidebar In HTML__: Put searchform into widget area or get_search_form().
 
-  ### Pagination
+### Pagination
   ref: [https://developer.wordpress.org/themes/functionality/pagination/](https://developer.wordpress.org/themes/functionality/pagination/)
 
-  ### Commenting
+### Commenting
 
-  ### WP_Query
+### WP_Query
 
   *** The LOOP uses WP_Query under the hood ***
 
@@ -356,8 +376,24 @@ After this you can call in the template:
   - Create new admin user delete automatic one
   ### Misc
    - wordpress post types
+## Wordpess / woocommerce / php global variables
+[https://codex.wordpress.org/Global_Variables](https://codex.wordpress.org/Global_Variables)
 
-### Database
+## Wordpress Debugging
+- packagist => leeoniya/dump-r
+```php
+define( 'WP_DEBUG', true );
+// saves log to /wp-content/debug.log if WP_DEBUG turned to true
+define( 'l', true );
+// turns of the errors to display on screen so error logging happens silently into the log file
+define( 'WP_DEBUG_DISPLAY', false );
+
+```
+## Import / Organize files
+get_template_part + woocommerce + dir structure
+get_template_part([path], get_post_format())
+
+## Database
 wp_users
 wp_usermeta
 wp_options
@@ -369,6 +405,9 @@ wp_term_taxonomy term & taxonomy relationships
 wp_comments
 wp_commentmeta
 
+### Good to know relations/where what is stored
+
+### Useful Queries
 ```sql
 SELECT * FROM `wp_term_taxonomy` inner join wp_terms on wp_terms.term_id = wp_term_taxonomy.term_taxonomy_id WHERE taxonomy = "pa_szerelesi-mod";
 
@@ -467,7 +506,7 @@ select
   wp_posts.post_name AS 'Név', 
   wp_wc_product_meta_lookup.sku AS 'Cikkszám',
   gyartasi_szam,
-  regular_price,
+  regular_price as 'Normál ár',
   price
 from wp_posts
 left join wp_wc_product_meta_lookup
@@ -504,141 +543,25 @@ where wp_posts.ID in (
 14385,
 14417,
 14459,
-14478,
-14493,
-14511,
-14543,
-14562,
-14565,
-14589,
-14593,
-14609,
-14620,
-14625,
-14629,
-14637,
-14641,
-14644,
-14647,
-14650,
-14655,
-14658,
-14660,
-14662,
-14664,
-14670,
-14675,
-14679,
-14683,
-14695,
-14708,
-14712,
-14725,
-14341,
-14340,
-14339,
-14246,
-14245,
-14289,
-14288,
-14287,
-14286,
-14285,
-14284,
-14344,
-14343,
-14379,
-14380,
-14381,
-14376,
-14377,
-14378,
-14416,
-14414,
-14413,
-14412,
-14411,
-14410,
-14409,
-14408,
-14407,
-14406,
-14405,
-14404,
-14403,
-14401,
-14400,
-14399,
-14398,
-14397,
-14458,
-14457,
-14456,
-14455,
-14454,
-14453,
-14452,
-14451,
-14450,
-14449,
-14448,
-14446,
-14444,
-14442,
-14441,
-14440,
-14439,
-14428,
-14462,
-14461,
-14460,
-14481,
-14480,
-14479,
-14496,
-14495,
-14514,
-14513,
-14512,
-14591,
-14590,
-14597,
-14596,
-14610,
-14611,
-14621,
-14622,
-14626,
-14627,
-14630,
-14631,
-14638,
-14639,
-14677,
-14676,
-14687,
-14686,
-14685,
-14684,
-14702,
-14701,
-14700,
-14711,
-14710,
-14720,
-14719,
-14718,
-14717,
-14716,
-14715,
-14729,
-14728,
-14727,
-14726
+14478
 )
 ```
-
 ## Wordpress speed up
+
+### Notes for future
+- try w3-total-cache with autooptimize combo
+a fontokat amiket a googletol betolt ki kene nyirni
+- minden javascriptet eliminalni kene first user interactionre, especially jquery
+- if we inline all the css it shouldnt be more than 50 kb (the whole page).
+- Make autooptimize put asyn att to script tag:
+```js
+add_filter('autoptimize_filter_js_defer','my_ao_override_defer',10,1);
+function my_ao_override_defer($defer) {
+ return $defer."async ";
+}
+```
+- webpagetest.org
+
 ### db speedup
  - delete junk, and unused tables => wp-optimise
  - if plugins use modules then disable the ones you dont use => pl:rank math analytitcs
@@ -646,9 +569,39 @@ where wp_posts.ID in (
 ### less request on load
 - delete slow plugins => query monitor
 - if plugins use modules then disable the ones you dont use => pl:rank math analytitcs
+- bundling all the files - WHICH ARE NEEDED FOR ABOVE THE FOLD CONTENT - into one or some files so the browser needs to request just a few
+- the less images the better
+### Caching (https://wp-rocket.me/blog/object-caching-use-wordpress/)[https://wp-rocket.me/blog/object-caching-use-wordpress/]
+  - __op code caching__: Opcode caches the already compiled code
+  - __Page caching__: caching the html
+  - __Object caching__: caching database queries data
+  - (wp-rocket, w3 total cache)
 
-### faster file delivery
-- server level caching
+### Cache warming
+- Crawl website-pages based on google XML sitemap [warm cache](https://wordpress.org/plugins/warm-cache/)
+
+### Enhance rendertime
+ -  remove unused css (https://rapidload.io/)[https://rapidload.io/]
+ -  remove unused js
+ -  optimize html size (autoopitmize)
+ -  lazy loading images, widgets, iframes, gravatars, thumnails (bg lazy load) and big html
+ -  defer javascript for elements which are UNDER THE FOLD
+ -  above the fold critical css should be generated per page (https://jonassebastianohlsson.com/criticalpathcssgenerator/)[https://jonassebastianohlsson.com/criticalpathcssgenerator/]
+
+### Reduce size of requested files
+ - __compress images__ (imagify)
+ - Minify css, js files (autooptimize)
+
+### CDN
+
+### Plugin organization
+- elinate plugins which are not used on certain routs (Plugin Organizer
+
+### Prerender pages
+- browser hinting
+- Push State AJAX PJAX [instantclick](https://wordpress.org/plugins/instantclick/)
+
+### Domain Sharding
 
 ### save server resources
 - reduce heartbeat api

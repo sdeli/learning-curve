@@ -65,6 +65,7 @@ git remote add origin https://github.com/sdeli/npr
 git remote add origin https://github.com/cloudstorm/holiday-calendar-sync.git
 git remote add origin https://github.com/sdeli/jackpot-game.git
 git remote add origin https://github.com/sdeli/wp-local-env.git
+git remote add origin https://github.com/sdeli/ocean-csempe.git
 
 # CASE Push =============== ======================================>
 git push -u origin master
@@ -120,3 +121,6 @@ mysql-server-core-5.7
  
  # checkout remote branch
  git checkout -b feat/sw-update origin/feat/sw-update
+
+# remember pass and user
+git config --global credential.helper cache

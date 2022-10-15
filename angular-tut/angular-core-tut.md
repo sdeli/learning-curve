@@ -68,6 +68,7 @@ A very broad category, a service can be anything ranging from a value and functi
 ### Template
 Each component’s view is associated with its companion template. A template in Angular is a form of HTML tags that lets Angular know that how it is meant to render the component.
 
+### LifeCycle hooks
 
 ## Notes
 for of variables
